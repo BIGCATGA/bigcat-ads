@@ -3563,29 +3563,6 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     render();
   }
 
-  // ---------- ตัวช่วยหาสาเหตุ "กดช่องแล้วเด้ง" (ชั่วคราว v79) ----------
-  var DBG = (function () {
-    var last = { what: '', at: 0, from: '' }, box = null, n = 0;
-    function mark(what) { last = { what: what, at: Date.now(), from: (new Error().stack || '').split('\n').slice(2, 5).map(function (x) { return x.trim().replace(/^at /, '').replace(/\(.*\)/, '').trim(); }).join(' ← ') }; }
-    function desc(el) { if (!el || el === document.body) return 'ไม่มี (body)'; return el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') + (typeof el.className === 'string' && el.className.trim() ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : ''); }
-    function show(msg) {
-      if (!box) { box = document.createElement('div'); box.style.cssText = 'position:fixed;left:12px;bottom:12px;z-index:99999;max-width:520px;background:#1f2430;color:#fff;font:12px/1.5 Prompt,sans-serif;padding:10px 12px;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.3);white-space:pre-wrap'; document.body.appendChild(box); }
-      n++; box.textContent = '🔎 ตัวช่วยหาสาเหตุ (ครั้งที่ ' + n + ') — แคปกล่องนี้ส่งให้ Claude\n' + msg;
-    }
-    document.addEventListener('focusout', function (e) {
-      var el = e.target; if (!el || !/^(INPUT|SELECT|TEXTAREA)$/.test(el.tagName)) return;
-      var t0 = Date.now();
-      setTimeout(function () {
-        var gone = !el.isConnected, ae = document.activeElement, winFocus = document.hasFocus();
-        if (!gone && ae && ae !== document.body) return; // ย้ายไปช่องอื่นเองตามปกติ
-        var why = gone ? 'ช่องถูกวาดใหม่ (หน้าเว็บ render ซ้ำ)' : !winFocus ? 'หน้าต่างเบราว์เซอร์เสีย focus (โปรแกรม/ส่วนขยายอื่นแย่ง)' : 'focus หลุดไปที่ ' + desc(ae);
-        show('ช่อง: ' + desc(el) + '\nสาเหตุ: ' + why + '\nrender ล่าสุด: ' + (last.what ? last.what + ' เมื่อ ' + Math.round((t0 - last.at) / 100) / 10 + ' วิที่แล้ว\nเรียกจาก: ' + last.from : '–') + '\nหน้า: ' + S.page + ' · live: ' + (LIVE && LIVE.at ? 'on' : 'off'));
-      }, 60);
-    }, true);
-    window.addEventListener('blur', function () { if (/^(INPUT|SELECT|TEXTAREA)$/.test((document.activeElement || {}).tagName || '')) show('หน้าต่างเบราว์เซอร์เสีย focus ขณะพิมพ์ในช่อง ' + desc(document.activeElement) + '\n(มักเกิดจากส่วนขยายของเบราว์เซอร์ หรือโปรแกรมอื่นเด้งขึ้นมา)'); });
-    return { mark: mark };
-  })();
-
   // ============================================================
   // Boot / Login
   // ============================================================
@@ -3637,7 +3614,6 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   // Shell
   // ============================================================
   function render() {
-    DBG.mark('render');
     var dark = document.documentElement.dataset.theme === 'dark';
     var pendN = (S.data.inbox || []).filter(function (r) { return r.status === 'pending'; }).length;
     var fbOpen = true; try { fbOpen = localStorage.getItem('fbat_fbgrp') !== '0'; } catch (e) {}
@@ -3663,7 +3639,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       '<div class="sb2-nav">' + nav + '</div>' +
       '<div class="sb2-sp"></div>' +
       (lastSync ? '<div class="sb2-sync"><i></i><span><b>อัปเดตอัตโนมัติ</b> · ' + lastSync.toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' · ทุก 1 ชม.</span></div>' : '') +
-      '<div class="sb2-foot"><div class="sb2-av">' + esc(initials(S.data.me)) + '</div><div class="sb2-who"><b>' + esc(S.data.me) + '</b><small>' + (API.isDemo ? 'โหมดตัวอย่าง' : 'แอดมิน') + ' · v79</small></div>' +
+      '<div class="sb2-foot"><div class="sb2-av">' + esc(initials(S.data.me)) + '</div><div class="sb2-who"><b>' + esc(S.data.me) + '</b><small>' + (API.isDemo ? 'โหมดตัวอย่าง' : 'แอดมิน') + ' · v80</small></div>' +
         '<button class="sb2-ib' + (S.page === 'settings' ? ' on' : '') + '" data-nav="settings" title="ตั้งค่า" aria-label="ตั้งค่า">' + I.cog + '</button>' +
         '<button class="sb2-ib" data-theme="' + (dark ? 'light' : 'dark') + '" title="' + (dark ? 'โหมดสว่าง' : 'โหมดมืด') + '" aria-label="' + (dark ? 'โหมดสว่าง' : 'โหมดมืด') + '">' + (dark ? I.sun : I.moon) + '</button>' +
         (API.isDemo ? '' : '<button class="sb2-ib" id="logout" title="ออกจากระบบ" aria-label="ออกจากระบบ">' + I.logout + '</button>') +
@@ -3684,7 +3660,8 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     $$('[data-nav]').forEach(function (b) {
       b.onclick = function () { if (b.dataset.nav === 'campaigns' && S.page === 'campaigns') S.campNav = null; go(b.dataset.nav); };
     });
-    $$('[data-theme]').forEach(function (b) { b.onclick = function () { setTheme(b.dataset.theme); }; });
+    $$('button[data-theme]').forEach(function (b) { b.onclick = function () { setTheme(b.dataset.theme); }; }); // เฉพาะปุ่ม — <html> ก็มี data-theme (เคยทำให้คลิกตรงไหนก็วาดหน้าใหม่)
+    document.documentElement.onclick = null;
     if ($('#fbGrp')) $('#fbGrp').onclick = function () { var g = this.parentNode; g.classList.toggle('open'); try { localStorage.setItem('fbat_fbgrp', g.classList.contains('open') ? '1' : '0'); } catch (e) {} };
     if ($('#logout')) $('#logout').onclick = function () { API.token(null); boot(); };
     $('#globalSearch').onkeydown = function (e) {
@@ -3695,7 +3672,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     renderPage();
     liveBadge();
   }
-  function renderPage() { DBG.mark('renderPage'); ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, settings: pageSettings })[S.page](); }
+  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, settings: pageSettings })[S.page](); }
 
   // ---- ยอดรับซื้อ + เคสประเมิน แบบเรียลไทม์: ถามหลังบ้านทุก 1 นาที (เฉพาะตอนเปิดแท็บอยู่) ----
   var LIVE = { ver: null, busy: false, off: false, at: '', err: '', last: 0, pending: false, timer: null };
