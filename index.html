@@ -1783,6 +1783,62 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 
 @media (max-width: 860px) { .sidebar.sb2 { display: none; } }
 
+/* v81 — เมนูแบบ Google Ads (แถบไอคอน + เมนูย่อย) */
+:root { --g2-bg: #f1f3f6; --g2-hov: #e4e7ec; --g2-tx: #1f2430; --g2-mu: #8c8d9f; --g2-on: #ffc928; --g2-ont: #2b2100; }
+:root[data-theme="dark"] { --g2-bg: #161a24; --g2-hov: #222837; --g2-tx: #e7e9f2; --g2-mu: #7d87a5; --g2-on: #ffc928; --g2-ont: #2b2100; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --g2-bg: #161a24; --g2-hov: #222837; --g2-tx: #e7e9f2; --g2-mu: #7d87a5; } }
+.app.g2app { grid-template-columns: 316px 1fr; background: linear-gradient(to right, var(--g2-bg) 316px, var(--bg) 316px); }
+.sidebar.g2 { background: var(--g2-bg); color: var(--g2-tx); padding: 0; gap: 0; display: flex; flex-direction: row; overflow: hidden; border-right: 0; }
+.sidebar.g2:after { display: none; }
+.g2-rail { width: 84px; flex: none; display: flex; flex-direction: column; align-items: center; padding: 14px 0; gap: 2px; overflow-y: auto; }
+.g2-lg { width: 46px; height: 46px; border-radius: 14px; background: #ffc928; color: #2b2100; display: grid; place-items: center; font-weight: 700; font-size: 18px; margin-bottom: 12px; box-shadow: 0 2px 6px rgba(0,0,0,.15); position: relative; overflow: hidden; flex: none; }
+.g2-lg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sidebar.g2 .g2-rb { border: 0; background: none; font: inherit; display: flex; flex-direction: column; align-items: center; gap: 3px; font-size: 11.5px; padding: 5px 0; width: 76px; color: var(--g2-mu); cursor: pointer; box-shadow: none; border-radius: 0; }
+.g2-ic { width: 56px; height: 30px; border-radius: 999px; display: grid; place-items: center; position: relative; transition: background .15s; }
+.g2-ic svg { width: 20px; height: 20px; }
+.sidebar.g2 .g2-rb:hover .g2-ic { background: var(--g2-hov); }
+.sidebar.g2 .g2-rb.on { color: var(--g2-tx); font-weight: 600; } .sidebar.g2 .g2-rb.on .g2-ic { background: var(--g2-on); color: var(--g2-ont); }
+.g2-dotc { position: absolute; top: 3px; right: 12px; width: 8px; height: 8px; border-radius: 50%; background: #f04438; border: 2px solid var(--g2-bg); }
+.g2-sp { flex: 1; min-height: 12px; }
+.g2-av { width: 34px; height: 34px; border-radius: 50%; background: #2c3a5e; color: #ffd75c; display: grid; place-items: center; font-size: 12px; font-weight: 700; margin-top: 6px; flex: none; }
+.g2-panel { flex: 1; min-width: 0; display: flex; flex-direction: column; padding: 16px 10px 12px; overflow-y: auto; }
+.g2-brand { font-size: 18px; font-weight: 700; padding: 6px 14px 14px; color: var(--g2-tx); } .g2-brand span { color: #e5a800; }
+.g2-pt { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--g2-mu); padding: 2px 16px 10px; }
+.sidebar.g2 .g2-it { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; border: 0; background: none; font: inherit; font-size: 14.5px; color: var(--g2-tx); text-align: left; padding: 12px 16px; border-radius: 999px; cursor: pointer; margin-bottom: 2px; box-shadow: none; }
+.sidebar.g2 .g2-it:hover { background: var(--g2-hov); }
+.sidebar.g2 .g2-it.on { background: var(--g2-on); color: var(--g2-ont); font-weight: 600; }
+.sidebar.g2 .g2-it.dim { color: var(--g2-mu); cursor: default; } .sidebar.g2 .g2-it.dim:hover { background: none; }
+.g2-bd { font-style: normal; background: #f04438; color: #fff; font-size: 11px; font-weight: 700; border-radius: 999px; padding: 0 7px; line-height: 18px; }
+.g2-soon { font-style: normal; font-size: 10.5px; border-radius: 6px; padding: 1px 7px; background: var(--g2-hov); color: var(--g2-mu); }
+.g2-sync { font-size: 12px; color: var(--g2-mu); padding: 6px 14px; } .g2-sync i { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #12b76a; margin-right: 6px; }
+.g2-me { display: flex; align-items: center; gap: 8px; padding: 8px 8px 4px 14px; } .g2-me > div { flex: 1; min-width: 0; } .g2-me b { display: block; font-size: 13.5px; color: var(--g2-tx); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .g2-me small { font-size: 11.5px; color: var(--g2-mu); }
+.sidebar.g2 .g2-out { width: 32px; height: 32px; border: 0; border-radius: 9px; background: none; color: var(--g2-mu); display: grid; place-items: center; cursor: pointer; padding: 0; box-shadow: none; } .sidebar.g2 .g2-out:hover { background: var(--g2-hov); color: var(--g2-tx); } .g2-out svg { width: 18px; height: 18px; }
+@media (max-width: 860px) { .sidebar.g2 { display: none; } .app.g2app { grid-template-columns: 1fr; background: var(--bg); }
+  .bottom-nav { display: flex !important; overflow-x: auto; scrollbar-width: none; } .bottom-nav::-webkit-scrollbar { display: none; } .bottom-nav button { flex: 0 0 66px; } }
+/* v81 — หน้า Google Ads */
+.gk { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+.kpi-b.g-hl { background: linear-gradient(160deg, #32d583 0%, #12b76a 55%, #039855 100%); color: #fff; } .kpi-b.g-hl .kpi-l, .kpi-b.g-hl .kpi-s { color: rgba(255,255,255,.88); } .kpi-b.g-hl .kd { color: #fff; }
+.g-two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 20px; }
+.gfn { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 10px 12px; align-items: start; }
+.gfn-l { font-size: 13.5px; padding-top: 7px; } .gfn-l small { display: block; font-size: 11px; color: var(--text-3); }
+.gfn-b { height: 34px; border-radius: 8px; display: flex; align-items: center; padding: 0 12px; color: #fff; font-weight: 600; font-size: 13.5px; white-space: nowrap; font-variant-numeric: tabular-nums; min-width: 54px; }
+.gfn-d { font-size: 11.5px; color: var(--bad); margin: 4px 0 0 4px; }
+.g-note { background: var(--warn-bg); color: var(--warn); border-radius: 12px; padding: 10px 14px; font-size: 13px; margin-bottom: 14px; }
+.gc-card { padding-top: 14px; } .gc-tools { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+.gc-t { min-width: 1150px; } .gc-t th, .gc-t td { white-space: nowrap; vertical-align: middle; }
+.gc-t th.gc-h { cursor: pointer; user-select: none; line-height: 1.3; } .gc-t th.gc-h:hover { background: var(--bg-soft); } .gc-t th.sort { color: var(--text); font-weight: 700; }
+.gc-t .gc-nm { position: sticky; left: 0; z-index: 1; background: var(--card); min-width: 280px; max-width: 340px; white-space: normal; border-right: 1px solid var(--line); }
+.gc-t thead .gc-nm { z-index: 2; }
+.gc-n { color: #1a73e8; } :root[data-theme="dark"] .gc-n { color: #8ab4f8; }
+.gc-t .gc-nm small { display: block; color: var(--text-3); font-size: 11.5px; margin: 2px 0 0 26px; }
+.gc-ex { border: 0; background: none; cursor: pointer; color: var(--text-2); width: 22px; font-size: 12px; margin-right: 2px; }
+.gc-st { width: 30px; text-align: center; } .gc-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; background: #bdc1c6; } .gc-dot.on { background: #188038; }
+.gc-t tr.gc-sub td { background: var(--bg-soft); color: var(--text-2); font-size: 13px; } .gc-t tr.gc-sub .gc-nm { padding-left: 48px; background: var(--bg-soft); }
+.gc-t tfoot td { background: var(--bg-soft); font-weight: 700; border-top: 2px solid var(--line-strong); } .gc-t tfoot .gc-nm { background: var(--bg-soft); }
+.gc-bs { font-size: 11.5px; color: var(--text-2); background: var(--bg-soft); border-radius: 6px; padding: 2px 7px; }
+.gc-is { display: inline-flex; align-items: center; gap: 6px; } .gc-is i { display: inline-block; width: 44px; height: 6px; border-radius: 3px; background: var(--bg-soft); overflow: hidden; } .gc-is u { display: block; height: 100%; background: #1a73e8; }
+@media (max-width: 1200px) { .gk { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } .g-two { grid-template-columns: 1fr; } }
+
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -3415,9 +3471,11 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     { id: 'time', label: 'วิเคราะห์ช่วงเวลา', short: 'ช่วงเวลา', icon: I.clock, group: 'biz' },
     { id: 'sum', label: 'สรุปผล', short: 'สรุป', icon: I.sum, group: 'rep' },
     { id: 'track', label: 'Track เดือนนี้', short: 'Track', icon: I.track, group: 'rep' },
-    { id: 'dashboard', label: 'ภาพรวม Ads Facebook', short: 'ภาพรวม FB', icon: I.dash, group: 'fb' },
+    { id: 'dashboard', label: 'ภาพรวม Ads Facebook', nav: 'ภาพรวม', short: 'ภาพรวม FB', icon: I.dash, group: 'fb' },
     { id: 'chats', label: 'บันทึกแชท', short: 'แชท', icon: I.chat, group: 'fb' },
     { id: 'campaigns', label: 'แคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
+    { id: 'gov', label: 'ภาพรวม Google Ads', nav: 'ภาพรวม', short: 'ภาพรวม G', icon: I.ggl, group: 'gg' },
+    { id: 'gcamp', label: 'แคมเปญ Google Ads', nav: 'แคมเปญ', short: 'แคมเปญ G', icon: I.mega, group: 'gg' },
     { id: 'settings', label: 'ตั้งค่า', short: 'ตั้งค่า', icon: I.gear, group: 'sys' }
   ];
 
@@ -3456,7 +3514,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     d.budgets.forEach(function (b) { b.start_date = nd(b.start_date); b.end_date = nd(b.end_date); b.daily_budget = nn(b.daily_budget) || 0; });
     d.campaigns.forEach(function (c) { c.start_date = nd(c.start_date); c.end_date = nd(c.end_date); });
     d.fbads = (d.fbads || []).map(function (r) { r.date = nd(r.date); return r; });
-    d.gads = (d.gads || []).map(function (r) { r.date = nd(r.date); r.cost = Number(r.cost) || 0; r.conversions = Number(r.conversions) || 0; return r; });
+    d.gads = (d.gads || []).map(function (r) { r.date = nd(r.date); r.cost = Number(r.cost) || 0; r.conversions = Number(r.conversions) || 0; r.impressions = Number(r.impressions) || 0; r.clicks = Number(r.clicks) || 0; r.budget = r.budget === '' || r.budget == null ? null : Number(r.budget); r.impr_share = r.impr_share === '' || r.impr_share == null ? null : Number(r.impr_share); return r; });
     d.purchases = (d.purchases || []).map(function (a) { var o = Array.isArray(a) ? { date: nd(a[0]), category: a[1], fb: !!a[2], line: !!a[3], bought: a[4], repair: a[5], sell: a[6], fbName: a[7] || '', detail: a[8] || '', seen: String(a[9] || ''), pid: String(a[10] || ''), estRef: String(a[11] || '') } : a, pc = C.prodCat(o.category, o.detail); o.k = pc.k; o.cat = pc.sub; o.guess = pc.guess; return o; });
     d.ga4 = (d.ga4 || []).map(function (a) { return Array.isArray(a) ? { date: nd(a[0]), event: String(a[1]), count: Number(a[2]) || 0 } : a; }).filter(function (e) { return e.date; });
     d.estimates = (d.estimates || []).map(function (a) { var o = Array.isArray(a) ? { date: nd(a[0]), hour: Number(a[1]), category: a[2], fb: !!a[3], line: !!a[4], closed: !!a[5], detail: a[6] || '', closeDate: nd(a[7]) || '', pid: String(a[8] || ''), estId: String(a[9] || '') } : a, pc = C.prodCat(o.category, o.detail); o.k = pc.k; o.cat = pc.sub; o.guess = pc.guess; return o; }).filter(function (e) { return e.date; });
@@ -3617,36 +3675,43 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var dark = document.documentElement.dataset.theme === 'dark';
     var pendN = (S.data.inbox || []).filter(function (r) { return r.status === 'pending'; }).length;
     var fbOpen = true; try { fbOpen = localStorage.getItem('fbat_fbgrp') !== '0'; } catch (e) {}
-    function nItem(n, sub) {
-      var cnt = n.id === 'chats' ? pendN : 0;
-      return '<button data-nav="' + n.id + '" class="sb2-i' + (sub ? ' sub' : '') + (S.page === n.id ? ' on' : '') + '">' + n.icon + '<span>' + n.label + '</span>' + (cnt ? '<i class="sb2-bd">' + (cnt > 99 ? '99+' : cnt) + '</i>' : '') + '</button>';
-    }
     var byId = {}; NAV.forEach(function (n) { byId[n.id] = n; });
-    var fbIn = NAV.filter(function (n) { return n.group === 'fb'; }), fbAct = fbIn.some(function (n) { return n.id === S.page; });
+    var GROUPS = [
+      { k: 'biz', t: 'ภาพรวม', full: 'ภาพรวมธุรกิจ', ic: I.dash },
+      { k: 'rep', t: 'รายงาน', full: 'รายงาน', ic: I.track },
+      { k: 'fb', t: 'Facebook', full: 'Facebook Ads', ic: I.fbk },
+      { k: 'gg', t: 'Google', full: 'Google Ads', ic: I.ggl },
+      { k: 'sys', t: 'ตั้งค่า', full: 'ตั้งค่า', ic: I.cog }
+    ];
+    var curG = (byId[S.page] || {}).group || 'biz';
     var lastSync = S.data.config.fb_last_sync ? new Date(S.data.config.fb_last_sync) : null;
-    var nav = '<div class="sb2-lab">ภาพรวมธุรกิจ</div>' + nItem(byId.kpi) + nItem(byId.est) + nItem(byId.time) +
-      '<div class="sb2-lab">รายงาน</div>' + nItem(byId.sum) + nItem(byId.track) +
-      '<div class="sb2-lab">ช่องทางโฆษณา</div>' +
-      '<div class="sb2-grp' + (fbOpen || fbAct ? ' open' : '') + '"><button class="sb2-i" id="fbGrp">' + I.fbk + '<span>Facebook Ads</span>' + (!(fbOpen || fbAct) && pendN ? '<i class="sb2-bd">' + (pendN > 99 ? '99+' : pendN) + '</i>' : '') + '<em class="sb2-chev">' + I.chev + '</em></button>' +
-        '<div class="sb2-subs">' + fbIn.map(function (n) { return nItem(n, true); }).join('') + '</div></div>' +
-      '<div class="sb2-i dim">' + I.ggl + '<span>Google Ads</span><em class="sb2-soon">เร็วๆ นี้</em></div>';
+    var rail = GROUPS.map(function (g) {
+      var first = NAV.filter(function (n) { return n.group === g.k; })[0];
+      var cnt = g.k === 'fb' ? pendN : 0;
+      return '<button class="g2-rb' + (curG === g.k ? ' on' : '') + '" data-nav="' + first.id + '" title="' + g.full + '"><span class="g2-ic">' + g.ic + (cnt ? '<i class="g2-dotc"></i>' : '') + '</span>' + g.t + '</button>';
+    }).join('');
+    var gNow = GROUPS.filter(function (g) { return g.k === curG; })[0];
+    var items = NAV.filter(function (n) { return n.group === curG; }).map(function (n) {
+      var cnt = n.id === 'chats' ? pendN : 0;
+      return '<button class="g2-it' + (S.page === n.id ? ' on' : '') + '" data-nav="' + n.id + '"><span>' + (n.nav || n.label) + '</span>' + (cnt ? '<i class="g2-bd">' + (cnt > 99 ? '99+' : cnt) + '</i>' : '') + '</button>';
+    }).join('') + (curG === 'gg' ? '<div class="g2-it dim"><span>บันทึกการปรับ</span><em class="g2-soon">เร็วๆ นี้</em></div>' : '');
     var bnav = NAV.map(function (n) { var cnt = n.id === 'chats' ? pendN : 0; return '<button data-nav="' + n.id + '" class="' + (S.page === n.id ? 'active' : '') + '">' + n.icon + '<span>' + n.short + '</span>' + (cnt ? '<i class="nav-badge">' + (cnt > 99 ? '99+' : cnt) + '</i>' : '') + '</button>'; }).join('');
-    var title = NAV.filter(function (n) { return n.id === S.page; })[0].label;
+    var title = byId[S.page].label;
     root.innerHTML =
-      '<div class="app">' +
-      '<aside class="sidebar sb2">' +
-      '<div class="sb2-br"><div class="sb2-lg">' + (S.data.config.page_id ? '<img src="https://graph.facebook.com/' + esc(S.data.config.page_id) + '/picture?type=large" alt="" onerror="this.remove()">' : '') + 'B</div><b>' + esc(S.data.config.brand || window.APP_CONFIG.BRAND) + ' <span>Ads</span></b></div>' +
-      '<div class="sb2-nav">' + nav + '</div>' +
-      '<div class="sb2-sp"></div>' +
-      (lastSync ? '<div class="sb2-sync"><i></i><span><b>อัปเดตอัตโนมัติ</b> · ' + lastSync.toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' · ทุก 1 ชม.</span></div>' : '') +
-      '<div class="sb2-foot"><div class="sb2-av">' + esc(initials(S.data.me)) + '</div><div class="sb2-who"><b>' + esc(S.data.me) + '</b><small>' + (API.isDemo ? 'โหมดตัวอย่าง' : 'แอดมิน') + ' · v80</small></div>' +
-        '<button class="sb2-ib' + (S.page === 'settings' ? ' on' : '') + '" data-nav="settings" title="ตั้งค่า" aria-label="ตั้งค่า">' + I.cog + '</button>' +
-        '<button class="sb2-ib" data-theme="' + (dark ? 'light' : 'dark') + '" title="' + (dark ? 'โหมดสว่าง' : 'โหมดมืด') + '" aria-label="' + (dark ? 'โหมดสว่าง' : 'โหมดมืด') + '">' + (dark ? I.sun : I.moon) + '</button>' +
-        (API.isDemo ? '' : '<button class="sb2-ib" id="logout" title="ออกจากระบบ" aria-label="ออกจากระบบ">' + I.logout + '</button>') +
-      '</div></aside>' +
+      '<div class="app g2app">' +
+      '<aside class="sidebar g2">' +
+        '<nav class="g2-rail"><div class="g2-lg">' + (S.data.config.page_id ? '<img src="https://graph.facebook.com/' + esc(S.data.config.page_id) + '/picture?type=large" alt="" onerror="this.remove()">' : '') + 'B</div>' + rail +
+          '<div class="g2-sp"></div><button class="g2-rb" data-theme="' + (dark ? 'light' : 'dark') + '" title="' + (dark ? 'โหมดสว่าง' : 'โหมดมืด') + '"><span class="g2-ic">' + (dark ? I.sun : I.moon) + '</span>' + (dark ? 'สว่าง' : 'มืด') + '</button>' +
+          '<div class="g2-av" title="' + esc(S.data.me) + '">' + esc(initials(S.data.me)) + '</div></nav>' +
+        '<div class="g2-panel"><div class="g2-brand">' + esc(S.data.config.brand || window.APP_CONFIG.BRAND) + ' <span>Ads</span></div><div class="g2-pt">' + gNow.full + '</div>' + items +
+          '<div class="g2-sp"></div>' +
+          (lastSync ? '<div class="g2-sync"><i></i>อัปเดตอัตโนมัติ · ' + lastSync.toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' · ทุก 1 ชม.</div>' : '') +
+          '<div class="g2-me"><div><b>' + esc(S.data.me) + '</b><small>' + (API.isDemo ? 'โหมดตัวอย่าง' : 'แอดมิน') + ' · v81</small></div>' + (API.isDemo ? '' : '<button class="g2-out" id="logout" title="ออกจากระบบ">' + I.logout + '</button>') + '</div>' +
+        '</div>' +
+      '</aside>' +
       '<main class="main">' +
       '<div class="topbar">' +
-      '<h1 class="page-title"><small>' + ({ biz: 'ภาพรวมธุรกิจ', rep: 'รายงาน', fb: 'Facebook Ads', sys: 'ระบบ' })[NAV.filter(function (n) { return n.id === S.page; })[0].group] + '</small>' + title + '</h1>' +
+      '<h1 class="page-title"><small>' + ({ biz: 'ภาพรวมธุรกิจ', rep: 'รายงาน', fb: 'Facebook Ads', gg: 'Google Ads', sys: 'ระบบ' })[NAV.filter(function (n) { return n.id === S.page; })[0].group] + '</small>' + title + '</h1>' +
       '<label class="search">' + I.search + '<input id="globalSearch" placeholder="ค้นหาชื่อลูกค้า…" value="' + esc(S.page === 'chats' ? S.chatFilter.q : '') + '"></label>' +
       '<span class="spacer"></span><span class="live-st" id="liveSt"></span>' +
       (API.isDemo ? '<span class="demo-badge">โหมดตัวอย่าง · ข้อมูลจำลอง</span>' : '') +
@@ -3662,7 +3727,6 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     });
     $$('button[data-theme]').forEach(function (b) { b.onclick = function () { setTheme(b.dataset.theme); }; }); // เฉพาะปุ่ม — <html> ก็มี data-theme (เคยทำให้คลิกตรงไหนก็วาดหน้าใหม่)
     document.documentElement.onclick = null;
-    if ($('#fbGrp')) $('#fbGrp').onclick = function () { var g = this.parentNode; g.classList.toggle('open'); try { localStorage.setItem('fbat_fbgrp', g.classList.contains('open') ? '1' : '0'); } catch (e) {} };
     if ($('#logout')) $('#logout').onclick = function () { API.token(null); boot(); };
     $('#globalSearch').onkeydown = function (e) {
       if (e.key === 'Enter') { S.chatFilter.q = this.value.trim(); go('chats'); }
@@ -3671,8 +3735,9 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 
     renderPage();
     liveBadge();
+    var ab = $('.bottom-nav .active'); if (ab) ab.parentNode.scrollLeft = ab.offsetLeft - ab.parentNode.clientWidth / 2 + ab.clientWidth / 2;
   }
-  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, settings: pageSettings })[S.page](); }
+  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
 
   // ---- ยอดรับซื้อ + เคสประเมิน แบบเรียลไทม์: ถามหลังบ้านทุก 1 นาที (เฉพาะตอนเปิดแท็บอยู่) ----
   var LIVE = { ver: null, busy: false, off: false, at: '', err: '', last: 0, pending: false, timer: null };
@@ -6363,13 +6428,13 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   /** Profit ROAS (สรุปกับ TK Ple / MOD) — ทุกตัว = กำไร ÷ ค่า Ads (Google + Facebook) รวมทุกช่องทาง
    *  ① กำไรขั้นต้นจากการประเมินราคา = SellPrice − BoughtPrice (คอลัมน์ในแท็บ Orders)
    *  ② กำไรจากการขายจริง = ยังไม่มีแหล่งข้อมูลราคาขายจริง → แสดง "รอข้อมูล"
-   *  ③ กำไรสุทธิตามสมมติฐาน = ยอดขาย × net_rule% (Config · ค่าเริ่มต้น 5%) ปรับได้ที่หน้าเว็บ */
+   *  ③ กำไรสุทธิตามสมมติฐาน = กำไรขั้นต้นจากการประเมิน × net_rule_gp% (Config · ค่าเริ่มต้น 20%) ปรับได้ที่หน้าเว็บ */
   var PR_COL = ['#7a5af8', '#12b76a', '#2f6bff'];
-  function trkNetPct() { var r = Number(S.data.config.net_rule); if (!(r > 0)) r = 5; if (r < 1) r = r * 100; return Math.round(r * 10) / 10; }
+  function trkNetPct() { var r = Number(S.data.config.net_rule_gp); if (!(r > 0)) r = 20; if (r < 1) r = r * 100; return Math.round(r * 10) / 10; }
   function trkRoasCard(T, P, curTxt, prevTxt) {
     var pct = trkNetPct(), bt = function (v) { return F.int(Math.round(v)); }, fx = function (v) { return v == null ? '–' : v.toFixed(2); };
     var r1 = T.a > 0 ? T.m / T.a : null, p1 = P.a > 0 ? P.m / P.a : null;
-    var r3 = T.a > 0 ? T.s * pct / 100 / T.a : null, p3 = P.a > 0 ? P.s * pct / 100 / P.a : null;
+    var r3 = T.a > 0 ? T.m * pct / 100 / T.a : null, p3 = P.a > 0 ? P.m * pct / 100 / P.a : null;
     function cmp(c, p) {
       if (c == null || p == null || !(p > 0)) return '<div class="pr-cmp">' + prevTxt + ' · –</div>';
       var v = (c - p) / p * 100, up = v >= 0;
@@ -6382,9 +6447,9 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var c2 = '<div class="pr-c">' + head(1, 'กำไรจากการขายจริง', 'ราคาขายได้จริง − ราคารับซื้อ ของเครื่องที่ขายออกแล้ว') +
       '<div class="pr-v"><b style="color:var(--text-3)">–</b><em>เท่า</em></div><div class="pr-cmp">รอข้อมูลขายจริง</div>' +
       '<div class="pr-wait">ยังไม่มีข้อมูลราคาขายได้จริงและสถานะ "ขายแล้ว" ในระบบ · ต่อข้อมูลเมื่อไหร่ ช่องนี้จะคำนวณให้เอง พร้อมบอกยอดสินค้าที่ยังไม่ขาย</div></div>';
-    var c3 = '<div class="pr-c">' + head(2, 'กำไรสุทธิตามสมมติฐาน', 'ยอดขาย × ' + pct + '%') + val(r3, 2) + cmp(r3, p3) +
-      '<div class="pr-pct"><span>กำไรสุทธิ = ยอดขาย ×</span><button type="button" data-np="-1" aria-label="ลด">−</button><input id="prPct" type="number" min="0.5" max="100" step="0.5" value="' + pct + '"><b>%</b><button type="button" data-np="1" aria-label="เพิ่ม">+</button></div>' +
-      '<div class="pr-l"><span>ยอดขาย (ราคาขายประเมิน)</span><b>' + bt(T.s) + '</b></div><div class="pr-l"><span>กำไรสุทธิตามสมมติฐาน</span><b>' + bt(T.s * pct / 100) + '</b></div></div>';
+    var c3 = '<div class="pr-c">' + head(2, 'กำไรสุทธิตามสมมติฐาน', 'กำไรขั้นต้นจากการประเมิน × ' + pct + '%') + val(r3, 2) + cmp(r3, p3) +
+      '<div class="pr-pct"><span>กำไรสุทธิ = กำไรขั้นต้น ×</span><button type="button" data-np="-1" aria-label="ลด">−</button><input id="prPct" type="number" min="1" max="100" step="1" value="' + pct + '"><b>%</b><button type="button" data-np="1" aria-label="เพิ่ม">+</button></div>' +
+      '<div class="pr-l"><span>กำไรขั้นต้นจากการประเมิน</span><b>' + bt(T.m) + '</b></div><div class="pr-l"><span>กำไรสุทธิตามสมมติฐาน</span><b>' + bt(T.m * pct / 100) + '</b></div></div>';
     var tab = S.prLine || 'all';
     return '<div class="card" style="margin-bottom:20px"><div class="card-head"><div><h2 class="card-title">Profit ROAS</h2><div class="card-sub">' + curTxt + ' · รวมทุกช่องทาง · Profit ROAS = กำไร ÷ ค่า Ads (ค่า Ads 1 บาท ได้กำไรกี่บาท)</div></div>' +
       '<div class="pr-ads">ค่า Ads (Google + Facebook)<b>' + bt(T.a) + '</b></div></div>' +
@@ -6392,22 +6457,22 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       '<div class="pr-ch"><div><b>Profit ROAS สะสมรายวัน</b><small>แท่ง = ค่า Ads รายวัน · เส้น = Profit ROAS สะสมตั้งแต่วันที่ 1 · เส้นประ = 1 เท่า (คุ้มทุนค่าแอด)</small></div>' +
         '<div class="chip-group">' + [['all', 'ทั้งหมด'], ['0', '① ประเมินราคา'], ['2', '③ กำไรสุทธิ']].map(function (t) { return '<button type="button" data-prl="' + t[0] + '" class="' + (tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div></div>' +
       '<div class="es-cw tk-cw" style="min-height:270px"><div class="tk-sc"><svg class="es-svg tk-svg" id="tkRc"></svg></div><div class="es-tip" id="tkRt"></div></div>' +
-      '<div class="tk-rn">* กำไรสุทธิตามสมมติฐาน = ' + pct + '% ของยอดขาย (ปรับได้ที่ช่อง ③ · ทุกคนเห็นค่าเดียวกัน) · ยอดขาย = ราคาขายที่ประเมินไว้ในแท็บ Orders</div></div>';
+      '<div class="tk-rn">* กำไรสุทธิตามสมมติฐาน = ' + pct + '% ของกำไรขั้นต้นจากการประเมินราคา (Rule of thumb · ปรับได้ที่ช่อง ③ · ทุกคนเห็นค่าเดียวกัน)</div></div>';
   }
   function trkRoasBind() {
     function setPct(v) {
       v = Math.round(Number(v) * 10) / 10; if (!(v > 0)) return; v = Math.min(100, v);
-      S.data.config.net_rule = v; pageTrack();
-      clearTimeout(S._npT); S._npT = setTimeout(function () { API.call('saveConfig', { key: 'net_rule', value: v }).catch(fail); }, 700);
+      S.data.config.net_rule_gp = v; pageTrack();
+      clearTimeout(S._npT); S._npT = setTimeout(function () { API.call('saveConfig', { key: 'net_rule_gp', value: v }).catch(fail); }, 700);
     }
-    $$('[data-np]').forEach(function (b) { b.onclick = function () { setPct(trkNetPct() + Number(b.dataset.np) * 0.5); }; });
+    $$('[data-np]').forEach(function (b) { b.onclick = function () { setPct(trkNetPct() + Number(b.dataset.np)); }; });
     if ($('#prPct')) $('#prPct').onchange = function () { setPct(this.value); };
     $$('[data-prl]').forEach(function (b) { b.onclick = function () { S.prLine = b.dataset.prl; $$('[data-prl]').forEach(function (x) { x.classList.toggle('on', x === b); }); if (S.drawCharts) S.drawCharts(); }; });
   }
   function trkRoasChart(svg, tip, days) {
     if (!svg) return;
     var pct = trkNetPct() / 100, box = svg.parentNode, W = Math.max(box.clientWidth || 800, days.length * 30), H = 260, L = 46, R2 = 46, T = 24, B = 26, pw = W - L - R2, ph = H - T - B, base = T + ph, n = Math.max(days.length, 1), gw = pw / n, bw = Math.max(5, Math.min(18, gw * 0.42));
-    var ca = 0, cm = 0, cs = 0, pts = days.map(function (z) { ca += z.a; cm += z.m; cs += z.s; return { z: z, ca: ca, cm: cm, cs: cs, r1: ca > 0 ? cm / ca : null, r3: ca > 0 ? cs * pct / ca : null }; });
+    var ca = 0, cm = 0, cs = 0, pts = days.map(function (z) { ca += z.a; cm += z.m; cs += z.s; return { z: z, ca: ca, cm: cm, cs: cs, r1: ca > 0 ? cm / ca : null, r3: ca > 0 ? cm * pct / ca : null }; });
     var tab = S.prLine || 'all', show1 = tab === 'all' || tab === '0', show3 = tab === 'all' || tab === '2';
     var vals = []; pts.forEach(function (p) { if (show1 && p.r1 != null) vals.push(p.r1); if (show3 && p.r3 != null) vals.push(p.r3); });
     var mxR = Math.max(2, Math.ceil(Math.max.apply(null, vals.concat([1])) * 1.15 / 2) * 2);
@@ -6539,6 +6604,156 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     }
     $$('g.eh', svg).forEach(function (g) { var i = Number(g.dataset.i); g.onmouseenter = g.onclick = function () { show(i); }; });
     svg.onmouseleave = function () { show(-1); };
+  }
+
+  // ============================================================
+  // Google Ads (v81) — ภาพรวม + แคมเปญ · ข้อมูลจากแท็บ GAds (คัดลอกจาก METRICS) · ลูกค้า LINE = มาจาก Google Ads
+  // ============================================================
+  var G_BID = { MAXIMIZE_CONVERSIONS: 'Max conv.', MAXIMIZE_CONVERSION_VALUE: 'Max conv. value', TARGET_CPA: 'Target CPA', TARGET_ROAS: 'Target ROAS', TARGET_SPEND: 'Max clicks', MAXIMIZE_CLICKS: 'Max clicks', MANUAL_CPC: 'Manual CPC', ENHANCED_CPC: 'eCPC', TARGET_IMPRESSION_SHARE: 'Target IS', MANUAL_CPM: 'Manual CPM' };
+  function gRange() {
+    var gf = S.gf || (S.gf = { preset: '30d' });
+    if (gf.preset !== 'custom') { var r = C.presetRange(gf.preset, S.data, today()); gf.from = r.from; gf.to = r.to; }
+    return gf;
+  }
+  function gFilters(gf) {
+    var ps = [['today', 'วันนี้'], ['yday', 'เมื่อวาน'], ['7d', '7 วัน'], ['30d', '30 วัน'], ['month', 'เดือนนี้'], ['lastmonth', 'เดือนก่อน'], ['custom', 'กำหนดเอง']];
+    return '<div class="filters"><div class="chip-group" role="group" aria-label="ช่วงวันที่">' + ps.map(function (p) { return '<button data-gp="' + p[0] + '" class="' + (gf.preset === p[0] ? 'on' : '') + '">' + p[1] + '</button>'; }).join('') + '</div>' +
+      (gf.preset === 'custom' ? '<input type="date" class="field-inline" id="gFrom" value="' + gf.from + '"><input type="date" class="field-inline" id="gTo" value="' + gf.to + '">' : '<span class="muted">' + F.thRange(gf.from, gf.to) + '</span>') + '</div>';
+  }
+  function gBindFilters(gf, redraw) {
+    $$('[data-gp]').forEach(function (b) { b.onclick = function () { gf.preset = b.dataset.gp; redraw(); }; });
+    if ($('#gFrom')) { $('#gFrom').onchange = function () { gf.from = this.value; if (gf.from > gf.to) gf.to = gf.from; redraw(); }; $('#gTo').onchange = function () { gf.to = this.value; if (gf.to < gf.from) gf.from = gf.to; redraw(); }; }
+  }
+  function gAgg(a, b) {
+    var o = { cost: 0, conv: 0, im: 0, ck: 0, camps: {}, est: 0, n: 0, bought: 0, diff: 0 };
+    (S.data.gads || []).forEach(function (r) { if (r.date < a || r.date > b) return; o.cost += r.cost; o.conv += r.conversions; o.im += r.impressions; o.ck += r.clicks; if (r.cost > 0) o.camps[r.campaign] = 1; });
+    (S.data.estimates || []).forEach(function (e) { if (e.line && e.date >= a && e.date <= b) o.est++; });
+    sumDeals().forEach(function (x) { if (x.p && x.p.line && x.date >= a && x.date <= b) { o.n++; o.bought += x.bought; o.diff += x.diff; } });
+    o.nc = Object.keys(o.camps).length;
+    return o;
+  }
+  function gDelta(c, p, goodUp) {
+    if (c == null || p == null || !isFinite(c) || !isFinite(p) || !p) return '';
+    var v = (c - p) / Math.abs(p), up = v >= 0;
+    if (Math.abs(v) < 0.005) return '<span class="kd">เท่าเดิม</span>';
+    return '<span class="kd ' + ((goodUp ? up : !up) ? 'up' : 'down') + '">' + (up ? '▲ ' : '▼ ') + Math.abs(v * 100).toFixed(1) + '%</span>';
+  }
+  function pageGov() {
+    var gf = gRange(), a = gf.from, b = gf.to, n = C.daysIncl(a, b), pa = C.addDays(a, -n), pb = C.addDays(a, -1);
+    var x = gAgg(a, b), p = gAgg(pa, pb), bt = function (v) { return F.int(Math.round(v)); };
+    var target = Number(S.data.config.target_cost_per_case) || 1000, rule = trkNetPct();
+    var dv = function (u, v) { return v ? u / v : null; };
+    var cpu = dv(x.cost, x.n), ppu = dv(p.cost, p.n), roas = dv(x.diff, x.cost), proas = dv(p.diff, p.cost);
+    var html = gFilters(gf);
+    if (!(S.data.gads || []).length) html += '<div class="card"><div class="empty">ยังไม่มีข้อมูล Google Ads · เช็คว่าตั้ง METRICS_SHEET_ID ใน Code.gs แล้ว และกด "ดึงข้อมูล" ที่หน้าตั้งค่า</div></div>';
+    html += '<div class="kpi5 gk">' +
+      kpi('ค่า Ads', '฿' + bt(x.cost), x.nc + ' แคมเปญ · เฉลี่ย ฿' + bt(x.cost / n) + '/วัน', gDelta(x.cost, p.cost, false)) +
+      kpi('Conversion', F.int(Math.round(x.conv)), 'ต้นทุน/Conversion ' + (x.conv ? '฿' + bt(x.cost / x.conv) : '–'), gDelta(x.conv, p.conv, true)) +
+      kpi('เคสประเมินจาก LINE', F.int(x.est) + ' เคส', 'ต้นทุน/เคส ' + (x.est ? '฿' + bt(x.cost / x.est) : '–'), gDelta(x.est, p.est, true)) +
+      kpi('รับซื้อได้จาก LINE', F.int(x.n) + ' เครื่อง', 'อัตราปิด ' + (x.est ? (x.n / x.est * 100).toFixed(1) + '%' : '–') + ' ของเคสประเมิน', gDelta(x.n, p.n, true)) +
+      kpi('ต้นทุน/เครื่อง', cpu == null ? '–' : '฿' + bt(cpu), '<span class="pill ' + (cpu == null ? '' : cpu <= target ? 'good' : 'bad') + '">เป้า ฿' + bt(target) + (cpu == null ? '' : cpu <= target ? ' · ผ่าน' : ' · เกิน') + '</span>', gDelta(cpu, ppu, false)) +
+      kpi('ยอดรับซื้อ', '฿' + bt(x.bought), x.n ? 'เฉลี่ย ฿' + bt(x.bought / x.n) + '/เครื่อง' : 'ยังไม่มีเครื่องที่รับซื้อ', gDelta(x.bought, p.bought, true)) +
+      kpi('กำไรขั้นต้น (ประเมิน)', '฿' + bt(x.diff), 'ราคาขายประเมิน − รับซื้อ', gDelta(x.diff, p.diff, true)) +
+      '<div class="card kpi-b g-hl"><div class="kpi-l">Profit ROAS (กำไรประเมิน)</div><div class="kpi-v num">' + (roas == null ? '–' : roas.toFixed(2) + ' เท่า') + '</div><div class="kpi-s">กำไรสุทธิ ' + rule + '% = ' + (roas == null ? '–' : (roas * rule / 100).toFixed(2) + ' เท่า') + '</div>' + (gDelta(roas, proas, true) ? '<div class="kpi-d">' + gDelta(roas, proas, true) + '</div>' : '') + '</div>' +
+      '</div><div class="muted small" style="margin:-8px 0 18px">▲▼ เทียบกับ ' + n + ' วันก่อนหน้า (' + F.thRange(pa, pb) + ') · เขียว = ดีขึ้น · ลูกค้าที่ทักทาง LINE นับเป็นจาก Google Ads</div>';
+    var FN = [['เห็นโฆษณา', 'Impressions', x.im, '#1a73e8'], ['คลิก', 'Clicks', x.ck, '#4285f4'], ['Conversion', 'จาก Google Ads', x.conv, '#7baaf7'], ['เคสประเมิน', 'ทาง LINE', x.est, '#f5a800'], ['รับซื้อได้', 'ทาง LINE', x.n, '#12b76a']];
+    var top = Math.max.apply(null, FN.map(function (r) { return r[2]; }).concat([1]));
+    var fn = FN.map(function (r, i) {
+      var w = r[2] > 0 ? Math.max(14, Math.sqrt(r[2] / top) * 100) : 6;
+      return '<div class="gfn-l">' + r[0] + '<small>' + r[1] + '</small></div><div><div class="gfn-b" style="width:' + Math.min(100, w) + '%;background:' + r[3] + '">' + F.int(Math.round(r[2])) + '</div>' +
+        (i < FN.length - 1 && r[2] > 0 ? '<div class="gfn-d">↓ ' + (FN[i + 1][2] / r[2] * 100).toFixed(1) + '% ไปต่อ</div>' : '') + '</div>';
+    }).join('');
+    var days = [], d = a, guard = 0, map = {};
+    while (d <= b && guard++ < 400) { map[d] = { d: d, cost: 0, conv: 0 }; days.push(map[d]); d = C.addDays(d, 1); }
+    (S.data.gads || []).forEach(function (r) { var z = map[r.date]; if (z) { z.cost += r.cost; z.conv += r.conversions; } });
+    html += '<div class="g-two"><div class="card"><div class="card-head"><div><h2 class="card-title">ลูกค้าหลุดตรงไหน</h2><div class="card-sub">จากเห็นโฆษณา Google จนรับซื้อได้</div></div></div><div class="gfn">' + fn + '</div></div>' +
+      '<div class="card"><div class="card-head"><div><h2 class="card-title">ค่า Ads · Conversion รายวัน</h2><div class="card-sub">แท่ง (แกนซ้าย) = ค่า Ads · เส้น (แกนขวา) = Conversion</div></div></div>' +
+      '<div class="es-lg"><span><i style="background:#f5a800"></i>ค่า Ads</span><span><i class="ln" style="background:#1a73e8"></i>Conversion</span></div>' +
+      '<div class="es-cw tk-cw" style="min-height:280px"><div class="tk-sc"><svg class="es-svg" id="gCh"></svg></div><div class="es-tip" id="gTip"></div></div></div></div>';
+    $('#page').innerHTML = html;
+    S.drawCharts = function () { gChart($('#gCh'), $('#gTip'), days); };
+    S.drawCharts(); Charts.countUp($('#page'));
+    gBindFilters(gf, pageGov);
+  }
+  function gChart(svg, tip, days) {
+    if (!svg) return;
+    var box = svg.parentNode, n = Math.max(days.length, 1), W = Math.max(box.clientWidth || 700, n * 18), H = 280, L = 46, R = 40, T = 20, B = 26, pw = W - L - R, ph = H - T - B, base = T + ph, gw = pw / n, bw = Math.max(3, Math.min(22, gw * 0.6));
+    var mA = Math.max.apply(null, days.map(function (z) { return z.cost; }).concat([1])) * 1.15, mC = Math.max.apply(null, days.map(function (z) { return z.conv; }).concat([1])) * 1.2;
+    function k(v) { return v >= 1000 ? Math.round(v / 1000) + 'k' : Math.round(v); }
+    function cx(i) { return L + gw * i + gw / 2; } function y(v) { return base - v / mA * ph; } function y2(v) { return base - v / mC * ph; }
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.style.height = H + 'px'; svg.style.width = W + 'px';
+    var o = '', step = Math.max(1, Math.ceil(n / 10));
+    for (var i = 0; i <= 4; i++) { var yy = base - ph * i / 4; o += '<line class="es-grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + yy + '" y2="' + yy + '"' + (i ? ' stroke-dasharray="2 6"' : '') + '/><text class="es-x" x="' + (L - 8) + '" y="' + (yy + 4) + '" text-anchor="end">' + k(mA * i / 4) + '</text><text class="es-x" x="' + (W - R + 6) + '" y="' + (yy + 4) + '" style="fill:#1a73e8">' + Math.round(mC * i / 4) + '</text>'; }
+    days.forEach(function (z, i) { var h = base - y(z.cost);
+      o += '<g class="eh" data-i="' + i + '"><rect class="eh-hit" x="' + (cx(i) - gw / 2) + '" y="' + T + '" width="' + gw + '" height="' + ph + '"/>' + (h > 0 ? '<rect class="ehb" x="' + (cx(i) - bw / 2) + '" y="' + (base - h) + '" width="' + bw + '" height="' + h + '" rx="' + Math.min(4, bw / 3) + '" fill="#f5a800" style="opacity:.85;animation-delay:' + Math.min(i * 15, 400) + 'ms"/>' : '') + '</g>' +
+        (i % step === 0 ? '<text class="es-x" x="' + cx(i) + '" y="' + (H - 8) + '" text-anchor="middle">' + Number(z.d.slice(8)) + '</text>' : ''); });
+    var lp = days.map(function (z, i) { return [cx(i), y2(z.conv)]; });
+    if (lp.length > 1) o += '<path class="tk-ln" pathLength="1" d="' + esSmooth(lp) + '" fill="none" stroke="#1a73e8" stroke-width="2.5" stroke-linecap="round" pointer-events="none"/>';
+    svg.innerHTML = o; svg.classList.toggle('es-anim', !esReduced());
+    var cur = -1;
+    function show(i) { if (i === cur) return; cur = i; $$('g.eh', svg).forEach(function (g) { g.classList.toggle('on', Number(g.dataset.i) === i); }); svg.classList.toggle('hov', i >= 0);
+      if (i < 0) { tip.style.opacity = 0; return; } var z = days[i];
+      esTipAt(tip, svg, cx(i), Math.min(y(z.cost), y2(z.conv)) - 4, W, H, '<b>วัน' + DOW[dowOf(z.d)] + ' ' + thBE(z.d) + '</b><div><span><i style="background:#f5a800"></i>ค่า Ads</span><span>฿' + F.int(Math.round(z.cost)) + '</span></div><div><span><i style="background:#1a73e8"></i>Conversion</span><span>' + F.int(Math.round(z.conv)) + '</span></div><div><span>ต้นทุน/Conv.</span><span>' + (z.conv ? '฿' + F.int(Math.round(z.cost / z.conv)) : '–') + '</span></div>'); }
+    $$('g.eh', svg).forEach(function (g) { var i = Number(g.dataset.i); g.onmouseenter = g.onclick = function () { show(i); }; });
+    svg.onmouseleave = function () { show(-1); };
+  }
+  function pageGcamp() {
+    var gf = gRange(), a = gf.from, b = gf.to, gc = S.gc || (S.gc = { k: 'sp', dir: -1, open: {}, flt: 'all' });
+    var by = {}, hasMeta = false;
+    (S.data.gads || []).forEach(function (r) {
+      var c = by[r.campaign] || (by[r.campaign] = { n: r.campaign, sp: 0, im: 0, ck: 0, cv: 0, isW: 0, isI: 0, last: '', st: '', bud: null, bs: '', days: [], lastCost: '' });
+      if (r.status || r.bid_strategy) hasMeta = true;
+      if (r.date > c.last) { c.last = r.date; c.st = r.status || ''; c.bud = r.budget; c.bs = r.bid_strategy || ''; }
+      if (r.cost > 0 && r.date > c.lastCost) c.lastCost = r.date;
+      if (r.date < a || r.date > b) return;
+      c.sp += r.cost; c.im += r.impressions; c.ck += r.clicks; c.cv += r.conversions; c.days.push(r);
+      if (r.impr_share != null && r.impressions > 0) { c.isW += r.impr_share * r.impressions; c.isI += r.impressions; }
+    });
+    var td = today();
+    var rows = Object.keys(by).map(function (k) { var c = by[k]; c.on = c.st ? c.st === 'ENABLED' : !!(c.lastCost && c.lastCost >= C.addDays(td, -2)); c.is = c.isI ? c.isW / c.isI : null; return c; })
+      .filter(function (c) { return c.days.length; });
+    var all = { sp: 0, cv: 0 }; rows.forEach(function (c) { all.sp += c.sp; all.cv += c.cv; });
+    var AVG = all.cv ? all.sp / all.cv : null;
+    rows = rows.filter(function (c) { return gc.flt === 'all' || (gc.flt === 'on' ? c.on : !c.on); });
+    var bt = function (v) { return '฿' + F.int(Math.round(v)); };
+    var COLS = [
+      ['bud', 'งบ/วัน', function (r) { return r.bud; }, function (v) { return bt(v); }],
+      ['bs', 'กลยุทธ์<br>ราคาเสนอ', function (r) { return r.bs; }, function (v) { return '<span class="gc-bs">' + esc(G_BID[v] || v) + '</span>'; }],
+      ['sp', 'ค่า Ads', function (r) { return r.sp; }, bt],
+      ['im', 'การมองเห็น', function (r) { return r.im; }, function (v) { return F.int(v); }],
+      ['ck', 'คลิก', function (r) { return r.ck; }, function (v) { return F.int(v); }],
+      ['ctr', 'CTR', function (r) { return r.im ? r.ck / r.im * 100 : null; }, function (v) { return v.toFixed(2) + '%'; }],
+      ['cpc', 'CPC เฉลี่ย', function (r) { return r.ck ? r.sp / r.ck : null; }, function (v) { return '฿' + v.toFixed(2); }],
+      ['cv', 'Conversion', function (r) { return r.cv; }, function (v) { return F.int(Math.round(v)); }],
+      ['cpa', 'ต้นทุน<br>/Conv.', function (r) { return r.cv ? r.sp / r.cv : null; }, function (v) { return '<span class="pill ' + (AVG != null && v <= AVG ? 'good' : 'bad') + '">' + bt(v) + '</span>'; }],
+      ['is', 'Impr.<br>share', function (r) { return r.is; }, function (v) { return '<span class="gc-is">' + v.toFixed(0) + '%<i><u style="width:' + Math.min(100, v) + '%"></u></i></span>'; }]
+    ];
+    var col = COLS.filter(function (c) { return c[0] === gc.k; })[0] || COLS[2];
+    rows.sort(function (x, y) { var u = col[2](x), v = col[2](y); if (typeof u === 'string' || typeof v === 'string') return String(u || '').localeCompare(String(v || '')) * gc.dir; return ((u == null ? -1 : u) - (v == null ? -1 : v)) * gc.dir; });
+    function cells(r) { return COLS.map(function (c) { var v = c[2](r); return '<td class="r num">' + (v == null || v === '' ? '<span class="muted">–</span>' : c[3](v)) + '</td>'; }).join(''); }
+    var body = rows.map(function (c) {
+      var o = gc.open[c.n];
+      var h = '<tr class="gc-row"><td class="gc-st"><span class="gc-dot' + (c.on ? ' on' : '') + '"></span></td><td class="gc-nm"><button class="gc-ex" data-gx="' + esc(c.n) + '">' + (o ? '▾' : '▸') + '</button><span class="gc-n">' + esc(c.n) + '</span><small>' + (c.st ? (c.on ? 'เปิดอยู่' : c.st === 'PAUSED' ? 'หยุดชั่วคราว' : c.st === 'REMOVED' ? 'ลบแล้ว' : esc(c.st)) : (c.on ? 'มีค่าใช้จ่ายล่าสุด' : 'ไม่มีค่าใช้จ่ายช่วงนี้')) + '</small></td>' + cells(c) + '</tr>';
+      if (o) h += c.days.slice().sort(function (x, y) { return x.date < y.date ? 1 : -1; }).slice(0, 31).map(function (r) {
+        return '<tr class="gc-sub"><td></td><td class="gc-nm">' + thBE(r.date, true) + ' <small style="display:inline">' + DOW_S[dowOf(r.date)] + '.</small></td>' + cells({ bud: r.budget, bs: '', sp: r.cost, im: r.impressions, ck: r.clicks, cv: r.conversions, is: r.impr_share }) + '</tr>'; }).join('');
+      return h;
+    }).join('');
+    var T = { bud: 0, bs: '', sp: 0, im: 0, ck: 0, cv: 0, is: null }, anyB = false;
+    rows.forEach(function (c) { T.sp += c.sp; T.im += c.im; T.ck += c.ck; T.cv += c.cv; if (c.on && c.bud != null) { T.bud += c.bud; anyB = true; } });
+    if (!anyB) T.bud = null;
+    var html = gFilters(gf) +
+      (hasMeta ? '' : '<div class="g-note">สถานะ · งบ/วัน · กลยุทธ์ราคาเสนอ · Impr. share จะขึ้นหลังอัปเดต Code.gs (v19) แล้วกด "ดึงข้อมูล" 1 ครั้ง</div>') +
+      '<div class="card gc-card"><div class="gc-tools"><div class="chip-group">' + [['all', 'ทุกแคมเปญ'], ['on', 'เปิดอยู่'], ['off', 'หยุดแล้ว']].map(function (f) { return '<button data-gf="' + f[0] + '" class="' + (gc.flt === f[0] ? 'on' : '') + '">' + f[1] + '</button>'; }).join('') + '</div><span class="muted small">กดหัวคอลัมน์เพื่อเรียง · กด ▸ ดูรายวัน</span></div>' +
+      '<div class="table-wrap"><table class="t gc-t"><thead><tr><th style="width:30px"></th><th class="gc-nm">แคมเปญ</th>' + COLS.map(function (c) { return '<th class="r gc-h' + (gc.k === c[0] ? ' sort' : '') + '" data-gk="' + c[0] + '">' + (gc.k === c[0] ? (gc.dir < 0 ? '↓ ' : '↑ ') : '') + c[1] + '</th>'; }).join('') + '</tr></thead>' +
+      '<tbody>' + (body || '<tr><td colspan="12"><div class="empty">ไม่มีแคมเปญที่มีข้อมูลในช่วงนี้</div></td></tr>') + '</tbody>' +
+      '<tfoot><tr><td></td><td class="gc-nm">รวม ' + rows.length + ' แคมเปญ</td>' + cells(T) + '</tr></tfoot></table></div>' +
+      '<div class="muted small" style="padding:10px 4px 0">ต้นทุน/Conv. เขียว = ถูกกว่าค่าเฉลี่ยบัญชี (' + (AVG == null ? '–' : bt(AVG)) + ') · งบ/วันรวม = เฉพาะแคมเปญที่เปิดอยู่ · ยอดรับซื้อแยกรายแคมเปญไม่ได้ (ลูกค้าทักผ่าน LINE) ดูยอดรวมที่หน้าภาพรวม Google Ads</div></div>';
+    $('#page').innerHTML = html;
+    S.drawCharts = null;
+    gBindFilters(gf, pageGcamp);
+    $$('[data-gk]').forEach(function (h) { h.onclick = function () { if (gc.k === h.dataset.gk) gc.dir *= -1; else { gc.k = h.dataset.gk; gc.dir = -1; } pageGcamp(); }; });
+    $$('[data-gx]').forEach(function (bn) { bn.onclick = function () { gc.open[bn.dataset.gx] = !gc.open[bn.dataset.gx]; pageGcamp(); }; });
+    $$('[data-gf]').forEach(function (bn) { bn.onclick = function () { gc.flt = bn.dataset.gf; pageGcamp(); }; });
   }
 
   // ============================================================
