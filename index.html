@@ -3514,7 +3514,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     { id: 'sum', label: 'สรุปผล', short: 'สรุป', icon: I.sum, group: 'rep' },
     { id: 'track', label: 'Track เดือนนี้', short: 'Track', icon: I.track, group: 'rep' },
     { id: 'dashboard', label: 'ภาพรวม Ads Facebook', nav: 'ภาพรวม', short: 'ภาพรวม FB', icon: I.dash, group: 'fb' },
-    { id: 'fcamp', label: 'ผลงานแคมเปญ Facebook', nav: 'ผลงานแคมเปญ', short: 'ผลงาน FB', icon: I.track, group: 'fb' },
+    { id: 'fcamp', label: 'แคมเปญ Facebook', nav: 'แคมเปญ', short: 'แคมเปญ FB', icon: I.track, group: 'fb' },
     { id: 'chats', label: 'บันทึกแชท', short: 'แชท', icon: I.chat, group: 'fb' },
     { id: 'campaigns', label: 'แคมเปญ', nav: 'จัดการแคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
     { id: 'gov', label: 'ภาพรวม Google Ads', nav: 'ภาพรวม', short: 'ภาพรวม G', icon: I.ggl, group: 'gg' },
@@ -6870,7 +6870,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     if (fsel && !rows.some(function (r) { return r.n === fsel.c; })) fsel = fc.sel = null;
     var body = shown.map(function (r, ri) {
       var o = fc.open[r.n] || (fsel && fsel.c === r.n && fsel.s != null);
-      var h = '<tr class="' + (fsel && fsel.c === r.n && fsel.s == null ? 'gc-on' : '') + '"><td class="gc-st"><span class="gc-dot' + (r.on ? ' on' : '') + '"></span></td><td class="gc-nm"><button class="gc-ex" data-fx="' + esc(r.n) + '">' + (o ? '▾' : '▸') + '</button><button class="gc-n gc-pick" data-fs="' + ri + '" title="ดูกราฟเฉพาะแคมเปญนี้">' + esc(r.n) + '</button><small>' + (r.on ? 'มีค่าใช้จ่าย 2 วันล่าสุด' : 'ไม่มีค่าใช้จ่าย 2 วันล่าสุด') + ' · ' + r.sets.length + ' Ad set</small></td>' + cells(r) + '</tr>';
+      var h = '<tr class="' + (fsel && fsel.c === r.n && fsel.s == null ? 'gc-on' : '') + '"><td class="gc-st"><span class="gc-dot' + (r.on ? ' on' : '') + '"></span></td><td class="gc-nm"><button class="gc-ex" data-fx="' + esc(r.n) + '">' + (o ? '▾' : '▸') + '</button><button class="gc-n gc-pick" data-fs="' + ri + '" title="ดู Ad set และกราฟของแคมเปญนี้">' + esc(r.n) + '</button><small>' + (r.on ? 'มีค่าใช้จ่าย 2 วันล่าสุด' : 'ไม่มีค่าใช้จ่าย 2 วันล่าสุด') + ' · ' + r.sets.length + ' Ad set</small></td>' + cells(r) + '</tr>';
       if (o) h += r.sets.map(function (x, si) { return '<tr class="gc-sub' + (fsel && fsel.c === r.n && fsel.s === x.k ? ' gc-on' : '') + '"><td></td><td class="gc-nm"><button class="gc-pick" data-fss="' + ri + ':' + si + '" title="ดูกราฟเฉพาะ Ad set นี้">' + esc(x.n) + '</button></td>' + cells(x) + '</tr>'; }).join('');
       return h;
     }).join('');
@@ -6902,7 +6902,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     };
     var SC = scBuild(scState('fb', ['sp', 'ch', 'cpch', 'ld']), FM, fAgg, a, b, fsel ? scSel([fsel.c].concat(fsel.s != null ? [fsel.s || '(ไม่ระบุ Ad set)'] : []), 'data-fsx') : '');
     var html = gFilters(gf) + SC.html +
-      '<div class="card gc-card" style="margin-top:16px"><div class="gc-tools"><div class="chip-group">' + [['all', 'ทุกแคมเปญ'], ['on', 'เปิดอยู่'], ['off', 'หยุดแล้ว']].map(function (f) { return '<button data-ffl="' + f[0] + '" class="' + (fc.flt === f[0] ? 'on' : '') + '">' + f[1] + '</button>'; }).join('') + '</div><span class="muted small">กดชื่อเพื่อดูกราฟเฉพาะตัวนั้น · กด ▸ ดู Ad set · กดหัวคอลัมน์เพื่อเรียง</span></div>' +
+      '<div class="card gc-card" style="margin-top:16px"><div class="gc-tools"><div class="chip-group">' + [['all', 'ทุกแคมเปญ'], ['on', 'เปิดอยู่'], ['off', 'หยุดแล้ว']].map(function (f) { return '<button data-ffl="' + f[0] + '" class="' + (fc.flt === f[0] ? 'on' : '') + '">' + f[1] + '</button>'; }).join('') + '</div><span class="muted small">กดชื่อแคมเปญเพื่อดู Ad set · กดชื่อ Ad set เพื่อดูกราฟเฉพาะตัวนั้น · กดหัวคอลัมน์เพื่อเรียง</span></div>' +
       '<div class="table-wrap"><table class="t gc-t fc-t"><thead><tr><th style="width:30px"></th><th class="gc-nm">แคมเปญ</th>' + COLS.map(function (c) { return '<th class="r gc-h' + (fc.k === c[0] ? ' sort' : '') + '" data-fk="' + c[0] + '">' + (fc.k === c[0] ? (fc.dir < 0 ? '↓ ' : '↑ ') : '') + c[1] + '</th>'; }).join('') + '</tr></thead>' +
       '<tbody>' + (body || '<tr><td colspan="15"><div class="empty">ไม่มีแคมเปญที่มีข้อมูลในช่วงนี้</div></td></tr>') + '</tbody>' +
       '<tfoot><tr><td></td><td class="gc-nm">รวม: ' + (fc.flt === 'all' ? 'ทุกแคมเปญ' : fc.flt === 'on' ? 'แคมเปญที่เปิดอยู่' : 'แคมเปญที่หยุดแล้ว') + '</td>' + cells(T) + '</tr></tfoot></table></div>' +
@@ -6914,7 +6914,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     $$('[data-fk]').forEach(function (h) { h.onclick = function () { if (fc.k === h.dataset.fk) fc.dir *= -1; else { fc.k = h.dataset.fk; fc.dir = -1; } pageFcamp(); }; });
     $$('[data-fx]').forEach(function (bn) { bn.onclick = function () { fc.open[bn.dataset.fx] = !fc.open[bn.dataset.fx]; pageFcamp(); }; });
     $$('[data-ffl]').forEach(function (bn) { bn.onclick = function () { fc.flt = bn.dataset.ffl; pageFcamp(); }; });
-    $$('[data-fs]').forEach(function (bn) { bn.onclick = function () { var r = shown[+bn.dataset.fs]; fc.sel = fsel && fsel.c === r.n && fsel.s == null ? null : { c: r.n, s: null }; pageFcamp(); }; });
+    $$('[data-fs]').forEach(function (bn) { bn.onclick = function () { var r = shown[+bn.dataset.fs]; if (fsel && fsel.c === r.n && fsel.s == null) { fc.sel = null; fc.open[r.n] = false; } else { fc.sel = { c: r.n, s: null }; fc.open[r.n] = true; } pageFcamp(); }; });
     $$('[data-fss]').forEach(function (bn) { bn.onclick = function () { var q = bn.dataset.fss.split(':'), r = shown[+q[0]], x = r.sets[+q[1]]; fc.sel = fsel && fsel.c === r.n && fsel.s === x.k ? null : { c: r.n, s: x.k }; pageFcamp(); }; });
     $$('[data-fsx]').forEach(function (bn) { bn.onclick = function () { fc.sel = null; pageFcamp(); }; });
   }
