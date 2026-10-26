@@ -1839,6 +1839,48 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .gc-is { display: inline-flex; align-items: center; gap: 6px; } .gc-is i { display: inline-block; width: 44px; height: 6px; border-radius: 3px; background: var(--bg-soft); overflow: hidden; } .gc-is u { display: block; height: 100%; background: #1a73e8; }
 @media (max-width: 1200px) { .gk { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } .g-two { grid-template-columns: 1fr; } }
 
+/* v81 — ผลงานแคมเปญ Facebook */
+.fc-t { min-width: 1320px; }
+.fc-met { display: flex; gap: 22px; margin-bottom: 6px; }
+.fc-m { border-bottom: 3px solid; padding: 2px 16px 8px 0; } .fc-m.b { border-color: #1a73e8; } .fc-m.r { border-color: #d93025; }
+.fc-m span { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-2); } .fc-m i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; } .fc-m.b i { background: #1a73e8; } .fc-m.r i { background: #d93025; }
+.fc-m b { display: block; font-size: 22px; margin-top: 2px; font-variant-numeric: tabular-nums; }
+
+/* v82 — การ์ดตัวชี้วัด + กราฟ แบบ Google Ads */
+.sc-card { padding: 0; overflow: visible; }
+.sc-sel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.sc-sel b { font-weight: 500; } .sc-sel button { margin-left: auto; border: 1px solid var(--line-strong); background: var(--surface); color: var(--text-2); font: inherit; font-size: 12px; border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.sc-top { display: flex; align-items: stretch; border-bottom: 1px solid var(--line); }
+.sc-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); flex: 1; min-width: 0; }
+.sc-t { position: relative; padding: 13px 16px 12px; cursor: pointer; border-right: 1px solid var(--line); box-shadow: inset 0 3px 0 var(--c); min-width: 0; user-select: none; }
+.sc-tiles .sc-t:first-child { border-top-left-radius: 14px; }
+.sc-t:hover { background: var(--surface-2, rgba(0,0,0,.03)); }
+.sc-t.on { background: var(--c); color: #fff; box-shadow: none; } .sc-t.on:hover { background: var(--c); filter: brightness(1.05); }
+.sc-n { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 13px; white-space: nowrap; } .sc-n span { overflow: hidden; text-overflow: ellipsis; }
+.sc-dd { border: 0; background: none; color: inherit; font: inherit; font-size: 11px; cursor: pointer; padding: 2px 6px; border-radius: 6px; opacity: .7; } .sc-dd:hover { opacity: 1; background: rgba(127,127,127,.18); }
+.sc-v { font-size: 24px; font-weight: 500; line-height: 34px; height: 34px; margin-top: 3px; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sc-d { display: block; font-size: 12px; white-space: nowrap; } .sc-d.up { color: #137333; } .sc-d.dn { color: #c5221f; } .sc-d.nt { color: var(--text-3); }
+.sc-t.on .sc-d { color: rgba(255,255,255,.92); }
+.sc-bg { position: fixed; inset: 0; z-index: 30; cursor: default; }
+.sc-menu { position: absolute; top: 36px; left: 8px; z-index: 31; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.18); padding: 6px; min-width: 190px; max-height: 320px; overflow-y: auto; }
+.sc-menu button { display: block; width: 100%; text-align: left; border: 0; background: none; color: inherit; font: inherit; font-size: 13px; padding: 8px 12px; border-radius: 7px; cursor: pointer; }
+.sc-menu button:hover { background: var(--surface-2, rgba(0,0,0,.05)); } .sc-menu button.on { font-weight: 600; } .sc-menu button:disabled { color: var(--text-3); cursor: default; background: none; opacity: .6; }
+.sc-tools { display: flex; align-items: center; padding: 0 10px; flex: none; }
+.sc-tools button { border: 0; background: none; font: inherit; font-size: 12.5px; color: var(--text-2); cursor: pointer; padding: 6px 10px; border-radius: 8px; white-space: nowrap; } .sc-tools button:hover { background: var(--surface-2, rgba(0,0,0,.05)); }
+.sc-ch { position: relative; padding: 12px 16px 4px; } .sc-sc { overflow-x: auto; } .sc-sc svg { display: block; }
+.sc-tip { position: absolute; display: none; pointer-events: none; z-index: 5; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 6px 22px rgba(0,0,0,.16); padding: 9px 12px; font-size: 12px; min-width: 180px; }
+.sc-tip > b { display: block; margin-bottom: 4px; } .sc-tip div { display: flex; justify-content: space-between; gap: 14px; } .sc-tip i { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.sc-tip .pv { color: var(--text-3); font-size: 11px; padding-left: 14px; }
+.sc-cmp { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; padding: 2px 16px 12px; font-size: 12px; color: var(--text-3); } .sc-cmp label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+.gc-pick { border: 0; background: none; padding: 0; font: inherit; color: inherit; cursor: pointer; text-align: left; display: inline-block; vertical-align: top; max-width: calc(100% - 28px); } .gc-pick.gc-n { color: #1a73e8; } :root[data-theme="dark"] .gc-pick.gc-n { color: #8ab4f8; } .gc-pick:hover { color: #1a73e8; text-decoration: underline; }
+.gc-t tr.gc-on > td, .gc-t tr.gc-on > td.gc-nm { background: color-mix(in srgb, #1a73e8 9%, var(--card)); } .gc-t tr.gc-on .gc-pick { color: #1a73e8; font-weight: 600; }
+@media (max-width: 760px) { .sc-top { flex-direction: column; } .sc-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sc-t { border-bottom: 1px solid var(--line); } .sc-tiles .sc-t:first-child { border-top-left-radius: 14px; } .sc-tiles .sc-t:nth-child(2) { border-top-right-radius: 14px; } .sc-tools { justify-content: flex-end; padding: 4px 6px; } .sc-v { font-size: 20px; } }
+
+.g-split .kpi-l small { font-size: 11px; color: var(--text-3); font-weight: 400; }
+.g-sp2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 4px; } .g-sp2 > div { min-width: 0; } .g-sp2 > div + div { border-left: 1px dashed var(--line-strong); padding-left: 12px; }
+.g-sp2 .kpi-v { font-size: 23px; white-space: nowrap; } .g-sp2 .kpi-s { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .g-sp2 .kpi-v small { font-size: 13px; font-weight: 500; color: var(--text-3); }
+.g-ch { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 6px; padding: 1px 7px; margin-bottom: 2px; } .g-ch.l { background: #e6f7ec; color: #06a043; } .g-ch.f { background: #e8f0fe; color: #1877f2; }
+
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -3472,8 +3514,9 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     { id: 'sum', label: 'สรุปผล', short: 'สรุป', icon: I.sum, group: 'rep' },
     { id: 'track', label: 'Track เดือนนี้', short: 'Track', icon: I.track, group: 'rep' },
     { id: 'dashboard', label: 'ภาพรวม Ads Facebook', nav: 'ภาพรวม', short: 'ภาพรวม FB', icon: I.dash, group: 'fb' },
+    { id: 'fcamp', label: 'ผลงานแคมเปญ Facebook', nav: 'ผลงานแคมเปญ', short: 'ผลงาน FB', icon: I.track, group: 'fb' },
     { id: 'chats', label: 'บันทึกแชท', short: 'แชท', icon: I.chat, group: 'fb' },
-    { id: 'campaigns', label: 'แคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
+    { id: 'campaigns', label: 'แคมเปญ', nav: 'จัดการแคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
     { id: 'gov', label: 'ภาพรวม Google Ads', nav: 'ภาพรวม', short: 'ภาพรวม G', icon: I.ggl, group: 'gg' },
     { id: 'gcamp', label: 'แคมเปญ Google Ads', nav: 'แคมเปญ', short: 'แคมเปญ G', icon: I.mega, group: 'gg' },
     { id: 'settings', label: 'ตั้งค่า', short: 'ตั้งค่า', icon: I.gear, group: 'sys' }
@@ -3706,7 +3749,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
         '<div class="g2-panel"><div class="g2-brand">' + esc(S.data.config.brand || window.APP_CONFIG.BRAND) + ' <span>Ads</span></div><div class="g2-pt">' + gNow.full + '</div>' + items +
           '<div class="g2-sp"></div>' +
           (lastSync ? '<div class="g2-sync"><i></i>อัปเดตอัตโนมัติ · ' + lastSync.toLocaleString('th-TH', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) + ' · ทุก 1 ชม.</div>' : '') +
-          '<div class="g2-me"><div><b>' + esc(S.data.me) + '</b><small>' + (API.isDemo ? 'โหมดตัวอย่าง' : 'แอดมิน') + ' · v81</small></div>' + (API.isDemo ? '' : '<button class="g2-out" id="logout" title="ออกจากระบบ">' + I.logout + '</button>') + '</div>' +
+          '<div class="g2-me"><div><b>' + esc(S.data.me) + '</b><small>' + (API.isDemo ? 'โหมดตัวอย่าง' : 'แอดมิน') + ' · v82</small></div>' + (API.isDemo ? '' : '<button class="g2-out" id="logout" title="ออกจากระบบ">' + I.logout + '</button>') + '</div>' +
         '</div>' +
       '</aside>' +
       '<main class="main">' +
@@ -3737,7 +3780,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     liveBadge();
     var ab = $('.bottom-nav .active'); if (ab) ab.parentNode.scrollLeft = ab.offsetLeft - ab.parentNode.clientWidth / 2 + ab.clientWidth / 2;
   }
-  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
+  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, fcamp: pageFcamp, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
 
   // ---- ยอดรับซื้อ + เคสประเมิน แบบเรียลไทม์: ถามหลังบ้านทุก 1 นาที (เฉพาะตอนเปิดแท็บอยู่) ----
   var LIVE = { ver: null, busy: false, off: false, at: '', err: '', last: 0, pending: false, timer: null };
@@ -6610,8 +6653,8 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   // Google Ads (v81) — ภาพรวม + แคมเปญ · ข้อมูลจากแท็บ GAds (คัดลอกจาก METRICS) · ลูกค้า LINE = มาจาก Google Ads
   // ============================================================
   var G_BID = { MAXIMIZE_CONVERSIONS: 'Max conv.', MAXIMIZE_CONVERSION_VALUE: 'Max conv. value', TARGET_CPA: 'Target CPA', TARGET_ROAS: 'Target ROAS', TARGET_SPEND: 'Max clicks', MAXIMIZE_CLICKS: 'Max clicks', MANUAL_CPC: 'Manual CPC', ENHANCED_CPC: 'eCPC', TARGET_IMPRESSION_SHARE: 'Target IS', MANUAL_CPM: 'Manual CPM' };
-  function gRange() {
-    var gf = S.gf || (S.gf = { preset: '30d' });
+  function gRange(key) {
+    key = key || 'gf'; var gf = S[key] || (S[key] = { preset: '30d' });
     if (gf.preset !== 'custom') { var r = C.presetRange(gf.preset, S.data, today()); gf.from = r.from; gf.to = r.to; }
     return gf;
   }
@@ -6625,10 +6668,10 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     if ($('#gFrom')) { $('#gFrom').onchange = function () { gf.from = this.value; if (gf.from > gf.to) gf.to = gf.from; redraw(); }; $('#gTo').onchange = function () { gf.to = this.value; if (gf.to < gf.from) gf.from = gf.to; redraw(); }; }
   }
   function gAgg(a, b) {
-    var o = { cost: 0, conv: 0, im: 0, ck: 0, camps: {}, est: 0, n: 0, bought: 0, diff: 0 };
+    var o = { cost: 0, conv: 0, im: 0, ck: 0, camps: {}, est: 0, n: 0, bought: 0, diff: 0, estF: 0, nF: 0 };
     (S.data.gads || []).forEach(function (r) { if (r.date < a || r.date > b) return; o.cost += r.cost; o.conv += r.conversions; o.im += r.impressions; o.ck += r.clicks; if (r.cost > 0) o.camps[r.campaign] = 1; });
-    (S.data.estimates || []).forEach(function (e) { if (e.line && e.date >= a && e.date <= b) o.est++; });
-    sumDeals().forEach(function (x) { if (x.p && x.p.line && x.date >= a && x.date <= b) { o.n++; o.bought += x.bought; o.diff += x.diff; } });
+    (S.data.estimates || []).forEach(function (e) { if (e.date < a || e.date > b) return; if (e.line) o.est++; else if (e.fb) o.estF++; });
+    sumDeals().forEach(function (x) { if (!x.p || x.date < a || x.date > b) return; if (x.p.line) { o.n++; o.bought += x.bought; o.diff += x.diff; } else if (x.p.fb) o.nF++; });
     o.nc = Object.keys(o.camps).length;
     return o;
   }
@@ -6637,6 +6680,13 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var v = (c - p) / Math.abs(p), up = v >= 0;
     if (Math.abs(v) < 0.005) return '<span class="kd">เท่าเดิม</span>';
     return '<span class="kd ' + ((goodUp ? up : !up) ? 'up' : 'down') + '">' + (up ? '▲ ' : '▼ ') + Math.abs(v * 100).toFixed(1) + '%</span>';
+  }
+  /** การ์ดแบ่ง 2 ช่อง: LINE (= Google Ads) | Facebook — นับจากชีตบริษัท (Estimations / Orders) */
+  function gSplit(label, unit, v, pv, sub, vf, pvf, subF) {
+    return '<div class="card kpi-b g-split"><div class="kpi-l">' + label + ' <small>จากชีต</small></div><div class="g-sp2">' +
+      '<div><span class="g-ch l">LINE · Google</span><div class="kpi-v num">' + F.int(v) + ' <small>' + unit + '</small></div><div class="kpi-s">' + sub + '</div>' + (gDelta(v, pv, true) ? '<div class="kpi-d">' + gDelta(v, pv, true) + '</div>' : '') + '</div>' +
+      '<div><span class="g-ch f">Facebook</span><div class="kpi-v num">' + F.int(vf) + ' <small>' + unit + '</small></div><div class="kpi-s">' + (subF || '&nbsp;') + '</div>' + (gDelta(vf, pvf, true) ? '<div class="kpi-d">' + gDelta(vf, pvf, true) + '</div>' : '') + '</div>' +
+      '</div></div>';
   }
   function pageGov() {
     var gf = gRange(), a = gf.from, b = gf.to, n = C.daysIncl(a, b), pa = C.addDays(a, -n), pb = C.addDays(a, -1);
@@ -6649,13 +6699,13 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     html += '<div class="kpi5 gk">' +
       kpi('ค่า Ads', '฿' + bt(x.cost), x.nc + ' แคมเปญ · เฉลี่ย ฿' + bt(x.cost / n) + '/วัน', gDelta(x.cost, p.cost, false)) +
       kpi('Conversion', F.int(Math.round(x.conv)), 'ต้นทุน/Conversion ' + (x.conv ? '฿' + bt(x.cost / x.conv) : '–'), gDelta(x.conv, p.conv, true)) +
-      kpi('เคสประเมินจาก LINE', F.int(x.est) + ' เคส', 'ต้นทุน/เคส ' + (x.est ? '฿' + bt(x.cost / x.est) : '–'), gDelta(x.est, p.est, true)) +
-      kpi('รับซื้อได้จาก LINE', F.int(x.n) + ' เครื่อง', 'อัตราปิด ' + (x.est ? (x.n / x.est * 100).toFixed(1) + '%' : '–') + ' ของเคสประเมิน', gDelta(x.n, p.n, true)) +
+      gSplit('เคสประเมิน', 'เคส', x.est, p.est, 'ต้นทุน/เคส ' + (x.est ? '฿' + bt(x.cost / x.est) : '–'), x.estF, p.estF) +
+      gSplit('รับซื้อได้', 'เครื่อง', x.n, p.n, 'อัตราปิด ' + (x.est ? (x.n / x.est * 100).toFixed(1) + '%' : '–'), x.nF, p.nF, x.estF ? 'อัตราปิด ' + (x.nF / x.estF * 100).toFixed(1) + '%' : '') +
       kpi('ต้นทุน/เครื่อง', cpu == null ? '–' : '฿' + bt(cpu), '<span class="pill ' + (cpu == null ? '' : cpu <= target ? 'good' : 'bad') + '">เป้า ฿' + bt(target) + (cpu == null ? '' : cpu <= target ? ' · ผ่าน' : ' · เกิน') + '</span>', gDelta(cpu, ppu, false)) +
       kpi('ยอดรับซื้อ', '฿' + bt(x.bought), x.n ? 'เฉลี่ย ฿' + bt(x.bought / x.n) + '/เครื่อง' : 'ยังไม่มีเครื่องที่รับซื้อ', gDelta(x.bought, p.bought, true)) +
       kpi('กำไรขั้นต้น (ประเมิน)', '฿' + bt(x.diff), 'ราคาขายประเมิน − รับซื้อ', gDelta(x.diff, p.diff, true)) +
       '<div class="card kpi-b g-hl"><div class="kpi-l">Profit ROAS (กำไรประเมิน)</div><div class="kpi-v num">' + (roas == null ? '–' : roas.toFixed(2) + ' เท่า') + '</div><div class="kpi-s">กำไรสุทธิ ' + rule + '% = ' + (roas == null ? '–' : (roas * rule / 100).toFixed(2) + ' เท่า') + '</div>' + (gDelta(roas, proas, true) ? '<div class="kpi-d">' + gDelta(roas, proas, true) + '</div>' : '') + '</div>' +
-      '</div><div class="muted small" style="margin:-8px 0 18px">▲▼ เทียบกับ ' + n + ' วันก่อนหน้า (' + F.thRange(pa, pb) + ') · เขียว = ดีขึ้น · ลูกค้าที่ทักทาง LINE นับเป็นจาก Google Ads</div>';
+      '</div><div class="muted small" style="margin:-8px 0 18px">▲▼ เทียบกับ ' + n + ' วันก่อนหน้า (' + F.thRange(pa, pb) + ') · เขียว = ดีขึ้น · ลูกค้าที่ทักทาง LINE นับเป็นจาก Google Ads · เคสประเมิน/รับซื้อได้ มาจากชีตบริษัท (แยก LINE / Facebook) · ช่องอื่นนับเฉพาะ LINE · ลูกค้า Facebook ที่บันทึกเองในเว็บ ดูที่เมนู Facebook เหมือนเดิม</div>';
     var FN = [['เห็นโฆษณา', 'Impressions', x.im, '#1a73e8'], ['คลิก', 'Clicks', x.ck, '#4285f4'], ['Conversion', 'จาก Google Ads', x.conv, '#7baaf7'], ['เคสประเมิน', 'ทาง LINE', x.est, '#f5a800'], ['รับซื้อได้', 'ทาง LINE', x.n, '#12b76a']];
     var top = Math.max.apply(null, FN.map(function (r) { return r[2]; }).concat([1]));
     var fn = FN.map(function (r, i) {
@@ -6697,8 +6747,179 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     $$('g.eh', svg).forEach(function (g) { var i = Number(g.dataset.i); g.onmouseenter = g.onclick = function () { show(i); }; });
     svg.onmouseleave = function () { show(-1); };
   }
+  /** ผลงานแคมเปญ Facebook แบบตาราง Google Ads · ค่า Ads/Lead/ปิดได้ = สูตรเดียวกับหน้าภาพรวม (C.compute) · อิมเพรสชัน/คลิก/แชท = Facebook API */
+  // ---------- v82 · การ์ดตัวชี้วัด + กราฟ แบบ Google Ads (ใช้ทั้งหน้า Google และ Facebook) ----------
+  var SC_COL = ['#1a73e8', '#d93025', '#f9ab00', '#188038'];
+  // st = { t:[4 คีย์], on:[0/1 x4], cmp, col, menu }  ·  M = { key:{ n, v(o), f, up(1 ดีเมื่อขึ้น / 0 ดีเมื่อลง / null กลาง), p(ต้องใช้ข้อมูลแชท) } }
+  // agg(from, to, needP) → ออบเจ็กต์ตัวเลขรวมช่วงนั้น
+  function scBuild(st, M, agg, a, b, selHtml) {
+    var n = C.daysIncl(a, b), pb = C.addDays(a, -1), pa = C.addDays(a, -n);
+    var needP = st.t.some(function (k) { return M[k] && M[k].p; });
+    var cur = agg(a, b, needP), prv = agg(pa, pb, needP);
+    var tiles = st.t.map(function (k, i) {
+      var m = M[k]; if (!m) return '';
+      var v = m.v(cur), pv = m.v(prv), on = !!st.on[i], dl = '';
+      if (v != null && pv) { var ch = (v - pv) / pv * 100, cls = m.up == null ? 'nt' : ((ch >= 0) === !!m.up ? 'up' : 'dn'); dl = '<span class="sc-d ' + cls + '">' + (ch >= 0 ? '▲' : '▼') + ' ' + Math.abs(ch).toFixed(1) + '%</span>'; }
+      else dl = '<span class="sc-d nt">ไม่มีข้อมูลช่วงก่อน</span>';
+      var menu = st.menu === i ? '<div class="sc-bg" data-scx></div><div class="sc-menu">' + Object.keys(M).map(function (k2) {
+        var dis = st.t.indexOf(k2) >= 0 && k2 !== k; return '<button data-scp="' + k2 + '"' + (dis ? ' disabled' : '') + ' class="' + (k2 === k ? 'on' : '') + '">' + M[k2].n + '</button>'; }).join('') + '</div>' : '';
+      return '<div class="sc-t' + (on ? ' on' : '') + '" data-sct="' + i + '" style="--c:' + SC_COL[i] + '"><div class="sc-n"><span>' + m.n + '</span><button class="sc-dd" data-scm="' + i + '" title="เปลี่ยนตัวชี้วัด" aria-label="เปลี่ยนตัวชี้วัด">▾</button></div>' +
+        '<div class="sc-v">' + (v == null ? '–' : m.f(v)) + '</div>' + dl + menu + '</div>';
+    }).join('');
+    var html = '<div class="card sc-card">' + (selHtml || '') +
+      '<div class="sc-top"><div class="sc-tiles">' + tiles + '</div><div class="sc-tools"><button data-scc>' + (st.col ? '▾ แสดงกราฟ' : '▴ พับกราฟ') + '</button></div></div>' +
+      (st.col ? '' : '<div class="sc-ch"><div class="sc-sc"><svg id="scSvg"></svg></div><div class="sc-tip" id="scTip"></div></div>' +
+        '<div class="sc-cmp"><label><input type="checkbox" data-sck' + (st.cmp ? ' checked' : '') + '> เทียบช่วงก่อนหน้า (เส้นประ)</label><span>' + F.thRange(pa, pb) + '</span></div>') + '</div>';
+    function draw() {
+      var svg = $('#scSvg'); if (!svg) return;
+      var act = st.t.map(function (k, i) { return { k: k, i: i, m: M[k] }; }).filter(function (x) { return x.m && st.on[x.i]; });
+      var need = act.some(function (x) { return x.m.p; }), dc = [], dp = [], d = a, g = 0;
+      while (d <= b && g++ < 400) { dc.push({ d: d, o: agg(d, d, need) }); d = C.addDays(d, 1); }
+      if (st.cmp) dp = dc.map(function (z, i) { var dd = C.addDays(pa, i); return { d: dd, o: agg(dd, dd, need) }; });
+      var box = svg.parentNode, N = Math.max(dc.length, 1), W = Math.max(box.clientWidth || 800, N * 12), H = 230, L = 10, R = 10, T0 = 14, B = 26, pw = W - L - R, ph = H - T0 - B;
+      var x = function (i) { return N > 1 ? L + pw * i / (N - 1) : L + pw / 2; }, o = '';
+      [0, .25, .5, .75, 1].forEach(function (p) { o += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + (T0 + ph * p) + '" y2="' + (T0 + ph * p) + '" stroke="var(--line)"/>'; });
+      act.forEach(function (s) {
+        s.rc = dc.map(function (z) { return s.m.v(z.o); }); s.rp = dp.map(function (z) { return s.m.v(z.o); }); s.c = s.rc.map(function (v) { return v || 0; }); s.p = s.rp.map(function (v) { return v || 0; });
+        var mx = Math.max.apply(null, s.c.concat(s.p).concat([0])) * 1.12 || 1;
+        s.y = function (v) { return T0 + ph - v / mx * ph; };
+        var path = function (arr) { return arr.map(function (v, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + s.y(v).toFixed(1); }).join(''); };
+        if (st.cmp) o += '<path d="' + path(s.p) + '" fill="none" stroke="' + SC_COL[s.i] + '" stroke-width="1.6" stroke-dasharray="4 4" opacity=".55"/>';
+        o += N > 1 ? '<path d="' + path(s.c) + '" fill="none" stroke="' + SC_COL[s.i] + '" stroke-width="2.4" stroke-linejoin="round"/>' : '<circle cx="' + x(0) + '" cy="' + s.y(s.c[0]) + '" r="5" fill="' + SC_COL[s.i] + '"/>';
+      });
+      var stp = Math.max(1, Math.ceil(N / 7)); dc.forEach(function (z, i) { if (i % stp === 0 || i === N - 1) o += '<text class="es-x" x="' + x(i) + '" y="' + (H - 7) + '" text-anchor="' + (i === 0 ? 'start' : i === N - 1 ? 'end' : 'middle') + '">' + thBE(z.d, true) + '</text>'; });
+      o += '<line id="scHl" y1="' + T0 + '" y2="' + (T0 + ph) + '" stroke="var(--text-3)" stroke-dasharray="3 3" style="display:none"/><g id="scHd"></g><rect x="0" y="0" width="' + W + '" height="' + H + '" fill="transparent" id="scHit"/>';
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.style.width = W + 'px'; svg.style.height = H + 'px'; svg.innerHTML = o;
+      var tip = $('#scTip'), hl = $('#scHl'), hd = $('#scHd'), hit = $('#scHit');
+      hit.onmousemove = function (e) {
+        var r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width, i = N > 1 ? Math.max(0, Math.min(N - 1, Math.round((px - L) / pw * (N - 1)))) : 0;
+        hl.setAttribute('x1', x(i)); hl.setAttribute('x2', x(i)); hl.style.display = '';
+        hd.innerHTML = act.map(function (s) { return '<circle cx="' + x(i) + '" cy="' + s.y(s.c[i]) + '" r="4" fill="' + SC_COL[s.i] + '" stroke="var(--surface)" stroke-width="2"/>'; }).join('');
+        tip.innerHTML = '<b>' + DOW_S[dowOf(dc[i].d)] + '. ' + thBE(dc[i].d, true) + '</b>' + act.map(function (s) {
+          return '<div><span><i style="background:' + SC_COL[s.i] + '"></i>' + s.m.n + '</span><b>' + (s.rc[i] == null ? '–' : s.m.f(s.rc[i])) + '</b></div>' + (st.cmp ? '<div class="pv"><span>' + thBE(dp[i].d, true) + '</span><span>' + (s.rp[i] == null ? '–' : s.m.f(s.rp[i])) + '</span></div>' : ''); }).join('');
+        var bx = box.getBoundingClientRect(), lx = e.clientX - bx.left + 14; tip.style.display = 'block';
+        tip.style.left = (lx + tip.offsetWidth > bx.width ? lx - tip.offsetWidth - 28 : lx) + 'px'; tip.style.top = '14px';
+      };
+      hit.onmouseleave = function () { tip.style.display = 'none'; hl.style.display = 'none'; hd.innerHTML = ''; };
+    }
+    function bind(redraw) {
+      $$('[data-sct]').forEach(function (t) { t.onclick = function (e) {
+        if (e.target.closest('[data-scm],.sc-menu,[data-scx]')) return; var i = +t.dataset.sct;
+        if (st.on[i] && st.on.filter(Boolean).length === 1) return; st.on[i] = st.on[i] ? 0 : 1; st.menu = -1; redraw(); }; });
+      $$('[data-scm]').forEach(function (bn) { bn.onclick = function (e) { e.stopPropagation(); var i = +bn.dataset.scm; st.menu = st.menu === i ? -1 : i; redraw(); }; });
+      $$('[data-scp]').forEach(function (bn) { bn.onclick = function (e) { e.stopPropagation(); st.t[st.menu] = bn.dataset.scp; st.on[st.menu] = 1; st.menu = -1; scSave(); redraw(); }; });
+      $$('[data-scx]').forEach(function (bn) { bn.onclick = function (e) { e.stopPropagation(); st.menu = -1; redraw(); }; });
+      $$('[data-scc]').forEach(function (bn) { bn.onclick = function () { st.col = !st.col; scSave(); redraw(); }; });
+      $$('[data-sck]').forEach(function (bn) { bn.onchange = function () { st.cmp = bn.checked; scSave(); redraw(); }; });
+    }
+    return { html: html, draw: draw, bind: bind };
+  }
+  function scState(key, def) {
+    S.sc = S.sc || (function () { try { return JSON.parse(localStorage.getItem('fbat_sc') || '{}'); } catch (e) { return {}; } })();
+    var st = S.sc[key]; if (!st || !st.t || st.t.length !== 4) st = S.sc[key] = { t: def.slice(), on: [1, 1, 0, 0], cmp: false, col: false };
+    st.menu = st.menu == null ? -1 : st.menu; return st;
+  }
+  function scSave() { try { var o = {}; Object.keys(S.sc || {}).forEach(function (k) { var s = S.sc[k]; o[k] = { t: s.t, on: s.on, cmp: s.cmp, col: s.col }; }); localStorage.setItem('fbat_sc', JSON.stringify(o)); } catch (e) {} }
+  function scSel(parts, clearAttr) {
+    if (!parts.length) return '';
+    return '<div class="sc-sel"><span class="muted">ดูเฉพาะ</span>' + parts.map(function (p, i) { return (i ? '<span class="muted">›</span>' : '') + '<b>' + esc(p) + '</b>'; }).join('') + '<button ' + clearAttr + '>✕ ดูทั้งหมด</button></div>';
+  }
+  function pageFcamp() {
+    var gf = gRange('ff'), a = gf.from, b = gf.to, fc = S.fc || (S.fc = { k: 'sp', dir: -1, open: {}, flt: 'all' }); fc.sel = fc.sel || null;
+    var td = today(), target = Number(S.data.config.target_cost_per_case) || 1000, daily = C.spendDaily(S.data);
+    var lastSp = {}; daily.forEach(function (x) { if (x.amount > 0 && x.campaign && (!lastSp[x.campaign] || x.date > lastSp[x.campaign])) lastSp[x.campaign] = x.date; });
+    function peopleStats(chats) {
+      var ppl = C.uniquePeople(chats), cl = ppl.filter(function (p) { return p.status === '5-ปิดการขาย'; });
+      return { ld: ppl.filter(function (p) { return C.stageOf(p.status) >= 1; }).length, cl: cl.length, am: cl.reduce(function (t, p) { return t + (Number(p.amount) || 0); }, 0) };
+    }
+    function perf(o, fp) { o.ch = fp.chat; o.im = fp.imp; o.rc = fp.reach; o.lk = fp.lclk || fp.clk; return o; }
+    var rows = campaigns().map(function (name) {
+      var m = C.compute(S.data, { from: a, to: b, campaign: name });
+      var r = perf({ n: name, sp: m.spend || 0, ld: m.leads || 0, cl: m.closed || 0, am: m.amount || 0 }, C.fbPerf(S.data, a, b, name));
+      r.on = !!(lastSp[name] && lastSp[name] >= C.addDays(td, -1));
+      var sets = {};
+      daily.forEach(function (x) { if (x.campaign === name && x.date >= a && x.date <= b) sets[x.adset || ''] = (sets[x.adset || ''] || 0) + x.amount; });
+      S.data.chats.forEach(function (c) { if (c.campaign === name && c.date >= a && c.date <= b && !(c.adset in sets)) sets[c.adset || ''] = sets[c.adset || ''] || 0; });
+      r.sets = Object.keys(sets).map(function (k) {
+        var st = peopleStats(S.data.chats.filter(function (c) { return c.campaign === name && (c.adset || '') === k && c.date >= a && c.date <= b; }));
+        return perf({ n: k || '(ไม่ระบุ Ad set)', k: k, sp: sets[k], ld: st.ld, cl: st.cl, am: st.am }, C.fbPerf(S.data, a, b, name, '', k));
+      }).sort(function (x, y) { return y.sp - x.sp; });
+      return r;
+    }).filter(function (r) { return r.sp > 0 || r.ld > 0 || r.im > 0; });
+    var shown = rows.filter(function (r) { return fc.flt === 'all' || (fc.flt === 'on' ? r.on : !r.on); });
+    var bt = function (v) { return '฿' + F.int(Math.round(v)); };
+    var COLS = [
+      ['sp', 'ค่า Ads', function (r) { return r.sp; }, bt],
+      ['ch', 'แชท<br>(ผลลัพธ์)', function (r) { return r.ch; }, function (v) { return F.int(v); }],
+      ['cpch', 'ต้นทุน<br>/แชท', function (r) { return r.ch ? r.sp / r.ch : null; }, bt],
+      ['ld', 'Lead', function (r) { return r.ld; }, function (v) { return F.int(v); }],
+      ['cl', 'ปิดได้', function (r) { return r.cl; }, function (v) { return F.int(v); }],
+      ['cr', 'อัตราปิด', function (r) { return r.ld ? r.cl / r.ld * 100 : null; }, function (v) { return v.toFixed(1) + '%'; }],
+      ['am', 'ยอดรับซื้อ', function (r) { return r.am; }, bt],
+      ['cpc', 'ต้นทุน<br>/เคส', function (r) { return r.cl ? r.sp / r.cl : null; }, function (v) { return '<span class="pill ' + (v <= target ? 'good' : 'bad') + '">' + bt(v) + '</span>'; }],
+      ['im', 'อิมเพรสชัน', function (r) { return r.im; }, function (v) { return F.int(v); }],
+      ['lk', 'คลิกลิงก์', function (r) { return r.lk; }, function (v) { return F.int(v); }],
+      ['ctr', 'CTR', function (r) { return r.im ? r.lk / r.im * 100 : null; }, function (v) { return v.toFixed(2) + '%'; }],
+      ['cpm', 'CPM', function (r) { return r.im ? r.sp / r.im * 1000 : null; }, bt],
+      ['fq', 'ความถี่', function (r) { return r.rc ? r.im / r.rc : null; }, function (v) { return v.toFixed(2); }]
+    ];
+    var col = COLS.filter(function (c) { return c[0] === fc.k; })[0] || COLS[0];
+    shown.sort(function (x, y) { var u = col[2](x), v = col[2](y); return ((u == null ? -1 : u) - (v == null ? -1 : v)) * fc.dir; });
+    function cells(r) { return COLS.map(function (c) { var v = c[2](r); return '<td class="r num">' + (v == null ? '<span class="muted">–</span>' : c[3](v)) + '</td>'; }).join(''); }
+    var fsel = fc.sel;
+    if (fsel && !rows.some(function (r) { return r.n === fsel.c; })) fsel = fc.sel = null;
+    var body = shown.map(function (r, ri) {
+      var o = fc.open[r.n] || (fsel && fsel.c === r.n && fsel.s != null);
+      var h = '<tr class="' + (fsel && fsel.c === r.n && fsel.s == null ? 'gc-on' : '') + '"><td class="gc-st"><span class="gc-dot' + (r.on ? ' on' : '') + '"></span></td><td class="gc-nm"><button class="gc-ex" data-fx="' + esc(r.n) + '">' + (o ? '▾' : '▸') + '</button><button class="gc-n gc-pick" data-fs="' + ri + '" title="ดูกราฟเฉพาะแคมเปญนี้">' + esc(r.n) + '</button><small>' + (r.on ? 'มีค่าใช้จ่าย 2 วันล่าสุด' : 'ไม่มีค่าใช้จ่าย 2 วันล่าสุด') + ' · ' + r.sets.length + ' Ad set</small></td>' + cells(r) + '</tr>';
+      if (o) h += r.sets.map(function (x, si) { return '<tr class="gc-sub' + (fsel && fsel.c === r.n && fsel.s === x.k ? ' gc-on' : '') + '"><td></td><td class="gc-nm"><button class="gc-pick" data-fss="' + ri + ':' + si + '" title="ดูกราฟเฉพาะ Ad set นี้">' + esc(x.n) + '</button></td>' + cells(x) + '</tr>'; }).join('');
+      return h;
+    }).join('');
+    var T = { sp: 0, ch: 0, ld: 0, cl: 0, am: 0, im: 0, rc: 0, lk: 0 };
+    shown.forEach(function (r) { Object.keys(T).forEach(function (k) { T[k] += r[k] || 0; }); });
+    // การ์ดตัวชี้วัด + กราฟ (v82) — ตามแคมเปญ / Ad set ที่เลือก
+    function fScope() { return fsel ? [fsel.c] : fc.flt === 'all' ? null : shown.map(function (r) { return r.n; }); }
+    function fAgg(f, t, needP) {
+      var o = { sp: 0, ch: 0, im: 0, lk: 0, rc: 0, ld: 0, cl: 0, am: 0 }, camps = fScope(), as = fsel && fsel.s != null ? fsel.s : null;
+      daily.forEach(function (x) { if (x.date < f || x.date > t) return; if (camps && camps.indexOf(x.campaign) < 0) return; if (as != null && (x.adset || '') !== as) return; o.sp += x.amount; });
+      (camps || ['']).forEach(function (c) { var p = C.fbPerf(S.data, f, t, c, '', as); o.ch += p.chat; o.im += p.imp; o.rc += p.reach; o.lk += p.lclk || p.clk; });
+      if (needP) { var st = peopleStats(S.data.chats.filter(function (c) { return c.date >= f && c.date <= t && (!camps || camps.indexOf(c.campaign) >= 0) && (as == null || (c.adset || '') === as); })); o.ld = st.ld; o.cl = st.cl; o.am = st.am; }
+      return o;
+    }
+    var i0 = function (v) { return F.int(Math.round(v)); }, b2 = function (v) { return '฿' + v.toFixed(2); };
+    var FM = {
+      sp: { n: 'ค่า Ads', v: function (o) { return o.sp; }, f: bt, up: null },
+      ch: { n: 'แชท', v: function (o) { return o.ch; }, f: i0, up: 1 },
+      cpch: { n: 'ต้นทุน/แชท', v: function (o) { return o.ch ? o.sp / o.ch : null; }, f: bt, up: 0 },
+      ld: { n: 'Lead', v: function (o) { return o.ld; }, f: i0, up: 1, p: 1 },
+      cl: { n: 'ปิดได้', v: function (o) { return o.cl; }, f: i0, up: 1, p: 1 },
+      cr: { n: 'อัตราปิด', v: function (o) { return o.ld ? o.cl / o.ld * 100 : null; }, f: function (v) { return v.toFixed(1) + '%'; }, up: 1, p: 1 },
+      cpcl: { n: 'ต้นทุน/เคส', v: function (o) { return o.cl ? o.sp / o.cl : null; }, f: bt, up: 0, p: 1 },
+      am: { n: 'ยอดรับซื้อ', v: function (o) { return o.am; }, f: bt, up: 1, p: 1 },
+      im: { n: 'อิมเพรสชัน', v: function (o) { return o.im; }, f: i0, up: 1 },
+      lk: { n: 'คลิกลิงก์', v: function (o) { return o.lk; }, f: i0, up: 1 },
+      ctr: { n: 'CTR', v: function (o) { return o.im ? o.lk / o.im * 100 : null; }, f: function (v) { return v.toFixed(2) + '%'; }, up: 1 },
+      cpm: { n: 'CPM', v: function (o) { return o.im ? o.sp / o.im * 1000 : null; }, f: b2, up: 0 }
+    };
+    var SC = scBuild(scState('fb', ['sp', 'ch', 'cpch', 'ld']), FM, fAgg, a, b, fsel ? scSel([fsel.c].concat(fsel.s != null ? [fsel.s || '(ไม่ระบุ Ad set)'] : []), 'data-fsx') : '');
+    var html = gFilters(gf) + SC.html +
+      '<div class="card gc-card" style="margin-top:16px"><div class="gc-tools"><div class="chip-group">' + [['all', 'ทุกแคมเปญ'], ['on', 'เปิดอยู่'], ['off', 'หยุดแล้ว']].map(function (f) { return '<button data-ffl="' + f[0] + '" class="' + (fc.flt === f[0] ? 'on' : '') + '">' + f[1] + '</button>'; }).join('') + '</div><span class="muted small">กดชื่อเพื่อดูกราฟเฉพาะตัวนั้น · กด ▸ ดู Ad set · กดหัวคอลัมน์เพื่อเรียง</span></div>' +
+      '<div class="table-wrap"><table class="t gc-t fc-t"><thead><tr><th style="width:30px"></th><th class="gc-nm">แคมเปญ</th>' + COLS.map(function (c) { return '<th class="r gc-h' + (fc.k === c[0] ? ' sort' : '') + '" data-fk="' + c[0] + '">' + (fc.k === c[0] ? (fc.dir < 0 ? '↓ ' : '↑ ') : '') + c[1] + '</th>'; }).join('') + '</tr></thead>' +
+      '<tbody>' + (body || '<tr><td colspan="15"><div class="empty">ไม่มีแคมเปญที่มีข้อมูลในช่วงนี้</div></td></tr>') + '</tbody>' +
+      '<tfoot><tr><td></td><td class="gc-nm">รวม: ' + (fc.flt === 'all' ? 'ทุกแคมเปญ' : fc.flt === 'on' ? 'แคมเปญที่เปิดอยู่' : 'แคมเปญที่หยุดแล้ว') + '</td>' + cells(T) + '</tr></tfoot></table></div>' +
+      '<div class="muted small" style="padding:10px 4px 0">ต้นทุน/เคส เขียว = ผ่านเป้า ' + bt(target) + ' · แดง = เกินเป้า · Lead / ปิดได้ / ยอดรับซื้อ มาจากแชทที่บันทึกในเว็บ · อิมเพรสชัน / คลิก / แชท ดึงจาก Facebook</div></div>';
+    $('#page').innerHTML = html;
+    S.drawCharts = SC.draw; SC.bind(pageFcamp);
+    S.drawCharts(); Charts.countUp($('#page'));
+    gBindFilters(gf, pageFcamp);
+    $$('[data-fk]').forEach(function (h) { h.onclick = function () { if (fc.k === h.dataset.fk) fc.dir *= -1; else { fc.k = h.dataset.fk; fc.dir = -1; } pageFcamp(); }; });
+    $$('[data-fx]').forEach(function (bn) { bn.onclick = function () { fc.open[bn.dataset.fx] = !fc.open[bn.dataset.fx]; pageFcamp(); }; });
+    $$('[data-ffl]').forEach(function (bn) { bn.onclick = function () { fc.flt = bn.dataset.ffl; pageFcamp(); }; });
+    $$('[data-fs]').forEach(function (bn) { bn.onclick = function () { var r = shown[+bn.dataset.fs]; fc.sel = fsel && fsel.c === r.n && fsel.s == null ? null : { c: r.n, s: null }; pageFcamp(); }; });
+    $$('[data-fss]').forEach(function (bn) { bn.onclick = function () { var q = bn.dataset.fss.split(':'), r = shown[+q[0]], x = r.sets[+q[1]]; fc.sel = fsel && fsel.c === r.n && fsel.s === x.k ? null : { c: r.n, s: x.k }; pageFcamp(); }; });
+    $$('[data-fsx]').forEach(function (bn) { bn.onclick = function () { fc.sel = null; pageFcamp(); }; });
+  }
   function pageGcamp() {
-    var gf = gRange(), a = gf.from, b = gf.to, gc = S.gc || (S.gc = { k: 'sp', dir: -1, open: {}, flt: 'all' });
+    var gf = gRange(), a = gf.from, b = gf.to, gc = S.gc || (S.gc = { k: 'sp', dir: -1, open: {}, flt: 'all' }); gc.sel = gc.sel || null;
     var by = {}, hasMeta = false;
     (S.data.gads || []).forEach(function (r) {
       var c = by[r.campaign] || (by[r.campaign] = { n: r.campaign, sp: 0, im: 0, ck: 0, cv: 0, isW: 0, isI: 0, last: '', st: '', bud: null, bs: '', days: [], lastCost: '' });
@@ -6731,9 +6952,10 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var col = COLS.filter(function (c) { return c[0] === gc.k; })[0] || COLS[2];
     rows.sort(function (x, y) { var u = col[2](x), v = col[2](y); if (typeof u === 'string' || typeof v === 'string') return String(u || '').localeCompare(String(v || '')) * gc.dir; return ((u == null ? -1 : u) - (v == null ? -1 : v)) * gc.dir; });
     function cells(r) { return COLS.map(function (c) { var v = c[2](r); return '<td class="r num">' + (v == null || v === '' ? '<span class="muted">–</span>' : c[3](v)) + '</td>'; }).join(''); }
-    var body = rows.map(function (c) {
+    var gsel = gc.sel; if (gsel && !rows.some(function (c) { return c.n === gsel; })) gsel = gc.sel = null;
+    var body = rows.map(function (c, ci) {
       var o = gc.open[c.n];
-      var h = '<tr class="gc-row"><td class="gc-st"><span class="gc-dot' + (c.on ? ' on' : '') + '"></span></td><td class="gc-nm"><button class="gc-ex" data-gx="' + esc(c.n) + '">' + (o ? '▾' : '▸') + '</button><span class="gc-n">' + esc(c.n) + '</span><small>' + (c.st ? (c.on ? 'เปิดอยู่' : c.st === 'PAUSED' ? 'หยุดชั่วคราว' : c.st === 'REMOVED' ? 'ลบแล้ว' : esc(c.st)) : (c.on ? 'มีค่าใช้จ่ายล่าสุด' : 'ไม่มีค่าใช้จ่ายช่วงนี้')) + '</small></td>' + cells(c) + '</tr>';
+      var h = '<tr class="gc-row' + (gsel === c.n ? ' gc-on' : '') + '"><td class="gc-st"><span class="gc-dot' + (c.on ? ' on' : '') + '"></span></td><td class="gc-nm"><button class="gc-ex" data-gx="' + esc(c.n) + '">' + (o ? '▾' : '▸') + '</button><button class="gc-n gc-pick" data-gs="' + ci + '" title="ดูกราฟเฉพาะแคมเปญนี้">' + esc(c.n) + '</button><small>' + (c.st ? (c.on ? 'เปิดอยู่' : c.st === 'PAUSED' ? 'หยุดชั่วคราว' : c.st === 'REMOVED' ? 'ลบแล้ว' : esc(c.st)) : (c.on ? 'มีค่าใช้จ่ายล่าสุด' : 'ไม่มีค่าใช้จ่ายช่วงนี้')) + '</small></td>' + cells(c) + '</tr>';
       if (o) h += c.days.slice().sort(function (x, y) { return x.date < y.date ? 1 : -1; }).slice(0, 31).map(function (r) {
         return '<tr class="gc-sub"><td></td><td class="gc-nm">' + thBE(r.date, true) + ' <small style="display:inline">' + DOW_S[dowOf(r.date)] + '.</small></td>' + cells({ bud: r.budget, bs: '', sp: r.cost, im: r.impressions, ck: r.clicks, cv: r.conversions, is: r.impr_share }) + '</tr>'; }).join('');
       return h;
@@ -6741,19 +6963,38 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var T = { bud: 0, bs: '', sp: 0, im: 0, ck: 0, cv: 0, is: null }, anyB = false;
     rows.forEach(function (c) { T.sp += c.sp; T.im += c.im; T.ck += c.ck; T.cv += c.cv; if (c.on && c.bud != null) { T.bud += c.bud; anyB = true; } });
     if (!anyB) T.bud = null;
+    // การ์ดตัวชี้วัด + กราฟ (v82)
+    var gScope = gsel ? [gsel] : gc.flt === 'all' ? null : rows.map(function (c) { return c.n; });
+    function gAggD(f, t) {
+      var o = { sp: 0, cv: 0, im: 0, ck: 0 };
+      (S.data.gads || []).forEach(function (r) { if (r.date < f || r.date > t || (gScope && gScope.indexOf(r.campaign) < 0)) return; o.sp += r.cost; o.cv += r.conversions; o.im += r.impressions; o.ck += r.clicks; });
+      return o;
+    }
+    var GM = {
+      cv: { n: 'Conversion', v: function (o) { return o.cv; }, f: function (v) { return F.int(Math.round(v)); }, up: 1 },
+      cpc: { n: 'CPC เฉลี่ย', v: function (o) { return o.ck ? o.sp / o.ck : null; }, f: function (v) { return '฿' + v.toFixed(2); }, up: 0 },
+      im: { n: 'การมองเห็น', v: function (o) { return o.im; }, f: function (v) { return F.int(v); }, up: 1 },
+      sp: { n: 'ค่า Ads', v: function (o) { return o.sp; }, f: bt, up: null },
+      ck: { n: 'คลิก', v: function (o) { return o.ck; }, f: function (v) { return F.int(v); }, up: 1 },
+      ctr: { n: 'CTR', v: function (o) { return o.im ? o.ck / o.im * 100 : null; }, f: function (v) { return v.toFixed(2) + '%'; }, up: 1 },
+      cpa: { n: 'ต้นทุน/Conversion', v: function (o) { return o.cv ? o.sp / o.cv : null; }, f: bt, up: 0 }
+    };
+    var SC = scBuild(scState('gg', ['cv', 'cpc', 'im', 'sp']), GM, gAggD, a, b, gsel ? scSel([gsel], 'data-gsx') : '');
     var html = gFilters(gf) +
-      (hasMeta ? '' : '<div class="g-note">สถานะ · งบ/วัน · กลยุทธ์ราคาเสนอ · Impr. share จะขึ้นหลังอัปเดต Code.gs (v19) แล้วกด "ดึงข้อมูล" 1 ครั้ง</div>') +
-      '<div class="card gc-card"><div class="gc-tools"><div class="chip-group">' + [['all', 'ทุกแคมเปญ'], ['on', 'เปิดอยู่'], ['off', 'หยุดแล้ว']].map(function (f) { return '<button data-gf="' + f[0] + '" class="' + (gc.flt === f[0] ? 'on' : '') + '">' + f[1] + '</button>'; }).join('') + '</div><span class="muted small">กดหัวคอลัมน์เพื่อเรียง · กด ▸ ดูรายวัน</span></div>' +
+      (hasMeta ? '' : '<div class="g-note">สถานะ · งบ/วัน · กลยุทธ์ราคาเสนอ · Impr. share จะขึ้นหลังอัปเดต Code.gs (v19) แล้วกด "ดึงข้อมูล" 1 ครั้ง</div>') + SC.html +
+      '<div class="card gc-card" style="margin-top:16px"><div class="gc-tools"><div class="chip-group">' + [['all', 'ทุกแคมเปญ'], ['on', 'เปิดอยู่'], ['off', 'หยุดแล้ว']].map(function (f) { return '<button data-gf="' + f[0] + '" class="' + (gc.flt === f[0] ? 'on' : '') + '">' + f[1] + '</button>'; }).join('') + '</div><span class="muted small">กดชื่อเพื่อดูกราฟเฉพาะแคมเปญนั้น · กด ▸ ดูรายวัน · กดหัวคอลัมน์เพื่อเรียง</span></div>' +
       '<div class="table-wrap"><table class="t gc-t"><thead><tr><th style="width:30px"></th><th class="gc-nm">แคมเปญ</th>' + COLS.map(function (c) { return '<th class="r gc-h' + (gc.k === c[0] ? ' sort' : '') + '" data-gk="' + c[0] + '">' + (gc.k === c[0] ? (gc.dir < 0 ? '↓ ' : '↑ ') : '') + c[1] + '</th>'; }).join('') + '</tr></thead>' +
       '<tbody>' + (body || '<tr><td colspan="12"><div class="empty">ไม่มีแคมเปญที่มีข้อมูลในช่วงนี้</div></td></tr>') + '</tbody>' +
       '<tfoot><tr><td></td><td class="gc-nm">รวม ' + rows.length + ' แคมเปญ</td>' + cells(T) + '</tr></tfoot></table></div>' +
       '<div class="muted small" style="padding:10px 4px 0">ต้นทุน/Conv. เขียว = ถูกกว่าค่าเฉลี่ยบัญชี (' + (AVG == null ? '–' : bt(AVG)) + ') · งบ/วันรวม = เฉพาะแคมเปญที่เปิดอยู่ · ยอดรับซื้อแยกรายแคมเปญไม่ได้ (ลูกค้าทักผ่าน LINE) ดูยอดรวมที่หน้าภาพรวม Google Ads</div></div>';
     $('#page').innerHTML = html;
-    S.drawCharts = null;
+    S.drawCharts = SC.draw; SC.bind(pageGcamp); SC.draw();
     gBindFilters(gf, pageGcamp);
     $$('[data-gk]').forEach(function (h) { h.onclick = function () { if (gc.k === h.dataset.gk) gc.dir *= -1; else { gc.k = h.dataset.gk; gc.dir = -1; } pageGcamp(); }; });
     $$('[data-gx]').forEach(function (bn) { bn.onclick = function () { gc.open[bn.dataset.gx] = !gc.open[bn.dataset.gx]; pageGcamp(); }; });
     $$('[data-gf]').forEach(function (bn) { bn.onclick = function () { gc.flt = bn.dataset.gf; pageGcamp(); }; });
+    $$('[data-gs]').forEach(function (bn) { bn.onclick = function () { var n = rows[+bn.dataset.gs].n; gc.sel = gsel === n ? null : n; pageGcamp(); }; });
+    $$('[data-gsx]').forEach(function (bn) { bn.onclick = function () { gc.sel = null; pageGcamp(); }; });
   }
 
   // ============================================================
