@@ -4204,12 +4204,15 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     return list.filter(function (a) { return !camp || a.campaign === camp; })[0] || list[0] || null;
   }
   function adCampList() {
-    var td = today(), byCamp = {};
+    var td = today(), byCamp = {}, d3 = C.addDays(td, -3), recent = {};
     S.data.ads.forEach(function (a) { if (a.campaign) (byCamp[a.campaign] = byCamp[a.campaign] || []).push(a); });
+    // v82 — แคมเปญที่เพิ่งปิดใน 3 วันล่าสุด (มีค่า Ads หรือมีแชท) ยังแสดงในรายการหลัก เผื่อบันทึกแชทย้อนหลัง
+    C.spendDaily(S.data).forEach(function (x) { if (x.amount > 0 && x.date >= d3 && x.campaign) recent[x.campaign] = 1; });
+    S.data.chats.forEach(function (c) { if (c.campaign && c.date >= d3) recent[c.campaign] = 1; });
     return Object.keys(byCamp).map(function (c) {
       var running = C.campState(S.data, c, td).state === 'running' || byCamp[c].some(function (a) { return isTrue(a.active); });
-      return { name: c, ads: byCamp[c], running: running, start: C.firstStart(S.data, c) || '' };
-    }).sort(function (a, b) { return (b.running - a.running) || (a.start < b.start ? 1 : -1); });
+      return { name: c, ads: byCamp[c], running: running, recent: !running && !!recent[c], start: C.firstStart(S.data, c) || '' };
+    }).sort(function (a, b) { return (b.running - a.running) || (b.recent - a.recent) || (a.start < b.start ? 1 : -1); });
   }
   function adPickerHtml(prefix, c) {
     var ad = c.ad ? findAd(c.ad, c.campaign) : null;
@@ -4220,9 +4223,9 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   function renderAdPicker(el, prefix, onPick) {
     var box = $('#' + prefix + 'AdP', el), cur = $('#' + prefix + 'AdId', el).value, camp = box.dataset.camp;
     var camps = adCampList(), showOld = box.dataset.old === '1' || camps.some(function (x) { return x.name === camp && !x.running; });
-    var shown = camps.filter(function (x) { return x.running || showOld; });
+    var shown = camps.filter(function (x) { return x.running || x.recent || showOld; });
     var html = '<div class="adp-step">1. แคมเปญ</div><div class="adp-camps">' + shown.map(function (x) {
-      return '<button type="button" class="adp-c' + (x.name === camp ? ' on' : '') + (x.running ? '' : ' off') + '" data-c="' + esc(x.name) + '">' + (x.running ? '<i class="sdot on"></i>' : '') + esc(x.name) + '</button>';
+      return '<button type="button" class="adp-c' + (x.name === camp ? ' on' : '') + (x.running || x.recent ? '' : ' off') + '" data-c="' + esc(x.name) + '">' + (x.running ? '<i class="sdot on"></i>' : '') + esc(x.name) + (x.recent ? ' <small class="muted">· เพิ่งปิด</small>' : '') + '</button>';
     }).join('') + (camps.length > shown.length ? '<button type="button" class="linkish adp-more">+ แคมเปญที่หยุดแล้ว (' + (camps.length - shown.length) + ')</button>' : '') + '</div>';
     var sel = camps.filter(function (x) { return x.name === camp; })[0];
     if (sel) {
