@@ -666,6 +666,13 @@ table.runs tr.gap td { color: var(--text-3); font-size: 14px; padding: 6px 12px;
 .adp-a small { font-size: 12px; opacity: .75; }
 .adp-c.off, .adp-a.off { opacity: .6; }
 .adp-c .sdot { width: 8px; height: 8px; }
+.adp-gl { display: flex; flex-direction: column; gap: 6px; }
+.adp-g { display: grid; grid-template-columns: minmax(150px, 34%) 1fr; gap: 10px; align-items: start; padding: 8px 10px; border-radius: 10px; background: var(--card); border: 1px solid var(--line); }
+.adp-g.off { opacity: .65; }
+.adp-gh { font-size: 13.5px; font-weight: 600; line-height: 1.35; padding-top: 6px; min-width: 0; overflow-wrap: anywhere; }
+.adp-g .adp-ads { gap: 6px; } .adp-g .adp-a { font-size: 13.5px; padding: 6px 12px; }
+.adp-moread { margin-top: 6px; font-size: 13px; }
+@media (max-width: 640px) { .adp-g { grid-template-columns: 1fr; gap: 6px; } .adp-gh { padding-top: 0; } }
 .ib-q { max-width: 240px; }
 .ib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
 .ib-card { display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 12px; cursor: pointer; }
@@ -4219,12 +4226,24 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     }).join('') + (camps.length > shown.length ? '<button type="button" class="linkish adp-more">+ แคมเปญที่หยุดแล้ว (' + (camps.length - shown.length) + ')</button>' : '') + '</div>';
     var sel = camps.filter(function (x) { return x.name === camp; })[0];
     if (sel) {
-      var ads = sel.ads.slice().sort(function (a, b) { return isTrue(b.active) - isTrue(a.active); });
-      // แสดงตามชื่อ Ad set (ตรงกับที่เห็นใน Facebook) · ชื่อโฆษณาเป็นตัวเล็กด้านล่าง
-      html += '<div class="adp-step">2. Ad set / โฆษณา</div><div class="adp-ads">' + ads.map(function (a) {
-        var main = a.adset || a.ad_name, sub = a.adset && a.ad_name && a.ad_name !== a.adset ? 'โฆษณา: ' + a.ad_name : '';
-        return '<button type="button" class="adp-a' + (a.id === cur ? ' on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-id="' + esc(a.id) + '" title="' + esc(isTrue(a.active) ? 'ใช้งานอยู่' : 'ปิดแล้ว') + '">' + esc(main) + (sub ? '<small>' + esc(sub) + '</small>' : '') + '</button>';
-      }).join('') + '</div>';
+      // v82 — จัดกลุ่มตาม Ad set · ซ่อนโฆษณาที่ปิด/ถูกลบไว้ใต้ปุ่ม · ชื่อซ้ำ (Ad set + โฆษณาเดียวกัน) แสดงครั้งเดียว
+      var seen = {}, uniq = [];
+      sel.ads.slice().sort(function (a, b) { return (a.id === cur ? -1 : b.id === cur ? 1 : 0) || (isTrue(b.active) - isTrue(a.active)); }).forEach(function (a) {
+        var k = (a.adset || '') + '|' + (a.ad_name || ''); if (seen[k]) return; seen[k] = 1; uniq.push(a); });
+      var curAd = uniq.filter(function (a) { return a.id === cur; })[0], showOff = box.dataset.oldad === '1' || (curAd && !isTrue(curAd.active));
+      var nOff = uniq.filter(function (a) { return !isTrue(a.active); }).length;
+      var vis = uniq.filter(function (a) { return isTrue(a.active) || showOff; });
+      if (!uniq.some(function (a) { return isTrue(a.active); }) && !showOff) { vis = uniq; nOff = 0; } // แคมเปญที่หยุดแล้ว → แสดงทั้งหมด
+      var grp = {}, order = [];
+      vis.forEach(function (a) { var g = a.adset || '(ไม่ระบุ Ad set)'; if (!grp[g]) { grp[g] = []; order.push(g); } grp[g].push(a); });
+      order.sort(function (x, y) { var ax = grp[x].some(function (a) { return isTrue(a.active); }), ay = grp[y].some(function (a) { return isTrue(a.active); }); return (ay - ax) || x.localeCompare(y, 'th'); });
+      html += '<div class="adp-step">2. Ad set / โฆษณา</div><div class="adp-gl">' + order.map(function (g) {
+        var on = grp[g].some(function (a) { return isTrue(a.active); });
+        return '<div class="adp-g' + (on ? '' : ' off') + '"><div class="adp-gh">' + esc(g) + (on ? '' : ' <span class="muted small">· ปิดแล้ว</span>') + '</div><div class="adp-ads">' + grp[g].map(function (a) {
+          var nm = a.ad_name && a.ad_name !== a.adset ? a.ad_name : 'โฆษณา';
+          return '<button type="button" class="adp-a' + (a.id === cur ? ' on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-id="' + esc(a.id) + '" title="' + esc((a.adset ? a.adset + ' · ' : '') + (isTrue(a.active) ? 'ใช้งานอยู่' : 'ปิดแล้ว')) + '">' + esc(nm) + '</button>';
+        }).join('') + '</div></div>';
+      }).join('') + '</div>' + (nOff && !showOff ? '<button type="button" class="linkish adp-moread">+ โฆษณาที่ปิด/ลบแล้ว (' + nOff + ')</button>' : '');
     } else html += '<div class="muted small" style="margin-top:6px">กดเลือกแคมเปญก่อน แล้วจะขึ้นโฆษณาในแคมเปญนั้น</div>';
     box.innerHTML = html;
     $$('.adp-c', box).forEach(function (b) { b.onclick = function () { box.dataset.camp = b.dataset.c; var one = (camps.filter(function (x) { return x.name === b.dataset.c; })[0] || { ads: [] }).ads;
@@ -4233,6 +4252,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       if (one.length === 1) { $('#' + prefix + 'AdId', el).value = one[0].id; $('#' + prefix + 'Ad', el).value = one[0].ad_name; onPick(); }
       renderAdPicker(el, prefix, onPick); }; });
     $$('.adp-a', box).forEach(function (b) { b.onclick = function () { var a = S.data.ads.filter(function (x) { return x.id === b.dataset.id; })[0]; $('#' + prefix + 'AdId', el).value = a.id; $('#' + prefix + 'Ad', el).value = a.ad_name; onPick(); renderAdPicker(el, prefix, onPick); }; });
+    if ($('.adp-moread', box)) $('.adp-moread', box).onclick = function () { box.dataset.oldad = '1'; renderAdPicker(el, prefix, onPick); };
     if ($('.adp-more', box)) $('.adp-more', box).onclick = function () { box.dataset.old = '1'; renderAdPicker(el, prefix, onPick); };
   }
   function adOf(el, prefix) {
@@ -6846,6 +6866,9 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       }).sort(function (x, y) { return y.sp - x.sp; });
       return r;
     }).filter(function (r) { return r.sp > 0 || r.ld > 0 || r.im > 0; });
+    // แชทที่ไม่ได้เลือกแคมเปญ — แสดงเป็นแถวแยก ให้ยอดรวมตรงกับหน้าภาพรวม
+    var noCamp = S.data.chats.filter(function (c) { return !c.campaign && c.date >= a && c.date <= b; });
+    if (noCamp.length) { var nst = peopleStats(noCamp); if (nst.ld || nst.cl) rows.push({ n: '(ไม่ระบุแคมเปญ)', none: true, sp: 0, ch: 0, im: 0, rc: 0, lk: 0, ld: nst.ld, cl: nst.cl, am: nst.am, on: false, sets: [] }); }
     var shown = rows.filter(function (r) { return fc.flt === 'all' || (fc.flt === 'on' ? r.on : !r.on); });
     var bt = function (v) { return '฿' + F.int(Math.round(v)); };
     var COLS = [
@@ -6870,6 +6893,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     if (fsel && !rows.some(function (r) { return r.n === fsel.c; })) fsel = fc.sel = null;
     var body = shown.map(function (r, ri) {
       var o = fc.open[r.n] || (fsel && fsel.c === r.n && fsel.s != null);
+      if (r.none) return '<tr><td class="gc-st"><span class="gc-dot"></span></td><td class="gc-nm"><span class="gc-ex" style="display:inline-block"></span><span class="muted">' + esc(r.n) + '</span><small>แชทที่บันทึกโดยไม่ได้เลือกแคมเปญ · แก้ได้ที่หน้าบันทึกแชท</small></td>' + cells(r) + '</tr>';
       var h = '<tr class="' + (fsel && fsel.c === r.n && fsel.s == null ? 'gc-on' : '') + '"><td class="gc-st"><span class="gc-dot' + (r.on ? ' on' : '') + '"></span></td><td class="gc-nm"><button class="gc-ex" data-fx="' + esc(r.n) + '">' + (o ? '▾' : '▸') + '</button><button class="gc-n gc-pick" data-fs="' + ri + '" title="ดู Ad set และกราฟของแคมเปญนี้">' + esc(r.n) + '</button><small>' + (r.on ? 'มีค่าใช้จ่าย 2 วันล่าสุด' : 'ไม่มีค่าใช้จ่าย 2 วันล่าสุด') + ' · ' + r.sets.length + ' Ad set</small></td>' + cells(r) + '</tr>';
       if (o) h += r.sets.map(function (x, si) { return '<tr class="gc-sub' + (fsel && fsel.c === r.n && fsel.s === x.k ? ' gc-on' : '') + '"><td></td><td class="gc-nm"><button class="gc-pick" data-fss="' + ri + ':' + si + '" title="ดูกราฟเฉพาะ Ad set นี้">' + esc(x.n) + '</button></td>' + cells(x) + '</tr>'; }).join('');
       return h;
