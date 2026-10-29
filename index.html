@@ -1935,6 +1935,27 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 @media (max-width: 1100px) { .cg2 { grid-template-columns: 1fr; } .cq { position: static; max-height: 360px; } }
 @media (max-width: 640px) { .cf-card { padding: 16px !important; } .cf-row { grid-template-columns: minmax(0, 1fr); gap: 6px; } .cf-row > label { padding-top: 0; } .cf-sts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cf-close, .cf-more { grid-template-columns: 1fr; } }
 
+/* v82.3 — ตัวเลือกโฆษณาแบบ B */
+.ap2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 10px; }
+.ap2-s { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; column-gap: 8px; align-items: center; text-align: left; border: 1px solid var(--line-strong); border-radius: 12px; padding: 7px 12px; background: var(--card); color: var(--text); font: inherit; cursor: pointer; min-width: 0; }
+.ap2-s small { grid-column: 1; font-size: 11px; color: var(--text-3); } .ap2-s b { grid-column: 1; font-weight: 500; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ap2-s i { grid-column: 2; grid-row: 1 / span 2; font-style: normal; color: var(--text-3); font-size: 12px; }
+.ap2-s:hover:not(:disabled) { border-color: var(--primary); } .ap2-s.open { border-color: var(--primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 25%, transparent); }
+.ap2-s.need:not(.open) { border-color: #e0a100; border-style: dashed; } .ap2-s.need b { color: var(--text-3); } .ap2-s:disabled { opacity: .55; cursor: default; }
+.ap2-dd { margin-top: 6px; width: calc(50% - 5px); border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: 0 10px 28px rgba(15,20,40,.12); overflow: hidden; max-height: 360px; overflow-y: auto; }
+.ap2-dd.r { margin-left: calc(50% + 5px); }
+.ap2-h { font-size: 11.5px; color: var(--text-3); padding: 9px 12px 3px; font-weight: 500; }
+.ap2-o { display: flex; justify-content: space-between; align-items: center; gap: 10px; width: 100%; border: 0; background: none; font: inherit; color: var(--text); font-size: 13.5px; padding: 8px 12px; text-align: left; cursor: pointer; }
+.ap2-o:hover { background: var(--bg-soft); } .ap2-o.on { background: var(--primary-soft); font-weight: 600; } .ap2-o.off:not(.on) { color: var(--text-3); }
+.ap2-o span { min-width: 0; overflow-wrap: anywhere; line-height: 1.35; } .ap2-o em { display: block; font-style: normal; font-size: 11.5px; color: var(--text-3); font-weight: 400; }
+.ap2-o small { flex: none; font-size: 11.5px; color: var(--text-3); font-weight: 400; white-space: nowrap; }
+.ap2-e { padding: 10px 12px; font-size: 12.5px; color: var(--text-3); }
+.ap2-more { display: block; width: 100%; border: 0; border-top: 1px solid var(--line); background: none; font: inherit; font-size: 12.5px; color: var(--text-2); padding: 9px 12px; text-align: left; cursor: pointer; }
+.ap2-ads { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+.ap2-ads button { border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-size: 12.5px; padding: 4px 11px; border-radius: 999px; cursor: pointer; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ap2-ads button.on { border-color: var(--primary); background: var(--primary-soft); font-weight: 600; } .ap2-ads button.off:not(.on) { color: var(--text-3); }
+@media (max-width: 640px) { .ap2 { grid-template-columns: minmax(0, 1fr); } .ap2-dd, .ap2-dd.r { width: 100%; margin-left: 0; } }
+
 /* v82 — ภาพรวมแบบ A */
 .ov-tb { align-items: center; }
 .ov-dd { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 4px 6px 4px 12px; max-width: 100%; }
@@ -4537,82 +4558,94 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     if (a.fb_status === 'DELETED') return '<span class="cf-tag del">ลบใน FB แล้ว</span>';
     return isTrue(a.active) ? '' : '<span class="cf-tag">ปิดอยู่</span>';
   }
-  // ตัวเลือกโฆษณา v82.2 — ช่องเดียว · เลือกแคมเปญเป็นแท็บ แล้วเห็น "ทุก Ad set" ของแคมเปญนั้น (ปิดอยู่ก็แสดง แค่จางลง) · ซ่อนเฉพาะที่ลบใน Facebook แล้ว
+  // ตัวเลือกโฆษณา v82.3 (แบบ B) — 2 ช่อง: แคมเปญ ▾ → Ad set ▾
+  // แสดงก่อนเฉพาะที่ "ยิงอยู่ช่วงวันที่ลูกค้าทัก" (± 2 วัน จากข้อมูล Facebook) · ที่เหลือจางอยู่ด้านล่าง · ที่ลบใน Facebook ซ่อนไว้
   function adDeleted(a) { return a.fb_status === 'DELETED' || a.fb_status === 'ARCHIVED'; }
+  function adActivity(d) {
+    var a = C.addDays(d, -2), b = C.addDays(d, 2), camp = {}, set = {}, ad = {}, last = {};
+    function add(o, k, sp, ch) { var x = o[k] || (o[k] = { sp: 0, ch: 0 }); x.sp += sp; x.ch += ch; }
+    (S.data.fbads || []).forEach(function (r) {
+      var sp = Number(r.spend) || 0, ch = Number(r.chats) || 0, ks = r.campaign + '|' + (r.adset || '');
+      if (sp > 0 || ch > 0) { if (!last[ks] || r.date > last[ks]) last[ks] = r.date; }
+      if (r.date < a || r.date > b || !(sp > 0 || ch > 0)) return;
+      add(camp, r.campaign, sp, ch); add(set, ks, sp, ch); add(ad, ks + '|' + (r.ad || ''), sp, ch);
+    });
+    C.spendDaily(S.data).forEach(function (x) { if (x.date >= a && x.date <= b && x.amount > 0 && x.campaign && !camp[x.campaign]) camp[x.campaign] = { sp: x.amount, ch: 0 }; });
+    return { camp: camp, set: set, ad: ad, last: last };
+  }
   function renderAdPicker(el, prefix, onPick) {
-    var box = $('#' + prefix + 'AdP', el), cur = $('#' + prefix + 'AdId', el).value;
+    var box = $('#' + prefix + 'AdP', el), cur = $('#' + prefix + 'AdId', el).value, dIn = $('#' + prefix + 'Date', el);
+    var d = (dIn && dIn.value) || today(), act = adActivity(d), all = adCampList();
     var sel = S.data.ads.filter(function (a) { return a.id === cur; })[0] || null;
-    var open = box.dataset.open === '1', rec = recentAds();
-    var html = '<button type="button" class="cf-combo' + (sel ? '' : ' empty') + '" data-cmb>' + (sel
-      ? '<span class="cf-cv"><b>' + esc(sel.adset || sel.ad_name) + '</b>' + adState(sel) + '<small>' + esc(sel.campaign) + (sel.adset && sel.ad_name !== sel.adset ? ' · โฆษณา: ' + esc(sel.ad_name) : '') + '</small></span>'
-      : '<span class="cf-cv"><b class="muted">เลือก Ad set / โฆษณา…</b></span>') + '<span class="cf-chg">' + (open ? 'ปิด ▴' : sel ? 'เปลี่ยน ▾' : 'เลือก ▾') + '</span></button>';
-    if (rec.length && !open) html += '<div class="cf-rec"><span class="muted small">ใช้ล่าสุด:</span>' + rec.map(function (a) {
-      return '<button type="button" data-rid="' + esc(a.id) + '" class="' + (sel && sel.id === a.id ? 'on' : '') + '" title="' + esc(a.campaign + ' › ' + (a.adset || '') + ' · ' + a.ad_name) + '">' + esc(adLabel(a)) + '</button>'; }).join('') + '</div>';
-    if (open) html += '<div class="cf-pop"><input class="cf-q" id="' + prefix + 'AdQ" placeholder="🔍 ค้นหา Ad set / โฆษณา / แคมเปญ" autocomplete="off" value="' + esc(box.dataset.q || '') + '"><div class="cf-ct" id="' + prefix + 'AdT"></div><div class="cf-list" id="' + prefix + 'AdL"></div></div>';
+    var camp = box.dataset.camp || (sel ? sel.campaign : '');
+    var hot = all.filter(function (c) { return act.camp[c.name]; }).sort(function (x, y) { return (act.camp[y.name].ch - act.camp[x.name].ch) || (act.camp[y.name].sp - act.camp[x.name].sp); });
+    if (!camp && hot.length === 1) camp = box.dataset.camp = hot[0].name; // วันนั้นยิงอยู่แคมเปญเดียว → เลือกให้เลย
+    var cp = all.filter(function (c) { return c.name === camp; })[0] || null, open = box.dataset.open || '';
+    // Ad set ของแคมเปญที่เลือก (รวมโฆษณาตามชื่อ Ad set · ชื่อซ้ำแสดงครั้งเดียว)
+    var sets = [], byName = {};
+    if (cp) cp.ads.slice().sort(function (a, b) { return (adDeleted(a) - adDeleted(b)) || (isTrue(b.active) - isTrue(a.active)); }).forEach(function (a) {
+      var n = a.adset || ''; var g = byName[n];
+      if (!g) { g = byName[n] = { name: n, ads: [], seen: {}, k: cp.name + '|' + n }; sets.push(g); }
+      if (g.seen[a.ad_name]) return; g.seen[a.ad_name] = 1; g.ads.push(a);
+    });
+    sets.forEach(function (g) { g.del = g.ads.every(adDeleted); g.act = act.set[g.k]; g.last = act.last[g.k] || ''; g.on = g.ads.some(function (a) { return isTrue(a.active); }); });
+    var hotSets = sets.filter(function (g) { return g.act; }).sort(function (x, y) { return (y.act.ch - x.act.ch) || (y.act.sp - x.act.sp); });
+    var coldSets = sets.filter(function (g) { return !g.act && !g.del; }).sort(function (x, y) { return (y.on - x.on) || (x.last < y.last ? 1 : x.last > y.last ? -1 : 0); });
+    var delSets = sets.filter(function (g) { return !g.act && g.del; });
+    var selSet = sel && cp && sel.campaign === cp.name ? byName[sel.adset || ''] : null;
+    var dTxt = F.thDate(d, true);
+    function setLabel(g) { return g ? esc(g.name || '(ไม่ระบุ Ad set)') : ''; }
+    var html = '<div class="ap2">' +
+      '<button type="button" class="ap2-s' + (open === 'c' ? ' open' : '') + (cp ? '' : ' need') + '" data-ap="c"><small>แคมเปญ</small><b>' + (cp ? esc(cp.name) : 'เลือกแคมเปญ…') + '</b><i>▾</i></button>' +
+      '<button type="button" class="ap2-s' + (open === 's' ? ' open' : '') + (cp && !selSet ? ' need' : '') + '"' + (cp ? '' : ' disabled') + ' data-ap="s"><small>Ad set</small><b>' + (selSet ? setLabel(selSet) + adState(sel) : cp ? 'เลือก Ad set…' : '–') + '</b><i>▾</i></button></div>';
+    if (open === 'c') {
+      var rest = all.filter(function (c) { return !act.camp[c.name]; }), showAll = box.dataset.allc === '1';
+      html += '<div class="ap2-dd"><div class="ap2-h">ยิงอยู่ช่วง ' + dTxt + '</div>' + (hot.length ? hot.map(function (c) {
+          return '<button type="button" class="ap2-o' + (c.name === camp ? ' on' : '') + '" data-c="' + esc(c.name) + '"><span>' + esc(c.name) + '</span><small>' + (act.camp[c.name].ch ? F.int(Math.round(act.camp[c.name].ch)) + ' แชท' : F.baht(act.camp[c.name].sp)) + '</small></button>'; }).join('') : '<div class="ap2-e">ไม่มีแคมเปญที่ยิงช่วงวันนี้</div>') +
+        (showAll ? '<div class="ap2-h">ไม่ได้ยิงช่วงนั้น</div>' + rest.map(function (c) { return '<button type="button" class="ap2-o off' + (c.name === camp ? ' on' : '') + '" data-c="' + esc(c.name) + '"><span>' + esc(c.name) + '</span></button>'; }).join('')
+          : rest.length ? '<button type="button" class="ap2-more" data-allc>+ แคมเปญอื่น (' + rest.length + ')</button>' : '') + '</div>';
+    }
+    if (open === 's' && cp) {
+      var showDel = box.dataset.del === '1';
+      function opt2(g, cls, right) {
+        var one = g.ads.length === 1;
+        return '<button type="button" class="ap2-o ' + cls + (selSet === g ? ' on' : '') + '" data-s="' + esc(g.name) + '"><span>' + setLabel(g) + (one && g.ads[0].ad_name !== g.name ? '<em>' + esc(g.ads[0].ad_name) + '</em>' : !one ? '<em>' + g.ads.length + ' โฆษณา</em>' : '') + '</span><small>' + right + '</small></button>';
+      }
+      html += '<div class="ap2-dd r">' +
+        (hotSets.length ? '<div class="ap2-h">ยิงอยู่ช่วง ' + dTxt + '</div>' + hotSets.map(function (g) { return opt2(g, '', g.act.ch ? F.int(Math.round(g.act.ch)) + ' แชท' : F.baht(g.act.sp)); }).join('') : '<div class="ap2-e">ไม่มี Ad set ที่ยิงช่วงวันนี้ในแคมเปญนี้</div>') +
+        (coldSets.length ? '<div class="ap2-h">ไม่ได้ยิงช่วงนั้น</div>' + coldSets.map(function (g) { return opt2(g, 'off', g.last ? 'ยิงล่าสุด ' + F.thDate(g.last, true) : (g.on ? 'เปิดอยู่' : 'ปิดอยู่')); }).join('') : '') +
+        (delSets.length ? (showDel ? '<div class="ap2-h">ลบใน Facebook แล้ว</div>' + delSets.map(function (g) { return opt2(g, 'off', 'ลบแล้ว'); }).join('') : '<button type="button" class="ap2-more" data-del>+ ที่ลบใน Facebook แล้ว (' + delSets.length + ')</button>') : '') + '</div>';
+    }
+    // Ad set ที่มีหลายโฆษณา → เลือกโฆษณาต่อ (เลือกตัวที่แชทเยอะสุดไว้ให้แล้ว)
+    if (selSet && selSet.ads.length > 1 && !open) html += '<div class="ap2-ads"><span class="muted small">โฆษณา:</span>' + selSet.ads.filter(function (a) { return !adDeleted(a) || a.id === cur; }).map(function (a) {
+      return '<button type="button" class="' + (a.id === cur ? 'on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-a="' + esc(a.id) + '">' + esc(a.ad_name) + '</button>'; }).join('') + '</div>';
     box.innerHTML = html;
     function pick(a) {
-      if (!a) return;
-      $('#' + prefix + 'AdId', el).value = a.id; $('#' + prefix + 'Ad', el).value = a.ad_name; box.dataset.camp = a.campaign || '';
-      box.dataset.open = ''; box.dataset.q = ''; box.dataset.pc = ''; onPick(); renderAdPicker(el, prefix, onPick);
+      $('#' + prefix + 'AdId', el).value = a ? a.id : ''; $('#' + prefix + 'Ad', el).value = a ? a.ad_name : '';
+      box.dataset.open = ''; onPick(); renderAdPicker(el, prefix, onPick);
     }
-    // รวมโฆษณาตาม Ad set (ชื่อซ้ำแสดงครั้งเดียว · ตัวที่เปิดอยู่มาก่อน)
-    function groups(cp, q, showDel) {
-      var seen = {}, g = {}, order = [], hid = 0;
-      cp.ads.slice().sort(function (a, b) { return (adDeleted(a) - adDeleted(b)) || (isTrue(b.active) - isTrue(a.active)); }).forEach(function (a) {
-        var k = (a.adset || '') + '|' + a.ad_name; if (seen[k]) return; seen[k] = 1;
-        if (adDeleted(a) && !showDel && !(sel && sel.id === a.id)) { hid++; return; }
-        if (q && (cp.name + ' ' + (a.adset || '') + ' ' + a.ad_name).toLowerCase().indexOf(q) < 0) return;
-        var n = a.adset || '(ไม่ระบุ Ad set)'; if (!g[n]) { g[n] = []; order.push(n); } g[n].push(a);
-      });
-      order.sort(function (x, y) { var ax = g[x].some(function (a) { return isTrue(a.active); }), ay = g[y].some(function (a) { return isTrue(a.active); }); return (ay - ax) || x.localeCompare(y, 'th', { numeric: true }); });
-      return { order: order, g: g, hid: hid };
+    function bestAd(g) {
+      var cand = g.ads.filter(function (a) { return !adDeleted(a); }); if (!cand.length) cand = g.ads;
+      return cand.slice().sort(function (x, y) { var ax = act.ad[g.k + '|' + x.ad_name], ay = act.ad[g.k + '|' + y.ad_name]; return ((ay ? ay.ch : -1) - (ax ? ax.ch : -1)) || (isTrue(y.active) - isTrue(x.active)); })[0];
     }
-    function rows(G) {
-      return G.order.map(function (n) {
-        var ads = G.g[n], on = ads.some(function (a) { return isTrue(a.active); }), del = ads.every(adDeleted);
-        var tag = del ? '<span class="cf-tag del">ลบแล้ว</span>' : on ? '' : '<span class="cf-tag">ปิดอยู่</span>';
-        if (ads.length === 1) { var a = ads[0];
-          return '<button type="button" class="cf-ar one' + (sel && sel.id === a.id ? ' on' : '') + (on ? '' : ' off') + '" data-aid="' + esc(a.id) + '"><span class="cf-an">' + esc(n) + tag + '</span>' + (a.ad_name !== a.adset ? '<small>' + esc(a.ad_name) + '</small>' : '') + '</button>'; }
-        return '<div class="cf-ar' + (on ? '' : ' off') + '"><span class="cf-an">' + esc(n) + tag + ' <small class="muted">· ' + ads.length + ' โฆษณา</small></span><div class="cf-ads">' + ads.map(function (a) {
-          return '<button type="button" class="' + (sel && sel.id === a.id ? 'on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-aid="' + esc(a.id) + '">' + esc(a.ad_name) + '</button>'; }).join('') + '</div></div>';
-      }).join('');
-    }
-    function draw() {
-      var q = (box.dataset.q || '').trim().toLowerCase(), showDel = box.dataset.del === '1', camps = adCampList();
-      var main = camps.filter(function (c) { return c.running || c.recent; }), rest = camps.filter(function (c) { return !(c.running || c.recent); });
-      var pc = box.dataset.pc || (sel ? sel.campaign : '') || (main[0] || camps[0] || {}).name || '';
-      if (pc && main.every(function (c) { return c.name !== pc; }) && box.dataset.all !== '1') box.dataset.all = '1';
-      var tabs = main.concat(box.dataset.all === '1' ? rest : []), T = $('#' + prefix + 'AdT', el), L = $('#' + prefix + 'AdL', el), first = null, hid = 0, out = '';
-      T.style.display = q ? 'none' : '';
-      T.innerHTML = tabs.map(function (c) { return '<button type="button" data-pc="' + esc(c.name) + '" class="' + (c.name === pc ? 'on' : '') + (c.running ? '' : ' off') + '" title="' + esc(c.name) + '">' + (c.running ? '<i class="sdot on"></i>' : '') + esc(c.name) + '</button>'; }).join('') +
-        (rest.length && box.dataset.all !== '1' ? '<button type="button" class="more" data-allc>+ แคมเปญที่หยุดแล้ว (' + rest.length + ')</button>' : '');
-      if (q) {
-        camps.forEach(function (c) { var G = groups(c, q, true); if (!G.order.length) return; if (!first) first = G.g[G.order[0]][0];
-          out += '<div class="cf-gh">' + (c.running ? '<i class="sdot on"></i>' : '<i class="sdot off"></i>') + esc(c.name) + '</div>' + rows(G); });
-      } else {
-        var cp = camps.filter(function (c) { return c.name === pc; })[0];
-        if (cp) { var G = groups(cp, '', showDel); hid = G.hid; out = rows(G); if (G.order.length) first = G.g[G.order[0]][0]; }
-      }
-      L.innerHTML = (out || '<div class="empty" style="padding:16px">' + (q ? 'ไม่พบ “' + esc(q) + '”' : 'แคมเปญนี้ยังไม่มีโฆษณา') + '</div>') +
-        (hid ? '<button type="button" class="cf-old" data-del>+ แสดง Ad set / โฆษณาที่ลบใน Facebook แล้ว (' + hid + ')</button>' : '');
-      $$('[data-aid]', L).forEach(function (b) { b.onclick = function () { pick(S.data.ads.filter(function (x) { return x.id === b.dataset.aid; })[0]); }; });
-      $$('[data-pc]', T).forEach(function (b) { b.onclick = function () { box.dataset.pc = b.dataset.pc; draw(); }; });
-      if ($('[data-allc]', T)) $('[data-allc]', T).onclick = function () { box.dataset.all = '1'; draw(); };
-      if ($('[data-del]', L)) $('[data-del]', L).onclick = function () { box.dataset.del = '1'; draw(); };
-      return first;
-    }
-    $('[data-cmb]', box).onclick = function () { box.dataset.open = open ? '' : '1'; renderAdPicker(el, prefix, onPick); if (!open) { var qi = $('#' + prefix + 'AdQ', el); if (qi) qi.focus(); } };
-    $$('[data-rid]', box).forEach(function (b) { b.onclick = function () { pick(S.data.ads.filter(function (x) { return x.id === b.dataset.rid; })[0]); }; });
-    if (open) {
-      var firstHit = draw(), qi = $('#' + prefix + 'AdQ', el);
-      qi.oninput = function () { box.dataset.q = this.value; firstHit = draw(); };
-      qi.onkeydown = function (e) {
-        if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); if (box.dataset.q && firstHit) pick(firstHit); }
-        else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); box.dataset.open = ''; renderAdPicker(el, prefix, onPick); }
-        else e.stopPropagation();
-      };
-    }
+    $$('[data-ap]', box).forEach(function (b) { b.onclick = function () { box.dataset.open = box.dataset.open === b.dataset.ap ? '' : b.dataset.ap; renderAdPicker(el, prefix, onPick); }; });
+    $$('[data-c]', box).forEach(function (b) { b.onclick = function () {
+      var changed = b.dataset.c !== camp; box.dataset.camp = b.dataset.c;
+      if (changed) { $('#' + prefix + 'AdId', el).value = ''; $('#' + prefix + 'Ad', el).value = ''; onPick(); }
+      box.dataset.open = changed ? 's' : ''; renderAdPicker(el, prefix, onPick); }; });
+    $$('[data-s]', box).forEach(function (b) { b.onclick = function () { pick(bestAd(byName[b.dataset.s])); }; });
+    $$('[data-a]', box).forEach(function (b) { b.onclick = function () { pick(S.data.ads.filter(function (x) { return x.id === b.dataset.a; })[0]); }; });
+    if ($('[data-allc]', box)) $('[data-allc]', box).onclick = function () { box.dataset.allc = '1'; renderAdPicker(el, prefix, onPick); };
+    if ($('[data-del]', box)) $('[data-del]', box).onclick = function () { box.dataset.del = '1'; renderAdPicker(el, prefix, onPick); };
+    // เปลี่ยนวันที่ทัก → รายการ "ยิงอยู่" เปลี่ยนตาม
+    if (dIn && !dIn._ap) { dIn._ap = 1; dIn.addEventListener('change', function () { renderAdPicker(el, prefix, onPick); }); }
+    if (!box._ap) { box._ap = 1; box.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.dataset.open) { e.stopPropagation(); box.dataset.open = ''; renderAdPicker(el, prefix, onPick); } }); }
   }
+  // กดนอกช่อง → ปิดรายการที่เปิดค้าง
+  document.addEventListener('mousedown', function (e) {
+    if (e.target.closest && e.target.closest('.adp')) return;
+    $$('.adp').forEach(function (b) { if (b.dataset.open) { b.dataset.open = ''; var s = b.querySelector('.ap2-dd'); if (s) s.remove(); $$('.ap2-s.open', b).forEach(function (x) { x.classList.remove('open'); }); } });
+  });
 
   var newChatState = { status: '' };
   function pageChats() {
