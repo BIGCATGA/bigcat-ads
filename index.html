@@ -3935,13 +3935,13 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
         sub: 'ค่า Ads ' + (r.spend ? F.baht(r.spend) : '–') + ' · Lead ' + r.leads + ' · ปิด ' + r.closed + (r.cpc != null ? ' · ' + F.baht(r.cpc) + '/เคส' : ''),
         color: r.cpc != null && r.cpc > m.target ? 'var(--bad)' : 'var(--primary)' };
     }).sort(function (a, b) { return (a.value || 1e9) - (b.value || 1e9); });
-    html += '<div class="grid row-2 mt">' +
-      section('ค่า Ads เทียบยอดรับซื้อ — รายสัปดาห์', 'แท่งยอดรับซื้อควรสูงกว่าค่า Ads มาก ๆ · ถ้าค่า Ads สูงแต่ยอดรับซื้อไม่ขึ้น = ยิงไม่คุ้ม',
-        m.spend || m.amount ? legend([['ค่า Ads', 'var(--budget)'], ['ยอดรับซื้อ', 'var(--st-x)']]) + '<div class="chart-box" id="chMoney"></div>' : '<div class="empty">ยังไม่มีค่า Ads หรือยอดรับซื้อในช่วงนี้</div>') +
-      section('แคมเปญไหนคุ้ม (ต้นทุนต่อ Lead)', 'แท่งสั้น = ได้ Lead ถูก · สีส้ม = ต้นทุนต่อเคสเกินเป้า ' + F.baht(m.target),
-        campItems.length ? Charts.hbars(campItems) : '<div class="empty">ยังไม่มีข้อมูล</div>') + '</div>';
-    if (m.spend || m.amount) charts.push(['chMoney', { labels: gw.labels, tips: gw.tips, series: [{ name: 'ค่า Ads', color: 'var(--budget)', values: gw.map('spend') }, { name: 'ยอดรับซื้อ', color: 'var(--st-x)', values: gw.map('amount') }],
-      height: 300, left: 78, showValues: false, fmt: function (v) { return v >= 1000 ? (v / 1000).toFixed(v >= 10000 ? 0 : 1) + 'k' : String(Math.round(v)); }, aria: 'ค่า Ads เทียบยอดรับซื้อ' }]);
+    // v82 — ตัด "ค่า Ads เทียบยอดรับซื้อ" + "แคมเปญไหนคุ้ม" ออก
+
+
+
+
+
+
 
     // ---------- 5) ระยะเวลา ทัก → ปิด ----------
     var L = m.closeList, st = m.closeStats;
@@ -3952,12 +3952,12 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
           '<td class="r num"><b>' + (p.badDate ? '<span class="dup">วันที่ผิด</span>' : p.closeDays == null ? '–' : p.closeDays === 0 ? 'วันเดียว' : p.closeDays + ' วัน') + '</b></td>' +
           '<td class="r num">' + F.baht(Number(p.amount) || 0) + '</td><td>' + esc(p.closed_by || '–') + '</td></tr>';
       }).join('') + '</tbody></table></div>' : '';
-    html += '<div class="grid row-2 mt">' +
-      section('ใช้เวลากี่วันกว่าจะปิดได้', 'นับจากวันที่ลูกค้าทักครั้งแรก ถึงวันที่ปิดได้' + (st.known ? ' · เฉลี่ย ' + st.avg.toFixed(1) + ' วัน · ค่ากลาง ' + st.median + ' วัน · เร็วสุด ' + st.min + ' · ช้าสุด ' + st.max + ' วัน' : ''),
-        st.known ? '<div class="chart-box" id="chDur"></div>' + (st.known < L.length ? '<div class="nudge" style="margin-top:12px">มี ' + (L.length - st.known) + ' เคสที่ยังไม่มีวันปิด/วันที่ไม่ถูก — กดชื่อในตารางขวาเพื่อแก้</div>' : '')
-          : '<div class="empty">' + (L.length ? 'เคสที่ปิดได้ยังไม่มีวันปิด — กดชื่อในตารางเพื่อใส่' : 'ยังไม่มีเคสที่ปิดได้ในช่วงนี้') + '</div>') +
-      section('เคสที่ปิดได้ (' + L.length + ')', 'กดแถวเพื่อแก้วันที่ปิด/ยอด', closeTable || '<div class="empty">ยังไม่มี</div>') + '</div>';
-    if (st.known) charts.push(['chDur', { labels: st.buckets.map(function (b) { return b.label; }), series: [{ name: 'จำนวนเคส', color: 'var(--primary)', values: st.buckets.map(function (b) { return b.n; }) }], height: 280, showValues: true, aria: 'ระยะเวลาปิด' }]);
+    html += section('เคสที่ปิดได้ (' + L.length + ')', 'กดแถวเพื่อแก้วันที่ปิด/ยอด', closeTable || '<div class="empty">ยังไม่มี</div>', 'full');
+
+
+
+
+
 
     // ---------- 5.5) สินค้าที่รับซื้อได้ ----------
     var pc = {};
@@ -3967,7 +3967,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     });
     var pItems = Object.keys(pc).map(function (k) { return { label: k, value: pc[k].amt, display: F.baht(pc[k].amt), sub: pc[k].n + ' เคส · เฉลี่ย ' + F.baht(pc[k].amt / pc[k].n) + '/เคส' }; })
       .sort(function (x, y) { return y.value - x.value; });
-    if (pItems.length) html += section('รับซื้อได้เป็นสินค้าอะไร', 'ยอดรับซื้อรวมของเคสที่ปิดได้ แยกตามประเภทสินค้า · ใช้ดูว่าควรยิงโฆษณาสินค้าไหนเพิ่ม', Charts.hbars(pItems), 'full');
+    // v82 — ตัด "รับซื้อได้เป็นสินค้าอะไร" ออก
 
     // ---------- 7) โฆษณาไหนได้คนคุณภาพ ----------
     var adItems = m.adRows.filter(function (r) { return r.chats >= 5; }).sort(function (a, b) { return (b.qualityPct || 0) - (a.qualityPct || 0); }).map(function (r) {
@@ -3975,8 +3975,8 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
         color: r.qualityPct >= 0.6 ? 'var(--st-x)' : r.qualityPct >= 0.35 ? 'var(--st-3)' : 'var(--bad)' };
     });
     var few = m.adRows.filter(function (r) { return r.chats < 5; }).length;
-    html += section('โฆษณาไหนดึงคนที่ส่งข้อมูลเครื่องมาจริง', '% = คนที่ส่งข้อมูลเครื่อง (ขั้น 2 ขึ้นไป ไม่นับของไม่ตรง) จากคนที่ทัก · เขียว ≥ 60% · เหลือง 35–60% · แดง < 35%' + (few ? ' · ไม่แสดง ' + few + ' โฆษณาที่มีแชทน้อยกว่า 5' : ''),
-      adItems.length ? Charts.hbars(adItems, { max: 100 }) : '<div class="empty">ยังไม่มีโฆษณาที่มีแชทถึง 5 คน</div>', 'full');
+    // v82 — ตัด "โฆษณาไหนดึงคนที่ส่งข้อมูลเครื่องมาจริง" ออก
+
 
     $('#page').innerHTML = html;
     S.drawCharts = function () { charts.forEach(function (c) { var el = document.getElementById(c[0]); if (el) { if (c.length === 3) Charts[c[1]](el, c[2]); else Charts.columns(el, c[1]); } }); };
@@ -6199,7 +6199,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var msg = { 1: ['คนเห็นแต่ไม่คลิก', 'ภาพ/ข้อความโฆษณายังไม่ดึงดูด → ลองเปลี่ยนครีเอทีฟ'], 2: ['คลิกแล้วไม่ทัก', 'เช็คข้อความต้อนรับ/ปุ่มคำถามในโฆษณา'], 3: ['ทักแล้วไม่ได้บันทึก', 'ตามให้แอดมินบันทึกให้ครบ ตัวเลขจะได้แม่น'], 4: ['ทักแล้วไม่ส่งข้อมูลเครื่อง', 'ดูสคริปต์ตอบแชทและความเร็วในการตอบ'], 5: ['ประเมินราคาแล้วไม่ขาย', 'โฆษณาทำงานปกติ ปัญหาอยู่ที่ราคาหรือการตามลูกค้า'] };
     var dg = worst ? '<div class="dg bad"><b>หลุดมากสุด: ' + msg[worst.i][0] + ' (' + F.pct(worst.r, 1) + ')</b><span>' + msg[worst.i][1] + '</span></div>' : '<div class="dg ok"><b>ทุกขั้นอยู่ในเกณฑ์ปกติ</b></div>';
     dg += '<div class="dg"><b>อ่านกรวยยังไง</b><span>ป้ายระหว่างขั้น = คนจากขั้นบนไปต่อขั้นล่างกี่ % · สีแดง = ต่ำกว่าเกณฑ์ · ▲▼ = เทียบช่วงก่อนหน้า</span></div>';
-    html += section('ลูกค้าหลุดตรงไหน — ตั้งแต่เห็นโฆษณาจนรับซื้อได้', 'สีฟ้า = Facebook · สีส้ม = แอดมินบันทึก', '<div class="fwrap"><div class="vfun">' + fh + '</div><div class="diag">' + dg + '</div></div>', 'full');
+    // v82 — ตัดกรวย "ลูกค้าหลุดตรงไหน" ออก
     // campaign/ad table — ในแคมเปญ: แยกตาม Ad set (ชื่อเดียวกับใน Facebook) ไม่ใช่ชื่อโฆษณา (โฆษณาที่ก๊อปมาชื่อซ้ำกันได้)
     function adsetItems(camp) {
       var seen = {}, live = {};
