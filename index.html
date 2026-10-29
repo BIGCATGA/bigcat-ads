@@ -1853,6 +1853,91 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .fc-m span { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--text-2); } .fc-m i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; } .fc-m.b i { background: #1a73e8; } .fc-m.r i { background: #d93025; }
 .fc-m b { display: block; font-size: 22px; margin-top: 2px; font-variant-numeric: tabular-nums; }
 
+/* v82 — หน้าบันทึกแชทแบบใหม่ */
+.cg2 { display: grid; grid-template-columns: 330px minmax(0, 1fr); gap: 18px; align-items: start; }
+.cq { padding: 0 !important; overflow: hidden; position: sticky; top: 12px; display: flex; flex-direction: column; max-height: calc(100vh - 40px); }
+.cq-h { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 16px 18px 10px; } .cq-h .card-title { font-size: 17px; margin: 0; }
+.cq-n { display: inline-block; min-width: 22px; text-align: center; font-size: 12px; font-weight: 600; background: #d93025; color: #fff; border-radius: 999px; padding: 1px 7px; margin-left: 4px; vertical-align: 2px; }
+.cq-q { margin: 0 14px 8px; width: calc(100% - 28px); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; font: inherit; font-size: 14px; background: var(--bg-soft); color: var(--text); }
+.cq-l { overflow-y: auto; padding: 0 8px 8px; flex: 1; min-height: 60px; }
+.cq-i { display: grid; grid-template-columns: 38px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 12px; cursor: pointer; position: relative; }
+.cq-i:hover { background: var(--bg-soft); } .cq-i.on { background: var(--primary-soft); box-shadow: inset 3px 0 0 var(--primary); }
+.cq-w { min-width: 0; } .cq-w b { display: block; font-weight: 500; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cq-w span { display: block; font-size: 12px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cq-t { font-size: 11px; color: var(--text-3); align-self: start; padding-top: 3px; }
+.cq-x { position: absolute; right: 8px; bottom: 8px; border: 0; background: var(--card); color: var(--text-3); border-radius: 50%; width: 22px; height: 22px; font-size: 11px; cursor: pointer; opacity: 0; box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.cq-i:hover .cq-x { opacity: 1; } @media (hover: none) { .cq-x { opacity: .8; } }
+.cq-more, .cq-new { display: block; width: 100%; border: 0; background: none; font: inherit; font-size: 13.5px; color: var(--text-2); padding: 12px; cursor: pointer; }
+.cq-new { border-top: 1px solid var(--line); } .cq-new:hover, .cq-more:hover { background: var(--bg-soft); }
+.cq-empty { text-align: center; padding: 28px 10px; font-size: 14px; color: var(--text-2); }
+.cf-card { padding: 20px 24px !important; min-width: 0; }
+.cf-who { display: grid; grid-template-columns: 46px minmax(0, 1fr); gap: 14px; align-items: start; padding-bottom: 14px; }
+.cf-av { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary-text, #8a6200); } .cf-av svg { width: 22px; height: 22px; }
+.cf-nm input { width: 100%; border: 0; border-bottom: 1px dashed var(--line-strong); background: transparent; font: inherit; font-size: 21px; font-weight: 600; color: var(--text); padding: 4px 0 6px; outline: none; border-radius: 0; }
+.cf-nm input:focus { border-bottom-color: var(--primary); }
+.cf-meta { font-size: 12.5px; color: var(--text-3); margin-top: 4px; min-height: 18px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cf-row { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); align-items: start; }
+.cf-row > label { font-size: 13.5px; color: var(--text-2); padding-top: 8px; font-weight: 500; } .cf-row > label small { display: block; font-size: 11.5px; color: var(--text-3); font-weight: 400; margin-top: 2px; }
+.cf-c { min-width: 0; }
+.cf-combo { width: 100%; display: flex; align-items: center; gap: 12px; border: 1px solid var(--line-strong); border-radius: 12px; padding: 9px 14px; background: var(--card); cursor: pointer; font: inherit; color: var(--text); text-align: left; }
+.cf-combo:hover { border-color: var(--primary); } .cf-combo.empty { border-style: dashed; border-color: #e0a100; }
+.cf-cv { flex: 1; min-width: 0; } .cf-cv small { display: block; font-size: 11.5px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cf-cv b { font-weight: 500; font-size: 14.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: inline-block; max-width: 100%; vertical-align: middle; }
+.cf-chg { font-size: 12.5px; color: #1a73e8; white-space: nowrap; }
+.cf-rec { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-top: 8px; }
+.cf-rec button { border: 1px solid var(--line); background: var(--bg-soft); color: var(--text); font: inherit; font-size: 12.5px; padding: 4px 11px; border-radius: 999px; cursor: pointer; max-width: 240px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cf-rec button.on { border-color: var(--primary); background: var(--primary-soft); }
+.cf-pop { margin-top: 8px; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 10px 28px rgba(15,20,40,.10); overflow: hidden; background: var(--card); }
+.cf-q { width: 100%; border: 0; border-bottom: 1px solid var(--line); padding: 11px 14px; font: inherit; font-size: 14px; outline: none; background: var(--card); color: var(--text); }
+.cf-list { max-height: 340px; overflow-y: auto; padding-bottom: 4px; }
+.cf-gh { display: flex; align-items: center; gap: 7px; padding: 10px 14px 4px; font-size: 12px; font-weight: 600; color: var(--text-3); } .cf-gh .sdot { width: 7px; height: 7px; }
+.cf-it { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; border: 0; background: none; font: inherit; color: var(--text); font-size: 14px; padding: 8px 14px 8px 28px; cursor: pointer; text-align: left; }
+.cf-it:hover { background: var(--bg-soft); } .cf-it.on { background: var(--primary-soft); font-weight: 600; } .cf-it.off { color: var(--text-3); }
+.cf-it small { font-size: 11.5px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+.cf-old { display: block; width: 100%; border: 0; border-top: 1px solid var(--line); background: none; font: inherit; font-size: 12.5px; color: var(--text-2); padding: 10px 14px; text-align: left; cursor: pointer; }
+.cf-tag { display: inline-block; font-size: 10.5px; font-weight: 500; padding: 0 7px; border-radius: 6px; background: var(--bg-soft); color: var(--text-3); margin-left: 6px; vertical-align: 1px; } .cf-tag.del { background: #fce8e6; color: #c5221f; }
+.cf-stl { font-size: 11.5px; color: var(--text-3); margin: 2px 0 5px; } .cf-stl + .cf-sts + .cf-stl { margin-top: 10px; }
+.cf-sts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; }
+.cf-sts button { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--card); color: var(--text); border-radius: 11px; padding: 8px 9px; font: inherit; font-size: 13px; cursor: pointer; text-align: left; min-width: 0; }
+.cf-sts button b { flex: none; width: 23px; height: 23px; border-radius: 7px; display: grid; place-items: center; font-size: 12px; color: #fff; background: var(--c); }
+.cf-sts button span { line-height: 1.25; overflow-wrap: anywhere; }
+.cf-sts button:hover { border-color: var(--c); } .cf-sts button.on { border-color: var(--c); box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 28%, transparent); font-weight: 600; background: color-mix(in srgb, var(--c) 7%, var(--card)); }
+.cf-c .adp { background: none; border: 0; padding: 0; margin: 0; display: block; min-width: 0; } .cf-combo { min-width: 0; } .cf-rec button { max-width: 100%; }
+.cf-c > input, .cf-close input, .cf-close select, .cf-more input { border: 1px solid var(--line-strong); border-radius: 10px; padding: 9px 12px; font: inherit; font-size: 14px; background: var(--card); color: var(--text); min-height: 40px; }
+.cf-c > input:focus, .cf-close input:focus, .cf-more input:focus { outline: none; border-color: var(--primary); }
+.cf-chips { display: flex; flex-wrap: wrap; gap: 6px; } .cf-chips button { font-size: 13px !important; padding: 6px 13px !important; min-height: 0 !important; } .cf-c .prod-detail { margin-top: 8px; width: 100%; }
+.cf-close { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; background: color-mix(in srgb, var(--st-5) 7%, var(--card)); border-radius: 12px; padding: 12px; margin-top: 10px; }
+.cf-close label, .cf-more label { display: block; font-size: 12px; color: var(--text-3); margin-bottom: 4px; } .cf-close input, .cf-close select, .cf-more input { width: 100%; }
+.cf-more { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 10px; }
+.cf-save { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding-top: 16px; border-top: 1px solid var(--line); } .cf-save .btn { padding: 12px 34px; font-size: 15px; }
+.cf-modal .cf-row { grid-template-columns: 110px minmax(0, 1fr); } .cf-modal .cf-who { padding-top: 4px; }
+@media (max-width: 640px) { .cf-modal .cf-row { grid-template-columns: minmax(0, 1fr); } }
+.cl-card .t td, .cl-card .t th { font-size: 13.5px; padding-top: 9px; padding-bottom: 9px; } .cl-card .name-cell { gap: 8px; }
+.cl-tb select { width: auto; min-width: 0; max-width: 220px; font-size: 13.5px; }
+.cl-tb { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 12px; } .cl-tb .card-title { margin: 0; }
+@media (max-width: 1100px) { .cg2 { grid-template-columns: 1fr; } .cq { position: static; max-height: 360px; } }
+@media (max-width: 640px) { .cf-card { padding: 16px !important; } .cf-row { grid-template-columns: minmax(0, 1fr); gap: 6px; } .cf-row > label { padding-top: 0; } .cf-sts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cf-close, .cf-more { grid-template-columns: 1fr; } }
+
+/* v82 — ภาพรวมแบบ A */
+.ov-tb { align-items: center; }
+.ov-dd { display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 4px 6px 4px 12px; max-width: 100%; }
+.ov-dd span { font-size: 12.5px; color: var(--text-3); white-space: nowrap; }
+.ov-dd select { width: auto; min-width: 0; border: 0; background: transparent; font: inherit; font-size: 14px; font-weight: 500; color: var(--text); padding: 6px 4px; max-width: 340px; cursor: pointer; outline: none; }
+.ov-sec { font-size: 13.5px; font-weight: 600; color: var(--text-2); margin: 4px 2px 10px; } .ov-sec small { font-weight: 400; color: var(--text-3); margin-left: 6px; }
+.ov-flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 0; overflow: visible; }
+.ov-st { position: relative; padding: 18px 20px; min-width: 0; } .ov-st + .ov-st { border-left: 1px solid var(--line); }
+.ov-st.money { background: color-mix(in srgb, var(--primary) 9%, var(--card)); } .ov-st.money:first-child { border-radius: 18px 0 0 18px; } .ov-st.money:last-child { border-radius: 0 18px 18px 0; }
+.ov-l { font-size: 13px; color: var(--text-2); line-height: 20px; height: 20px; }
+.ov-v { font-size: 29px; font-weight: 700; line-height: 42px; height: 42px; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .ov-v small { font-size: 15px; font-weight: 500; color: var(--text-2); }
+.ov-s { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-size: 12px; color: var(--text-3); margin-top: 4px; min-height: 20px; }
+.ov-p { font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; white-space: nowrap; } .ov-p.up { background: #e6f4ea; color: #137333; } .ov-p.dn { background: #fce8e6; color: #c5221f; } .ov-p.nt { background: var(--bg-soft); color: var(--text-2); }
+.ov-c { position: absolute; left: -1px; bottom: -13px; transform: translateX(-50%); background: var(--card); border: 1px solid var(--line-strong); border-radius: 999px; padding: 3px 10px; font-size: 11.5px; color: var(--text-2); white-space: nowrap; z-index: 2; }
+.ov-c b { color: var(--text); } .ov-c.bad { border-color: #f3b8b4; color: #c5221f; } .ov-c.bad b { color: #c5221f; }
+.ov-note { font-size: 12.5px; color: var(--text-3); margin: 22px 2px 16px; } .ov-note b { color: var(--text); } .ov-note b.bad { color: #c5221f; } .ov-note b.good { color: #137333; }
+.ov-row2 { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 16px; margin-bottom: 18px; }
+.ov-ch { padding: 16px 18px; min-width: 0; } .ov-mt { padding: 0; overflow: hidden; min-width: 0; } .ov-mt .t { margin: 0; } .ov-mt .t td, .ov-mt .t th { padding: 10px 16px; }
+@media (max-width: 900px) { .ov-flow { grid-template-columns: 1fr 1fr; } .ov-st:last-child { grid-column: span 2; } .ov-st + .ov-st { border-left: 0; } .ov-st { border-bottom: 1px solid var(--line); } .ov-c { display: none; } .ov-st.money:first-child, .ov-st.money:last-child { border-radius: 0; } .ov-row2 { grid-template-columns: 1fr; } .ov-v { font-size: 24px; } }
+
 /* v82 — การ์ดตัวชี้วัด + กราฟ แบบ Google Ads */
 .sc-card { padding: 0; overflow: visible; }
 .sc-sel { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: 13px; }
@@ -3858,40 +3943,50 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var presets = [['today', 'วันนี้'], ['yday', 'เมื่อวาน'], ['7d', '7 วัน'], ['30d', '30 วัน'], ['month', 'เดือนนี้'], ['lastmonth', 'เดือนก่อน'], ['all', 'ทั้งหมด'], ['custom', 'กำหนดเอง']];
     var charts = [];
 
-    var html = '<div class="filters">' +
-      '<div class="chip-group" role="group" aria-label="ช่วงวันที่">' + presets.map(function (p) {
-        return '<button data-preset="' + p[0] + '" class="' + (f.preset === p[0] ? 'on' : '') + '">' + p[1] + '</button>';
-      }).join('') + '</div>' +
-      (f.preset === 'custom' ? '<input type="date" class="field-inline" id="fFrom" value="' + f.from + '"><input type="date" class="field-inline" id="fTo" value="' + f.to + '">' : '<span class="muted">' + F.thRange(f.from, f.to) + '</span>') +
-      '<span style="flex:1"></span><button class="btn" id="btnSummary">' + I.copy + 'คัดลอกสรุป</button></div>';
-    // แคมเปญ = ปุ่มกดตรงๆ (แบบเดียวกับปุ่มช่วงวันที่) · เรียงตามที่มีแชทล่าสุดก่อน
+    // ---------- v82 · ภาพรวมแบบ A (เส้นทางเงิน) ----------
     var lastC = {}; S.data.chats.forEach(function (c) { if (c.campaign && (!lastC[c.campaign] || c.date > lastC[c.campaign])) lastC[c.campaign] = c.date || ''; });
     var campList = campaigns().map(String).sort(function (x, y) { var a = lastC[x] || '', b = lastC[y] || ''; return a === b ? (x < y ? -1 : 1) : a < b ? 1 : -1; });
     S._campList = campList;
-    var showAllC = S.campAll || campList.length <= 8 || (f.campaign && campList.indexOf(String(f.campaign)) >= 8);
-    html += '<div class="cch"><span class="cch-l">แคมเปญ</span><div class="cch-w">' +
-      '<button type="button" data-ci="-1" class="' + (!f.campaign ? 'on' : '') + '">ทุกแคมเปญ</button>' +
-      campList.map(function (c, i) { return (showAllC || i < 8) ? '<button type="button" data-ci="' + i + '" class="' + (String(f.campaign) === c ? 'on' : '') + '" title="' + esc(c) + '">' + esc(c) + '</button>' : ''; }).join('') +
-      (campList.length > 8 ? '<button type="button" class="more" id="cchMore">' + (showAllC && S.campAll ? 'ย่อ ▴' : 'ดูทั้งหมด ' + campList.length + ' ▾') + '</button>' : '') +
-      '</div></div>';
-
-    // ---------- 1) ตัวเลขหลัก ----------
-    function delta(cur, old, goodUp) {
+    var html = '<div class="filters ov-tb">' +
+      '<div class="chip-group" role="group" aria-label="ช่วงวันที่">' + presets.map(function (p) {
+        return '<button data-preset="' + p[0] + '" class="' + (f.preset === p[0] ? 'on' : '') + '">' + p[1] + '</button>';
+      }).join('') + '</div>' +
+      (f.preset === 'custom' ? '<input type="date" class="field-inline" id="fFrom" value="' + f.from + '"><input type="date" class="field-inline" id="fTo" value="' + f.to + '">' : '') +
+      '<label class="ov-dd"><span>แคมเปญ</span><select id="ovCamp"><option value="-1">ทุกแคมเปญ (' + campList.length + ')</option>' +
+        campList.map(function (c, i) { return '<option value="' + i + '"' + (String(f.campaign) === c ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('') + '</select></label>' +
+      '<span style="flex:1"></span><button class="btn" id="btnSummary">' + I.copy + 'คัดลอกสรุป</button></div>';
+    var fbC = C.fbPerf(S.data, f.from, f.to, f.campaign), fbO = prev ? C.fbPerf(S.data, C.addDays(f.from, -nDays), C.addDays(f.from, -1), f.campaign) : null;
+    var hasFb = (S.data.fbads || []).length > 0;
+    function dd(cur, old, goodUp) {
       if (!prev || old == null || cur == null || !isFinite(old) || old === 0) return '';
-      var v = (cur - old) / old;
-      if (Math.abs(v) < 0.005) return '<span class="kd">เท่าเดิม</span>';
-      var good = goodUp ? v > 0 : v < 0;
-      return '<span class="kd ' + (good ? 'up' : 'down') + '">' + (v > 0 ? '▲ ' : '▼ ') + Math.abs(v * 100).toFixed(0) + '%</span>';
+      var v = (cur - old) / old; if (Math.abs(v) < 0.005) return '<span class="ov-p nt">เท่าเดิม</span>';
+      var cls = goodUp == null ? 'nt' : (goodUp ? v > 0 : v < 0) ? 'up' : 'dn';
+      return '<span class="ov-p ' + cls + '">' + (v > 0 ? '▲ ' : '▼ ') + Math.abs(v * 100).toFixed(0) + '%</span>';
     }
-    var cpcTone = m.cpc == null ? '' : m.cpc <= m.target ? 'good' : 'bad';
-    html += '<div class="kpi5">' +
-      kpi('Lead (ลูกค้าทักใหม่)', F.int(m.leads), 'เฉลี่ย ' + (m.leads / nDays).toFixed(1) + ' คน/วัน', delta(m.leads, prev && prev.leads, true)) +
-      kpi('ปิดได้', F.int(m.closed) + ' เคส', 'อัตราปิด ' + F.pct(m.closeRate, 1) + ' ของ Lead', delta(m.closed, prev && prev.closed, true)) +
-      kpi('ยอดรับซื้อ', F.baht(m.amount), m.closed ? 'เฉลี่ย ' + F.baht(m.amount / m.closed) + '/เคส' : 'ยังไม่มีเคสปิด', delta(m.amount, prev && prev.amount, true)) +
-      kpi('ค่า Ads', m.spend ? F.baht(m.spend) : '–', m.spend ? (m.adsPct != null ? F.pct(m.adsPct, 1) + ' ของยอดรับซื้อ' : 'ยังไม่มียอดรับซื้อ') : 'ยังไม่ได้กรอกในช่วงนี้', delta(m.spend, prev && prev.spend, false)) +
-      kpi('ต้นทุน/เคส', F.baht(m.cpc), '<span class="pill ' + cpcTone + '">เป้า ' + F.baht(m.target) + (m.cpc == null ? '' : m.cpc <= m.target ? ' · ผ่าน' : ' · เกิน') + '</span>', delta(m.cpc, prev && prev.cpc, false)) +
-      '</div>' + (prev ? '<div class="muted small" style="margin:-8px 0 18px">' + (nDays === 1 ? '▲▼ เทียบกับ' + (f.preset === 'today' ? 'เมื่อวานทั้งวัน' : 'วันก่อนหน้า') + ' (' + F.thRange(C.addDays(f.from, -1), C.addDays(f.from, -1)) + ')' + (f.preset === 'today' ? ' · วันนี้ยังไม่จบวัน ตัวเลขจะเพิ่มขึ้นอีก' + (S.data.config.fb_last_sync ? ' · ค่า Ads อัปเดตล่าสุด ' + new Date(S.data.config.fb_last_sync).toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }) + ' น.' : '') : '') : '▲▼ เทียบกับ ' + nDays + ' วันก่อนหน้า (' + F.thRange(C.addDays(f.from, -nDays), C.addDays(f.from, -1)) + ')') + ' · เขียว = ดีขึ้น</div>' : '');
-
+    var chat = hasFb ? fbC.chat : null, cpChat = chat ? m.spend / chat : null, bad = m.cpc != null && m.cpc > m.target;
+    function stp(cls, lbl, val, sub, cost) { return '<div class="ov-st' + (cls ? ' ' + cls : '') + '">' + (cost || '') + '<div class="ov-l">' + lbl + '</div><div class="ov-v num">' + val + '</div><div class="ov-s">' + sub + '</div></div>'; }
+    function cost(v, unit, isBad) { return v == null ? '' : '<span class="ov-c' + (isBad ? ' bad' : '') + '"><b>' + F.baht(v) + '</b>/' + unit + '</span>'; }
+    html += '<div class="ov-sec">จากค่า Ads ถึงยอดรับซื้อ <small>' + F.thRange(f.from, f.to) + (prev ? ' · ป้ายเทียบ ' + F.thRange(C.addDays(f.from, -nDays), C.addDays(f.from, -1)) : '') + ' · ระหว่างช่อง = ต้นทุนต่อขั้น</small></div>' +
+      '<div class="card ov-flow">' +
+      stp('money', 'ค่า Ads', m.spend ? F.baht(m.spend) : '–', dd(m.spend, prev && prev.spend, null)) +
+      stp('', 'แชท (Facebook)', chat == null ? '–' : F.int(Math.round(chat)), fbO ? dd(chat, fbO.chat, true) : '', '') +
+      stp('', 'Lead', F.int(m.leads), dd(m.leads, prev && prev.leads, true) + '<span>' + (m.leads / nDays).toFixed(1) + ' คน/วัน</span>', cost(cpChat, 'แชท')) +
+      stp('', 'ปิดได้', F.int(m.closed) + ' <small>เคส</small>', dd(m.closed, prev && prev.closed, true) + '<span>อัตราปิด ' + F.pct(m.closeRate, 1) + '</span>', cost(m.cpl, 'Lead')) +
+      stp('money', 'ยอดรับซื้อ', F.baht(m.amount), dd(m.amount, prev && prev.amount, true) + (m.closed ? '<span>' + F.baht(m.amount / m.closed) + '/เคส</span>' : ''), cost(m.cpc, 'เคส', bad)) +
+      '</div>' +
+      '<div class="ov-note">ต้นทุน/เคส ' + (m.cpc == null ? '–' : '<b>' + F.baht(m.cpc) + '</b>') + ' · เป้า ' + F.baht(m.target) +
+        (m.cpc == null ? '' : bad ? ' → <b class="bad">เกินเป้า ' + (m.cpc / m.target).toFixed(1) + ' เท่า</b>' : ' → <b class="good">ผ่านเป้า</b>') +
+        (m.adsPct != null ? ' · ค่า Ads = ' + F.pct(m.adsPct, 1) + ' ของยอดรับซื้อ' : '') +
+        (f.preset === 'today' ? ' · วันนี้ยังไม่จบวัน ตัวเลขจะเพิ่มขึ้นอีก' : '') + '</div>';
+    // แถว 2: กราฟ ค่า Ads (แท่ง) + Lead (เส้น) · ตารางตัวชี้วัด Facebook
+    var ovDays = m.daily.map(function (z) { return { d: z.date, cost: z.spend, conv: z.leads }; });
+    html += '<div class="ov-row2"><div class="card ov-ch"><div class="es-lg"><span><i style="background:#f5a800"></i>ค่า Ads/วัน</span><span><i class="ln" style="background:#1a73e8"></i>Lead/วัน</span></div>' +
+      '<div class="es-cw tk-cw" style="min-height:250px"><div class="tk-sc"><svg class="es-svg" id="ovCh"></svg></div><div class="es-tip" id="ovTip"></div></div></div>';
+    if (hasFb) html += '<div class="card ov-mt"><table class="t"><thead><tr><th>ตัวชี้วัดโฆษณา (Facebook)</th><th class="r">ตอนนี้</th><th class="r">ช่วงก่อน</th><th class="r">เปลี่ยน</th></tr></thead><tbody>' +
+      Object.keys(PM).map(function (k) { var p = PM[k]; return '<tr><td>' + p.l + '</td><td class="r num"><b>' + p.f(fbC[k]) + '</b></td><td class="r num muted">' + (fbO ? p.f(fbO[k]) : '–') + '</td><td class="r">' + (fbO ? dBadge(fbC[k], fbO[k], p.up, p.k) : '') + '</td></tr>'; }).join('') + '</tbody></table></div>';
+    else html += '<div class="card ov-mt"><div class="empty">ยังไม่ได้เชื่อม Facebook — ตัวชี้วัดโฆษณาจะขึ้นหลังกด "ดึงข้อมูล" ที่หน้าตั้งค่า</div></div>';
+    html += '</div>';
+    charts.push(function () { gChart($('#ovCh'), $('#ovTip'), ovDays, { lb: 'Lead', fb: function (v) { return F.int(v) + ' คน'; }, H: 250 }); });
     var spendRows = (S.data.spend || []).length;
     if (!m.spend) html += '<div class="nudge" style="margin:0 0 20px">' + (spendRows ? 'มีค่า Ads ที่กรอกไว้ ' + spendRows + ' รายการ แต่ไม่อยู่ในช่วงวันที่/แคมเปญที่เลือก' : 'ยังไม่ได้กรอกค่า Ads — ต้นทุน/Lead และต้นทุน/เคส จะยังคำนวณไม่ได้') + ' · กรอกที่หน้า แคมเปญ → กรอกค่า Ads</div>';
 
@@ -3979,7 +4074,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 
 
     $('#page').innerHTML = html;
-    S.drawCharts = function () { charts.forEach(function (c) { var el = document.getElementById(c[0]); if (el) { if (c.length === 3) Charts[c[1]](el, c[2]); else Charts.columns(el, c[1]); } }); };
+    S.drawCharts = function () { charts.forEach(function (c) { if (typeof c === 'function') return c(); var el = document.getElementById(c[0]); if (el) { if (c.length === 3) Charts[c[1]](el, c[2]); else Charts.columns(el, c[1]); } }); };
     S.drawCharts();
     Charts.countUp($('#page'));
 
@@ -3993,6 +4088,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       try { pageDashboard(); }
       catch (e) { console.error(e); f.campaign = old; try { pageDashboard(); } catch (e2) {} toast('แสดงแคมเปญนี้ไม่ได้: ' + (e && e.message || e), true); }
     }; });
+    if ($('#ovCamp')) $('#ovCamp').onchange = function () { var i = Number(this.value), old = f.campaign; f.campaign = i < 0 ? '' : S._campList[i]; try { pageDashboard(); } catch (e) { console.error(e); f.campaign = old; pageDashboard(); } };
     if ($('#cchMore')) $('#cchMore').onclick = function () { S.campAll = !S.campAll; pageDashboard(); };
     if ($('#btSel')) $('#btSel').onchange = function () { S.btSel = this.value; pageDashboard(); };
     if ($('#btCopy')) $('#btCopy').onclick = function () { copyText(budgetTiersText(f.campaign)); };
@@ -4214,49 +4310,11 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       return { name: c, ads: byCamp[c], running: running, recent: !running && !!recent[c], start: C.firstStart(S.data, c) || '' };
     }).sort(function (a, b) { return (b.running - a.running) || (b.recent - a.recent) || (a.start < b.start ? 1 : -1); });
   }
-  function adPickerHtml(prefix, c) {
-    var ad = c.ad ? findAd(c.ad, c.campaign) : null;
-    return '<div class="f c12"><label>มาจากโฆษณาไหน</label><input type="hidden" id="' + prefix + 'Ad" value="' + esc(ad ? ad.ad_name : c.ad || '') + '">' +
+  function adPickerHtml(prefix, c, bare) {
+    var ad = chatAd(c);
+    return (bare ? '<div>' : '<div class="f c12"><label>มาจากโฆษณาไหน</label>') + '<input type="hidden" id="' + prefix + 'Ad" value="' + esc(ad ? ad.ad_name : c.ad || '') + '">' +
       '<input type="hidden" id="' + prefix + 'AdId" value="' + esc(ad ? ad.id : '') + '"><div class="adp" id="' + prefix + 'AdP" data-camp="' + esc(ad ? ad.campaign : c.campaign || '') + '"></div>' +
-      '<div class="ad-meta" id="' + prefix + 'AdMeta"></div></div>';
-  }
-  function renderAdPicker(el, prefix, onPick) {
-    var box = $('#' + prefix + 'AdP', el), cur = $('#' + prefix + 'AdId', el).value, camp = box.dataset.camp;
-    var camps = adCampList(), showOld = box.dataset.old === '1' || camps.some(function (x) { return x.name === camp && !x.running; });
-    var shown = camps.filter(function (x) { return x.running || x.recent || showOld; });
-    var html = '<div class="adp-step">1. แคมเปญ</div><div class="adp-camps">' + shown.map(function (x) {
-      return '<button type="button" class="adp-c' + (x.name === camp ? ' on' : '') + (x.running || x.recent ? '' : ' off') + '" data-c="' + esc(x.name) + '">' + (x.running ? '<i class="sdot on"></i>' : '') + esc(x.name) + (x.recent ? ' <small class="muted">· เพิ่งปิด</small>' : '') + '</button>';
-    }).join('') + (camps.length > shown.length ? '<button type="button" class="linkish adp-more">+ แคมเปญที่หยุดแล้ว (' + (camps.length - shown.length) + ')</button>' : '') + '</div>';
-    var sel = camps.filter(function (x) { return x.name === camp; })[0];
-    if (sel) {
-      // v82 — จัดกลุ่มตาม Ad set · ซ่อนโฆษณาที่ปิด/ถูกลบไว้ใต้ปุ่ม · ชื่อซ้ำ (Ad set + โฆษณาเดียวกัน) แสดงครั้งเดียว
-      var seen = {}, uniq = [];
-      sel.ads.slice().sort(function (a, b) { return (a.id === cur ? -1 : b.id === cur ? 1 : 0) || (isTrue(b.active) - isTrue(a.active)); }).forEach(function (a) {
-        var k = (a.adset || '') + '|' + (a.ad_name || ''); if (seen[k]) return; seen[k] = 1; uniq.push(a); });
-      var curAd = uniq.filter(function (a) { return a.id === cur; })[0], showOff = box.dataset.oldad === '1' || (curAd && !isTrue(curAd.active));
-      var nOff = uniq.filter(function (a) { return !isTrue(a.active); }).length;
-      var vis = uniq.filter(function (a) { return isTrue(a.active) || showOff; });
-      if (!uniq.some(function (a) { return isTrue(a.active); }) && !showOff) { vis = uniq; nOff = 0; } // แคมเปญที่หยุดแล้ว → แสดงทั้งหมด
-      var grp = {}, order = [];
-      vis.forEach(function (a) { var g = a.adset || '(ไม่ระบุ Ad set)'; if (!grp[g]) { grp[g] = []; order.push(g); } grp[g].push(a); });
-      order.sort(function (x, y) { var ax = grp[x].some(function (a) { return isTrue(a.active); }), ay = grp[y].some(function (a) { return isTrue(a.active); }); return (ay - ax) || x.localeCompare(y, 'th'); });
-      html += '<div class="adp-step">2. Ad set / โฆษณา</div><div class="adp-gl">' + order.map(function (g) {
-        var on = grp[g].some(function (a) { return isTrue(a.active); });
-        return '<div class="adp-g' + (on ? '' : ' off') + '"><div class="adp-gh">' + esc(g) + (on ? '' : ' <span class="muted small">· ปิดแล้ว</span>') + '</div><div class="adp-ads">' + grp[g].map(function (a) {
-          var nm = a.ad_name && a.ad_name !== a.adset ? a.ad_name : 'โฆษณา';
-          return '<button type="button" class="adp-a' + (a.id === cur ? ' on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-id="' + esc(a.id) + '" title="' + esc((a.adset ? a.adset + ' · ' : '') + (isTrue(a.active) ? 'ใช้งานอยู่' : 'ปิดแล้ว')) + '">' + esc(nm) + '</button>';
-        }).join('') + '</div></div>';
-      }).join('') + '</div>' + (nOff && !showOff ? '<button type="button" class="linkish adp-moread">+ โฆษณาที่ปิด/ลบแล้ว (' + nOff + ')</button>' : '');
-    } else html += '<div class="muted small" style="margin-top:6px">กดเลือกแคมเปญก่อน แล้วจะขึ้นโฆษณาในแคมเปญนั้น</div>';
-    box.innerHTML = html;
-    $$('.adp-c', box).forEach(function (b) { b.onclick = function () { box.dataset.camp = b.dataset.c; var one = (camps.filter(function (x) { return x.name === b.dataset.c; })[0] || { ads: [] }).ads;
-      var picked = adOf(el, prefix);
-      if (picked && picked.campaign !== b.dataset.c) { $('#' + prefix + 'AdId', el).value = ''; $('#' + prefix + 'Ad', el).value = ''; onPick(); } // เปลี่ยนแคมเปญ → ล้างโฆษณาเดิม
-      if (one.length === 1) { $('#' + prefix + 'AdId', el).value = one[0].id; $('#' + prefix + 'Ad', el).value = one[0].ad_name; onPick(); }
-      renderAdPicker(el, prefix, onPick); }; });
-    $$('.adp-a', box).forEach(function (b) { b.onclick = function () { var a = S.data.ads.filter(function (x) { return x.id === b.dataset.id; })[0]; $('#' + prefix + 'AdId', el).value = a.id; $('#' + prefix + 'Ad', el).value = a.ad_name; onPick(); renderAdPicker(el, prefix, onPick); }; });
-    if ($('.adp-moread', box)) $('.adp-moread', box).onclick = function () { box.dataset.oldad = '1'; renderAdPicker(el, prefix, onPick); };
-    if ($('.adp-more', box)) $('.adp-more', box).onclick = function () { box.dataset.old = '1'; renderAdPicker(el, prefix, onPick); };
+      '<div class="ad-meta" id="' + prefix + 'AdMeta"' + (bare ? ' hidden' : '') + '></div></div>';
   }
   function adOf(el, prefix) {
     var id = $('#' + prefix + 'AdId', el).value;
@@ -4392,7 +4450,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       id: state.id || '',
       date: $('#' + prefix + 'Date', el).value,
       customer: $('#' + prefix + 'Name', el).value.trim(),
-      ad: adName, adset: ad.adset || state.adset || '', campaign: ad.campaign || state.campaign || '',
+      ad: adName, adset: ad.adset || state.adset || '', campaign: ad.campaign || state.campaign || '', ad_fb_id: ad.fb_id ? String(ad.fb_id) : ad.id ? '' : (state.ad_fb_id || ''),
       status: state.status || '',
       product: readProduct(el, prefix),
       amount: showClose ? $('#' + prefix + 'Amount', el).value : '',
@@ -4412,41 +4470,140 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     return '';
   }
 
+  // ============================================================
+  // v82 — หน้าบันทึกแชทแบบใหม่: คิวจาก Inbox (ซ้าย) + ฟอร์ม (ขวา) · เลือกโฆษณาช่องเดียว ค้นหาได้
+  // ============================================================
+  var ST_GROUPS = [['ระหว่างคุย', ['1', '2', '3', '4']], ['จบแล้ว', ['5', 'X', '7', '6']]];
+  function stByCode(k) { return C.STATUSES.filter(function (s) { return s.key.split('-')[0] === k; })[0]; }
+  function statusGroupsHtml(prefix, cur) {
+    return '<div class="cf-stg" id="' + prefix + 'Status">' + ST_GROUPS.map(function (g) {
+      return '<div class="cf-stl">' + g[0] + '</div><div class="cf-sts">' + g[1].map(function (k) { var s = stByCode(k); if (!s) return '';
+        return '<button type="button" data-st="' + esc(s.key) + '" class="' + (cur === s.key ? 'on' : '') + '" style="--c:' + s.color + '"><b>' + esc(k) + '</b><span>' + esc(s.short.replace(' (ฝั่งขาย)', '')) + '</span></button>'; }).join('') + '</div>';
+    }).join('') + '</div>';
+  }
+  function chatForm2Html(c, prefix, edit) {
+    c = c || {};
+    var sp = C.splitProduct(S.data, c.product), plist = C.productList(S.data).concat([OTHER]);
+    return '<div class="cf">' +
+      '<div class="cf-who"><span class="cf-face" id="' + prefix + 'Face">' + (c.psid ? face(c.customer, c.pic, 46) : '<span class="cf-av">' + I.chat + '</span>') + '</span>' +
+        '<div class="cf-nm"><input id="' + prefix + 'Name" value="' + esc(c.customer || '') + '" autocomplete="off" placeholder="ชื่อลูกค้า — กดจากคิวด้านซ้าย หรือพิมพ์เอง" required>' +
+        '<div class="cf-meta" id="' + prefix + 'Meta">' + (c.meta || '') + '</div><div class="hint" id="' + prefix + 'Dup"></div><div class="mini-sug" id="' + prefix + 'Sug"></div></div></div>' +
+      '<div class="cf-row"><label>มาจากโฆษณา<small>ครั้งต่อไปจำให้</small></label><div class="cf-c">' + adPickerHtml(prefix, c, true) + '</div></div>' +
+      '<div class="cf-row"><label>สถานะ<small>กดเลข/X บนคีย์บอร์ดได้</small></label><div class="cf-c">' + statusGroupsHtml(prefix, c.status) + '</div></div>' +
+      '<div class="cf-row"><label>สินค้า<small>ไม่บังคับ</small></label><div class="cf-c"><div class="prod-picker cf-chips" id="' + prefix + 'Cat">' + plist.map(function (x) {
+        return '<button type="button" data-cat="' + esc(x) + '" class="' + (sp.cat === x ? 'on' : '') + '">' + esc(x) + '</button>'; }).join('') + '</div>' +
+        '<input id="' + prefix + 'Product" class="prod-detail" value="' + esc(sp.detail) + '" autocomplete="off" placeholder="รุ่น / สเปก เช่น 15 Pro 256GB">' +
+        '<div class="cf-close closeOnly"><div><label for="' + prefix + 'Amount">ยอดรับซื้อ (บาท)</label><input id="' + prefix + 'Amount" type="number" min="0" step="1" inputmode="numeric" value="' + esc(c.amount || '') + '"></div>' +
+          '<div class="closedOnly"><label for="' + prefix + 'Closed">วันที่ปิด</label><input type="date" id="' + prefix + 'Closed" value="' + esc(c.closed_date || today()) + '"><div class="hint" id="' + prefix + 'Dur"></div></div>' +
+          '<div class="closedOnly"><label for="' + prefix + 'By">ปิดโดย</label><select id="' + prefix + 'By">' + S.data.users.map(function (u) { return opt(u.name, u.name, c.closed_by || S.data.me); }).join('') + '</select></div></div>' +
+      '</div></div>' +
+      '<div class="cf-row"><label>เพิ่มเติม</label><div class="cf-c cf-more"><div><label for="' + prefix + 'Date">วันที่ทัก</label><input type="date" id="' + prefix + 'Date" value="' + esc(c.date || today()) + '" required></div>' +
+        '<div><label for="' + prefix + 'Note">หมายเหตุ</label><input id="' + prefix + 'Note" value="' + esc(c.note || '') + '" placeholder="ไม่บังคับ"></div></div></div>' +
+      (edit ? '' : '<div class="cf-save"><button class="btn" type="submit" id="saveNew">บันทึก</button><span class="muted small">Enter = บันทึก · บันทึกแล้วไปคนถัดไปในคิวให้เอง</span></div>') +
+      '</div>';
+  }
+  /** โฆษณาที่ใช้ล่าสุด (จากแชทที่บันทึก) — ไม่เกิน 3 ตัว เฉพาะที่ยังเปิดอยู่/เพิ่งปิด */
+  function recentAds() {
+    var seen = {}, out = [], camps = {};
+    adCampList().forEach(function (x) { camps[x.name] = x; });
+    S.data.chats.slice().sort(function (a, b) { var x = String(a.created_at || a.date), y = String(b.created_at || b.date); return x < y ? 1 : x > y ? -1 : 0; }).some(function (c) {
+      if (!c.ad) return false; var a = findAd(c.ad, c.campaign); if (!a) return false;
+      var k = (a.campaign || '') + '|' + (a.adset || '') + '|' + a.ad_name; if (seen[k]) return false; seen[k] = 1;
+      var cp = camps[a.campaign]; if (isTrue(a.active) || (cp && (cp.running || cp.recent))) out.push(a);
+      return out.length >= 3;
+    });
+    return out;
+  }
+  function adLabel(a) { return a.adset || a.ad_name; }
+  function adState(a) {
+    if (!a) return '';
+    if (a.fb_status === 'DELETED') return '<span class="cf-tag del">ลบใน FB แล้ว</span>';
+    return isTrue(a.active) ? '' : '<span class="cf-tag">ปิดแล้ว</span>';
+  }
+  // ตัวเลือกโฆษณา (ใช้ทั้งฟอร์มใหม่และหน้าต่างแก้ไข) — ช่องเดียว + รายการค้นหาได้ · id เดิม (prefix+Ad / AdId) เพื่อให้ readChatForm ใช้ต่อได้
+  function renderAdPicker(el, prefix, onPick) {
+    var box = $('#' + prefix + 'AdP', el), cur = $('#' + prefix + 'AdId', el).value;
+    var sel = S.data.ads.filter(function (a) { return a.id === cur; })[0] || null;
+    var open = box.dataset.open === '1', rec = recentAds();
+    var html = '<button type="button" class="cf-combo' + (sel ? '' : ' empty') + '" data-cmb>' + (sel
+      ? '<span class="cf-cv"><small>' + esc(sel.campaign) + ' › ' + esc(sel.adset || '–') + '</small><b>' + esc(sel.ad_name) + '</b>' + adState(sel) + '</span>'
+      : '<span class="cf-cv"><b class="muted">เลือกโฆษณา…</b></span>') + '<span class="cf-chg">' + (open ? 'ปิด ▴' : sel ? 'เปลี่ยน ▾' : 'เลือก ▾') + '</span></button>';
+    if (rec.length && !open) html += '<div class="cf-rec"><span class="muted small">ใช้ล่าสุด:</span>' + rec.map(function (a) {
+      return '<button type="button" data-rid="' + esc(a.id) + '" class="' + (sel && sel.id === a.id ? 'on' : '') + '" title="' + esc(a.campaign + ' › ' + (a.adset || '') + ' · ' + a.ad_name) + '">' + esc(adLabel(a)) + '</button>'; }).join('') + '</div>';
+    if (open) html += '<div class="cf-pop"><input class="cf-q" id="' + prefix + 'AdQ" placeholder="พิมพ์ค้นหา แคมเปญ / Ad set / โฆษณา" autocomplete="off" value="' + esc(box.dataset.q || '') + '"><div class="cf-list" id="' + prefix + 'AdL"></div></div>';
+    box.innerHTML = html;
+    function pick(a) {
+      $('#' + prefix + 'AdId', el).value = a.id; $('#' + prefix + 'Ad', el).value = a.ad_name; box.dataset.camp = a.campaign || '';
+      box.dataset.open = ''; box.dataset.q = ''; onPick(); renderAdPicker(el, prefix, onPick);
+    }
+    function list() {
+      var q = (box.dataset.q || '').trim().toLowerCase(), showOld = box.dataset.old === '1' || !!q, hidden = 0, first = null;
+      var out = adCampList().map(function (cp) {
+        var seen = {}, items = [];
+        cp.ads.slice().sort(function (a, b) { return (isTrue(b.active) - isTrue(a.active)) || String(a.adset || '').localeCompare(String(b.adset || ''), 'th'); }).forEach(function (a) {
+          var k = (a.adset || '') + '|' + a.ad_name; if (seen[k]) return; seen[k] = 1;
+          if (q && (cp.name + ' ' + (a.adset || '') + ' ' + a.ad_name).toLowerCase().indexOf(q) < 0) return;
+          var vis = showOld || (isTrue(a.active) && (cp.running || cp.recent)) || (sel && sel.id === a.id) || (!cp.ads.some(function (x) { return isTrue(x.active); }) && cp.recent);
+          if (!vis) { hidden++; return; }
+          items.push(a);
+        });
+        if (!items.length) return '';
+        if (!first) first = items[0];
+        return '<div class="cf-g"><div class="cf-gh">' + (cp.running ? '<i class="sdot on"></i>' : '<i class="sdot off"></i>') + esc(cp.name) + (cp.recent ? ' <span class="cf-tag">เพิ่งปิด</span>' : '') + '</div>' + items.map(function (a) {
+          return '<button type="button" class="cf-it' + (sel && sel.id === a.id ? ' on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-aid="' + esc(a.id) + '"><span>' + esc(adLabel(a)) + adState(a) + '</span><small>' + esc(a.adset && a.ad_name !== a.adset ? a.ad_name : '') + '</small></button>'; }).join('') + '</div>';
+      }).join('');
+      var L = $('#' + prefix + 'AdL', el);
+      L.innerHTML = (out || '<div class="empty" style="padding:14px">ไม่พบโฆษณา' + (q ? 'ที่ตรงกับ “' + esc(q) + '”' : '') + '</div>') +
+        (hidden && !q ? '<button type="button" class="cf-old" data-old>+ แสดงแคมเปญ / โฆษณาที่ปิดหรือลบแล้ว (' + hidden + ')</button>' : '');
+      $$('[data-aid]', L).forEach(function (b) { b.onclick = function () { pick(S.data.ads.filter(function (x) { return x.id === b.dataset.aid; })[0]); }; });
+      if ($('[data-old]', L)) $('[data-old]', L).onclick = function () { box.dataset.old = '1'; list(); };
+      return first;
+    }
+    $('[data-cmb]', box).onclick = function () { box.dataset.open = open ? '' : '1'; renderAdPicker(el, prefix, onPick); if (!open) { var qi = $('#' + prefix + 'AdQ', el); if (qi) qi.focus(); } };
+    $$('[data-rid]', box).forEach(function (b) { b.onclick = function () { pick(S.data.ads.filter(function (x) { return x.id === b.dataset.rid; })[0]); }; });
+    if (open) {
+      var firstHit = list(), qi = $('#' + prefix + 'AdQ', el);
+      qi.oninput = function () { box.dataset.q = this.value; firstHit = list(); };
+      qi.onkeydown = function (e) {
+        if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); if (firstHit) pick(firstHit); }
+        else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); box.dataset.open = ''; renderAdPicker(el, prefix, onPick); }
+        else e.stopPropagation();
+      };
+    }
+  }
+
   var newChatState = { status: '' };
   function pageChats() {
     var cf = S.chatFilter;
-    var html = '<div id="inboxBox"></div><div class="card"><div class="card-head"><div><h2 class="card-title">บันทึกแชทใหม่</h2><div class="card-sub">ชื่อ + สถานะ ก็บันทึกได้ · โฆษณาใช้ตัวล่าสุดให้เอง · สินค้า/หมายเหตุอยู่ใน "เพิ่มเติม"</div></div></div>' +
-      '<form id="newChat">' + miniChatFormHtml({ date: newChatState.date, ad: newChatState.ad, campaign: newChatState.campaign, status: newChatState.status }, 'n') + '</form></div>';
-
-    html += '<div class="card mt"><div class="card-head"><div><h2 class="card-title">รายการแชท</h2><div class="card-sub" id="chatCount"></div></div>' +
-      '<button class="btn ghost sm" id="csv">ดาวน์โหลด CSV</button></div>' +
-      '<div class="filters" style="margin-bottom:12px">' +
-      '<select class="field-inline" id="cfStatus">' + opt('', 'ทุกสถานะ', cf.status) + C.STATUSES.map(function (s) { return opt(s.key, s.key, cf.status); }).join('') + '</select>' +
-      '<select class="field-inline" id="cfCamp">' + opt('', 'ทุกแคมเปญ', cf.campaign) + campaigns().map(function (c) { return opt(c, c, cf.campaign); }).join('') + '</select>' +
+    if (!newChatState.ad) { var r0 = recentAds()[0]; if (r0) { newChatState.ad = r0.ad_name; newChatState.campaign = r0.campaign; } }
+    var html = '<div class="cg2"><div class="card cq" id="inboxBox"></div>' +
+      '<div class="card cf-card"><form id="newChat">' + chatForm2Html({ date: newChatState.date, ad: newChatState.ad, campaign: newChatState.campaign, status: newChatState.status }, 'n') + '</form></div></div>';
+    html += '<div class="card mt cl-card"><div class="cl-tb"><div><h2 class="card-title">รายการแชท</h2><div class="card-sub" id="chatCount"></div></div><span style="flex:1"></span>' +
+      '<div class="chip-group" role="group" aria-label="กลุ่มสถานะ">' + [['', 'ทุกสถานะ'], ['open', 'รอตาม (1–4)'], ['5-ปิดการขาย', 'ปิดได้']].map(function (g) {
+        return '<button data-cg="' + esc(g[0]) + '" class="' + ((cf.status || '') === g[0] ? 'on' : '') + '">' + g[1] + '</button>'; }).join('') + '</div>' +
+      '<select class="field-inline" id="cfStatus" aria-label="สถานะ">' + opt('', 'ทุกสถานะ', cf.status) + opt('open', 'รอตาม (1–4)', cf.status) + C.STATUSES.map(function (s) { return opt(s.key, s.key, cf.status); }).join('') + '</select>' +
+      '<select class="field-inline" id="cfCamp" aria-label="แคมเปญ">' + opt('', 'ทุกแคมเปญ', cf.campaign) + campaigns().map(function (c) { return opt(c, c, cf.campaign); }).join('') + '</select>' +
       (cf.q ? '<span class="pill info">ค้นหา: ' + esc(cf.q) + ' <button class="linkish" id="clearQ" style="padding:0">✕</button></span>' : '') +
-      '</div><div id="chatList"></div></div>';
+      '<button class="btn ghost sm" id="csv">CSV</button></div><div id="chatList"></div></div>';
     $('#page').innerHTML = html;
 
     var form = $('#newChat');
     wireChatForm(form, 'n', newChatState);
-    // ชื่อที่พิมพ์ → แนะนำจากรายชื่อที่ทักเพจ (ยังไม่ได้บันทึก)
     var nameIn = $('#nName', form), sug = $('#nSug', form), oldInput = nameIn.oninput;
     nameIn.oninput = function () {
       if (oldInput) oldInput.call(this);
       var q = this.value.trim().toLowerCase();
-      if (newChatState.psid && q !== String(newChatState.name || '').toLowerCase()) { newChatState.psid = ''; newChatState.pic = ''; $('#nFace', form).innerHTML = ''; }
+      if (newChatState.psid && q !== String(newChatState.name || '').toLowerCase()) { newChatState.psid = ''; newChatState.pic = ''; $('#nFace', form).innerHTML = '<span class="cf-av">' + I.chat + '</span>'; $('#nMeta', form).textContent = ''; markQueue(); }
       var hits = q && !newChatState.psid ? (S.data.inbox || []).filter(function (r) { return r.status === 'pending' && String(r.name).toLowerCase().indexOf(q) >= 0; }).slice(0, 5) : [];
       sug.innerHTML = hits.map(function (r) { return '<button type="button" data-psid="' + esc(r.psid) + '">' + esc(r.name) + ' <small>· ทัก ' + F.thDate(r.first_date, true) + '</small></button>'; }).join('');
       $$('button', sug).forEach(function (b) { b.onclick = function () { var r = hits.filter(function (x) { return x.psid === b.dataset.psid; })[0]; fillFromInbox(r); sug.innerHTML = ''; }; });
     };
-    // คีย์ลัด: เลข/X = สถานะ (เมื่อไม่ได้พิมพ์ในช่องข้อความอื่น) · Enter ในช่องชื่อ = บันทึก
     form.onkeydown = function (e) {
       var tag = (e.target.tagName || '').toLowerCase(), inName = e.target === nameIn;
       if (e.key === 'Enter' && tag !== 'textarea' && tag !== 'button') { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : $('#saveNew').click(); return; }
       if (!inName && (tag === 'input' || tag === 'select' || tag === 'textarea')) return;
       var k = e.key.toUpperCase(), b = $$('#nStatus button', form).filter(function (x) { return x.dataset.st.split('-')[0] === k; })[0];
       if (!b) return;
-      // ในช่องชื่อ: ถ้ามีชื่อแล้ว เคอร์เซอร์อยู่ท้าย และชื่อยังไม่มีตัวเลข → ตัวเลข/X = เลือกสถานะ (ชื่อที่มีเลขพิมพ์ต่อได้ตามปกติ)
       if (inName) { var v = nameIn.value; if (!v.trim() || nameIn.selectionStart !== v.length || /[0-9]/.test(v) || (k === 'X' && !/\s$/.test(v) && !newChatState.psid)) return; }
       e.preventDefault(); b.click();
     };
@@ -4456,16 +4613,20 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       var err = validateChat(c);
       if (err) return toast(err, true);
       $('#saveNew').disabled = true;
+      var fromQueue = !!c.psid;
       API.call('saveChat', { chat: c }).then(function (saved) {
         S.data.chats.push(saved);
         if (c.psid) (S.data.inbox || []).forEach(function (r) { if (r.psid === c.psid) r.status = 'ad'; });
-        newChatState = { status: '', date: c.date, ad: c.ad, campaign: c.campaign, adKept: true }; // เก็บวันที่และโฆษณาไว้ กรอกคนต่อไปเร็วขึ้น
+        newChatState = { status: '', date: c.date, ad: c.ad, campaign: c.campaign, adKept: true };
         toast('บันทึกแล้ว: ' + saved.customer);
         pageChats();
-        $('#nName').focus();
+        var nx = fromQueue ? pendingInbox()[0] : null;
+        if (nx) fillFromInbox(nx); else $('#nName').focus();
       }).catch(function (e) { fail(e); $('#saveNew').disabled = false; });
     };
-    $('#cfStatus').onchange = function () { cf.status = this.value; cf.limit = 100; renderChatList(); };
+    function setGroup(v) { cf.status = v; cf.limit = 100; $('#cfStatus').value = v; $$('[data-cg]').forEach(function (b) { b.classList.toggle('on', b.dataset.cg === v); }); renderChatList(); }
+    $$('[data-cg]').forEach(function (b) { b.onclick = function () { setGroup(b.dataset.cg); }; });
+    $('#cfStatus').onchange = function () { setGroup(this.value); };
     $('#cfCamp').onchange = function () { cf.campaign = this.value; cf.limit = 100; renderChatList(); };
     if ($('#clearQ')) $('#clearQ').onclick = function () { cf.q = ''; render(); };
     $('#csv').onclick = downloadCsv;
@@ -4473,32 +4634,33 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     renderChatList();
   }
 
-  // ---------- คนที่ทักเพจ (ดึงจาก Inbox) รอคัดแยก ----------
+  // ---------- คิว: คนที่ทักเพจ (ดึงจาก Inbox) ยังไม่ได้บันทึก ----------
   function adCampaign(adName) { var a = S.data.ads.filter(function (x) { return x.ad_name === adName; })[0]; return a ? a.campaign : ''; }
+  function pendingInbox() { return (S.data.inbox || []).filter(function (r) { return r.status === 'pending'; }).sort(function (a, b) { var x = a.last_date || a.first_date, y = b.last_date || b.first_date; return x < y ? 1 : x > y ? -1 : 0; }); }
+  function markQueue() { $$('.cq-i').forEach(function (c) { c.classList.toggle('on', c.dataset.psid === newChatState.psid); }); }
   function renderInbox() {
     var box = $('#inboxBox');
     if (!box) return;
-    var pend = (S.data.inbox || []).filter(function (r) { return r.status === 'pending'; }).sort(function (a, b) { return a.first_date < b.first_date ? 1 : a.first_date > b.first_date ? -1 : 0; });
-    if (!pend.length) { box.innerHTML = ''; return; }
+    var pend = pendingInbox();
     var q = (S.ibQ || '').toLowerCase(), list = q ? pend.filter(function (r) { return String(r.name).toLowerCase().indexOf(q) >= 0; }) : pend;
-    var lim = S.inboxLimit || 12;
-    box.innerHTML = '<div class="card inbox" style="margin-bottom:18px"><div class="card-head"><div><h2 class="card-title">ลูกค้าที่ทักเพจ ยังไม่ได้บันทึก (' + pend.length + ')</h2>' +
-      '<div class="card-sub">ดึงชื่อจาก Inbox เพจอัตโนมัติ · เก็บเฉพาะคนที่ทัก 7 วันล่าสุด (เก่ากว่านั้นลบออกจากชีตให้เอง) · กดชื่อ → ระบบใส่ชื่อ/วันที่ทักให้ในฟอร์มด้านล่าง → เลือกโฆษณา + สถานะ → บันทึก</div></div>' +
-      '<input class="field-inline ib-q" id="ibQ" placeholder="ค้นหาชื่อ…" value="' + esc(S.ibQ || '') + '"></div>' +
-      '<div class="ib-grid">' + list.slice(0, lim).map(function (r) {
-        return '<div class="ib-card" data-psid="' + esc(r.psid) + '">' + face(r.name, r.pic, 40) +
-          '<div class="ib-who"><b>' + esc(r.name) + '</b><span>ทัก ' + F.thDate(r.first_date, true) + (r.first_text ? ' · “' + esc(r.first_text) + '”' : '') + '</span></div>' +
-          '<button class="ib-x" title="ไม่ใช่ลูกค้าจากโฆษณา — ซ่อน">✕</button></div>';
-      }).join('') + '</div>' +
-      (list.length > lim ? '<div class="actions" style="justify-content:center;margin-top:12px"><button class="btn ghost sm" id="ibMore">แสดงเพิ่ม (' + (list.length - lim) + ')</button></div>' : '') +
-      (!list.length ? '<div class="empty">ไม่พบชื่อนี้</div>' : '') + '</div>';
+    var lim = S.inboxLimit || 30;
+    box.innerHTML = '<div class="cq-h"><h2 class="card-title">รอบันทึก <span class="cq-n">' + pend.length + '</span></h2><span class="muted small">จาก Inbox · 7 วัน</span></div>' +
+      (pend.length > 5 ? '<input class="cq-q" id="ibQ" placeholder="ค้นหาชื่อ…" value="' + esc(S.ibQ || '') + '">' : '') +
+      '<div class="cq-l">' + (pend.length ? list.slice(0, lim).map(function (r) {
+        return '<div class="cq-i' + (newChatState.psid === r.psid ? ' on' : '') + '" data-psid="' + esc(r.psid) + '">' + face(r.name, r.pic, 38) +
+          '<div class="cq-w"><b>' + esc(r.name) + '</b><span>' + (r.first_text ? '“' + esc(r.first_text) + '”' : 'ทัก ' + F.thDate(r.first_date, true)) + '</span></div>' +
+          '<span class="cq-t">' + F.thDate(r.last_date || r.first_date, true) + '</span><button class="cq-x" title="ไม่ใช่ลูกค้าจากโฆษณา — ซ่อน" aria-label="ซ่อน">✕</button></div>';
+      }).join('') + (list.length > lim ? '<button class="cq-more" id="ibMore">แสดงเพิ่ม (' + (list.length - lim) + ')</button>' : '') + (!list.length ? '<div class="empty">ไม่พบชื่อนี้</div>' : '')
+        : '<div class="cq-empty">ไม่มีลูกค้ารอบันทึก<br><span class="muted small">คนที่ทักเพจใหม่จะขึ้นที่นี่อัตโนมัติ</span></div>') + '</div>' +
+      '<button class="cq-new" id="cqNew">+ พิมพ์ชื่อลูกค้าเอง</button>';
     var qi = $('#ibQ', box);
-    qi.oninput = function () { S.ibQ = this.value; var pos = this.selectionStart; renderInbox(); var n = $('#ibQ'); n.focus(); n.setSelectionRange(pos, pos); };
-    if ($('#ibMore', box)) $('#ibMore', box).onclick = function () { S.inboxLimit = lim + 24; renderInbox(); };
-    $$('.ib-card', box).forEach(function (card) {
+    if (qi) qi.oninput = function () { S.ibQ = this.value; var pos = this.selectionStart; renderInbox(); var n = $('#ibQ'); n.focus(); n.setSelectionRange(pos, pos); };
+    if ($('#ibMore', box)) $('#ibMore', box).onclick = function () { S.inboxLimit = lim + 30; renderInbox(); };
+    $('#cqNew', box).onclick = function () { var f = $('#newChat'); newChatState.psid = ''; newChatState.pic = ''; $('#nName', f).value = ''; $('#nName', f).dispatchEvent(new Event('input')); $('#nName', f).focus(); };
+    $$('.cq-i', box).forEach(function (card) {
       var r = pend.filter(function (x) { return x.psid === card.dataset.psid; })[0];
       card.onclick = function () { fillFromInbox(r); };
-      $('.ib-x', card).onclick = function (e) {
+      $('.cq-x', card).onclick = function (e) {
         e.stopPropagation();
         API.call('inboxDecide', { psid: r.psid, other: true }).then(function () { r.status = 'other'; toast('ซ่อน ' + r.name + ' แล้ว'); renderInbox(); }).catch(fail);
       };
@@ -4506,21 +4668,28 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   }
   function fillFromInbox(r) {
     var form = $('#newChat');
-    if (!form) return;
+    if (!form || !r) return;
     newChatState.psid = r.psid; newChatState.pic = r.pic; newChatState.name = r.name;
     $('#nName', form).value = r.name;
     $('#nDate', form).value = r.first_date || today();
-    $('#nFace', form).innerHTML = face(r.name, r.pic, 38);
+    $('#nFace', form).innerHTML = face(r.name, r.pic, 46);
+    $('#nMeta', form).innerHTML = 'ทักครั้งแรก ' + F.thDate(r.first_date, true) + (r.first_text ? ' · “' + esc(r.first_text) + '”' : '');
     $('#nName', form).dispatchEvent(new Event('input'));
-    $$('.ib-card').forEach(function (c) { c.classList.toggle('on', c.dataset.psid === r.psid); });
-    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    $('#nDate', form).dispatchEvent(new Event('change'));
+    markQueue();
+    if (window.innerWidth < 900) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     try { var ni = $('#nName', form); ni.focus({ preventScroll: true }); ni.setSelectionRange(ni.value.length, ni.value.length); } catch (e) {}
   }
 
+  /** หาโฆษณาของแชท — ผูกด้วยรหัส Facebook ก่อน (ไม่พังเมื่อเปลี่ยนชื่อ/ลบ/สร้างใหม่) แล้วค่อยชื่อ */
+  function chatAd(c) {
+    if (c.ad_fb_id) { var x = S.data.ads.filter(function (a) { return String(a.fb_id) === String(c.ad_fb_id); })[0]; if (x) return x; }
+    return c.ad ? findAd(c.ad, c.campaign) : null;
+  }
   function filteredChats() {
     var cf = S.chatFilter, q = cf.q.toLowerCase();
     return S.data.chats.filter(function (c) {
-      return (!cf.status || c.status === cf.status) && (!cf.campaign || c.campaign === cf.campaign) &&
+      return (!cf.status || c.status === cf.status || (cf.status === 'open' && /^[1-4]-/.test(c.status || ''))) && (!cf.campaign || c.campaign === cf.campaign) &&
         (!q || String(c.customer).toLowerCase().indexOf(q) >= 0 || String(c.product || '').toLowerCase().indexOf(q) >= 0);
     }).sort(function (a, b) {
       return a.date < b.date ? 1 : a.date > b.date ? -1 : String(b.created_at || b.id) < String(a.created_at || a.id) ? -1 : 1;
@@ -4533,12 +4702,12 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var list = filteredChats(), dups = C.dupMap(S.data.chats), lim = S.chatFilter.limit;
     $('#chatCount').textContent = list.length + ' แถว';
     if (!list.length) { box.innerHTML = '<div class="empty">ไม่พบแชท</div>'; return; }
-    box.innerHTML = '<div class="table-wrap"><table class="t wide"><thead><tr><th>วันที่</th><th>ลูกค้า</th><th>โฆษณา / Ad set</th><th>สถานะ</th><th>สินค้า</th><th class="r">ยอดรับซื้อ</th><th>บันทึกโดย</th></tr></thead><tbody>' +
+    box.innerHTML = '<div class="table-wrap"><table class="t wide"><thead><tr><th>วันที่</th><th>ลูกค้า</th><th>Ad set · โฆษณา</th><th>สถานะ</th><th>สินค้า</th><th class="r">ยอดรับซื้อ</th><th>บันทึกโดย</th></tr></thead><tbody>' +
       list.slice(0, lim).map(function (c) {
         return '<tr class="click" data-id="' + esc(c.id) + '"><td class="num" style="white-space:nowrap">' + F.thDate(c.date) + '</td>' +
           '<td><div class="name-cell">' + face(c.customer, c.pic, 34) + '<div>' + esc(c.customer) + (dups[c.id] ? ' <span class="dup">⚠️ ซ้ำ</span>' : '') +
             (c.review === 'auto' ? '<div><span class="pill info" title="ระบบเลือกโฆษณาให้จากข้อมูล Facebook — กดเพื่อตรวจ/แก้">ดึงจาก Facebook · ตรวจโฆษณา</span></div>' : c.source === 'fb' ? '<div class="muted small">ดึงจาก Facebook</div>' : '') + '</div></div></td>' +
-          '<td><div>' + esc(c.ad || '-') + '</div><div class="muted" style="font-size:12.5px">' + esc(c.adset || '') + '</div></td>' +
+          '<td>' + (function () { var a = chatAd(c); return '<div>' + esc(c.adset || c.ad || '-') + '</div><div class="muted" style="font-size:12.5px">' + esc(c.adset && c.ad !== c.adset ? c.ad : '') + adState(a) + '</div>'; })() + '</td>' +
           '<td>' + statusPill(c.status) + (c.status === '5-ปิดการขาย' ? '<div class="muted small">' + (c.closed_date ? 'ปิด ' + F.thDate(c.closed_date) + ' · ' + (C.daysIncl(c.date, c.closed_date) - 1) + ' วัน' : 'ยังไม่ใส่วันปิด') + (c.closed_by ? ' · ' + esc(c.closed_by) : '') + '</div>' : '') + '</td><td>' + esc(c.product || '') + '</td>' +
           '<td class="r num">' + (c.amount ? F.baht(Number(c.amount)) : '') + '</td><td class="muted">' + esc(c.updated_by || c.created_by || '') + '</td></tr>';
       }).join('') + '</tbody></table></div>' +
@@ -4550,8 +4719,8 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   function editChat(id, after) {
     var c = S.data.chats.filter(function (x) { return x.id === id; })[0];
     if (!c) return;
-    var st = { id: c.id, status: c.status, adset: c.adset, campaign: c.campaign, psid: c.psid || '', pic: c.pic || '' };
-    modal('<h3>แก้ไขแชท</h3><form id="editChat">' + chatFormHtml(c, 'e') +
+    var st = { id: c.id, status: c.status, adset: c.adset, campaign: c.campaign, psid: c.psid || '', pic: c.pic || '', ad_fb_id: c.ad_fb_id || '' };
+    modal('<h3>แก้ไขแชท</h3><form id="editChat" class="cf-modal">' + chatForm2Html(Object.assign({}, c, { meta: 'ทัก ' + F.thDate(c.date, true) + (c.psid ? ' · ดึงจาก Facebook' : '') }), 'e', true) +
       '<div class="muted" style="font-size:13px;margin-top:12px">บันทึกโดย ' + esc(c.created_by || '-') + (c.updated_by ? ' · แก้ล่าสุดโดย ' + esc(c.updated_by) : '') + '</div>' +
       '<div class="actions" style="margin-top:16px;justify-content:space-between"><button type="button" class="btn danger" id="delChat">ลบ</button>' +
       '<span class="actions"><button type="button" class="btn ghost" data-close>ยกเลิก</button><button class="btn" type="submit">บันทึก</button></span></div></form>',
@@ -6174,15 +6343,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   function perfSection(f, m, prevRange, charts) {
     if (!(S.data.fbads || []).length) return '';
     var cur = C.fbPerf(S.data, f.from, f.to, f.campaign), old = prevRange ? C.fbPerf(S.data, prevRange[0], prevRange[1], f.campaign) : {};
-    var met = S.pmetric || 'cpc';
-    var html = '<div class="pgrid mt">' + Object.keys(PM).map(function (k, i) { var p = PM[k];
-      return '<div class="card pk' + (i === 0 ? ' main' : '') + (met === k ? ' on' : '') + '" data-pm="' + k + '"><div class="l"><span>' + p.l + '</span>' + dBadge(cur[k], old[k], p.up, p.k) + '</div><div class="v" data-n>' + p.f(cur[k]) + '</div><div class="o">ช่วงก่อน ' + p.f(old[k]) + '</div>' + (i === 0 ? '<div class="o">ค่า Ads ' + F.baht(cur.spend) + ' · ' + F.int(Math.round(cur.chat)) + ' แชท</div>' : '') + '</div>'; }).join('') + '</div>';
-    // daily trend
-    var days = []; for (var d = f.from; d <= f.to; d = C.addDays(d, 1)) days.push(d);
-    var n = days.length, pv = days.map(function (d) { return C.fbPerf(S.data, d, d, f.campaign)[met]; }), pp = prevRange ? days.map(function (d, i) { var x = C.addDays(prevRange[0], i); return C.fbPerf(S.data, x, x, f.campaign)[met]; }) : [];
-    html += section(PM[met].l + ' — รายวัน (Facebook)', 'กดการ์ดด้านบนเพื่อเปลี่ยนตัวเลข · เส้นประจาง = ช่วงก่อนหน้า · ชี้เพื่อดูค่า', legend([['ช่วงที่เลือก', 'var(--primary)'], ['ช่วงก่อนหน้า', 'var(--text-3)']]) + '<div class="chart-box" id="chP"></div>', 'full');
-    charts.push(['chP', 'line', { labels: days.map(function (d) { return F.thDate(d); }), tips: days.map(function (d) { return F.thDate(d, true); }), height: 300, fmt: met === 'ctr' ? function (v) { return (v * 100).toFixed(1) + '%'; } : met === 'freq' ? function (v) { return v.toFixed(1); } : function (v) { return F.int(Math.round(v)); },
-      series: [{ name: 'ช่วงก่อน', color: 'var(--text-3)', width: 2, dash: '5 4', opacity: .6, values: pp }, { name: 'ช่วงนี้', color: 'var(--primary)', width: 3.5, area: true, values: pv }] }]);
+    var html = ''; // v82 — การ์ด 8 ตัว + กราฟรายวัน ย้ายไปเป็นตารางในส่วนบนแล้ว
     // funnel
     var st = [['เห็นโฆษณา', cur.reach, old.reach, 'fb', 'Facebook'], ['คลิกลิงก์', cur.lclk || cur.clk, old.lclk || old.clk, 'fb', 'Facebook'], ['ทักแชท', cur.chat, old.chat, 'fb', 'Facebook'],
       ['บันทึกเป็น Lead', m.leads, null, 'us', 'แอดมินบันทึก'], ['ประเมินราคา', m.funnel[2] ? m.funnel[2].n : null, null, 'us', 'แอดมินบันทึก'], ['ปิดได้', m.closed, null, 'us', 'แอดมินบันทึก']];
@@ -6442,7 +6603,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     return o;
   }
   function pageTrack() {
-    var td = today(), curM = td.slice(0, 7), tf = S.tf || (S.tf = { m: curM });
+    var td = today(), curM = td.slice(0, 7), tf = S.tkm || (S.tkm = { m: curM });
     if (tf.m > curM) tf.m = curM;
     var a = tf.m + '-01', mEnd = trkMonthEnd(tf.m), b = mEnd < td ? mEnd : td, live = b === td;
     var days = trkDays(a, b), T = trkTot(days), nDays = days.length;
@@ -6748,9 +6909,9 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     S.drawCharts(); Charts.countUp($('#page'));
     gBindFilters(gf, pageGov);
   }
-  function gChart(svg, tip, days) {
-    if (!svg) return;
-    var box = svg.parentNode, n = Math.max(days.length, 1), W = Math.max(box.clientWidth || 700, n * 18), H = 280, L = 46, R = 40, T = 20, B = 26, pw = W - L - R, ph = H - T - B, base = T + ph, gw = pw / n, bw = Math.max(3, Math.min(22, gw * 0.6));
+  function gChart(svg, tip, days, op) {
+    if (!svg) return; op = op || {};
+    var box = svg.parentNode, n = Math.max(days.length, 1), W = Math.max(box.clientWidth || 700, n * 18), H = op.H || 280, L = 46, R = 40, T = 20, B = 26, pw = W - L - R, ph = H - T - B, base = T + ph, gw = pw / n, bw = Math.max(3, Math.min(22, gw * 0.6));
     var mA = Math.max.apply(null, days.map(function (z) { return z.cost; }).concat([1])) * 1.15, mC = Math.max.apply(null, days.map(function (z) { return z.conv; }).concat([1])) * 1.2;
     function k(v) { return v >= 1000 ? Math.round(v / 1000) + 'k' : Math.round(v); }
     function cx(i) { return L + gw * i + gw / 2; } function y(v) { return base - v / mA * ph; } function y2(v) { return base - v / mC * ph; }
@@ -6766,7 +6927,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var cur = -1;
     function show(i) { if (i === cur) return; cur = i; $$('g.eh', svg).forEach(function (g) { g.classList.toggle('on', Number(g.dataset.i) === i); }); svg.classList.toggle('hov', i >= 0);
       if (i < 0) { tip.style.opacity = 0; return; } var z = days[i];
-      esTipAt(tip, svg, cx(i), Math.min(y(z.cost), y2(z.conv)) - 4, W, H, '<b>วัน' + DOW[dowOf(z.d)] + ' ' + thBE(z.d) + '</b><div><span><i style="background:#f5a800"></i>ค่า Ads</span><span>฿' + F.int(Math.round(z.cost)) + '</span></div><div><span><i style="background:#1a73e8"></i>Conversion</span><span>' + F.int(Math.round(z.conv)) + '</span></div><div><span>ต้นทุน/Conv.</span><span>' + (z.conv ? '฿' + F.int(Math.round(z.cost / z.conv)) : '–') + '</span></div>'); }
+      esTipAt(tip, svg, cx(i), Math.min(y(z.cost), y2(z.conv)) - 4, W, H, '<b>วัน' + DOW[dowOf(z.d)] + ' ' + thBE(z.d) + '</b><div><span><i style="background:#f5a800"></i>ค่า Ads</span><span>฿' + F.int(Math.round(z.cost)) + '</span></div><div><span><i style="background:#1a73e8"></i>' + (op.lb || 'Conversion') + '</span><span>' + F.int(Math.round(z.conv)) + '</span></div><div><span>ต้นทุน/' + (op.lb || 'Conv.') + '</span><span>' + (z.conv ? '฿' + F.int(Math.round(z.cost / z.conv)) : '–') + '</span></div>'); }
     $$('g.eh', svg).forEach(function (g) { var i = Number(g.dataset.i); g.onmouseenter = g.onclick = function () { show(i); }; });
     svg.onmouseleave = function () { show(-1); };
   }
