@@ -2011,6 +2011,48 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .g-sp2 .kpi-v { font-size: 23px; white-space: nowrap; } .g-sp2 .kpi-s { font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .g-sp2 .kpi-v small { font-size: 13px; font-weight: 500; color: var(--text-3); }
 .g-ch { display: inline-block; font-size: 11px; font-weight: 600; border-radius: 6px; padding: 1px 7px; margin-bottom: 2px; } .g-ch.l { background: #e6f7ec; color: #06a043; } .g-ch.f { background: #e8f0fe; color: #1877f2; }
 
+/* ============ v82.5 — ดีไซน์ชุดเดียวทั้งเว็บ ============ */
+.app.g2app { grid-template-columns: 260px 1fr; background: linear-gradient(to right, var(--g2-bg) 260px, var(--bg) 260px); }
+.g2-rail { width: 64px; } .sidebar.g2 .g2-rb { width: 60px; font-size: 10.5px; } .g2-ic { width: 42px; height: 28px; } .g2-ic svg { width: 18px; height: 18px; }
+.g2-lg { width: 40px; height: 40px; font-size: 16px; border-radius: 12px; } .g2-dotc { right: 6px; }
+.g2-panel { padding: 16px 8px 12px; } .g2-brand { font-size: 16px; padding: 6px 12px 12px; } .g2-pt { padding: 2px 12px 8px; font-size: 11px; }
+.sidebar.g2 .g2-it { font-size: 14px; padding: 10px 12px; border-radius: 10px; }
+.sidebar.g2 .g2-it.on { background: color-mix(in srgb, #ffc928 22%, var(--g2-bg)); color: var(--g2-tx); box-shadow: inset 3px 0 0 #ffc928; }
+#page > .filters { background: var(--card); border-radius: 14px; padding: 6px 8px; box-shadow: 0 1px 2px rgba(20,25,40,.05); gap: 8px; margin-bottom: 18px; }
+#page > .filters .chip-group { border: 0; box-shadow: none; background: transparent; padding: 0; }
+#page > .filters .chip-group button { border-radius: 10px; }
+#page > .filters .chip-group button.on { box-shadow: none; }
+#page > .filters .field-inline { box-shadow: none; }
+.filters .ov-dd { border: 0; background: transparent; border-left: 1px solid var(--line); border-radius: 0; padding-left: 14px; }
+.kpi-b { padding: 16px 18px 14px; gap: 2px; border-radius: 16px; } .kpi-l { font-size: 13px; } .kpi-v { font-size: 26px; line-height: 38px; }
+.ov-flow { background: none !important; box-shadow: none !important; gap: 12px; overflow: visible; }
+.ov-st { background: var(--card); border-radius: 16px; box-shadow: 0 1px 2px rgba(20,25,40,.05); } .ov-st + .ov-st { border-left: 0; }
+.ov-st.money, .ov-st.money:first-child, .ov-st.money:last-child { border-radius: 16px; background: color-mix(in srgb, #ffc928 14%, var(--card)); }
+.ov-v { font-size: 26px; line-height: 38px; height: 38px; } .ov-na { color: var(--text-3); font-weight: 400; }
+.ov-c { left: -6px; bottom: -12px; }
+.sc-card { background: none; box-shadow: none; padding: 0; overflow: visible; margin-bottom: 0; }
+.sc-top { border: 0; } .sc-tiles { gap: 12px; }
+.sc-t, .sc-t.on, .sc-t.on:hover { background: var(--card); color: var(--text); border: 0; border-radius: 16px; box-shadow: 0 1px 2px rgba(20,25,40,.05); padding: 16px 18px 14px; filter: none; }
+.sc-tiles .sc-t:first-child, .sc-tiles .sc-t:nth-child(2) { border-radius: 16px; }
+.sc-t:hover { background: var(--card); box-shadow: 0 0 0 1px var(--line-strong) inset; }
+.sc-t.on { box-shadow: 0 0 0 2px var(--c) inset !important; }
+.sc-ck { position: absolute; top: 14px; right: 14px; width: 20px; height: 20px; border-radius: 6px; border: 2px solid var(--line-strong); display: grid; place-items: center; color: #fff; font-size: 12px; font-weight: 700; }
+.sc-t.on .sc-ck { background: var(--c); border-color: var(--c); } .sc-t.on .sc-ck:after { content: "✓"; }
+.sc-n { justify-content: flex-start; padding-right: 28px; } .sc-n span { color: var(--text-2); font-size: 13px; }
+.sc-v { font-size: 26px; font-weight: 700; }
+.sc-d { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; margin-top: 4px; } .sc-d.up, .sc-t.on .sc-d.up { background: #e6f4ea; color: #137333; } .sc-d.dn, .sc-t.on .sc-d.dn { background: #fce8e6; color: #c5221f; } .sc-d.nt, .sc-t.on .sc-d.nt { background: none; padding: 0; font-weight: 400; color: var(--text-3); }
+.sc-box { margin-top: 12px; padding: 0 !important; overflow: hidden; }
+.sc-bh { display: flex; align-items: center; gap: 14px; padding: 14px 18px 0; flex-wrap: wrap; }
+.sc-lg { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12.5px; color: var(--text-2); } .sc-lg i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.sc-tg { margin-left: auto; border: 0; background: none; font: inherit; font-size: 12.5px; color: var(--text-2); cursor: pointer; padding: 4px 8px; border-radius: 8px; } .sc-tg:hover { background: var(--bg-soft); }
+
+#page > .filters .chip-group button { font-size: 13.5px; padding: 7px 13px; min-height: 0; }
+#page > .filters .field-inline { font-size: 13.5px; padding: 6px 10px; min-height: 0; height: 36px; }
+.filters .ov-dd select { max-width: 260px; font-size: 13.5px; }
+#page > .filters .btn { padding: 8px 14px; font-size: 13.5px; box-shadow: none; min-height: 0; }
+.sc-sc svg text { font-size: 11px; } .sc-sc svg text:not([fill]) { fill: var(--text-3); }
+@media (max-width: 760px) { .sc-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sc-t { border-bottom: 0; } }
+
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -2878,6 +2920,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   // ---------- รูปแบบตัวเลข ----------
   var fmtInt = new Intl.NumberFormat('th-TH', { maximumFractionDigits: 0 });
   function baht(n) { return n == null || isNaN(n) ? '–' : fmtInt.format(Math.round(n)) + ' บาท'; }
+  function bahtUI(n) { return n == null || isNaN(n) ? '–' : (n < 0 ? '−฿' : '฿') + fmtInt.format(Math.abs(Math.round(n))); } // v82 — หน้าเว็บใช้ ฿x,xxx ทุกที่ (ข้อความคัดลอกไป LINE ยังเป็น 'x บาท')
   function int(n) { return n == null || isNaN(n) ? '–' : fmtInt.format(n); }
   function pct(n, d) { return n == null || isNaN(n) ? '–' : (n * 100).toFixed(d == null ? 0 : d) + '%'; }
   var TH_MONTH = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
@@ -3232,7 +3275,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     spendDaily: spendDaily, spendCoverage: spendCoverage, runResults: runResults, runningDays: runningDays, daysIncl: daysIncl,
     closeDurations: closeDurations, durationStats: durationStats,
     experiments: experiments, activeTime: activeTime, mergeSameBudget: mergeSameBudget, cleanNote: cleanNote, KPI_CATS: KPI_CATS, purchaseCat: purchaseCat, itemCat: itemCat, prodCat: prodCat, guessCat: guessCat, catMap: catMap, adCat: adCat, costByCat: costByCat, kpiTargets: kpiTargets, weeksBack: weeksBack, fbPerf: fbPerf, median: median, campaignDaily: campaignDaily, productList: productList, splitProduct: splitProduct, MIN_DAYS: MIN_DAYS,
-    fmt: { baht: baht, int: int, pct: pct, thDate: thDate, thRange: thRange }
+    fmt: { baht: bahtUI, int: int, pct: pct, thDate: thDate, thRange: thRange }
   };
 })();
 
@@ -3646,7 +3689,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     { id: 'dashboard', label: 'ภาพรวม Ads Facebook', nav: 'ภาพรวม', short: 'ภาพรวม FB', icon: I.dash, group: 'fb' },
     { id: 'fcamp', label: 'แคมเปญ Facebook', nav: 'แคมเปญ', short: 'แคมเปญ FB', icon: I.track, group: 'fb' },
     { id: 'chats', label: 'บันทึกแชท', short: 'แชท', icon: I.chat, group: 'fb' },
-    { id: 'campaigns', label: 'แคมเปญ', nav: 'จัดการแคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
+    { id: 'campaigns', label: 'ตั้งค่าแคมเปญ', nav: 'ตั้งค่าแคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
     { id: 'gov', label: 'ภาพรวม Google Ads', nav: 'ภาพรวม', short: 'ภาพรวม G', icon: I.ggl, group: 'gg' },
     { id: 'gcamp', label: 'แคมเปญ Google Ads', nav: 'แคมเปญ', short: 'แคมเปญ G', icon: I.mega, group: 'gg' },
     { id: 'settings', label: 'ตั้งค่า', short: 'ตั้งค่า', icon: I.gear, group: 'sys' }
@@ -3995,14 +4038,16 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       '<span style="flex:1"></span><button class="btn" id="btnSummary">' + I.copy + 'คัดลอกสรุป</button></div>';
     var fbC = C.fbPerf(S.data, f.from, f.to, f.campaign), fbO = prev ? C.fbPerf(S.data, C.addDays(f.from, -nDays), C.addDays(f.from, -1), f.campaign) : null;
     var hasFb = (S.data.fbads || []).length > 0;
-    function dd(cur, old, goodUp) {
+    var dd = function (cur, old, goodUp) {
       if (!prev || old == null || cur == null || !isFinite(old) || old === 0) return '';
       var v = (cur - old) / old; if (Math.abs(v) < 0.005) return '<span class="ov-p nt">เท่าเดิม</span>';
       var cls = goodUp == null ? 'nt' : (goodUp ? v > 0 : v < 0) ? 'up' : 'dn';
       return '<span class="ov-p ' + cls + '">' + (v > 0 ? '▲ ' : '▼ ') + Math.abs(v * 100).toFixed(0) + '%</span>';
-    }
+    };
     var chat = hasFb ? fbC.chat : null, cpChat = chat ? m.spend / chat : null, bad = m.cpc != null && m.cpc > m.target;
-    function stp(cls, lbl, val, sub, cost) { return '<div class="ov-st' + (cls ? ' ' + cls : '') + '">' + (cost || '') + '<div class="ov-l">' + lbl + '</div><div class="ov-v num">' + val + '</div><div class="ov-s">' + sub + '</div></div>'; }
+    var noData = !m.leads && !m.spend && !m.amount && !(chat > 0); // v82 — ช่วงที่ไม่มีข้อมูลเลย: ไม่โชว์ ▼100% สีแดง
+    if (noData) dd = function () { return ''; };
+    function stp(cls, lbl, val, sub, cost) { if (noData) { val = '<span class="ov-na">–</span>'; sub = 'ยังไม่มีข้อมูล'; cost = ''; } return '<div class="ov-st' + (cls ? ' ' + cls : '') + '">' + (cost || '') + '<div class="ov-l">' + lbl + '</div><div class="ov-v num">' + val + '</div><div class="ov-s">' + sub + '</div></div>'; }
     function cost(v, unit, isBad) { return v == null ? '' : '<span class="ov-c' + (isBad ? ' bad' : '') + '"><b>' + F.baht(v) + '</b>/' + unit + '</span>'; }
     html += '<div class="ov-sec">จากค่า Ads ถึงยอดรับซื้อ <small>' + F.thRange(f.from, f.to) + (prev ? ' · ป้ายเทียบ ' + F.thRange(C.addDays(f.from, -nDays), C.addDays(f.from, -1)) : '') + ' · ระหว่างช่อง = ต้นทุนต่อขั้น</small></div>' +
       '<div class="card ov-flow">' +
@@ -4012,16 +4057,16 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       stp('', 'ปิดได้', F.int(m.closed) + ' <small>เคส</small>', dd(m.closed, prev && prev.closed, true) + '<span>อัตราปิด ' + F.pct(m.closeRate, 1) + '</span>', cost(m.cpl, 'Lead')) +
       stp('money', 'ยอดรับซื้อ', F.baht(m.amount), dd(m.amount, prev && prev.amount, true) + (m.closed ? '<span>' + F.baht(m.amount / m.closed) + '/เคส</span>' : ''), cost(m.cpc, 'เคส', bad)) +
       '</div>' +
-      '<div class="ov-note">ต้นทุน/เคส ' + (m.cpc == null ? '–' : '<b>' + F.baht(m.cpc) + '</b>') + ' · เป้า ' + F.baht(m.target) +
+      (noData ? '<div class="ov-note">ยังไม่มีข้อมูลช่วง ' + F.thRange(f.from, f.to) + ' · ลองเลือกช่วงวันที่อื่น หรือกด "ดึงข้อมูล" ที่หน้าตั้งค่า</div>' : '<div class="ov-note">ต้นทุน/เคส ' + (m.cpc == null ? '–' : '<b>' + F.baht(m.cpc) + '</b>') + ' · เป้า ' + F.baht(m.target) +
         (m.cpc == null ? '' : bad ? ' → <b class="bad">เกินเป้า ' + (m.cpc / m.target).toFixed(1) + ' เท่า</b>' : ' → <b class="good">ผ่านเป้า</b>') +
         (m.adsPct != null ? ' · ค่า Ads = ' + F.pct(m.adsPct, 1) + ' ของยอดรับซื้อ' : '') +
-        (f.preset === 'today' ? ' · วันนี้ยังไม่จบวัน ตัวเลขจะเพิ่มขึ้นอีก' : '') + '</div>';
+        (f.preset === 'today' ? ' · วันนี้ยังไม่จบวัน ตัวเลขจะเพิ่มขึ้นอีก' : '') + '</div>');
     // แถว 2: กราฟ ค่า Ads (แท่ง) + Lead (เส้น) · ตารางตัวชี้วัด Facebook
     var ovDays = m.daily.map(function (z) { return { d: z.date, cost: z.spend, conv: z.leads }; });
-    html += '<div class="ov-row2"><div class="card ov-ch"><div class="es-lg"><span><i style="background:#f5a800"></i>ค่า Ads/วัน</span><span><i class="ln" style="background:#1a73e8"></i>Lead/วัน</span></div>' +
-      '<div class="es-cw tk-cw" style="min-height:250px"><div class="tk-sc"><svg class="es-svg" id="ovCh"></svg></div><div class="es-tip" id="ovTip"></div></div></div>';
+    html += '<div class="ov-row2"><div class="card ov-ch">' + (noData ? '<div class="empty" style="padding:60px 10px">ยังไม่มีข้อมูลรายวันในช่วงนี้</div>' : '<div class="es-lg"><span><i style="background:#f5a800"></i>ค่า Ads/วัน</span><span><i class="ln" style="background:#1a73e8"></i>Lead/วัน</span></div>' +
+      '<div class="es-cw tk-cw" style="min-height:250px"><div class="tk-sc"><svg class="es-svg" id="ovCh"></svg></div><div class="es-tip" id="ovTip"></div></div>') + '</div>';
     if (hasFb) html += '<div class="card ov-mt"><table class="t"><thead><tr><th>ตัวชี้วัดโฆษณา (Facebook)</th><th class="r">ตอนนี้</th><th class="r">ช่วงก่อน</th><th class="r">เปลี่ยน</th></tr></thead><tbody>' +
-      Object.keys(PM).map(function (k) { var p = PM[k]; return '<tr><td>' + p.l + '</td><td class="r num"><b>' + p.f(fbC[k]) + '</b></td><td class="r num muted">' + (fbO ? p.f(fbO[k]) : '–') + '</td><td class="r">' + (fbO ? dBadge(fbC[k], fbO[k], p.up, p.k) : '') + '</td></tr>'; }).join('') + '</tbody></table></div>';
+      Object.keys(PM).map(function (k) { var p = PM[k]; return '<tr><td>' + p.l + '</td><td class="r num"><b>' + p.f(fbC[k]) + '</b></td><td class="r num muted">' + (fbO ? p.f(fbO[k]) : '–') + '</td><td class="r">' + (fbO && fbC.imp > 0 ? dBadge(fbC[k], fbO[k], p.up, p.k) : '') + '</td></tr>'; }).join('') + '</tbody></table></div>';
     else html += '<div class="card ov-mt"><div class="empty">ยังไม่ได้เชื่อม Facebook — ตัวชี้วัดโฆษณาจะขึ้นหลังกด "ดึงข้อมูล" ที่หน้าตั้งค่า</div></div>';
     html += '</div>';
     charts.push(function () { gChart($('#ovCh'), $('#ovTip'), ovDays, { lb: 'Lead', fb: function (v) { return F.int(v) + ' คน'; }, H: 250 }); });
@@ -7008,50 +7053,64 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   }
   /** ผลงานแคมเปญ Facebook แบบตาราง Google Ads · ค่า Ads/Lead/ปิดได้ = สูตรเดียวกับหน้าภาพรวม (C.compute) · อิมเพรสชัน/คลิก/แชท = Facebook API */
   // ---------- v82 · การ์ดตัวชี้วัด + กราฟ แบบ Google Ads (ใช้ทั้งหน้า Google และ Facebook) ----------
-  var SC_COL = ['#1a73e8', '#d93025', '#f9ab00', '#188038'];
+  var SC_COL = ['#e0a100', '#1a73e8', '#8e44ad', '#0f9d58'];
   // st = { t:[4 คีย์], on:[0/1 x4], cmp, col, menu }  ·  M = { key:{ n, v(o), f, up(1 ดีเมื่อขึ้น / 0 ดีเมื่อลง / null กลาง), p(ต้องใช้ข้อมูลแชท) } }
   // agg(from, to, needP) → ออบเจ็กต์ตัวเลขรวมช่วงนั้น
   function scBuild(st, M, agg, a, b, selHtml) {
     var n = C.daysIncl(a, b), pb = C.addDays(a, -1), pa = C.addDays(a, -n);
     var needP = st.t.some(function (k) { return M[k] && M[k].p; });
     var cur = agg(a, b, needP), prv = agg(pa, pb, needP);
+    var noData = st.t.every(function (k) { var x = M[k] ? M[k].v(cur) : null; return !x; });
     var tiles = st.t.map(function (k, i) {
       var m = M[k]; if (!m) return '';
       var v = m.v(cur), pv = m.v(prv), on = !!st.on[i], dl = '';
-      if (v != null && pv) { var ch = (v - pv) / pv * 100, cls = m.up == null ? 'nt' : ((ch >= 0) === !!m.up ? 'up' : 'dn'); dl = '<span class="sc-d ' + cls + '">' + (ch >= 0 ? '▲' : '▼') + ' ' + Math.abs(ch).toFixed(1) + '%</span>'; }
-      else dl = '<span class="sc-d nt">ไม่มีข้อมูลช่วงก่อน</span>';
+      if (noData) { v = null; dl = '<span class="sc-d nt">ยังไม่มีข้อมูล</span>'; }
+      else if (v != null && pv) { var ch = (v - pv) / pv * 100, cls = m.up == null ? 'nt' : ((ch >= 0) === !!m.up ? 'up' : 'dn'); dl = '<span class="sc-d ' + cls + '">' + (ch >= 0 ? '▲' : '▼') + ' ' + Math.abs(ch).toFixed(1) + '%</span>'; }
+      else if (!dl) dl = '<span class="sc-d nt">ไม่มีข้อมูลช่วงก่อน</span>';
       var menu = st.menu === i ? '<div class="sc-bg" data-scx></div><div class="sc-menu">' + Object.keys(M).map(function (k2) {
         var dis = st.t.indexOf(k2) >= 0 && k2 !== k; return '<button data-scp="' + k2 + '"' + (dis ? ' disabled' : '') + ' class="' + (k2 === k ? 'on' : '') + '">' + M[k2].n + '</button>'; }).join('') + '</div>' : '';
-      return '<div class="sc-t' + (on ? ' on' : '') + '" data-sct="' + i + '" style="--c:' + SC_COL[i] + '"><div class="sc-n"><span>' + m.n + '</span><button class="sc-dd" data-scm="' + i + '" title="เปลี่ยนตัวชี้วัด" aria-label="เปลี่ยนตัวชี้วัด">▾</button></div>' +
+      return '<div class="sc-t' + (on ? ' on' : '') + '" data-sct="' + i + '" style="--c:' + SC_COL[i] + '"><span class="sc-ck" aria-hidden="true"></span><div class="sc-n"><span>' + m.n + '</span><button class="sc-dd" data-scm="' + i + '" title="เปลี่ยนตัวชี้วัด" aria-label="เปลี่ยนตัวชี้วัด">▾</button></div>' +
         '<div class="sc-v">' + (v == null ? '–' : m.f(v)) + '</div>' + dl + menu + '</div>';
     }).join('');
-    var html = '<div class="card sc-card">' + (selHtml || '') +
-      '<div class="sc-top"><div class="sc-tiles">' + tiles + '</div><div class="sc-tools"><button data-scc>' + (st.col ? '▾ แสดงกราฟ' : '▴ พับกราฟ') + '</button></div></div>' +
-      (st.col ? '' : '<div class="sc-ch"><div class="sc-sc"><svg id="scSvg"></svg></div><div class="sc-tip" id="scTip"></div></div>' +
-        '<div class="sc-cmp"><label><input type="checkbox" data-sck' + (st.cmp ? ' checked' : '') + '> เทียบช่วงก่อนหน้า (เส้นประ)</label><span>' + F.thRange(pa, pb) + '</span></div>') + '</div>';
+    var html = '<div class="sc-card">' + (selHtml || '') +
+      '<div class="sc-top"><div class="sc-tiles">' + tiles + '</div></div>' +
+      '<div class="card sc-box"><div class="sc-bh"><span class="sc-lg">' + st.t.map(function (k, i) { return st.on[i] && M[k] ? '<span><i style="background:' + SC_COL[i] + '"></i>' + M[k].n + '</span>' : ''; }).join('') + '</span><button class="sc-tg" data-scc>' + (st.col ? '▾ แสดงกราฟ' : '▴ พับกราฟ') + '</button></div>' +
+      (st.col ? '' : noData ? '<div class="empty" style="padding:34px 10px">ยังไม่มีข้อมูลช่วง ' + F.thRange(a, b) + '</div>' : '<div class="sc-ch"><div class="sc-sc"><svg id="scSvg"></svg></div><div class="sc-tip" id="scTip"></div></div>' +
+        '<div class="sc-cmp"><label><input type="checkbox" data-sck' + (st.cmp ? ' checked' : '') + '> เทียบช่วงก่อนหน้า (เส้นประ)</label><span>' + F.thRange(pa, pb) + '</span></div>') + '</div></div>';
     function draw() {
       var svg = $('#scSvg'); if (!svg) return;
       var act = st.t.map(function (k, i) { return { k: k, i: i, m: M[k] }; }).filter(function (x) { return x.m && st.on[x.i]; });
       var need = act.some(function (x) { return x.m.p; }), dc = [], dp = [], d = a, g = 0;
       while (d <= b && g++ < 400) { dc.push({ d: d, o: agg(d, d, need) }); d = C.addDays(d, 1); }
       if (st.cmp) dp = dc.map(function (z, i) { var dd = C.addDays(pa, i); return { d: dd, o: agg(dd, dd, need) }; });
-      var box = svg.parentNode, N = Math.max(dc.length, 1), W = Math.max(box.clientWidth || 800, N * 12), H = 230, L = 10, R = 10, T0 = 14, B = 26, pw = W - L - R, ph = H - T0 - B;
-      var x = function (i) { return N > 1 ? L + pw * i / (N - 1) : L + pw / 2; }, o = '';
-      [0, .25, .5, .75, 1].forEach(function (p) { o += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + (T0 + ph * p) + '" y2="' + (T0 + ph * p) + '" stroke="var(--line)"/>'; });
+      var box = svg.parentNode, N = Math.max(dc.length, 1), W = Math.max(box.clientWidth || 800, N * 14), H = 240, L = 52, R = 44, T0 = 14, B = 26, pw = W - L - R, ph = H - T0 - B;
+      var gw = pw / N, x = function (i) { return L + gw * i + gw / 2; }, bw = Math.max(3, Math.min(22, gw * 0.6)), o = '';
       act.forEach(function (s) {
         s.rc = dc.map(function (z) { return s.m.v(z.o); }); s.rp = dp.map(function (z) { return s.m.v(z.o); }); s.c = s.rc.map(function (v) { return v || 0; }); s.p = s.rp.map(function (v) { return v || 0; });
-        var mx = Math.max.apply(null, s.c.concat(s.p).concat([0])) * 1.12 || 1;
-        s.y = function (v) { return T0 + ph - v / mx * ph; };
+        s.mx = Math.max.apply(null, s.c.concat(s.p).concat([0])) * 1.12 || 1;
+        s.y = function (v) { return T0 + ph - v / s.mx * ph; };
+      });
+      // แกนซ้าย = ตัวแรก (แท่ง) · แกนขวา = ตัวที่สอง (เส้น) — ตัวเลขย่อ
+      function kf(v, s) { var r = String(s.m.f(v)); return v >= 100 ? r.replace(/\.\d+(?=\D*$)/, '') : r; }
+      [0, .25, .5, .75, 1].forEach(function (p) { var yy = T0 + ph * p; o += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + yy + '" y2="' + yy + '" stroke="var(--line)"' + (p < 1 ? ' stroke-dasharray="2 6"' : '') + '/>';
+        if (act[0]) o += '<text class="es-x" x="' + (L - 8) + '" y="' + (yy + 4) + '" text-anchor="end" fill="' + SC_COL[act[0].i] + '">' + kf(act[0].mx * (1 - p), act[0]) + '</text>';
+        if (act[1]) o += '<text class="es-x" x="' + (W - R + 8) + '" y="' + (yy + 4) + '" fill="' + SC_COL[act[1].i] + '">' + kf(act[1].mx * (1 - p), act[1]) + '</text>'; });
+      act.forEach(function (s, k) {
+        if (k === 0) { // แท่ง
+          if (st.cmp) o += s.p.map(function (v, i) { var h = T0 + ph - s.y(v); return h > 0 ? '<rect x="' + (x(i) - bw / 2 - 2) + '" y="' + s.y(v) + '" width="' + (bw + 4) + '" height="' + h + '" rx="3" fill="none" stroke="' + SC_COL[s.i] + '" stroke-dasharray="3 3" opacity=".6"/>' : ''; }).join('');
+          o += s.c.map(function (v, i) { var h = T0 + ph - s.y(v); return h > 0 ? '<rect x="' + (x(i) - bw / 2) + '" y="' + s.y(v) + '" width="' + bw + '" height="' + h + '" rx="' + Math.min(4, bw / 3) + '" fill="' + SC_COL[s.i] + '" opacity=".9"/>' : ''; }).join('');
+          return;
+        }
         var path = function (arr) { return arr.map(function (v, i) { return (i ? 'L' : 'M') + x(i).toFixed(1) + ',' + s.y(v).toFixed(1); }).join(''); };
         if (st.cmp) o += '<path d="' + path(s.p) + '" fill="none" stroke="' + SC_COL[s.i] + '" stroke-width="1.6" stroke-dasharray="4 4" opacity=".55"/>';
-        o += N > 1 ? '<path d="' + path(s.c) + '" fill="none" stroke="' + SC_COL[s.i] + '" stroke-width="2.4" stroke-linejoin="round"/>' : '<circle cx="' + x(0) + '" cy="' + s.y(s.c[0]) + '" r="5" fill="' + SC_COL[s.i] + '"/>';
+        o += N > 1 ? '<path d="' + path(s.c) + '" fill="none" stroke="' + SC_COL[s.i] + '" stroke-width="2.6" stroke-linejoin="round"/>' : '<circle cx="' + x(0) + '" cy="' + s.y(s.c[0]) + '" r="5" fill="' + SC_COL[s.i] + '"/>';
       });
       var stp = Math.max(1, Math.ceil(N / 7)); dc.forEach(function (z, i) { if (i % stp === 0 || i === N - 1) o += '<text class="es-x" x="' + x(i) + '" y="' + (H - 7) + '" text-anchor="' + (i === 0 ? 'start' : i === N - 1 ? 'end' : 'middle') + '">' + thBE(z.d, true) + '</text>'; });
       o += '<line id="scHl" y1="' + T0 + '" y2="' + (T0 + ph) + '" stroke="var(--text-3)" stroke-dasharray="3 3" style="display:none"/><g id="scHd"></g><rect x="0" y="0" width="' + W + '" height="' + H + '" fill="transparent" id="scHit"/>';
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.style.width = W + 'px'; svg.style.height = H + 'px'; svg.innerHTML = o;
       var tip = $('#scTip'), hl = $('#scHl'), hd = $('#scHd'), hit = $('#scHit');
       hit.onmousemove = function (e) {
-        var r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width, i = N > 1 ? Math.max(0, Math.min(N - 1, Math.round((px - L) / pw * (N - 1)))) : 0;
+        var r = svg.getBoundingClientRect(), px = (e.clientX - r.left) * W / r.width, i = Math.max(0, Math.min(N - 1, Math.floor((px - L) / gw)));
         hl.setAttribute('x1', x(i)); hl.setAttribute('x2', x(i)); hl.style.display = '';
         hd.innerHTML = act.map(function (s) { return '<circle cx="' + x(i) + '" cy="' + s.y(s.c[i]) + '" r="4" fill="' + SC_COL[s.i] + '" stroke="var(--surface)" stroke-width="2"/>'; }).join('');
         tip.innerHTML = '<b>' + DOW_S[dowOf(dc[i].d)] + '. ' + thBE(dc[i].d, true) + '</b>' + act.map(function (s) {
