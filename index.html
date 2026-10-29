@@ -1889,11 +1889,28 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .cf-rec button.on { border-color: var(--primary); background: var(--primary-soft); }
 .cf-pop { margin-top: 8px; border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 10px 28px rgba(15,20,40,.10); overflow: hidden; background: var(--card); }
 .cf-q { width: 100%; border: 0; border-bottom: 1px solid var(--line); padding: 11px 14px; font: inherit; font-size: 14px; outline: none; background: var(--card); color: var(--text); }
-.cf-list { max-height: 340px; overflow-y: auto; padding-bottom: 4px; }
+.cf-list { max-height: 380px; overflow-y: auto; padding-bottom: 4px; }
 .cf-gh { display: flex; align-items: center; gap: 7px; padding: 10px 14px 4px; font-size: 12px; font-weight: 600; color: var(--text-3); } .cf-gh .sdot { width: 7px; height: 7px; }
 .cf-it { display: flex; justify-content: space-between; align-items: center; gap: 12px; width: 100%; border: 0; background: none; font: inherit; color: var(--text); font-size: 14px; padding: 8px 14px 8px 28px; cursor: pointer; text-align: left; }
 .cf-it:hover { background: var(--bg-soft); } .cf-it.on { background: var(--primary-soft); font-weight: 600; } .cf-it.off { color: var(--text-3); }
 .cf-it small { font-size: 11.5px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 45%; }
+.cf-ct { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+.cf-ct button { flex: none; display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-size: 12.5px; padding: 5px 12px; border-radius: 999px; cursor: pointer; max-width: 300px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cf-ct button.on { background: #1f2430; color: #fff; border-color: #1f2430; } .cf-ct button.off:not(.on) { color: var(--text-3); } .cf-ct button.more { border-style: dashed; color: var(--text-2); }
+.cf-ct .sdot { width: 7px; height: 7px; flex: none; }
+:root[data-theme="dark"] .cf-ct button.on { background: var(--primary); color: #1b1300; border-color: var(--primary); }
+.cf-list { padding: 6px; }
+.cf-ar { display: grid; grid-template-columns: minmax(150px, 38%) minmax(0, 1fr); gap: 10px; align-items: start; padding: 9px 10px; border-radius: 10px; width: 100%; border: 0; background: none; font: inherit; color: var(--text); text-align: left; }
+.cf-ar + .cf-ar { border-top: 1px solid var(--line); border-radius: 0; }
+.cf-ar.one { cursor: pointer; } .cf-ar.one:hover { background: var(--bg-soft); border-radius: 10px; } .cf-ar.one.on { background: var(--primary-soft); border-radius: 10px; }
+.cf-ar.off .cf-an { color: var(--text-3); }
+.cf-an { font-size: 14px; font-weight: 500; line-height: 1.35; overflow-wrap: anywhere; } .cf-ar.one.on .cf-an { font-weight: 600; }
+.cf-ar > small { font-size: 12px; color: var(--text-3); padding-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cf-ads { display: flex; flex-wrap: wrap; gap: 6px; }
+.cf-ads button { border: 1px solid var(--line); background: var(--card); color: var(--text); font: inherit; font-size: 12.5px; padding: 4px 11px; border-radius: 8px; cursor: pointer; max-width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cf-ads button:hover { border-color: var(--primary); } .cf-ads button.on { background: var(--primary); border-color: var(--primary); color: #1b1300; font-weight: 600; } .cf-ads button.off:not(.on) { color: var(--text-3); }
+.cf-cv b + .cf-tag + small, .cf-cv b + small { display: block; }
+@media (max-width: 640px) { .cf-ar { grid-template-columns: minmax(0, 1fr); gap: 6px; } }
 .cf-old { display: block; width: 100%; border: 0; border-top: 1px solid var(--line); background: none; font: inherit; font-size: 12.5px; color: var(--text-2); padding: 10px 14px; text-align: left; cursor: pointer; }
 .cf-tag { display: inline-block; font-size: 10.5px; font-weight: 500; padding: 0 7px; border-radius: 6px; background: var(--bg-soft); color: var(--text-3); margin-left: 6px; vertical-align: 1px; } .cf-tag.del { background: #fce8e6; color: #c5221f; }
 .cf-stl { font-size: 11.5px; color: var(--text-3); margin: 2px 0 5px; } .cf-stl + .cf-sts + .cf-stl { margin-top: 10px; }
@@ -4518,54 +4535,79 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   function adState(a) {
     if (!a) return '';
     if (a.fb_status === 'DELETED') return '<span class="cf-tag del">ลบใน FB แล้ว</span>';
-    return isTrue(a.active) ? '' : '<span class="cf-tag">ปิดแล้ว</span>';
+    return isTrue(a.active) ? '' : '<span class="cf-tag">ปิดอยู่</span>';
   }
-  // ตัวเลือกโฆษณา (ใช้ทั้งฟอร์มใหม่และหน้าต่างแก้ไข) — ช่องเดียว + รายการค้นหาได้ · id เดิม (prefix+Ad / AdId) เพื่อให้ readChatForm ใช้ต่อได้
+  // ตัวเลือกโฆษณา v82.2 — ช่องเดียว · เลือกแคมเปญเป็นแท็บ แล้วเห็น "ทุก Ad set" ของแคมเปญนั้น (ปิดอยู่ก็แสดง แค่จางลง) · ซ่อนเฉพาะที่ลบใน Facebook แล้ว
+  function adDeleted(a) { return a.fb_status === 'DELETED' || a.fb_status === 'ARCHIVED'; }
   function renderAdPicker(el, prefix, onPick) {
     var box = $('#' + prefix + 'AdP', el), cur = $('#' + prefix + 'AdId', el).value;
     var sel = S.data.ads.filter(function (a) { return a.id === cur; })[0] || null;
     var open = box.dataset.open === '1', rec = recentAds();
     var html = '<button type="button" class="cf-combo' + (sel ? '' : ' empty') + '" data-cmb>' + (sel
-      ? '<span class="cf-cv"><small>' + esc(sel.campaign) + ' › ' + esc(sel.adset || '–') + '</small><b>' + esc(sel.ad_name) + '</b>' + adState(sel) + '</span>'
-      : '<span class="cf-cv"><b class="muted">เลือกโฆษณา…</b></span>') + '<span class="cf-chg">' + (open ? 'ปิด ▴' : sel ? 'เปลี่ยน ▾' : 'เลือก ▾') + '</span></button>';
+      ? '<span class="cf-cv"><b>' + esc(sel.adset || sel.ad_name) + '</b>' + adState(sel) + '<small>' + esc(sel.campaign) + (sel.adset && sel.ad_name !== sel.adset ? ' · โฆษณา: ' + esc(sel.ad_name) : '') + '</small></span>'
+      : '<span class="cf-cv"><b class="muted">เลือก Ad set / โฆษณา…</b></span>') + '<span class="cf-chg">' + (open ? 'ปิด ▴' : sel ? 'เปลี่ยน ▾' : 'เลือก ▾') + '</span></button>';
     if (rec.length && !open) html += '<div class="cf-rec"><span class="muted small">ใช้ล่าสุด:</span>' + rec.map(function (a) {
       return '<button type="button" data-rid="' + esc(a.id) + '" class="' + (sel && sel.id === a.id ? 'on' : '') + '" title="' + esc(a.campaign + ' › ' + (a.adset || '') + ' · ' + a.ad_name) + '">' + esc(adLabel(a)) + '</button>'; }).join('') + '</div>';
-    if (open) html += '<div class="cf-pop"><input class="cf-q" id="' + prefix + 'AdQ" placeholder="พิมพ์ค้นหา แคมเปญ / Ad set / โฆษณา" autocomplete="off" value="' + esc(box.dataset.q || '') + '"><div class="cf-list" id="' + prefix + 'AdL"></div></div>';
+    if (open) html += '<div class="cf-pop"><input class="cf-q" id="' + prefix + 'AdQ" placeholder="🔍 ค้นหา Ad set / โฆษณา / แคมเปญ" autocomplete="off" value="' + esc(box.dataset.q || '') + '"><div class="cf-ct" id="' + prefix + 'AdT"></div><div class="cf-list" id="' + prefix + 'AdL"></div></div>';
     box.innerHTML = html;
     function pick(a) {
+      if (!a) return;
       $('#' + prefix + 'AdId', el).value = a.id; $('#' + prefix + 'Ad', el).value = a.ad_name; box.dataset.camp = a.campaign || '';
-      box.dataset.open = ''; box.dataset.q = ''; onPick(); renderAdPicker(el, prefix, onPick);
+      box.dataset.open = ''; box.dataset.q = ''; box.dataset.pc = ''; onPick(); renderAdPicker(el, prefix, onPick);
     }
-    function list() {
-      var q = (box.dataset.q || '').trim().toLowerCase(), showOld = box.dataset.old === '1' || !!q, hidden = 0, first = null;
-      var out = adCampList().map(function (cp) {
-        var seen = {}, items = [];
-        cp.ads.slice().sort(function (a, b) { return (isTrue(b.active) - isTrue(a.active)) || String(a.adset || '').localeCompare(String(b.adset || ''), 'th'); }).forEach(function (a) {
-          var k = (a.adset || '') + '|' + a.ad_name; if (seen[k]) return; seen[k] = 1;
-          if (q && (cp.name + ' ' + (a.adset || '') + ' ' + a.ad_name).toLowerCase().indexOf(q) < 0) return;
-          var vis = showOld || (isTrue(a.active) && (cp.running || cp.recent)) || (sel && sel.id === a.id) || (!cp.ads.some(function (x) { return isTrue(x.active); }) && cp.recent);
-          if (!vis) { hidden++; return; }
-          items.push(a);
-        });
-        if (!items.length) return '';
-        if (!first) first = items[0];
-        return '<div class="cf-g"><div class="cf-gh">' + (cp.running ? '<i class="sdot on"></i>' : '<i class="sdot off"></i>') + esc(cp.name) + (cp.recent ? ' <span class="cf-tag">เพิ่งปิด</span>' : '') + '</div>' + items.map(function (a) {
-          return '<button type="button" class="cf-it' + (sel && sel.id === a.id ? ' on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-aid="' + esc(a.id) + '"><span>' + esc(adLabel(a)) + adState(a) + '</span><small>' + esc(a.adset && a.ad_name !== a.adset ? a.ad_name : '') + '</small></button>'; }).join('') + '</div>';
+    // รวมโฆษณาตาม Ad set (ชื่อซ้ำแสดงครั้งเดียว · ตัวที่เปิดอยู่มาก่อน)
+    function groups(cp, q, showDel) {
+      var seen = {}, g = {}, order = [], hid = 0;
+      cp.ads.slice().sort(function (a, b) { return (adDeleted(a) - adDeleted(b)) || (isTrue(b.active) - isTrue(a.active)); }).forEach(function (a) {
+        var k = (a.adset || '') + '|' + a.ad_name; if (seen[k]) return; seen[k] = 1;
+        if (adDeleted(a) && !showDel && !(sel && sel.id === a.id)) { hid++; return; }
+        if (q && (cp.name + ' ' + (a.adset || '') + ' ' + a.ad_name).toLowerCase().indexOf(q) < 0) return;
+        var n = a.adset || '(ไม่ระบุ Ad set)'; if (!g[n]) { g[n] = []; order.push(n); } g[n].push(a);
+      });
+      order.sort(function (x, y) { var ax = g[x].some(function (a) { return isTrue(a.active); }), ay = g[y].some(function (a) { return isTrue(a.active); }); return (ay - ax) || x.localeCompare(y, 'th', { numeric: true }); });
+      return { order: order, g: g, hid: hid };
+    }
+    function rows(G) {
+      return G.order.map(function (n) {
+        var ads = G.g[n], on = ads.some(function (a) { return isTrue(a.active); }), del = ads.every(adDeleted);
+        var tag = del ? '<span class="cf-tag del">ลบแล้ว</span>' : on ? '' : '<span class="cf-tag">ปิดอยู่</span>';
+        if (ads.length === 1) { var a = ads[0];
+          return '<button type="button" class="cf-ar one' + (sel && sel.id === a.id ? ' on' : '') + (on ? '' : ' off') + '" data-aid="' + esc(a.id) + '"><span class="cf-an">' + esc(n) + tag + '</span>' + (a.ad_name !== a.adset ? '<small>' + esc(a.ad_name) + '</small>' : '') + '</button>'; }
+        return '<div class="cf-ar' + (on ? '' : ' off') + '"><span class="cf-an">' + esc(n) + tag + ' <small class="muted">· ' + ads.length + ' โฆษณา</small></span><div class="cf-ads">' + ads.map(function (a) {
+          return '<button type="button" class="' + (sel && sel.id === a.id ? 'on' : '') + (isTrue(a.active) ? '' : ' off') + '" data-aid="' + esc(a.id) + '">' + esc(a.ad_name) + '</button>'; }).join('') + '</div></div>';
       }).join('');
-      var L = $('#' + prefix + 'AdL', el);
-      L.innerHTML = (out || '<div class="empty" style="padding:14px">ไม่พบโฆษณา' + (q ? 'ที่ตรงกับ “' + esc(q) + '”' : '') + '</div>') +
-        (hidden && !q ? '<button type="button" class="cf-old" data-old>+ แสดงแคมเปญ / โฆษณาที่ปิดหรือลบแล้ว (' + hidden + ')</button>' : '');
+    }
+    function draw() {
+      var q = (box.dataset.q || '').trim().toLowerCase(), showDel = box.dataset.del === '1', camps = adCampList();
+      var main = camps.filter(function (c) { return c.running || c.recent; }), rest = camps.filter(function (c) { return !(c.running || c.recent); });
+      var pc = box.dataset.pc || (sel ? sel.campaign : '') || (main[0] || camps[0] || {}).name || '';
+      if (pc && main.every(function (c) { return c.name !== pc; }) && box.dataset.all !== '1') box.dataset.all = '1';
+      var tabs = main.concat(box.dataset.all === '1' ? rest : []), T = $('#' + prefix + 'AdT', el), L = $('#' + prefix + 'AdL', el), first = null, hid = 0, out = '';
+      T.style.display = q ? 'none' : '';
+      T.innerHTML = tabs.map(function (c) { return '<button type="button" data-pc="' + esc(c.name) + '" class="' + (c.name === pc ? 'on' : '') + (c.running ? '' : ' off') + '" title="' + esc(c.name) + '">' + (c.running ? '<i class="sdot on"></i>' : '') + esc(c.name) + '</button>'; }).join('') +
+        (rest.length && box.dataset.all !== '1' ? '<button type="button" class="more" data-allc>+ แคมเปญที่หยุดแล้ว (' + rest.length + ')</button>' : '');
+      if (q) {
+        camps.forEach(function (c) { var G = groups(c, q, true); if (!G.order.length) return; if (!first) first = G.g[G.order[0]][0];
+          out += '<div class="cf-gh">' + (c.running ? '<i class="sdot on"></i>' : '<i class="sdot off"></i>') + esc(c.name) + '</div>' + rows(G); });
+      } else {
+        var cp = camps.filter(function (c) { return c.name === pc; })[0];
+        if (cp) { var G = groups(cp, '', showDel); hid = G.hid; out = rows(G); if (G.order.length) first = G.g[G.order[0]][0]; }
+      }
+      L.innerHTML = (out || '<div class="empty" style="padding:16px">' + (q ? 'ไม่พบ “' + esc(q) + '”' : 'แคมเปญนี้ยังไม่มีโฆษณา') + '</div>') +
+        (hid ? '<button type="button" class="cf-old" data-del>+ แสดง Ad set / โฆษณาที่ลบใน Facebook แล้ว (' + hid + ')</button>' : '');
       $$('[data-aid]', L).forEach(function (b) { b.onclick = function () { pick(S.data.ads.filter(function (x) { return x.id === b.dataset.aid; })[0]); }; });
-      if ($('[data-old]', L)) $('[data-old]', L).onclick = function () { box.dataset.old = '1'; list(); };
+      $$('[data-pc]', T).forEach(function (b) { b.onclick = function () { box.dataset.pc = b.dataset.pc; draw(); }; });
+      if ($('[data-allc]', T)) $('[data-allc]', T).onclick = function () { box.dataset.all = '1'; draw(); };
+      if ($('[data-del]', L)) $('[data-del]', L).onclick = function () { box.dataset.del = '1'; draw(); };
       return first;
     }
     $('[data-cmb]', box).onclick = function () { box.dataset.open = open ? '' : '1'; renderAdPicker(el, prefix, onPick); if (!open) { var qi = $('#' + prefix + 'AdQ', el); if (qi) qi.focus(); } };
     $$('[data-rid]', box).forEach(function (b) { b.onclick = function () { pick(S.data.ads.filter(function (x) { return x.id === b.dataset.rid; })[0]); }; });
     if (open) {
-      var firstHit = list(), qi = $('#' + prefix + 'AdQ', el);
-      qi.oninput = function () { box.dataset.q = this.value; firstHit = list(); };
+      var firstHit = draw(), qi = $('#' + prefix + 'AdQ', el);
+      qi.oninput = function () { box.dataset.q = this.value; firstHit = draw(); };
       qi.onkeydown = function (e) {
-        if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); if (firstHit) pick(firstHit); }
+        if (e.key === 'Enter') { e.preventDefault(); e.stopPropagation(); if (box.dataset.q && firstHit) pick(firstHit); }
         else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); box.dataset.open = ''; renderAdPicker(el, prefix, onPick); }
         else e.stopPropagation();
       };
