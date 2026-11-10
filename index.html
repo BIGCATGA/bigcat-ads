@@ -2053,6 +2053,27 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .sc-sc svg text { font-size: 11px; } .sc-sc svg text:not([fill]) { fill: var(--text-3); }
 @media (max-width: 760px) { .sc-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .sc-t { border-bottom: 0; } }
 
+/* v82 — สรุปตามกลุ่มสินค้า */
+.pg-chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+.pg-chip { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line-strong); background: var(--card); border-radius: 10px; padding: 6px 6px 6px 12px; font-size: 14px; cursor: pointer; user-select: none; }
+.pg-chip i { width: 16px; height: 16px; border-radius: 4px; border: 2px solid var(--line-strong); display: grid; place-items: center; font-style: normal; font-size: 11px; color: #fff; flex: none; }
+.pg-chip.on { border-color: var(--text); } .pg-chip.on i { background: var(--text); border-color: var(--text); } .pg-chip.on i:after { content: "✓"; color: var(--card); }
+.pg-chip small { color: var(--text-3); font-size: 12px; }
+.pg-ed { border: 0; background: none; color: var(--text-3); cursor: pointer; font-size: 13px; padding: 2px 6px; border-radius: 6px; } .pg-ed:hover { background: var(--bg-soft); color: var(--text); }
+.pg-add { border: 1.5px dashed var(--line-strong); background: none; border-radius: 10px; padding: 7px 12px; font: inherit; font-size: 13.5px; color: var(--text-2); cursor: pointer; }
+.pg-card { padding: 0 !important; overflow: hidden; } .pg-t td, .pg-t th { padding: 12px 16px; white-space: nowrap; }
+.pg-n { font-weight: 500; white-space: normal !important; min-width: 220px; } .pg-n small { display: block; font-weight: 400; font-size: 12px; color: var(--text-3); max-width: 360px; }
+.pg-s { display: block; font-size: 11px; color: var(--text-3); }
+.pg-pos { color: #0b6b3a; font-weight: 600; } .pg-neg { color: #b42318; font-weight: 600; }
+.pg-t tfoot td { font-weight: 600; border-top: 2px solid var(--text); }
+.pg-ed2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 12px; }
+.pg-h { font-size: 13.5px; font-weight: 600; margin-bottom: 6px; } .pg-h small { font-weight: 400; color: var(--text-3); }
+.pg-cl { border: 1px solid var(--line); border-radius: 10px; max-height: 280px; overflow-y: auto; }
+.pg-ci { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-bottom: 1px solid var(--line); font-size: 13.5px; cursor: pointer; } .pg-ci:last-child { border-bottom: 0; }
+.pg-ci input { width: 16px; height: 16px; flex: none; accent-color: #16181f; } .pg-ci span { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.pg-tag { font-style: normal; font-size: 10.5px; font-weight: 600; color: #fff; border-radius: 5px; padding: 1px 6px; } .pg-tag.g { background: #0b6b3a; } .pg-tag.f { background: #1d4ed8; }
+@media (max-width: 760px) { .pg-ed2 { grid-template-columns: 1fr; } }
+
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -3686,6 +3707,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     { id: 'time', label: 'วิเคราะห์ช่วงเวลา', short: 'ช่วงเวลา', icon: I.clock, group: 'biz' },
     { id: 'sum', label: 'สรุปผล', short: 'สรุป', icon: I.sum, group: 'rep' },
     { id: 'track', label: 'Track เดือนนี้', short: 'Track', icon: I.track, group: 'rep' },
+    { id: 'pgrp', label: 'สรุปตามกลุ่มสินค้า', nav: 'ตามกลุ่มสินค้า', short: 'กลุ่มสินค้า', icon: I.sum, group: 'rep' },
     { id: 'dashboard', label: 'ภาพรวม Ads Facebook', nav: 'ภาพรวม', short: 'ภาพรวม FB', icon: I.dash, group: 'fb' },
     { id: 'fcamp', label: 'แคมเปญ Facebook', nav: 'แคมเปญ', short: 'แคมเปญ FB', icon: I.track, group: 'fb' },
     { id: 'chats', label: 'บันทึกแชท', short: 'แชท', icon: I.chat, group: 'fb' },
@@ -3730,11 +3752,17 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     d.budgets.forEach(function (b) { b.start_date = nd(b.start_date); b.end_date = nd(b.end_date); b.daily_budget = nn(b.daily_budget) || 0; });
     d.campaigns.forEach(function (c) { c.start_date = nd(c.start_date); c.end_date = nd(c.end_date); });
     d.fbads = (d.fbads || []).map(function (r) { r.date = nd(r.date); return r; });
+    // v82 — ใบเสร็จ Facebook บวก VAT แต่ Ads Manager/API ไม่รวม → ตั้งค่า % ได้ที่หน้าตั้งค่า ให้ค่า Ads ในเว็บตรงใบเสร็จ
+    var vat = Number((d.config || {}).fb_vat_pct) || 0;
+    if (vat > 0) { var k = 1 + vat / 100;
+      d.spend.forEach(function (x) { if (x.source === 'fb') x.amount = Math.round(x.amount * k * 100) / 100; });
+      d.fbads.forEach(function (r) { if (r.spend !== '' && r.spend != null) r.spend = Math.round(Number(r.spend) * k * 100) / 100; });
+      d.fbhourly_vat = k; }
     d.gads = (d.gads || []).map(function (r) { r.date = nd(r.date); r.cost = Number(r.cost) || 0; r.conversions = Number(r.conversions) || 0; r.impressions = Number(r.impressions) || 0; r.clicks = Number(r.clicks) || 0; r.budget = r.budget === '' || r.budget == null ? null : Number(r.budget); r.impr_share = r.impr_share === '' || r.impr_share == null ? null : Number(r.impr_share); return r; });
     d.purchases = (d.purchases || []).map(function (a) { var o = Array.isArray(a) ? { date: nd(a[0]), category: a[1], fb: !!a[2], line: !!a[3], bought: a[4], repair: a[5], sell: a[6], fbName: a[7] || '', detail: a[8] || '', seen: String(a[9] || ''), pid: String(a[10] || ''), estRef: String(a[11] || '') } : a, pc = C.prodCat(o.category, o.detail); o.k = pc.k; o.cat = pc.sub; o.guess = pc.guess; return o; });
     d.ga4 = (d.ga4 || []).map(function (a) { return Array.isArray(a) ? { date: nd(a[0]), event: String(a[1]), count: Number(a[2]) || 0 } : a; }).filter(function (e) { return e.date; });
     d.estimates = (d.estimates || []).map(function (a) { var o = Array.isArray(a) ? { date: nd(a[0]), hour: Number(a[1]), category: a[2], fb: !!a[3], line: !!a[4], closed: !!a[5], detail: a[6] || '', closeDate: nd(a[7]) || '', pid: String(a[8] || ''), estId: String(a[9] || '') } : a, pc = C.prodCat(o.category, o.detail); o.k = pc.k; o.cat = pc.sub; o.guess = pc.guess; return o; }).filter(function (e) { return e.date; });
-    d.fbhourly = (d.fbhourly || []).map(function (a) { return Array.isArray(a) ? { date: nd(a[0]), hour: Number(a[1]) || 0, campaign: a[2], adset: a[3], spend: Number(a[4]) || 0, chats: Number(a[5]) || 0 } : a; }).filter(function (e) { return e.date; });
+    d.fbhourly = (d.fbhourly || []).map(function (a) { return Array.isArray(a) ? { date: nd(a[0]), hour: Number(a[1]) || 0, campaign: a[2], adset: a[3], spend: (Number(a[4]) || 0) * (d.fbhourly_vat || 1), chats: Number(a[5]) || 0 } : a; }).filter(function (e) { return e.date; });
     d.fbstatus = (d.fbstatus || []).map(function (a) { return Array.isArray(a) ? { t: String(a[0]), lvl: a[1], campaign: a[2], adset: a[3] || '', on: !!a[4], by: a[5] || '' } : a; }).sort(function (a, b) { return a.t < b.t ? -1 : 1; });
     d.inbox = (d.inbox || []).map(function (r) { r.psid = String(r.psid); r.first_date = nd(r.first_date); r.last_date = nd(r.last_date); return r; });
     d.spend = d.spend.filter(function (s) { return s.date; });
@@ -3953,7 +3981,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     liveBadge();
     var ab = $('.bottom-nav .active'); if (ab) ab.parentNode.scrollLeft = ab.offsetLeft - ab.parentNode.clientWidth / 2 + ab.clientWidth / 2;
   }
-  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, fcamp: pageFcamp, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
+  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, pgrp: pageGroups, fcamp: pageFcamp, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
 
   // ---- ยอดรับซื้อ + เคสประเมิน แบบเรียลไทม์: ถามหลังบ้านทุก 1 นาที (เฉพาะตอนเปิดแท็บอยู่) ----
   var LIVE = { ver: null, busy: false, off: false, at: '', err: '', last: 0, pending: false, timer: null };
@@ -6722,6 +6750,84 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     list.forEach(function (z) { o.s += z.s; o.mg += z.mg; o.mf += z.mf; o.g += z.g; o.f += z.f; o.a += z.a; o.m += z.m; o.b += z.b; o.n += z.n; o.closed += z.closed; o.sold += z.sold; });
     return o;
   }
+  // ============================================================
+  // v82 — สรุปตามกลุ่มสินค้า: กลุ่ม = แคมเปญ (Google + Facebook) + หมวดสินค้า · ค่า Ads / Conversion / รับเข้า / กำไรขั้นต้น
+  // ชีตรับซื้อไม่มีแคมเปญ → ผูกผ่านหมวดสินค้า + ช่องทาง (Facebook / LINE·อื่น ๆ = Google)
+  // ============================================================
+  function pgGroups() { try { var v = JSON.parse(S.data.config.prod_groups || '[]'); return Array.isArray(v) ? v : []; } catch (e) { return []; } }
+  function pgSave(list) { var s = JSON.stringify(list); return API.call('saveConfig', { key: 'prod_groups', value: s }).then(function () { S.data.config.prod_groups = s; }); }
+  function pgOn() { try { return JSON.parse(localStorage.getItem('fbat_pg_on') || '{}'); } catch (e) { return {}; } }
+  function pgOnSave(o) { try { localStorage.setItem('fbat_pg_on', JSON.stringify(o)); } catch (e) {} }
+  function pgCalc(g, a, b, fbDaily) {
+    var o = { sp: 0, cv: 0, n: 0, val: 0, gp: 0, gsp: 0, fsp: 0, gcv: 0, fcv: 0 };
+    (S.data.gads || []).forEach(function (r) { if (r.date >= a && r.date <= b && g.gcamps.indexOf(r.campaign) >= 0) { o.gsp += r.cost; o.gcv += r.conversions; } });
+    fbDaily.forEach(function (x) { if (x.date >= a && x.date <= b && g.fcamps.indexOf(x.campaign) >= 0) o.fsp += x.amount; });
+    g.fcamps.forEach(function (c) { o.fcv += C.fbPerf(S.data, a, b, c).chat || 0; });
+    o.sp = o.gsp + o.fsp; o.cv = o.gcv + o.fcv;
+    sumDeals().forEach(function (d) {
+      if (d.date < a || d.date > b || g.cats.indexOf(d.cat) < 0) return;
+      if (d.p && d.p.fb ? !g.fb : !g.line) return;
+      o.n++; o.val += d.bought; o.gp += d.diff;
+    });
+    return o;
+  }
+  function pageGroups() {
+    var gf = gRange('pgf'), a = gf.from, b = gf.to, groups = pgGroups(), on = pgOn(), fbDaily = C.spendDaily(S.data);
+    var bt = function (v) { return F.baht(v); };
+    var rows = groups.map(function (g) { return { g: g, o: pgCalc(g, a, b, fbDaily), on: on[g.id] !== false }; });
+    var sel = rows.filter(function (r) { return r.on; });
+    var T = { sp: 0, cv: 0, n: 0, val: 0, gp: 0 }; sel.forEach(function (r) { Object.keys(T).forEach(function (k) { T[k] += r.o[k]; }); });
+    function camLine(g) { var p = []; if (g.gcamps.length) p.push('Google: ' + g.gcamps.join(', ')); if (g.fcamps.length) p.push('FB: ' + g.fcamps.join(', ')); return p.join(' · ') || 'ยังไม่ได้เลือกแคมเปญ'; }
+    function cells(o) {
+      var net = o.gp - o.sp;
+      return '<td class="r num">' + bt(o.sp) + (o.gsp && o.fsp ? '<small class="pg-s">G ' + bt(o.gsp) + ' · F ' + bt(o.fsp) + '</small>' : '') + '</td>' +
+        '<td class="r num">' + F.int(Math.round(o.cv)) + '</td><td class="r num">' + (o.cv ? bt(o.sp / o.cv) : '–') + '</td>' +
+        '<td class="r num">' + F.int(o.n) + '</td><td class="r num">' + bt(o.val) + '</td><td class="r num">' + bt(o.gp) + '</td>' +
+        '<td class="r num ' + (net >= 0 ? 'pg-pos' : 'pg-neg') + '">' + bt(net) + '</td><td class="r num">' + (o.sp ? (o.gp / o.sp).toFixed(2) + ' เท่า' : '–') + '</td>';
+    }
+    var catsUsed = {}, dup = false; sel.forEach(function (r) { r.g.cats.forEach(function (c) { if (catsUsed[c]) dup = true; catsUsed[c] = 1; }); });
+    var html = gFilters(gf) +
+      '<div class="pg-chips">' + rows.map(function (r) { return '<span class="pg-chip' + (r.on ? ' on' : '') + '" data-pgt="' + esc(r.g.id) + '"><i></i>' + esc(r.g.name) + '<small>' + esc(r.g.cats.join(', ') || '–') + '</small><button class="pg-ed" data-pge="' + esc(r.g.id) + '" title="แก้กลุ่ม" aria-label="แก้กลุ่ม">✎</button></span>'; }).join('') +
+      '<button class="pg-add" id="pgAdd">+ เพิ่มกลุ่ม</button></div>' +
+      (rows.length ? '<div class="card pg-card"><div class="table-wrap"><table class="t pg-t"><thead><tr><th>กลุ่ม</th><th class="r">ค่า Ads</th><th class="r">Conversion</th><th class="r">ต้นทุน/Conv</th><th class="r">รับเข้า (ชิ้น)</th><th class="r">มูลค่ารับเข้า</th><th class="r">กำไรขั้นต้น</th><th class="r">กำไร − ค่า Ads</th><th class="r">กำไร ÷ ค่า Ads</th></tr></thead><tbody>' +
+        sel.map(function (r) { return '<tr><td class="pg-n">' + esc(r.g.name) + '<small>' + esc(camLine(r.g)) + '</small></td>' + cells(r.o) + '</tr>'; }).join('') +
+        (sel.length ? '' : '<tr><td colspan="9"><div class="empty">ติ๊กกลุ่มด้านบนเพื่อดูตัวเลข</div></td></tr>') + '</tbody>' +
+        (sel.length > 1 ? '<tfoot><tr><td>รวม ' + sel.length + ' กลุ่ม</td>' + cells(T) + '</tr></tfoot>' : '') + '</table></div></div>' +
+        '<div class="muted small" style="margin:10px 4px">ค่า Ads + Conversion มาจากแคมเปญในกลุ่ม (Conversion Google = Conversion ของ Google Ads · Facebook = จำนวนแชท) · รับเข้า / มูลค่า / กำไรขั้นต้น มาจากชีตรับซื้อ ตามหมวดสินค้าและช่องทางที่ตั้งไว้ · กำไรขั้นต้น = ราคาประเมินขาย − ราคารับซื้อ' +
+        (dup ? ' · <b style="color:#b42318">มีกลุ่มที่ใช้หมวดสินค้าซ้ำกัน แถวรวมจะนับสินค้าซ้ำ</b>' : '') + '</div>'
+        : '<div class="card"><div class="empty">ยังไม่มีกลุ่ม — กด "+ เพิ่มกลุ่ม" แล้วเลือกแคมเปญกับหมวดสินค้า เช่น กลุ่ม Game Console</div></div>');
+    $('#page').innerHTML = html;
+    S.drawCharts = null;
+    gBindFilters(gf, pageGroups);
+    $$('[data-pgt]').forEach(function (c) { c.onclick = function (e) { if (e.target.closest('[data-pge]')) return; var o = pgOn(); o[c.dataset.pgt] = !(o[c.dataset.pgt] !== false); pgOnSave(o); pageGroups(); }; });
+    $$('[data-pge]').forEach(function (bn) { bn.onclick = function (e) { e.stopPropagation(); pgEdit(groups.filter(function (g) { return g.id === bn.dataset.pge; })[0]); }; });
+    $('#pgAdd').onclick = function () { pgEdit(null); };
+  }
+  function pgEdit(g) {
+    var isNew = !g; g = g || { id: 'g' + Date.now(), name: '', gcamps: [], fcamps: [], cats: [], line: true, fb: true };
+    var gc = {}; (S.data.gads || []).forEach(function (r) { if (r.campaign) gc[r.campaign] = 1; });
+    var gList = Object.keys(gc).sort(), fList = campaigns(), cats = {};
+    sumDeals().forEach(function (d) { if (d.cat) cats[d.cat] = 1; }); g.cats.forEach(function (c) { cats[c] = 1; });
+    var cList = Object.keys(cats).sort();
+    function box(name, list, chosen, tag) { return list.map(function (v) { return '<label class="pg-ci"><input type="checkbox" data-k="' + name + '" value="' + esc(v) + '"' + (chosen.indexOf(v) >= 0 ? ' checked' : '') + '><span>' + esc(v) + '</span>' + (tag ? '<em class="pg-tag ' + tag + '">' + (tag === 'g' ? 'Google' : 'Facebook') + '</em>' : '') + '</label>'; }).join('') || '<div class="muted small" style="padding:10px">ไม่มีข้อมูล</div>'; }
+    modal('<h3>' + (isNew ? 'เพิ่มกลุ่ม' : 'แก้กลุ่ม') + '</h3><form id="pgForm"><div class="f c12"><label for="pgName">ชื่อกลุ่ม</label><input id="pgName" value="' + esc(g.name) + '" placeholder="เช่น Game Console" required></div>' +
+      '<div class="pg-ed2"><div><div class="pg-h">แคมเปญ <small>· ค่า Ads + Conversion</small></div><div class="pg-cl">' + box('g', gList, g.gcamps, 'g') + box('f', fList, g.fcamps, 'f') + '</div></div>' +
+      '<div><div class="pg-h">หมวดสินค้า <small>· รับเข้า / มูลค่า / กำไร</small></div><div class="pg-cl">' + box('c', cList, g.cats) + '</div>' +
+      '<div class="pg-h" style="margin-top:12px">ช่องทางลูกค้า</div><div class="pg-cl"><label class="pg-ci"><input type="checkbox" id="pgLine"' + (g.line ? ' checked' : '') + '><span>LINE / อื่น ๆ (นับเป็น Google Ads)</span></label><label class="pg-ci"><input type="checkbox" id="pgFb"' + (g.fb ? ' checked' : '') + '><span>Facebook</span></label></div></div></div>' +
+      '<div class="actions" style="margin-top:16px;justify-content:space-between">' + (isNew ? '<span></span>' : '<button type="button" class="btn danger" id="pgDel">ลบกลุ่ม</button>') +
+      '<span class="actions"><button type="button" class="btn ghost" data-close>ยกเลิก</button><button class="btn" type="submit">บันทึก</button></span></div></form>', function (el, close) {
+      $('#pgForm', el).onsubmit = function (e) {
+        e.preventDefault();
+        var pick = function (k) { return $$('input[data-k="' + k + '"]:checked', el).map(function (x) { return x.value; }); };
+        var n = { id: g.id, name: $('#pgName', el).value.trim(), gcamps: pick('g'), fcamps: pick('f'), cats: pick('c'), line: $('#pgLine', el).checked, fb: $('#pgFb', el).checked };
+        if (!n.name) return toast('ใส่ชื่อกลุ่ม', true);
+        var list = pgGroups().filter(function (x) { return x.id !== g.id; }); list.push(n);
+        pgSave(list).then(function () { close(); toast('บันทึกกลุ่มแล้ว'); pageGroups(); }).catch(fail);
+      };
+      if ($('#pgDel', el)) $('#pgDel', el).onclick = function () { askConfirm('ลบกลุ่ม ' + g.name + ' ?', function () { pgSave(pgGroups().filter(function (x) { return x.id !== g.id; })).then(function () { close(); toast('ลบแล้ว'); pageGroups(); }).catch(fail); }); };
+    });
+  }
+
   function pageTrack() {
     var td = today(), curM = td.slice(0, 7), tf = S.tkm || (S.tkm = { m: curM });
     if (tf.m > curM) tf.m = curM;
@@ -7326,6 +7432,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var html = '<div class="grid row-2">' +
       '<div class="card"><h2 class="card-title" style="margin-bottom:14px">เป้าหมาย</h2><form id="cfgForm" class="form-grid">' +
       '<div class="f c8"><label for="cfgTarget">เป้าต้นทุน/เคส (บาท)</label><input type="number" id="cfgTarget" min="1" value="' + esc(S.data.config.target_cost_per_case) + '"><div class="hint">ใช้ตัดสินในหน้าภาพรวมว่าต้นทุนต่อเคสผ่านเป้าไหม</div></div>' +
+      '<div class="f c8"><label for="cfgVat">VAT ในใบเสร็จ Facebook (%)</label><input type="number" id="cfgVat" min="0" max="20" step="0.01" value="' + esc(S.data.config.fb_vat_pct || 0) + '"><div class="hint">Ads Manager แสดงค่า Ads ไม่รวม VAT แต่ใบเสร็จรวม VAT 7% · ใส่ 7 ถ้าอยากให้ค่า Ads ในเว็บตรงกับใบเสร็จ · ใส่ 0 ให้ตรงกับ Ads Manager</div></div>' +
       '<div class="f c4" style="align-self:start;padding-top:27px"><button class="btn" type="submit">บันทึก</button></div></form></div>' +
       '<div class="card"><div class="card-head"><h2 class="card-title">ผู้ใช้</h2><button class="btn sm" id="addUser">+ เพิ่มผู้ใช้</button></div>' +
       '<table class="t"><tbody>' + S.data.users.map(function (u) {
@@ -7363,7 +7470,10 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       e.preventDefault();
       var v = Number($('#cfgTarget').value);
       if (!(v > 0)) return toast('ใส่ตัวเลขมากกว่า 0', true);
-      API.call('saveConfig', { key: 'target_cost_per_case', value: v }).then(function () { S.data.config.target_cost_per_case = v; toast('บันทึกเป้าแล้ว'); }).catch(fail);
+      var vt = Math.max(0, Number($('#cfgVat').value) || 0), vatChanged = vt !== (Number(S.data.config.fb_vat_pct) || 0);
+      API.call('saveConfig', { key: 'target_cost_per_case', value: v }).then(function () { S.data.config.target_cost_per_case = v;
+        return vatChanged ? API.call('saveConfig', { key: 'fb_vat_pct', value: vt }) : null; })
+        .then(function () { toast('บันทึกแล้ว'); if (vatChanged) return API.call('bootstrap').then(function (d) { S.data = normalize(d); render(); }); }).catch(fail);
     };
     $('#fbSync').onclick = function () {
       var b = this; b.disabled = true; b.textContent = 'กำลังดึง…';
