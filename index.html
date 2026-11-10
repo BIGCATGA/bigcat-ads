@@ -1548,6 +1548,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .sm-body { padding: 6px 24px 16px; }
 .sm-body .ln { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 11px 0; border-bottom: 1px dashed var(--line-strong); font-size: 14.5px; }
 .sm-body .ln span { color: var(--text-2); } .sm-body .ln b { font-size: 16px; font-variant-numeric: tabular-nums; }
+.sm-body .ln.sm-ga span { color: var(--text-3); font-size: 13.5px; } .sm-body .ln.sm-ga b { font-size: 14.5px; font-weight: 500; color: var(--text-2); }
 .sm-body .ln.tot { border-bottom: 0; padding-top: 14px; } .sm-body .ln.tot span { color: var(--text); font-weight: 600; }
 .sm-body .ln.tot b { font-size: 26px; color: var(--good); } .sm-body .ln.tot b.neg { color: var(--bad); }
 .sm-kp { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 1px solid var(--line); }
@@ -6618,16 +6619,16 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
   /** ตัวเลขของช่วงวันที่ปิด [a,b] — onlyOnTime = นับเฉพาะเคสที่ประเมินวันเดียวกับวันปิด */
   /** byEst = นับตามวันที่ประเมิน (ไม่มีใบประเมิน → ใช้วันปิด) · onlyOnTime = เฉพาะที่ปิดวันเดียวกับวันประเมิน */
   function sumAgg(a, b, onlyOnTime, byEst) {
-    var o = { closed: 0, bought: 0, diff: 0, ads: 0, conv: 0, convSrc: '' };
+    var o = { closed: 0, bought: 0, diff: 0, ads: 0, conv: 0, ga4: 0, convSrc: 'gads' };
     sumDeals().forEach(function (d) {
       var k = byEst ? (d.estDate || d.date) : d.date;
       if (k < a || k > b || (onlyOnTime && d.late)) return;
       o.closed++; o.bought += d.bought; o.diff += d.diff;
     });
     (S.data.gads || []).forEach(function (g) { if (g.date >= a && g.date <= b) o.ads += g.cost; });
-    var ev = ga4Events(), ga = S.data.ga4 || [];
-    if (ga.length) { o.convSrc = 'ga4'; ga.forEach(function (g) { if (g.date >= a && g.date <= b && (!ev.length || ev.indexOf(g.event) >= 0)) o.conv += g.count; }); }
-    else { o.convSrc = 'gads'; (S.data.gads || []).forEach(function (g) { if (g.date >= a && g.date <= b) o.conv += g.conversions; }); }
+    // v83: Conversion = Google Ads เสมอ (ใช้คำนวณอัตราปิด / ฿ต่อ conv.) · GA4 เก็บแยกไว้ใน o.ga4 (ยังไม่แสดง)
+    (S.data.gads || []).forEach(function (g) { if (g.date >= a && g.date <= b) o.conv += g.conversions; });
+    var ev = ga4Events(); (S.data.ga4 || []).forEach(function (g) { if (g.date >= a && g.date <= b && (!ev.length || ev.indexOf(g.event) >= 0)) o.ga4 += g.count; });
     o.sell = o.bought + o.diff; o.net = o.diff - o.ads;
     return o;
   }
@@ -6647,7 +6648,8 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
         '<div class="sm-closed"><b data-n>' + F.int(x.closed) + '</b><small>ปิดได้ (ตัว)</small>' +
           '<div class="sm-split"><span>เคสวันนั้น <b>' + F.int(xr.closed) + '</b></span><span class="pos">เคสวันก่อน <b>+' + F.int(xLate) + '</b></span></div></div></div>' +
       '<div class="sm-body">' +
-        '<div class="ln"><span>Conversion' + (x.convSrc === 'gads' ? ' <small class="muted">(จาก Google Ads · ยังไม่ต่อ GA4)</small>' : '') + '</span><b>' + F.int(Math.round(x.conv)) + '</b></div>' +
+        '<div class="ln"><span>Conversion' + ' <small class="muted">(Google Ads)</small>' + '</span><b>' + F.int(Math.round(x.conv)) + '</b></div>' +
+        '<div class="ln sm-ga"><span>GA4 <small class="muted">(ทุกช่องทาง · ดูเทียบ ไม่ใช้คำนวณ)</small></span><b>' + ((S.data.ga4 || []).length ? F.int(Math.round(x.ga4)) : '<small class="muted">ยังไม่มีข้อมูล</small>') + '</b></div>' +
         '<div class="ln"><span>ค่า Ads</span><b>' + F.int(Math.round(x.ads)) + '</b></div>' +
         '<div class="ln"><span>ยอดรับซื้อ</span><b>' + F.int(x.bought) + '</b></div>' +
         '<div class="ln"><span>ยอดขาย</span><b>' + F.int(x.sell) + '</b></div>' +
