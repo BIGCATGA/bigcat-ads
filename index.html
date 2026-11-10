@@ -2062,11 +2062,17 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .pgc-ks span { display: block; font-size: 12px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .pgc-ks b { font-size: 18px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .pgc-ks .dk { background: #16181f; color: #fff; } .pgc-ks .dk span { color: #c9ccd6; }
 .pgc-ks .gn { background: #0b6b3a; color: #fff; } .pgc-ks .gn span { color: #cfe8da; } .pgc-ks .rd { background: #b42318; color: #fff; } .pgc-ks .rd span { color: #fbd5d0; }
+.pgf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-bottom: 1px solid var(--line); }
+.pgf > div { padding: 14px 18px; position: relative; min-width: 0; } .pgf > div + div { border-left: 1px solid var(--line); }
+.pgf span { display: block; font-size: 12.5px; line-height: 20px; color: var(--text-3); } .pgf b { display: block; font-size: 21px; font-weight: 600; line-height: 32px; font-variant-numeric: tabular-nums; white-space: nowrap; } .pgf small { display: block; font-size: 12px; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.pgf i { position: absolute; left: -12px; top: 50%; transform: translateY(-50%); width: 24px; height: 24px; border-radius: 50%; background: #fff; border: 1px solid var(--line); display: grid; place-items: center; font-style: normal; font-size: 12px; color: var(--text-3); z-index: 2; }
+.pgf .gn { background: #0b6b3a; } .pgf .rd { background: #b42318; } .pgf .gn span, .pgf .gn small, .pgf .rd span, .pgf .rd small { color: #e3efe8; } .pgf .gn b, .pgf .rd b { color: #fff; }
+.pgc .pg-t { max-width: 760px; } .pgc .pgc-tb { padding: 4px 18px 12px; }
 .pgc-w { padding: 9px 18px; font-size: 12.5px; color: #fff; background: #c2410c; }
 .pgc-sh { font-size: 12.5px; font-weight: 600; color: var(--text-2); padding: 12px 18px 0; }
 .pgc .pg-n b { font-weight: 500; } .pg-tag { display: inline-block !important; width: auto !important; vertical-align: 1px; margin-right: 4px; }
 .pgc .pg-t th { font-size: 12px; font-weight: 500; } .pgc .pg-t td { font-size: 13.5px; } .pgc-ks em { display: block; font-style: normal; font-size: 11.5px; opacity: .85; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .pgc .pg-n small { margin-left: 0; }
-@media (max-width: 900px) { .pgc-ks { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pgc-ks > div { border-bottom: 1px solid var(--line); } }
+@media (max-width: 900px) { .pgf { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pgf i { display: none; } .pgf > div { border-bottom: 1px solid var(--line); } .pgc-ks { grid-template-columns: repeat(2, minmax(0, 1fr)); } .pgc-ks > div { border-bottom: 1px solid var(--line); } }
 
 .pg-chips { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
 .pg-chip { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line-strong); background: var(--card); border-radius: 10px; padding: 6px 6px 6px 12px; font-size: 14px; cursor: pointer; user-select: none; }
@@ -6790,7 +6796,7 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
     var bt = function (v) { return F.baht(v); };
     var rows = groups.map(function (g) { return { g: g, o: pgCalc(g, a, b, fbDaily), on: on[g.id] !== false }; });
     var sel = rows.filter(function (r) { return r.on; });
-    var T = { sp: 0, cv: 0, n: 0, val: 0, gp: 0 }; sel.forEach(function (r) { Object.keys(T).forEach(function (k) { T[k] += r.o[k]; }); });
+    var T = { sp: 0, cv: 0, n: 0, val: 0, gp: 0, gsp: 0, fsp: 0 }; sel.forEach(function (r) { Object.keys(T).forEach(function (k) { T[k] += r.o[k]; }); });
     function camLine(g) { var p = []; if (g.gcamps.length) p.push('Google: ' + g.gcamps.join(', ')); if (g.fcamps.length) p.push('FB: ' + g.fcamps.join(', ')); return p.join(' · ') || 'ยังไม่ได้เลือกแคมเปญ'; }
     function cells(o) {
       var net = o.gp - o.sp;
@@ -6806,14 +6812,13 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
       (rows.length ? (function () {
         // v82 — แบบ C: กลุ่มละ 1 การ์ด = หัวกลุ่ม + แถบตัวเลข 6 ช่อง + ตารางแคมเปญแยก
         var catCount = {}; sumDeals().forEach(function (d) { if (d.date >= a && d.date <= b && d.cat) catCount[d.cat] = (catCount[d.cat] || 0) + 1; });
-        function strip(o) { var net = o.gp - o.sp;
-          return '<div class="pgc-ks"><div><span>ค่า Ads</span><b>' + bt(o.sp) + '</b></div><div><span>Conversion</span><b>' + F.int(Math.round(o.cv)) + '</b></div><div><span>ต้นทุน/Conv</span><b>' + (o.cv ? bt(o.sp / o.cv) : '–') + '</b></div><div><span>รับเข้า</span><b>' + F.int(o.n) + ' ชิ้น</b></div>' +
-            '<div class="dk"><span>มูลค่ารับเข้า</span><b>' + bt(o.val) + '</b></div><div class="' + (net >= 0 ? 'gn' : 'rd') + '"><span>กำไรขั้นต้น</span><b>' + bt(o.gp) + '</b><em>หักค่า Ads ' + bt(net) + (o.sp ? ' · ' + (o.gp / o.sp).toFixed(2) + ' เท่า' : '') + '</em></div></div>'; }
-        function shortName(list) { // ตัดคำนำหน้าที่ซ้ำกันทุกแคมเปญออก
-          if (list.length < 2) return function (n) { return n; };
-          var p = list[0]; list.forEach(function (n) { while (p && n.indexOf(p) !== 0) p = p.slice(0, -1); });
-          p = p.replace(/[^\s\-_·]*$/, ''); return function (n) { var s = n.slice(p.length).trim(); return s.length >= 3 ? s : n; };
-        }
+        function strip(o) { var net = o.gp - o.sp; // v82 — แบบ 2: เส้นทางเงิน 4 ช่อง
+          var src = o.sp ? (o.gsp && o.fsp ? 'Google ' + bt(o.gsp) + ' · FB ' + bt(o.fsp) : o.gsp ? 'Google 100%' : 'Facebook 100%') : '–';
+          return '<div class="pgf"><div><span>ค่า Ads</span><b>' + bt(o.sp) + '</b><small>' + src + '</small></div>' +
+            '<div><i>→</i><span>Conversion</span><b>' + F.int(Math.round(o.cv)) + '</b><small>' + (o.cv ? bt(o.sp / o.cv) + ' / conv' : '–') + '</small></div>' +
+            '<div><i>→</i><span>รับเข้า</span><b>' + F.int(o.n) + ' ชิ้น</b><small>มูลค่า ' + bt(o.val) + '</small></div>' +
+            '<div class="' + (net >= 0 ? 'gn' : 'rd') + '"><i>→</i><span>กำไรขั้นต้น</span><b>' + bt(o.gp) + '</b><small>หักค่า Ads ' + bt(net) + (o.sp ? ' · ' + (o.gp / o.sp).toFixed(2) + ' เท่า' : '') + '</small></div></div>'; }
+        function shortName() { return function (n) { return n; }; } // แสดงชื่อแคมเปญเต็ม
         var out = sel.length > 1 ? '<div class="card pgc"><div class="pgc-h"><h3>รวม ' + sel.length + ' กลุ่ม</h3><small>' + esc(sel.map(function (r) { return r.g.name; }).join(' + ')) + (dup ? ' · <b style="color:#b42318">มีหมวดสินค้าซ้ำกัน รับเข้าอาจนับซ้ำ</b>' : '') + '</small></div>' + strip(T) + '</div>' : '';
         out += sel.map(function (r) {
           var g = r.g, camps = g.gcamps.map(function (c) { return ['g', c]; }).concat(g.fcamps.map(function (c) { return ['f', c]; }));
@@ -6824,10 +6829,10 @@ svg.hbar .rowv.e { fill: #9a5b00; } svg.hbar .rowv.g { fill: var(--good); } svg.
             return { ch: c[0], n: c[1], s: sn(c[1]), o: o }; }).sort(function (x, y) { return y.o.sp - x.o.sp; });
           var warn = !g.cats.length ? 'ยังไม่ได้เลือกหมวดสินค้า — กด ✎ แก้กลุ่มแล้วติ๊กหมวดสินค้า'
             : !r.o.n ? 'ไม่มีสินค้าหมวด ' + g.cats.join(', ') + ' ที่รับเข้าในช่วงนี้' + (Object.keys(catCount).length ? ' · หมวดที่มีในชีตรับซื้อช่วงนี้: ' + Object.keys(catCount).sort().map(function (k) { return k + ' (' + catCount[k] + ')'; }).join(', ') : '') : '';
-          return '<div class="card pgc"><div class="pgc-h"><h3>' + esc(g.name) + '</h3><small>' + camps.length + ' แคมเปญ · หมวด ' + esc(g.cats.join(', ') || '–') + ' · ช่องทาง ' + [g.line ? 'LINE/อื่น ๆ' : '', g.fb ? 'Facebook' : ''].filter(Boolean).join(' + ') + '</small><button class="pg-ed" data-pge="' + esc(g.id) + '">✎ แก้กลุ่ม</button></div>' +
+          return '<div class="card pgc"><div class="pgc-h"><h3>' + esc(g.name) + '</h3><small>' + camps.length + ' แคมเปญ · ' + g.cats.length + ' หมวดสินค้า · ช่องทาง ' + [g.line ? 'LINE/อื่น ๆ' : '', g.fb ? 'Facebook' : ''].filter(Boolean).join(' + ') + '</small><button class="pg-ed" data-pge="' + esc(g.id) + '">✎ แก้กลุ่ม</button></div>' +
             strip(r.o) + (warn ? '<div class="pgc-w">' + esc(warn) + '</div>' : '') +
-            '<div class="pgc-sh">แคมเปญในกลุ่ม</div>' + (cr.length ? '<div class="table-wrap"><table class="t pg-t"><thead><tr><th>แคมเปญ</th><th class="r">ค่า Ads</th><th class="r">% ของกลุ่ม</th><th class="r">Conversion</th><th class="r">ต้นทุน/Conv</th></tr></thead><tbody>' +
-              cr.map(function (c) { return '<tr><td class="pg-n"><span class="pg-tag ' + c.ch + '">' + (c.ch === 'g' ? 'Google' : 'Facebook') + '</span> <b>' + esc(c.s) + '</b>' + (c.s !== c.n ? '<small>' + esc(c.n) + '</small>' : '') + '</td><td class="r num">' + bt(c.o.sp) + '</td><td class="r num">' + (r.o.sp ? Math.round(c.o.sp / r.o.sp * 100) + '%' : '–') + '</td><td class="r num">' + F.int(Math.round(c.o.cv)) + '</td><td class="r num">' + (c.o.cv ? bt(c.o.sp / c.o.cv) : '–') + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<div class="empty">ยังไม่ได้เลือกแคมเปญ</div>') + '</div>';
+            (cr.length ? '<div class="table-wrap pgc-tb"><table class="t pg-t"><thead><tr><th>แคมเปญ</th><th class="r">ค่า Ads</th><th class="r">สัดส่วน</th><th class="r">Conversion</th><th class="r">ต้นทุน/Conv</th></tr></thead><tbody>' +
+              cr.map(function (c) { return '<tr><td class="pg-n"><span class="pg-tag ' + c.ch + '">' + (c.ch === 'g' ? 'G' : 'F') + '</span> <b>' + esc(c.s) + '</b>' + (c.s !== c.n ? '<small>' + esc(c.n) + '</small>' : '') + '</td><td class="r num">' + bt(c.o.sp) + '</td><td class="r num">' + (r.o.sp ? Math.round(c.o.sp / r.o.sp * 100) + '%' : '–') + '</td><td class="r num">' + F.int(Math.round(c.o.cv)) + '</td><td class="r num">' + (c.o.cv ? bt(c.o.sp / c.o.cv) : '–') + '</td></tr>'; }).join('') + '</tbody></table></div>' : '<div class="empty">ยังไม่ได้เลือกแคมเปญ</div>') + '</div>';
         }).join('');
         return (sel.length ? out : '<div class="card"><div class="empty">ติ๊กกลุ่มด้านบนเพื่อดูตัวเลข</div></div>') +
           '<div class="muted small" style="margin:10px 4px">Conversion Google = Conversion ของ Google Ads · Facebook = จำนวนแชท · รับเข้า / มูลค่า / กำไรขั้นต้น มาจากชีตรับซื้อ ตามหมวดสินค้าและช่องทางของกลุ่ม (แยกรายแคมเปญไม่ได้) · กำไรขั้นต้น = ราคาประเมินขาย − ราคารับซื้อ</div>';
