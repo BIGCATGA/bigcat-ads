@@ -1666,6 +1666,8 @@ svg.hbar .rowv.e { fill: #b8321f; } svg.hbar .rowv.g { fill: var(--good); } svg.
 .tk-pt .pos { color: var(--good); font-weight: 600; }
 .tk-uns { display: block; width: max-content; font-size: 11.5px; font-weight: 600; background: var(--warn-bg); color: var(--warn); border-radius: 999px; padding: 1px 8px; margin-top: 3px; }
 .tk-sm { display: block; font-size: 11px; color: var(--text-3); }
+.tk-mom { display: block; font-size: 11.5px; font-weight: 500; margin-top: 2px; } .tk-mom.up { color: #0b8a3e; } .tk-mom.dn { color: #b42318; }
+:root[data-theme="dark"] .tk-mom.up { color: #5fd49a; } :root[data-theme="dark"] .tk-mom.dn { color: #ff8a80; }
 .tk-sh { display: flex; align-items: center; gap: 8px; } .tk-sb { width: 110px; height: 10px; border-radius: 5px; background: var(--bg-soft); overflow: hidden; flex: none; } .tk-sb i { display: block; height: 100%; background: var(--tk-grn); border-radius: 5px; }
 .tk-items { background: var(--card); border-radius: 12px; padding: 4px 14px; }
 .tk-it { display: grid; grid-template-columns: minmax(0, 1fr) 100px 110px 110px 110px; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; white-space: normal; }
@@ -6999,13 +7001,13 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         '<td class="r num">' + bt(z.g) + '</td><td class="r num">' + bt(z.f) + '</td><td class="r num"><b>' + bt(z.a) + '</b></td>' +
         '<td class="r num">' + bt(z.m) + '</td><td class="r num ' + (z.n < 0 ? 'neg' : 'pos') + '">' + bt(z.n) + '</td><td class="r num">' + bt(z.cum) + '</td></tr>';
     }).join('');
-    html += '<div class="card" style="margin-top:20px"><div class="card-head"><div><h2 class="card-title">สินค้าที่รับซื้อ' + (live ? 'เดือนนี้' : ' ' + mo(tf.m)) + '</h2><div class="card-sub">' + rng(a, b) + ' · นับตามวันที่รับซื้อ · กดแถวเพื่อดูรายเครื่อง</div></div></div><div id="tkProd"></div></div>';
+    html += '<div class="card" style="margin-top:20px"><div class="card-head"><div><h2 class="card-title">สินค้าที่รับซื้อ' + (live ? 'เดือนนี้' : ' ' + mo(tf.m)) + '</h2><div class="card-sub">' + rng(a, b) + ' · ▲▼ เทียบ ' + rng(pa, pb) + ' · นับตามวันที่รับซื้อ · กดแถวเพื่อดูรายเครื่อง</div></div></div><div id="tkProd"></div></div>';
     html += '<div class="card" style="margin-top:20px"><div class="card-head"><div><h2 class="card-title">ตารางรายวัน</h2><div class="card-sub">เรียงวันที่ 1 → ' + (live ? 'วันนี้' : 'สิ้นเดือน') + '</div></div></div>' +
       '<div class="table-wrap"><table class="t tk-t"><thead><tr><th>วันที่</th><th class="r">Google Ads</th><th class="r">Facebook Ads</th><th class="r">ค่า Ads รวม</th><th class="r">ส่วนต่าง</th><th class="r">เหลือ</th><th class="r">เหลือสะสม</th></tr></thead><tbody>' + rows + '</tbody>' +
       '<tfoot><tr><td>รวม ' + nDays + ' วัน</td><td class="r num">' + bt(T.g) + '</td><td class="r num">' + bt(T.f) + '</td><td class="r num">' + bt(T.a) + '</td><td class="r num">' + bt(T.m) + '</td><td class="r num ' + (T.n < 0 ? 'neg' : 'pos') + '">' + bt(T.n) + '</td><td></td></tr></tfoot></table></div></div>';
     $('#page').innerHTML = html;
     S.drawCharts = function () { trkChart($('#tkCh'), $('#tkTip'), days, live ? C.addDays(b, -4) : null); trkRoasChart($('#tkRc'), $('#tkRt'), days); };
-    trkProdTable($('#tkProd'), trkProducts(a, b));
+    trkProdTable($('#tkProd'), trkProducts(a, b), trkProducts(pa, pb));
     trkRoasBind();
     S.drawCharts();
     Charts.countUp($('#page'));
@@ -7116,7 +7118,10 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       map[k].items.sort(function (p, q) { return p.date < q.date ? 1 : p.date > q.date ? -1 : 0; }); return map[k];
     });
   }
-  function trkProdTable(el, cats) {
+  function trkProdTable(el, cats, prev) {
+    var PV = {}, PT = { n: 0, b: 0, m: 0, sold: 0 }; (prev || []).forEach(function (c) { PV[c.k] = c; PT.n += c.n; PT.b += c.b; PT.m += c.m; PT.sold += c.sold; });
+    var mom = function (v, p) { if (prev == null || !p || v == null || !isFinite(v)) return ''; var x = (v - p) / Math.abs(p) * 100, u = x >= 0; return '<span class="tk-mom ' + (u ? 'up' : 'dn') + '">' + (u ? '▲' : '▼') + ' ' + Math.abs(x).toFixed(1) + '%</span>'; };
+    var ppu = function (c) { return c && c.sold ? c.m / c.sold : null; };
     if (!el) return;
     var open = S.tkOpen || (S.tkOpen = {}), all = S.tkAll || (S.tkAll = {}), bt = function (v) { return F.int(Math.round(v)); };
     var TN = 0, TB = 0, TM = 0, TS = 0; cats.forEach(function (c) { TN += c.n; TB += c.b; TM += c.m; TS += c.sold; });
@@ -7125,8 +7130,8 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     var rows = cats.map(function (c) {
       var o = open[c.k], unsold = c.n - c.sold, p = TM > 0 ? c.m / TM * 100 : 0;
       var h = '<tr class="tk-pr' + (o ? ' open' : '') + '" data-pk="' + c.k + '"><td><span class="tk-cn">' + esc(c.name) + '</span>' + (unsold ? '<span class="tk-uns">ยังไม่ขาย ' + unsold + '</span>' : '') + '</td>' +
-        '<td class="r num"><span class="tk-q">' + F.int(c.n) + '</span> เครื่อง</td><td class="r num">' + bt(c.b) + '</td><td class="r num pos">' + bt(c.m) + '</td>' +
-        '<td class="r num">' + (c.sold ? bt(c.m / c.sold) : '–') + '<small class="tk-sm">เฉพาะที่ขายแล้ว</small></td>' +
+        '<td class="r num"><span class="tk-q">' + F.int(c.n) + '</span> เครื่อง' + mom(c.n, (PV[c.k] || {}).n) + '</td><td class="r num">' + bt(c.b) + mom(c.b, (PV[c.k] || {}).b) + '</td><td class="r num pos">' + bt(c.m) + mom(c.m, (PV[c.k] || {}).m) + '</td>' +
+        '<td class="r num">' + (c.sold ? bt(c.m / c.sold) : '–') + mom(ppu(c), ppu(PV[c.k])) + '<small class="tk-sm">เฉพาะที่ขายแล้ว</small></td>' +
         '<td><div class="tk-sh"><div class="tk-sb"><i style="width:' + Math.max(0, c.m / mxP * 100) + '%"></i></div><b class="num">' + p.toFixed(1) + '%</b></div></td>' +
         '<td class="r"><span class="sm-tog' + (o ? ' on' : '') + '">' + (o ? 'ซ่อน ▴' : 'ดูรายเครื่อง ▾') + '</span></td></tr>';
       if (o) {
@@ -7142,9 +7147,9 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       return h;
     }).join('');
     el.innerHTML = '<div class="table-wrap"><table class="t tk-pt"><thead><tr><th>หมวด</th><th class="r">จำนวน</th><th class="r">ยอดรับซื้อ</th><th class="r">ส่วนต่าง</th><th class="r">ส่วนต่าง/เครื่อง</th><th>สัดส่วนของส่วนต่าง</th><th></th></tr></thead><tbody>' + rows + '</tbody>' +
-      '<tfoot><tr><td>รวม</td><td class="r num"><span class="tk-q">' + F.int(TN) + '</span> เครื่อง</td><td class="r num">' + bt(TB) + '</td><td class="r num pos">' + bt(TM) + '</td><td class="r num">' + (TS ? bt(TM / TS) : '–') + '</td><td>100%</td><td></td></tr></tfoot></table></div>';
-    $$('tr.tk-pr', el).forEach(function (tr) { tr.onclick = function () { open[tr.dataset.pk] = !open[tr.dataset.pk]; trkProdTable(el, cats); }; });
-    $$('[data-pa]', el).forEach(function (bn) { bn.onclick = function (e) { e.stopPropagation(); all[bn.dataset.pa] = !all[bn.dataset.pa]; trkProdTable(el, cats); }; });
+      '<tfoot><tr><td>รวม</td><td class="r num"><span class="tk-q">' + F.int(TN) + '</span> เครื่อง' + mom(TN, PT.n) + '</td><td class="r num">' + bt(TB) + mom(TB, PT.b) + '</td><td class="r num pos">' + bt(TM) + mom(TM, PT.m) + '</td><td class="r num">' + (TS ? bt(TM / TS) : '–') + mom(TS ? TM / TS : null, ppu(PT)) + '</td><td>100%</td><td></td></tr></tfoot></table></div>';
+    $$('tr.tk-pr', el).forEach(function (tr) { tr.onclick = function () { open[tr.dataset.pk] = !open[tr.dataset.pk]; trkProdTable(el, cats, prev); }; });
+    $$('[data-pa]', el).forEach(function (bn) { bn.onclick = function (e) { e.stopPropagation(); all[bn.dataset.pa] = !all[bn.dataset.pa]; trkProdTable(el, cats, prev); }; });
   }
   /** แท่งคู่ = ส่วนต่าง (ส้ม) + ค่า Ads (แดง) แกนซ้าย · เส้น = เหลือสะสม แกนขวา · fadeFrom = วันที่เริ่มทำแท่งจาง */
   function trkChart(svg, tip, days, fadeFrom) {
