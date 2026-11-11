@@ -2107,6 +2107,43 @@ svg.hbar .rowv.e { fill: #b8321f; } svg.hbar .rowv.g { fill: var(--good); } svg.
 @media (max-width: 760px) { .pg-ed2 { grid-template-columns: 1fr; } }
 
 
+/* v84 — ไทม์ไลน์ Facebook */
+.tl-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: var(--card); border-radius: 14px; padding: 8px 10px; margin-bottom: 14px; }
+.tl-mn { display: flex; align-items: center; gap: 6px; } .tl-mn b { font-weight: 600; font-size: 15.5px; min-width: 110px; text-align: center; }
+.tl-mn button { width: 34px; height: 34px; border: 0; border-radius: 9px; background: none; font-size: 20px; cursor: pointer; color: var(--text-2); } .tl-mn button:hover { background: var(--bg-soft); } .tl-mn button:disabled { opacity: .3; cursor: default; }
+.tl-sp { flex: 1; }
+.tl-warn { font-size: 13.5px; color: var(--text-2); background: var(--card); border-left: 4px solid var(--primary); border-radius: 0 12px 12px 0; padding: 10px 14px; margin-bottom: 14px; }
+.tl-sum { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
+.tl-sum div { background: var(--card); border-radius: 14px; padding: 14px 16px; } .tl-sum span { display: block; font-size: 13.5px; color: var(--text-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .tl-sum b { font-size: 24px; font-weight: 600; }
+.tl-card { padding: 0 !important; overflow: hidden; }
+.tl-gw { overflow-x: auto; }
+.tl-g { display: grid; min-width: 1100px; font-size: 12.5px; }
+.tl-h { border: 0; background: none; font: inherit; font-size: 12.5px; color: var(--text-3); text-align: center; padding: 10px 0 8px; border-bottom: 1px solid var(--line); cursor: pointer; line-height: 1.25; }
+.tl-h small { display: block; font-size: 11px; } .tl-h.we { color: #b8321f; } .tl-h.td { font-weight: 600; color: var(--text); } .tl-h:hover { background: var(--bg-soft); }
+.tl-h.on { background: var(--text); color: var(--card); border-radius: 8px 8px 0 0; }
+.tl-nmh { text-align: left; padding-left: 20px; cursor: default; } .tl-nmh:hover { background: none; }
+.tl-nm { padding: 0 10px 0 20px; font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; border-bottom: 1px solid var(--line); height: 48px; line-height: 48px; }
+.tl-nm.on { color: var(--primary-text); }
+.tl-c { position: relative; height: 48px; border-bottom: 1px solid var(--line); border-left: 1px solid var(--bg-soft); }
+.tl-c.on { background: color-mix(in srgb, var(--text) 6%, transparent); }
+.tl-run { position: absolute; left: 3px; top: 16px; height: 16px; border-radius: 5px; background: var(--grad-h, var(--primary)); z-index: 1; pointer-events: none; }
+.tl-mk { position: absolute; left: 50%; top: 10px; transform: translateX(-50%); width: 28px; height: 28px; border-radius: 50%; border: 2px solid var(--card); display: grid; place-items: center; font: 600 12px Prompt, sans-serif; color: #fff; z-index: 2; cursor: pointer; padding: 0; font-style: normal; }
+.tl-mk.on { background: #0b6b3a; } .tl-mk.off { background: #16181f; } .tl-mk.bud { background: #b8321f; } .tl-mk.new { background: #1d4ed8; } .tl-mk.oth { background: #6d28d9; }
+:root[data-theme="dark"] .tl-mk.off { background: #55566a; }
+.tl-mk.sel { box-shadow: 0 0 0 3px var(--text); }
+.tl-empty { padding: 40px; text-align: center; color: var(--text-3); }
+.tl-lg { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; font-size: 13.5px; color: var(--text-2); padding: 12px 20px; border-top: 1px solid var(--line); }
+.tl-lg span { display: inline-flex; align-items: center; gap: 7px; } .tl-lg .tl-mk { position: static; transform: none; width: 22px; height: 22px; font-size: 11px; border: 0; cursor: default; }
+.tl-lr { display: inline-block; width: 28px; height: 12px; border-radius: 4px; background: var(--grad-h, var(--primary)); }
+.tl-dp { margin-top: 14px; padding: 18px 24px !important; }
+.tl-dh { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 6px; } .tl-dh h3 { margin: 0; font-size: 18px; font-weight: 600; }
+.tl-cf { font-size: 13.5px; background: var(--bg-soft); border-radius: 999px; padding: 4px 6px 4px 12px; } .tl-cf button { border: 0; background: none; font: inherit; font-size: 13px; color: var(--primary-text); cursor: pointer; }
+.tl-ev { display: flex; align-items: flex-start; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.tl-ev .tl-mk { position: static; transform: none; flex: none; cursor: default; border: 0; }
+.tl-x { flex: 1; min-width: 0; font-size: 15px; } .tl-x b { font-weight: 500; } .tl-x small { display: block; font-size: 13px; color: var(--text-3); margin-top: 2px; }
+.tl-tm { font-size: 13.5px; color: var(--text-3); white-space: nowrap; padding-top: 3px; }
+@media (max-width: 860px) { .tl-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 /* ============================================================
    v83 — ธีมส้ม→แดง แบบสมสิบ
    ============================================================ */
@@ -2277,6 +2314,14 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     return {
       me: 'ผู้ใช้ตัวอย่าง',
       chats: chats, ads: ads, spend: spend, campaigns: campaigns, budgets: budgets,
+      fbact: [['2026-09-04 09:10', 'c', 'create_campaign_group', CAMP.BIRD, '', '', '', '', 'แอดมิน มิ้นท์'], ['2026-09-04 09:18', 's', 'create_ad_set', CAMP.BIRD, 'Ad Set A : iPhone 11 / 12 / 13', '', '', '', 'แอดมิน มิ้นท์'],
+        ['2026-09-07 10:02', 'c', 'create_campaign_group', CAMP.PS, '', '', '', '', 'Lay'], ['2026-09-09 14:20', 'a', 'update_ad_creative', CAMP.BIRD, 'Ad Set B : iPhone 14 / 15 / 16 / 17', 'Ad Set B : iPhone 14 / 15 / 16 / 17', '', '', 'Lay'],
+        ['2026-09-11 11:05', 's', 'update_ad_set_target_spec', CAMP.BIRD, 'Ad Set C : Macbook Air/Pro', '', '', '', 'Lay'], ['2026-09-12 22:00', 's', 'update_ad_set_run_status', CAMP.PS, 'AD-SET PS', '', 'active', 'paused', 'แอดมิน ปีม'],
+        ['2026-09-14 13:30', 'c', 'update_campaign_budget', CAMP.BIRD, '', '', '350', '500', 'Lay'], ['2026-09-15 09:00', 'c', 'create_campaign_group', CAMP.COM, '', '', '', '', 'Lay'],
+        ['2026-09-17 10:30', 'a', 'create_ad', CAMP.COM, 'Ad Set A : Comset', 'Comset Gaming ราคาดี', '', '', 'Lay'], ['2026-09-17 10:31', 'a', 'ad_review_approved', CAMP.COM, 'Ad Set A : Comset', 'Comset Gaming ราคาดี', '', '', ''],
+        ['2026-09-19 16:40', 's', 'update_ad_set_budget', CAMP.COM, 'Ad Set A : Comset', '', '150', '250', 'Lay'], ['2026-09-19 16:45', 's', 'update_ad_set_bid_strategy', CAMP.COM, 'Ad Set A : Comset', '', 'LOWEST_COST', 'COST_CAP', 'Lay'],
+        ['2026-09-22 22:10', 'c', 'update_campaign_run_status', CAMP.BIRD, '', '', 'active', 'paused', 'แอดมิน มิ้นท์'], ['2026-09-22 23:00', 'c', 'update_campaign_run_status', CAMP.COM, '', '', 'active', 'paused', 'Lay'],
+        ['2026-09-24 09:30', 'c', 'update_campaign_run_status', CAMP.BIRD, '', '', 'paused', 'active', 'แอดมิน มิ้นท์'], ['2026-09-30 21:45', 'c', 'update_campaign_run_status', CAMP.BIRD, '', '', 'active', 'paused', 'แอดมิน ปีม']],
       fbstatus: [['2026-09-22 22:10', 'c', CAMP.BIRD, '', 0, 'แอดมิน มิ้นท์'], ['2026-09-24 09:30', 'c', CAMP.BIRD, '', 1, 'แอดมิน มิ้นท์'], ['2026-09-30 21:45', 'c', CAMP.BIRD, '', 0, 'แอดมิน ปีม'], ['2026-10-02 10:05', 'c', CAMP.BIRD, '', 1, 'แอดมิน ปีม'], ['2026-10-03 23:00', 'c', CAMP.BIRD, '', 0, 'แอดมิน มิ้นท์'], ['2026-10-05 08:40', 'c', CAMP.BIRD, '', 1, 'แอดมิน มิ้นท์']],
       adsets: (function () {
         var seen = {}, out = [];
@@ -3358,7 +3403,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     runsOf: runsOf, needsNormalize: needsNormalize, levelState: levelState, campState: campState, budgetMode: budgetMode, firstStart: firstStart,
     spendDaily: spendDaily, spendCoverage: spendCoverage, runResults: runResults, runningDays: runningDays, daysIncl: daysIncl,
     closeDurations: closeDurations, durationStats: durationStats,
-    experiments: experiments, activeTime: activeTime, mergeSameBudget: mergeSameBudget, cleanNote: cleanNote, KPI_CATS: KPI_CATS, purchaseCat: purchaseCat, itemCat: itemCat, prodCat: prodCat, guessCat: guessCat, catMap: catMap, adCat: adCat, costByCat: costByCat, kpiTargets: kpiTargets, weeksBack: weeksBack, fbPerf: fbPerf, median: median, campaignDaily: campaignDaily, productList: productList, splitProduct: splitProduct, MIN_DAYS: MIN_DAYS,
+    experiments: experiments, activeTime: activeTime, mergeSameBudget: mergeSameBudget, cleanNote: cleanNote, KPI_CATS: KPI_CATS, purchaseCat: purchaseCat, itemCat: itemCat, prodCat: prodCat, guessCat: guessCat, catMap: catMap, adCat: adCat, costByCat: costByCat, kpiTargets: kpiTargets, weeksBack: weeksBack, fbPerf: fbPerf, fbRows: fbRows, median: median, campaignDaily: campaignDaily, productList: productList, splitProduct: splitProduct, MIN_DAYS: MIN_DAYS,
     fmt: { baht: bahtUI, int: int, pct: pct, thDate: thDate, thRange: thRange }
   };
 })();
@@ -3773,6 +3818,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     { id: 'pgrp', label: 'สรุปตามกลุ่มสินค้า', nav: 'ตามกลุ่มสินค้า', short: 'กลุ่มสินค้า', icon: I.sum, group: 'rep' },
     { id: 'dashboard', label: 'ภาพรวม Ads Facebook', nav: 'ภาพรวม', short: 'ภาพรวม FB', icon: I.dash, group: 'fb' },
     { id: 'fcamp', label: 'แคมเปญ Facebook', nav: 'แคมเปญ', short: 'แคมเปญ FB', icon: I.track, group: 'fb' },
+    { id: 'ftl', label: 'ไทม์ไลน์ Facebook', nav: 'ไทม์ไลน์', short: 'ไทม์ไลน์', icon: I.clock, group: 'fb' },
     { id: 'chats', label: 'บันทึกแชท', short: 'แชท', icon: I.chat, group: 'fb' },
     { id: 'campaigns', label: 'ตั้งค่าแคมเปญ', nav: 'ตั้งค่าแคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
     { id: 'gov', label: 'ภาพรวม Google Ads', nav: 'ภาพรวม', short: 'ภาพรวม G', icon: I.ggl, group: 'gg' },
@@ -3827,6 +3873,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     d.estimates = (d.estimates || []).map(function (a) { var o = Array.isArray(a) ? { date: nd(a[0]), hour: Number(a[1]), category: a[2], fb: !!a[3], line: !!a[4], closed: !!a[5], detail: a[6] || '', closeDate: nd(a[7]) || '', pid: String(a[8] || ''), estId: String(a[9] || '') } : a, pc = C.prodCat(o.category, o.detail); o.k = pc.k; o.cat = pc.sub; o.guess = pc.guess; return o; }).filter(function (e) { return e.date; });
     d.fbhourly = (d.fbhourly || []).map(function (a) { return Array.isArray(a) ? { date: nd(a[0]), hour: Number(a[1]) || 0, campaign: a[2], adset: a[3], spend: (Number(a[4]) || 0) * (d.fbhourly_vat || 1), chats: Number(a[5]) || 0 } : a; }).filter(function (e) { return e.date; });
     d.fbstatus = (d.fbstatus || []).map(function (a) { return Array.isArray(a) ? { t: String(a[0]), lvl: a[1], campaign: a[2], adset: a[3] || '', on: !!a[4], by: a[5] || '' } : a; }).sort(function (a, b) { return a.t < b.t ? -1 : 1; });
+    d.fbact = (d.fbact || []).map(function (a) { return Array.isArray(a) ? { t: String(a[0]), lvl: a[1], event: String(a[2] || ''), campaign: a[3] || '', adset: a[4] || '', ad: a[5] || '', old: a[6] == null ? '' : String(a[6]), new: a[7] == null ? '' : String(a[7]), by: a[8] || '' } : a; }).filter(function (e) { return /^\d{4}-\d{2}-\d{2}/.test(e.t); }).sort(function (a, b) { return a.t < b.t ? -1 : 1; });
     d.inbox = (d.inbox || []).map(function (r) { r.psid = String(r.psid); r.first_date = nd(r.first_date); r.last_date = nd(r.last_date); return r; });
     d.spend = d.spend.filter(function (s) { return s.date; });
     return d;
@@ -4044,7 +4091,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     liveBadge();
     var ab = $('.bottom-nav .active'); if (ab) ab.parentNode.scrollLeft = ab.offsetLeft - ab.parentNode.clientWidth / 2 + ab.clientWidth / 2;
   }
-  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, pgrp: pageGroups, fcamp: pageFcamp, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
+  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, pgrp: pageGroups, fcamp: pageFcamp, ftl: pageTimeline, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
 
   // ---- ยอดรับซื้อ + เคสประเมิน แบบเรียลไทม์: ถามหลังบ้านทุก 1 นาที (เฉพาะตอนเปิดแท็บอยู่) ----
   var LIVE = { ver: null, busy: false, off: false, at: '', err: '', last: 0, pending: false, timer: null };
@@ -7333,6 +7380,140 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
   function scSel(parts, clearAttr) {
     if (!parts.length) return '';
     return '<div class="sc-sel"><span class="muted">ดูเฉพาะ</span>' + parts.map(function (p, i) { return (i ? '<span class="muted">›</span>' : '') + '<b>' + esc(p) + '</b>'; }).join('') + '<button ' + clearAttr + '>✕ ดูทั้งหมด</button></div>';
+  }
+  // ============================================================
+  // v84 — ไทม์ไลน์ Facebook (แบบ B: แถบเวลาแคมเปญ + กดดูวัน) + ดาวน์โหลด Excel รายเดือน
+  // ============================================================
+  var TL_LVL = { c: 'แคมเปญ', s: 'Ad set', a: 'โฆษณา' };
+  function tlKind(e) {
+    var et = String(e.event || ''), nv = String(e.new || '').toLowerCase(), ov = String(e.old || ''), n = TL_LVL[e.lvl] || ''; if (/[A-Za-z]/.test(n)) n = ' ' + n + ' ';
+    var ch = function (a, b) { return a !== '' && b !== '' && a.length < 40 && b.length < 40 ? ' ' + a + ' → ' + b : ''; };
+    var money = function (v) { var x = Number(v); return v !== '' && isFinite(x) ? F.int(Math.round(x)) : v; };
+    if (/review_approved/.test(et)) return { k: 'oth', ic: '✓', t: 'โฆษณาผ่านรีวิว' };
+    if (/review_declined/.test(et)) return { k: 'oth', ic: '!', t: 'โฆษณาไม่ผ่านรีวิว' };
+    if (/run_status|_status$/.test(et)) { var on = /active|resume|^on$|เปิด/.test(nv) && !/inactive|pause|off|ปิด/.test(nv);
+      return on ? { k: 'on', ic: '▶', t: 'เปิด' + n } : { k: 'off', ic: '■', t: 'ปิด' + n }; }
+    if (/^create/.test(et)) return { k: 'new', ic: '+', t: 'สร้าง' + n + 'ใหม่' };
+    if (/budget|spend_cap/.test(et)) return { k: 'bud', ic: '฿', t: 'ปรับงบ' + n + (ov !== '' && e.new !== '' ? ' ' + money(ov) + ' → ' + money(e.new) : '') };
+    if (/target/.test(et)) return { k: 'oth', ic: '⚙', t: 'เปลี่ยนกลุ่มเป้าหมาย' };
+    if (/creative/.test(et)) return { k: 'oth', ic: '⚙', t: 'เปลี่ยนรูป/ข้อความโฆษณา' };
+    if (/bid|optimization/.test(et)) return { k: 'oth', ic: '⚙', t: 'ปรับการประมูล' + ch(ov, String(e.new || '')) };
+    if (/name/.test(et)) return { k: 'oth', ic: '⚙', t: 'เปลี่ยนชื่อ' + n + ch(ov, String(e.new || '')) };
+    if (/duration|schedule/.test(et)) return { k: 'oth', ic: '⚙', t: 'เปลี่ยนวันเริ่ม/สิ้นสุด' };
+    if (/first_delivery/.test(et)) return { k: 'oth', ic: '⚙', t: 'เริ่มแสดงผลครั้งแรก' };
+    if (/ended/.test(et)) return { k: 'off', ic: '■', t: (n + 'สิ้นสุด').trim() };
+    return { k: 'oth', ic: '⚙', t: ('แก้ไข' + n).trim() + ' (' + et + ')' };
+  }
+  var TL_PRI = { on: 5, off: 4, bud: 3, new: 2, oth: 1 };
+  /** เหตุการณ์ของช่วง [a,b] — มีแท็บ FbActivity (Code.gs v23) ใช้อันนั้น · ไม่มี → ใช้ FbStatus + งบที่ปรับใน Facebook */
+  function tlEvents(a, b) {
+    var out = [], d = S.data;
+    if ((d.fbact || []).length) {
+      d.fbact.forEach(function (e) { var day = e.t.slice(0, 10); if (day >= a && day <= b) out.push(e); });
+    } else {
+      (d.fbstatus || []).forEach(function (e) { var day = e.t.slice(0, 10); if (day >= a && day <= b) out.push({ t: e.t, lvl: e.lvl, event: 'update_run_status', campaign: e.campaign, adset: e.adset, ad: '', old: '', new: e.on ? 'active' : 'paused', by: e.by }); });
+      (d.budgets || []).forEach(function (x) { var m = String(x.note || '').match(/ปรับงบใน Facebook ([\d.]+) → ([\d.]+)/);
+        if (m && x.start_date >= a && x.start_date <= b) out.push({ t: x.start_date + ' 00:00', lvl: x.adset ? 's' : 'c', event: 'update_budget', campaign: x.campaign, adset: x.adset || '', ad: '', old: m[1], new: m[2], by: '' }); });
+    }
+    out.forEach(function (e) { e.kd = tlKind(e); e.kd.t = e.kd.t.replace(/\s+/g, ' ').trim(); });
+    return out.sort(function (x, y) { return x.t < y.t ? -1 : 1; });
+  }
+  function tlMonthRange(m) { var p = m.split('-'), y = +p[0], mo = +p[1], last = new Date(y, mo, 0).getDate(); return [m + '-01', m + '-' + ('0' + last).slice(-2), last]; }
+  function tlDefaultMonth() {
+    var t = today(), best = '';
+    C.spendDaily(S.data).forEach(function (s) { if (s.amount > 0 && s.date <= t && s.date > best) best = s.date; });
+    (S.data.fbact || S.data.fbstatus || []).forEach(function (e) { var d = e.t.slice(0, 10); if (d <= t && d > best) best = d; });
+    return (best || t).slice(0, 7);
+  }
+  function pageTimeline() {
+    var tl = S.tl || (S.tl = { m: tlDefaultMonth(), d: '', c: '' });
+    var r = tlMonthRange(tl.m), a = r[0], b = r[1], N = r[2], t = today();
+    var ev = tlEvents(a, b), sp = C.spendDaily(S.data).filter(function (s) { return s.date >= a && s.date <= b && s.amount > 0 && s.campaign; });
+    var camps = {}, order = [];
+    function addC(c, d) { if (!(c in camps)) { camps[c] = { run: {}, ev: {}, first: d }; order.push(c); } if (d < camps[c].first) camps[c].first = d; }
+    sp.forEach(function (s) { addC(s.campaign, s.date); camps[s.campaign].run[s.date] = 1; });
+    ev.forEach(function (e) { var c = e.campaign || ''; addC(c, e.t.slice(0, 10)); var day = e.t.slice(0, 10); (camps[c].ev[day] = camps[c].ev[day] || []).push(e); });
+    order.sort(function (x, y) { return x === '' ? 1 : y === '' ? -1 : camps[x].first < camps[y].first ? -1 : camps[x].first > camps[y].first ? 1 : x < y ? -1 : 1; });
+    if (!tl.d || tl.d < a || tl.d > b) { tl.d = ''; ev.forEach(function (e) { tl.d = e.t.slice(0, 10); }); if (!tl.d) tl.d = t >= a && t <= b ? t : b; tl.c = ''; }
+    var cnt = { on: 0, off: 0, bud: 0, new: 0, oth: 0 }; ev.forEach(function (e) { cnt[e.kd.k]++; });
+    var days = []; for (var i = 1; i <= N; i++) days.push(tl.m + '-' + ('0' + i).slice(-2));
+    var mLabel = TH_MO[+tl.m.slice(5) - 1] + ' ' + (+tl.m.slice(0, 4) + 543);
+    var html = '<div class="tl-bar"><div class="tl-mn"><button data-tlm="-1" aria-label="เดือนก่อน">‹</button><b>' + mLabel + '</b><button data-tlm="1" aria-label="เดือนถัดไป"' + (tl.m >= t.slice(0, 7) ? ' disabled' : '') + '>›</button></div>' +
+      '<span class="tl-sp"></span><button class="btn" id="tlXls">' + I.copy + ' ดาวน์โหลด Excel เดือนนี้</button></div>' +
+      (!(S.data.fbact || []).length ? '<div class="tl-warn">ตอนนี้แสดงแค่เปิด/ปิด และปรับงบ — อัปเดต Code.gs v23 แล้วกด "ดึงข้อมูล" จะเห็นการเปลี่ยนแปลงครบ (สร้างใหม่ เปลี่ยนรูป/ข้อความ กลุ่มเป้าหมาย การประมูล) ย้อนหลัง 120 วัน</div>' : '') +
+      '<div class="tl-sum">' + [['เปิด', cnt.on], ['ปิด', cnt.off], ['ปรับงบ', cnt.bud], ['สร้างใหม่', cnt.new], ['แก้โฆษณา / กลุ่มเป้าหมาย / อื่น ๆ', cnt.oth]].map(function (x) { return '<div><span>' + x[0] + '</span><b>' + F.int(x[1]) + '</b></div>'; }).join('') + '</div>';
+    var g = '<div class="tl-g" style="grid-template-columns:240px repeat(' + N + ',minmax(28px,1fr))"><div class="tl-h tl-nmh">แคมเปญ</div>' +
+      days.map(function (d) { var w = dowOf(d); return '<button class="tl-h' + (w === 0 || w === 6 ? ' we' : '') + (d === tl.d ? ' on' : '') + (d === t ? ' td' : '') + '" data-tld="' + d + '">' + (+d.slice(8)) + '<small>' + DOW_S[w] + '</small></button>'; }).join('');
+    order.forEach(function (c) {
+      var o = camps[c];
+      g += '<div class="tl-nm' + (tl.c === c ? ' on' : '') + '" title="' + esc(c || 'ไม่ทราบแคมเปญ') + '">' + esc(c || '(ไม่ทราบแคมเปญ / บัญชีโฆษณา)') + '</div>';
+      days.forEach(function (d, i) {
+        var h = '<div class="tl-c' + (d === tl.d ? ' on' : '') + '">';
+        if (o.run[d] && !o.run[days[i - 1]]) { var L = 0; while (o.run[days[i + L]]) L++; h += '<i class="tl-run" style="width:calc(' + L * 100 + '% - 6px)"></i>'; }
+        var es = o.ev[d];
+        if (es) { var top = es.slice().sort(function (x, y) { return TL_PRI[y.kd.k] - TL_PRI[x.kd.k]; })[0].kd;
+          h += '<button class="tl-mk ' + top.k + (tl.c === c && tl.d === d ? ' sel' : '') + '" data-tlc="' + esc(c) + '" data-tlday="' + d + '" title="' + esc(es.map(function (e) { return e.t.slice(11) + ' ' + e.kd.t; }).join('\n')) + '">' + (es.length > 1 ? es.length : top.ic) + '</button>'; }
+        g += h + '</div>';
+      });
+    });
+    if (!order.length) g += '<div class="tl-empty" style="grid-column:1/-1">ไม่มีการยิงหรือการเปลี่ยนแปลงในเดือนนี้</div>';
+    g += '</div>';
+    html += '<div class="card tl-card"><div class="tl-gw">' + g + '</div><div class="tl-lg"><span><i class="tl-lr"></i>กำลังยิง (มีค่า Ads)</span>' +
+      [['on', '▶', 'เปิด'], ['off', '■', 'ปิด'], ['bud', '฿', 'ปรับงบ'], ['new', '+', 'สร้างใหม่'], ['oth', '⚙', 'แก้โฆษณา / กลุ่มเป้าหมาย / อื่น ๆ']].map(function (x) { return '<span><i class="tl-mk ' + x[0] + '">' + x[1] + '</i>' + x[2] + '</span>'; }).join('') + '<span class="muted">ตัวเลขในวงกลม = มีหลายรายการวันนั้น</span></div></div>';
+    var dev = ev.filter(function (e) { return e.t.slice(0, 10) === tl.d && (!tl.c || (e.campaign || '') === tl.c); });
+    var spD = 0; sp.forEach(function (s) { if (s.date === tl.d && (!tl.c || s.campaign === tl.c)) spD += s.amount; });
+    html += '<div class="card tl-dp"><div class="tl-dh"><h3>' + DOW[dowOf(tl.d)] + ' ' + thBE(tl.d) + '</h3>' + (tl.c ? '<span class="tl-cf">' + esc(tl.c || '(ไม่ทราบแคมเปญ)') + ' <button data-tlall="1">ดูทุกแคมเปญ ×</button></span>' : '') +
+      '<span class="tl-sp"></span><span class="muted">ค่า Ads วันนี้ ' + F.baht(spD) + '</span></div>' +
+      (dev.length ? dev.map(function (e) {
+        var where = [e.lvl !== 'c' && e.adset ? e.adset : '', e.lvl === 'a' && e.ad ? e.ad : ''].filter(Boolean).join(' › ');
+        return '<div class="tl-ev"><span class="tl-mk ' + e.kd.k + '">' + e.kd.ic + '</span><div class="tl-x"><b>' + esc(e.campaign || '(ไม่ทราบแคมเปญ)') + '</b> · ' + esc(e.kd.t) +
+          '<small>' + [where ? esc(where) : '', e.by ? 'โดย ' + esc(e.by) : ''].filter(Boolean).join(' · ') + '</small></div><span class="tl-tm">' + (e.t.slice(11) && e.t.slice(11) !== '00:00' ? e.t.slice(11) : 'ทั้งวัน') + '</span></div>'; }).join('')
+        : '<div class="muted" style="padding:10px 0">ไม่มีการเปลี่ยนแปลงวันนี้</div>') + '</div>';
+    $('#page').innerHTML = html;
+    S.drawCharts = null;
+    $$('[data-tlm]').forEach(function (x) { x.onclick = function () { var p = tl.m.split('-'), dt = new Date(+p[0], +p[1] - 1 + Number(x.dataset.tlm), 1); tl.m = dt.getFullYear() + '-' + ('0' + (dt.getMonth() + 1)).slice(-2); tl.d = ''; tl.c = ''; pageTimeline(); }; });
+    $$('[data-tld]').forEach(function (x) { x.onclick = function () { tl.d = x.dataset.tld; tl.c = ''; pageTimeline(); }; });
+    $$('[data-tlday]').forEach(function (x) { x.onclick = function () { tl.d = x.dataset.tlday; tl.c = x.dataset.tlc; pageTimeline(); }; });
+    $$('[data-tlall]').forEach(function (x) { x.onclick = function () { tl.c = ''; pageTimeline(); }; });
+    $('#tlXls').onclick = function () { tlExport(tl.m); };
+  }
+  /** ดาวน์โหลด Excel รายเดือน: สรุปแคมเปญ · รายวัน · แชทที่ปิดได้ · ไทม์ไลน์ */
+  function tlExport(m) {
+    var r = tlMonthRange(m), a = r[0], b = r[1];
+    function go() {
+      var rows = C.fbRows(S.data, a, b), agg = {}, day = {};
+      rows.forEach(function (x) {
+        var c = x.campaign || '(ไม่ระบุแคมเปญ)', k = x.date + '|' + c;
+        var A = agg[c] || (agg[c] = { sp: 0, im: 0, lc: 0, ch: 0, n: 0, amt: 0 }), D = day[k] || (day[k] = { d: x.date, c: c, sp: 0, im: 0, re: 0, lc: 0, ch: 0 });
+        A.sp += Number(x.spend) || 0; A.im += Number(x.impressions) || 0; A.lc += Number(x.link_clicks || x.clicks) || 0; A.ch += Number(x.chats) || 0;
+        D.sp += Number(x.spend) || 0; D.im += Number(x.impressions) || 0; D.re += Number(x.reach) || 0; D.lc += Number(x.link_clicks || x.clicks) || 0; D.ch += Number(x.chats) || 0;
+      });
+      var closed = (S.data.chats || []).filter(function (c) { var d = c.closed_date || c.date; return c.status === '5-ปิดการขาย' && d >= a && d <= b; })
+        .sort(function (x, y) { return (x.closed_date || x.date) < (y.closed_date || y.date) ? -1 : 1; });
+      closed.forEach(function (c) { var A = agg[c.campaign || '(ไม่ระบุแคมเปญ)'] || (agg[c.campaign || '(ไม่ระบุแคมเปญ)'] = { sp: 0, im: 0, lc: 0, ch: 0, n: 0, amt: 0 }); A.n++; A.amt += Number(c.amount) || 0; });
+      var r2 = function (v) { return Math.round(v * 100) / 100; }, vat = Number((S.data.config || {}).fb_vat_pct) || 0;
+      var s1 = [['แคมเปญ', 'ค่า Ads' + (vat ? ' (รวม VAT ' + vat + '%)' : ''), 'อิมเพรสชัน', 'คลิกลิงก์', 'แชท (Facebook)', 'ต้นทุน/แชท', 'ปิดได้ (ตัว)', 'ยอดรับซื้อ', 'ค่า Ads/ตัวที่ปิดได้']];
+      var T = { sp: 0, im: 0, lc: 0, ch: 0, n: 0, amt: 0 };
+      Object.keys(agg).sort(function (x, y) { return agg[y].sp - agg[x].sp; }).forEach(function (c) { var A = agg[c]; Object.keys(T).forEach(function (k) { T[k] += A[k]; });
+        s1.push([c, r2(A.sp), A.im, A.lc, A.ch, A.ch ? r2(A.sp / A.ch) : '', A.n, A.amt, A.n ? r2(A.sp / A.n) : '']); });
+      s1.push(['รวม', r2(T.sp), T.im, T.lc, T.ch, T.ch ? r2(T.sp / T.ch) : '', T.n, T.amt, T.n ? r2(T.sp / T.n) : '']);
+      var s2 = [['วันที่', 'แคมเปญ', 'ค่า Ads', 'อิมเพรสชัน', 'การเข้าถึง', 'คลิกลิงก์', 'แชท (Facebook)', 'ต้นทุน/แชท']];
+      Object.keys(day).sort().forEach(function (k) { var D = day[k]; s2.push([D.d, D.c, r2(D.sp), D.im, D.re, D.lc, D.ch, D.ch ? r2(D.sp / D.ch) : '']); });
+      var s3 = [['วันที่ทัก', 'วันที่ปิด', 'ลูกค้า', 'แคมเปญ', 'Ad set', 'โฆษณา', 'สินค้า', 'ยอดรับซื้อ', 'หมายเหตุ', 'บันทึกโดย']];
+      closed.forEach(function (c) { s3.push([c.date, c.closed_date || '', c.customer || '', c.campaign || '', c.adset || '', c.ad || '', c.product || '', Number(c.amount) || 0, c.note || '', c.closed_by || c.updated_by || c.created_by || '']); });
+      var s4 = [['วันเวลา', 'ระดับ', 'แคมเปญ', 'Ad set', 'โฆษณา', 'การเปลี่ยนแปลง', 'จาก', 'เป็น', 'โดย']];
+      tlEvents(a, b).forEach(function (e) { s4.push([e.t, TL_LVL[e.lvl] || '', e.campaign || '', e.adset || '', e.ad || '', e.kd.t, e.old || '', e.new || '', e.by || '']); });
+      var wb = XLSX.utils.book_new();
+      [['สรุปแคมเปญ', s1, [34, 14, 12, 11, 13, 11, 11, 13, 16]], ['รายวัน', s2, [12, 34, 11, 11, 11, 11, 13, 11]], ['แชทปิดได้', s3, [12, 12, 22, 30, 26, 26, 24, 12, 24, 14]], ['ไทม์ไลน์', s4, [17, 9, 30, 26, 26, 32, 12, 12, 14]]].forEach(function (x) {
+        var ws = XLSX.utils.aoa_to_sheet(x[1]); ws['!cols'] = x[2].map(function (w) { return { wch: w }; }); XLSX.utils.book_append_sheet(wb, ws, x[0]); });
+      XLSX.writeFile(wb, 'FB-Ads-' + m + '.xlsx');
+      toast('ดาวน์โหลดแล้ว · FB-Ads-' + m + '.xlsx');
+    }
+    if (window.XLSX) return go();
+    toast('กำลังเตรียมไฟล์…');
+    var sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    sc.onload = go; sc.onerror = function () { toast('โหลดตัวสร้างไฟล์ Excel ไม่ได้ — เช็คอินเทอร์เน็ต', true); };
+    document.head.appendChild(sc);
   }
   function pageFcamp() {
     var gf = gRange('ff'), a = gf.from, b = gf.to, fc = S.fc || (S.fc = { k: 'sp', dir: -1, open: {}, flt: 'all' }); fc.sel = fc.sel || null;
