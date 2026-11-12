@@ -6906,9 +6906,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         '<div class="sm-ci tot"><div class="h"><b>รวม</b><span>ปิด <b>' + F.int(cT.cl) + '</b> / ' + F.int(cT.est) + ' เคส · <em>' + pct(cT.cl, cT.est) + '</em></span></div><div class="m"><span>รับซื้อ ' + F.int(cT.b) + '</span><span>ส่วนต่าง <b class="pos">' + F.int(cT.m) + '</b></span></div></div></div>' +
         '<div class="es-lg es-lg2"><span><i style="background:var(--sm-est)"></i>เคสประเมิน</span><span><i class="a"></i>ปิดได้</span></div>'
         : '<div class="empty">ยังไม่มีเคสหรือเครื่องที่รับซื้อในช่วงนี้</div>') +
-      (function () { var top = sumDeals().filter(function (d) { return d.date >= r[0] && d.date <= r[1] && d.sell; }).sort(function (p, q) { return q.diff - p.diff; }).slice(0, 5);
-        return top.length ? '<div class="sm-top"><div class="t">ส่วนต่างสูงสุด · ' + (sf.m === 'd' ? thBE(r[0], true) : 'ช่วงนี้') + '</div>' + top.map(function (d, k) {
-          return '<div class="r"><span class="no">' + (k + 1) + '</span><div class="d"><b>' + esc(d.detail || d.cat || '–') + '</b><small>' + esc(d.cat || '') + ' · รับซื้อ ' + F.int(d.bought) + '</small></div><b class="pos num">' + F.int(d.diff) + '</b></div>'; }).join('') + '</div>' : ''; })() + '</div>';
+      '</div>';
     var SL = S.smL || (S.smL = { closed: true, est: true, conv: false });
     html += '<div class="sm-right"><div class="card sm-chart"><div class="card-head"><div><h2 class="card-title">' + (sf.m === 'd' ? '14 วันล่าสุด' : sf.m === 'w' ? '12 สัปดาห์ล่าสุด' : '12 เดือนล่าสุด') + '</h2><div class="card-sub">แท่ง (แกนซ้าย) = ส่วนต่างหลังหักค่า Ads · เส้น (แกนขวา) = กดเลือกด้านล่าง</div></div></div>' +
       '<div class="es-cw sm-cw"><svg class="es-svg" id="smCh"></svg><div class="es-tip" id="smTip"></div></div>' +
