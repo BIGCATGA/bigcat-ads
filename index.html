@@ -2184,6 +2184,21 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .sm-body .ln.tot b .sm-mo { font-size: 11.5px; }
 .sm-cmp { font-size: 11.5px; color: var(--text-3); padding: 0 0 8px; }
 .sm-kp.k6 { grid-template-columns: repeat(3, 1fr); } .sm-kp.k6 div:nth-child(3n+1) { border-left: 0; } .sm-kp.k6 div:nth-child(n+4) { border-top: 1px solid var(--line); }
+/* v94 — สินค้าที่รับซื้อ */
+.by-q { min-width: 220px; margin-left: auto; }
+.by-kp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+.by-kp .card span { font-size: 13.5px; color: var(--text-3); } .by-kp b { display: block; font-size: 30px; font-weight: 600; margin: 4px 0 2px; color: var(--text); } .by-kp b small { font-size: 13px; font-weight: 400; color: var(--text-3); margin-left: 4px; } .by-kp em { font-style: normal; font-size: 12.5px; color: var(--text-3); }
+.by-kp .g b { color: var(--good); } .by-kp .o b { color: var(--primary-text); }
+.by-row { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 16px; }
+.by-tm { display: grid; grid-template-columns: 28px minmax(0, 1fr) 72px 90px; gap: 10px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 14px; } .by-tm:last-child { border: 0; }
+.by-tm .rk { width: 24px; height: 24px; border-radius: 50%; background: var(--bg-soft); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; } .by-tm .rk.t { background: var(--grad-h, var(--primary)); color: #fff; }
+.by-tm .n { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .by-tm .n small { display: block; font-size: 12px; color: var(--text-3); } .by-tm .c { text-align: right; font-weight: 600; } .by-tm .d { text-align: right; color: var(--good); font-weight: 600; }
+.by-t td, .by-t th { white-space: nowrap; } .by-t td.md { white-space: normal; min-width: 220px; } .by-t th[data-bs] { cursor: pointer; } .by-t tfoot td { font-weight: 600; }
+.by-t .neg { color: var(--bad); font-weight: 600; } .by-t .pos { font-weight: 600; }
+.by-ch { display: inline-block; padding: 2px 9px; border-radius: 999px; font-size: 12px; font-weight: 500; color: #fff; } .by-ch.fb { background: #1877f2; } .by-ch.ln { background: #06c755; }
+.by-st { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 500; color: #fff; } .by-st.s { background: var(--good); } .by-st.u { background: var(--sm-est); } .by-st.l { background: var(--primary-text); }
+.by-more { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+@media (max-width: 1100px) { .by-kp { grid-template-columns: 1fr 1fr; } .by-row { grid-template-columns: minmax(0, 1fr); } }
 /* v93 — ปุ่มเลือกวัน (Google) · สีชุดเดียวกับการ์ดแยกหมวดสินค้า */
 .gdw-d { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 8px; }
 .gdw-d button { border: 1px solid var(--line); background: var(--card); border-radius: 14px; padding: 10px 4px; font: inherit; cursor: pointer; color: var(--text); text-align: center; }
@@ -3934,6 +3949,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
   };
   var NAV = [
     { id: 'kpi', label: 'ต้นทุนต่อหมวด', short: 'ต้นทุน', icon: I.coin, group: 'biz' },
+    { id: 'buy', label: 'สินค้าที่รับซื้อ', short: 'รับซื้อ', icon: I.money, group: 'biz' },
     { id: 'est', label: 'เคสประเมิน', short: 'ประเมิน', icon: I.est, group: 'biz' },
     { id: 'time', label: 'วิเคราะห์ช่วงเวลา', short: 'ช่วงเวลา', icon: I.clock, group: 'biz' },
     { id: 'sum', label: 'สรุปผล', short: 'สรุป', icon: I.sum, group: 'rep' },
@@ -4214,7 +4230,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     liveBadge();
     var ab = $('.bottom-nav .active'); if (ab) ab.parentNode.scrollLeft = ab.offsetLeft - ab.parentNode.clientWidth / 2 + ab.clientWidth / 2;
   }
-  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, pgrp: pageGroups, fcamp: pageFcamp, ftl: pageTimeline, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
+  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, buy: pageBuy, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, pgrp: pageGroups, fcamp: pageFcamp, ftl: pageTimeline, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
 
   // ---- ยอดรับซื้อ + เคสประเมิน แบบเรียลไทม์: ถามหลังบ้านทุก 1 นาที (เฉพาะตอนเปิดแท็บอยู่) ----
   var LIVE = { ver: null, busy: false, off: false, at: '', err: '', last: 0, pending: false, timer: null };
@@ -5899,6 +5915,75 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
                  : '<span class="vd g">▼ ถูกกว่าเป้า ' + F.baht(-d) + ' <small>(' + sgn(pctOf(v, t)) + ')</small></span>';
   }
 
+  // ============================================================
+  // v94 — สินค้าที่รับซื้อ: เครื่องที่รับซื้อทั้งหมด (ทุกหมวด รวมอื่นๆ) จากข้อมูลรับซื้อชุดเดียวกับหน้าสรุปผล
+  // ============================================================
+  var BUY_CATS = C.KPI_CATS.concat([{ k: 'other', n: 'อื่นๆ' }]);
+  function buyList() {
+    return sumDeals().map(function (d) { var k = C.prodCat(d.cat, d.detail).k || 'other', pp = d.p || {};
+      return { date: d.date, k: k, cn: (BUY_CATS.filter(function (c) { return c.k === k; })[0] || {}).n || 'อื่นๆ', model: String(d.detail || d.cat || '–').trim(), ch: pp.fb ? 'fb' : pp.line ? 'ln' : '', b: d.bought, s: d.sell, late: d.late }; });
+  }
+  function pageBuy() {
+    var bf = S.bf || (S.bf = { preset: 'month', from: '', to: '', cat: 'all', ch: 'all', q: '', sort: 'date', dir: -1, lim: 50 });
+    if (bf.preset !== 'custom') { var r = C.presetRange(bf.preset, S.data, today()); bf.from = r.from; bf.to = r.to; }
+    var presets = [['month', 'เดือนนี้'], ['lastmonth', 'เดือนก่อน'], ['7d', '7 วัน'], ['30d', '30 วัน'], ['3m', '3 เดือน'], ['custom', 'กำหนดเอง']];
+    var q = bf.q.toLowerCase();
+    var base = buyList().filter(function (x) { return x.date >= bf.from && x.date <= bf.to && (bf.ch === 'all' || x.ch === bf.ch) && (!q || x.model.toLowerCase().indexOf(q) >= 0); });
+    var L = base.filter(function (x) { return bf.cat === 'all' || x.k === bf.cat; });
+    var tb = 0, td = 0, sold = 0, sb = 0, ts = 0; L.forEach(function (x) { tb += x.b; if (x.s) { td += x.s - x.b; sold++; sb += x.b; ts += x.s; } });
+    var html = '<div class="filters"><div class="chip-group">' + presets.map(function (p) { return '<button data-bp="' + p[0] + '" class="' + (bf.preset === p[0] ? 'on' : '') + '">' + p[1] + '</button>'; }).join('') + '</div>' +
+      (bf.preset === 'custom' ? '<input type="date" class="field-inline" id="bFrom" value="' + bf.from + '"><input type="date" class="field-inline" id="bTo" value="' + bf.to + '">' : '<span class="muted">' + F.thRange(bf.from, bf.to) + '</span>') +
+      '<div class="chip-group">' + [{ k: 'all', n: 'ทุกหมวด' }].concat(BUY_CATS).map(function (c) { return '<button data-bc="' + c.k + '" class="' + (bf.cat === c.k ? 'on' : '') + '">' + c.n + '</button>'; }).join('') + '</div>' +
+      '<div class="chip-group">' + [['all', 'ทุกช่องทาง'], ['fb', 'Facebook'], ['ln', 'LINE']].map(function (c) { return '<button data-bch="' + c[0] + '" class="' + (bf.ch === c[0] ? 'on' : '') + '">' + c[1] + '</button>'; }).join('') + '</div>' +
+      '<input class="field-inline by-q" id="bQ" placeholder="ค้นหารุ่น เช่น iPhone 15 Pro" value="' + esc(bf.q) + '"></div>';
+    html += '<div class="by-kp">' +
+      '<div class="card"><span>รับซื้อ</span><b data-n>' + F.int(L.length) + '<small>เครื่อง</small></b><em>ขายแล้ว ' + F.int(sold) + ' · ยังไม่ขาย ' + F.int(L.length - sold) + '</em></div>' +
+      '<div class="card"><span>ยอดรับซื้อ</span><b data-n>' + F.int(Math.round(tb)) + '<small>บาท</small></b><em>เฉลี่ย ' + F.int(L.length ? Math.round(tb / L.length) : 0) + ' / เครื่อง</em></div>' +
+      '<div class="card g"><span>ยอดส่วนต่าง</span><b data-n>' + F.int(Math.round(td)) + '<small>บาท</small></b><em>จากเครื่องที่ขายแล้ว ' + F.int(sold) + ' เครื่อง</em></div>' +
+      '<div class="card o"><span>ส่วนต่างเฉลี่ย</span><b data-n>' + F.int(sold ? Math.round(td / sold) : 0) + '<small>บาท / เครื่อง</small></b><em>' + (sb ? (td / sb * 100).toFixed(1) : '0') + '% ของราคารับซื้อ</em></div></div>';
+    var cm = {}; base.forEach(function (x) { var c = cm[x.k] || (cm[x.k] = { n: x.cn, c: 0, b: 0, d: 0 }); c.c++; c.b += x.b; if (x.s) c.d += x.s - x.b; });
+    var cl = BUY_CATS.filter(function (c) { return cm[c.k]; }).map(function (c) { return cm[c.k]; }), cmx = Math.max.apply(null, cl.map(function (c) { return c.c; }).concat([1]));
+    var tm = {}; L.forEach(function (x) { var o = tm[x.model] || (tm[x.model] = { n: x.model, cn: x.cn, c: 0, b: 0, d: 0 }); o.c++; o.b += x.b; if (x.s) o.d += x.s - x.b; });
+    var tops = Object.keys(tm).map(function (k) { return tm[k]; }).sort(function (a, b) { return b.c - a.c || b.d - a.d; }).slice(0, 8);
+    html += '<div class="by-row"><div class="card"><div class="card-head"><div><h2 class="card-title">แยกหมวดสินค้า</h2><div class="card-sub">ทุกหมวดในช่วงนี้ · กดหมวดด้านบนเพื่อกรองตาราง</div></div></div>' +
+      (cl.length ? '<div class="sm-cl">' + cl.map(function (c) { return '<div class="sm-ci"><div class="h"><b>' + esc(c.n) + '</b><span><b>' + F.int(c.c) + '</b> เครื่อง · <em>' + Math.round(c.c / base.length * 100) + '%</em></span></div><div class="bar"><i class="c" style="width:' + (c.c / cmx * 100).toFixed(1) + '%"></i></div><div class="m"><span>รับซื้อ ' + F.int(Math.round(c.b)) + '</span><span>ส่วนต่าง <b class="pos">' + F.int(Math.round(c.d)) + '</b></span></div></div>'; }).join('') + '</div>' : '<div class="empty">ยังไม่มีเครื่องที่รับซื้อในช่วงนี้</div>') + '</div>' +
+      '<div class="card"><div class="card-head"><div><h2 class="card-title">รุ่นที่รับซื้อมากสุด</h2><div class="card-sub">เรียงตามจำนวนเครื่อง · ตัวเลขเขียว = ส่วนต่างรวม</div></div></div>' +
+      (tops.length ? tops.map(function (o, i) { return '<div class="by-tm"><span class="rk' + (i < 3 ? ' t' : '') + '">' + (i + 1) + '</span><span class="n">' + esc(o.n) + '<small>' + esc(o.cn) + ' · เฉลี่ยรับ ' + F.int(Math.round(o.b / o.c)) + '</small></span><span class="c">' + F.int(o.c) + ' เครื่อง</span><span class="d">+' + F.int(Math.round(o.d)) + '</span></div>'; }).join('') : '<div class="empty">–</div>') + '</div></div>';
+    var key = bf.sort, rows = L.slice().sort(function (a, b) { var va = key === 'diff' ? (a.s ? a.s - a.b : -1e12) : a[key], vb = key === 'diff' ? (b.s ? b.s - b.b : -1e12) : b[key]; return (va > vb ? 1 : va < vb ? -1 : 0) * bf.dir; });
+    var cols = [['date', 'วันที่'], ['model', 'รุ่น'], ['cn', 'หมวด'], ['ch', 'ช่องทาง'], ['b', 'ราคารับซื้อ', 'r'], ['s', 'ราคาขาย', 'r'], ['diff', 'ส่วนต่าง', 'r'], ['', 'สถานะ']];
+    html += '<div class="card mt"><div class="card-head"><div><h2 class="card-title">รายการเครื่องที่รับซื้อทั้งหมด</h2><div class="card-sub">' + F.int(L.length) + ' เครื่อง · ' + (bf.cat === 'all' ? 'ทุกหมวด' : BUY_CATS.filter(function (c) { return c.k === bf.cat; })[0].n) + ' · ' + (bf.ch === 'all' ? 'ทุกช่องทาง' : bf.ch === 'fb' ? 'Facebook' : 'LINE') + ' · กดหัวตารางเพื่อเรียง</div></div><button class="btn btn-primary" id="bXls">ดาวน์โหลด Excel</button></div>' +
+      (L.length ? '<div class="table-wrap"><table class="t by-t"><thead><tr>' + cols.map(function (c) { return '<th' + (c[0] ? ' data-bs="' + c[0] + '"' : '') + ' class="' + (c[2] || '') + '">' + c[1] + (bf.sort === c[0] ? (bf.dir < 0 ? ' ▼' : ' ▲') : '') + '</th>'; }).join('') + '</tr></thead><tbody>' +
+        rows.slice(0, bf.lim).map(function (x) { var d = x.s ? x.s - x.b : null;
+          return '<tr><td>' + F.thDate(x.date) + '</td><td class="md">' + esc(x.model) + '</td><td>' + esc(x.cn) + '</td><td>' + (x.ch ? '<span class="by-ch ' + x.ch + '">' + (x.ch === 'fb' ? 'Facebook' : 'LINE') + '</span>' : '–') + '</td><td class="r">' + F.int(Math.round(x.b)) + '</td><td class="r">' + (x.s ? F.int(Math.round(x.s)) : '–') + '</td>' +
+            '<td class="r">' + (d == null ? '–' : '<span class="' + (d >= 0 ? 'pos' : 'neg') + '">' + (d >= 0 ? '+' : '') + F.int(Math.round(d)) + '</span>') + '</td><td>' + (x.s ? '<span class="by-st s">ขายแล้ว</span>' : '<span class="by-st u">ยังไม่ขาย</span>') + (x.late ? ' <span class="by-st l">ปิดตามมา</span>' : '') + '</td></tr>'; }).join('') +
+        '</tbody><tfoot><tr><td colspan="4">รวม ' + F.int(L.length) + ' เครื่อง</td><td class="r">' + F.int(Math.round(tb)) + '</td><td class="r">' + F.int(Math.round(ts)) + '</td><td class="r"><span class="pos">+' + F.int(Math.round(td)) + '</span></td><td></td></tr></tfoot></table></div>' +
+        (L.length > bf.lim ? '<div class="by-more"><span class="muted">แสดง ' + F.int(bf.lim) + ' จาก ' + F.int(L.length) + ' รายการ</span><button class="btn" id="bMore">แสดงเพิ่ม</button></div>' : '')
+        : '<div class="empty">ไม่มีรายการตามตัวกรองนี้</div>') + '</div>';
+    html += '<div class="muted small" style="margin-top:8px">ข้อมูลรับซื้อชุดเดียวกับหน้าสรุปผล · "ปิดตามมา" = ประเมินวันก่อน แล้วมารับซื้อวันหลัง · ส่วนต่างนับเฉพาะเครื่องที่มีราคาขายแล้ว</div>';
+    $('#page').innerHTML = html;
+    Charts.countUp($('#page'));
+    $$('[data-bp]').forEach(function (b) { b.onclick = function () { bf.preset = b.dataset.bp; bf.lim = 50; pageBuy(); }; });
+    $$('[data-bc]').forEach(function (b) { b.onclick = function () { bf.cat = b.dataset.bc; bf.lim = 50; pageBuy(); }; });
+    $$('[data-bch]').forEach(function (b) { b.onclick = function () { bf.ch = b.dataset.bch; bf.lim = 50; pageBuy(); }; });
+    $$('[data-bs]').forEach(function (h) { h.onclick = function () { var k = h.dataset.bs; if (bf.sort === k) bf.dir = -bf.dir; else { bf.sort = k; bf.dir = -1; } pageBuy(); }; });
+    if ($('#bFrom')) { $('#bFrom').onchange = function () { bf.from = this.value; pageBuy(); }; $('#bTo').onchange = function () { bf.to = this.value; pageBuy(); }; }
+    if ($('#bMore')) $('#bMore').onclick = function () { bf.lim += 100; pageBuy(); };
+    var qt; $('#bQ').oninput = function () { var v = this.value; clearTimeout(qt); qt = setTimeout(function () { bf.q = v; bf.lim = 50; pageBuy(); var i = $('#bQ'); if (i) { i.focus(); i.setSelectionRange(v.length, v.length); } }, 250); };
+    if ($('#bXls')) $('#bXls').onclick = function () { buyExport(rows, bf); };
+  }
+  function buyExport(rows, bf) {
+    function go() {
+      var a = [['วันที่', 'รุ่น', 'หมวด', 'ช่องทาง', 'ราคารับซื้อ', 'ราคาขาย', 'ส่วนต่าง', 'สถานะ', 'ปิดตามมา']];
+      rows.forEach(function (x) { a.push([x.date, x.model, x.cn, x.ch === 'fb' ? 'Facebook' : x.ch === 'ln' ? 'LINE' : '', x.b, x.s || '', x.s ? x.s - x.b : '', x.s ? 'ขายแล้ว' : 'ยังไม่ขาย', x.late ? 'ใช่' : '']); });
+      var wb = XLSX.utils.book_new(), ws = XLSX.utils.aoa_to_sheet(a); ws['!cols'] = [12, 40, 12, 11, 12, 12, 12, 11, 10].map(function (w) { return { wch: w }; });
+      XLSX.utils.book_append_sheet(wb, ws, 'รับซื้อ'); var fn = 'BIGCAT-รับซื้อ-' + bf.from + '_' + bf.to + '.xlsx'; XLSX.writeFile(wb, fn); toast('ดาวน์โหลดแล้ว · ' + fn);
+    }
+    if (window.XLSX) return go();
+    toast('กำลังเตรียมไฟล์…');
+    var sc = document.createElement('script'); sc.src = 'https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js';
+    sc.onload = go; sc.onerror = function () { toast('โหลดตัวสร้างไฟล์ Excel ไม่ได้ — เช็คอินเทอร์เน็ต', true); };
+    document.head.appendChild(sc);
+  }
   function pageKpi() {
     var kf = S.kf || (S.kf = { preset: 'month', from: '', to: '', cat: 'iphone', metric: 'unit', dm: 'unit' });
     if (!kf.dm) kf.dm = 'unit';
