@@ -2176,6 +2176,33 @@ html[data-sb="a"] .g2-dotc { border-color: #d03f22; background: #fff; }
 html[data-sb="b"] .sidebar.g2 { background: var(--g2-bg) !important; }
 html[data-sb="b"] .sidebar.g2 .g2-it.on { background: var(--grad-h) !important; color: #fff !important; box-shadow: 0 6px 14px rgba(208,63,34,.25) !important; }
 html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !important; color: #fff !important; }
+
+/* v86 — หน้าสรุปผล: ▲▼ เทียบช่วงก่อน · ตัวชี้วัด 6 ช่อง · เส้นกราฟเลือกได้ · แยกหมวด + 7 วัน แถวเดียวกัน */
+.sm-body .ln { align-items: center; } .sm-body .ln b { text-align: right; }
+.sm-mo { display: block; font-style: normal; font-size: 11px; font-weight: 500; line-height: 1.3; } .sm-mo.up { color: #0b8a3e; } .sm-mo.dn { color: #b42318; }
+:root[data-theme="dark"] .sm-mo.up { color: #5fd49a; } :root[data-theme="dark"] .sm-mo.dn { color: #ff8a80; }
+.sm-body .ln.tot b .sm-mo { font-size: 11.5px; }
+.sm-cmp { font-size: 11.5px; color: var(--text-3); padding: 0 0 8px; }
+.sm-kp.k6 { grid-template-columns: repeat(3, 1fr); } .sm-kp.k6 div:nth-child(3n+1) { border-left: 0; } .sm-kp.k6 div:nth-child(n+4) { border-top: 1px solid var(--line); }
+.sm-lt { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 3px 10px; font: inherit; font-size: 12.5px; color: var(--text-3); cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+.sm-lt.on { border-color: var(--text); color: var(--text); font-weight: 500; } .sm-lt i.ln { display: inline-block; width: 14px; height: 3px; border-radius: 2px; }
+.sm-row2 { display: grid; grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.6fr); gap: 20px; margin-top: 20px; align-items: start; }
+.sm-row2 > * { min-width: 0; } .sm-row2 .sm-late { margin-top: 0; }
+.sm-row2 .sm-sum { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.sm-ct td, .sm-ct th { white-space: nowrap; } .sm-ct tfoot td { font-weight: 600; background: var(--bg-soft); }
+.sm-cb { display: inline-block; width: 56px; height: 7px; border-radius: 4px; background: var(--bg-soft); overflow: hidden; vertical-align: middle; margin-right: 8px; } .sm-cb i { display: block; height: 100%; background: var(--grad-h, var(--primary)); }
+.sm-row2 .t th { padding: 9px 6px; font-size: 12px; } .sm-row2 .t td { padding: 10px 6px; font-size: 13.5px; }
+.sm-row2 .t th:first-child, .sm-row2 .t td:first-child { padding-left: 2px; } .sm-row2 .t th:last-child, .sm-row2 .t td:last-child { padding-right: 2px; }
+.sm-row2 .sm-pb { width: 34px; } .sm-row2 .sm-cb { width: 34px; margin-right: 6px; } .sm-row2 .sm-bd { font-size: 10.5px; } .sm-row2 .card { padding-left: 20px; padding-right: 20px; }
+.sm-row2 .sm-t { min-width: 0; } .sm-row2 .sm-t td.sm-car { width: 44px; } .sm-row2 .sm-t .cnt { gap: 6px; } .sm-row2 .sm-t .cnt b { font-size: 14px; }
+.sm-row2 .sm-ct .sm-cb { display: none; }
+.sm-t tr.open td, .sm-t tr.sm-det td { background: var(--bg-soft) !important; }
+.sm-row2 .sm-t .sm-pb, .sm-row2 .sm-late .es-lg2 { display: none; } .sm-row2 .sm-t .sm-cn small { font-size: 10.5px; }
+.sm-row2 .sm-ct td { font-size: 13px; padding: 10px 5px; } .sm-row2 .sm-ct th { padding: 9px 5px; } .sm-row2 .sm-tog { padding: 2px 8px; }
+.sm-row2 .sm-t td.sm-car { width: 34px; }
+.sm-row2 .sm-t td.sm-car, .sm-row2 .sm-t thead th:last-child, .sm-row2 .sm-t tfoot td:last-child { display: none; } .sm-row2 .sm-t tr.click td:first-child b:after { content: ' ▾'; color: var(--text-3); font-weight: 400; font-size: 11px; } .sm-row2 .sm-t tr.open td:first-child b:after { content: ' ▴'; }
+.sm-dx { font-size: 12.5px; color: var(--text-2); padding: 2px 0 8px; }
+@media (max-width: 1250px) { .sm-row2 { grid-template-columns: minmax(0, 1fr); } }
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -6699,7 +6726,8 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
   /** ตัวเลขของช่วงวันที่ปิด [a,b] — onlyOnTime = นับเฉพาะเคสที่ประเมินวันเดียวกับวันปิด */
   /** byEst = นับตามวันที่ประเมิน (ไม่มีใบประเมิน → ใช้วันปิด) · onlyOnTime = เฉพาะที่ปิดวันเดียวกับวันประเมิน */
   function sumAgg(a, b, onlyOnTime, byEst) {
-    var o = { closed: 0, bought: 0, diff: 0, ads: 0, conv: 0, ga4: 0, convSrc: 'gads' };
+    var o = { closed: 0, bought: 0, diff: 0, ads: 0, conv: 0, ga4: 0, est: 0, convSrc: 'gads' };
+    (S.data.estimates || []).forEach(function (e) { if (e.date && e.date >= a && e.date <= b) o.est++; });
     sumDeals().forEach(function (d) {
       var k = byEst ? (d.estDate || d.date) : d.date;
       if (k < a || k > b || (onlyOnTime && d.late)) return;
@@ -6722,20 +6750,31 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     var sf = S.sf || (S.sf = { m: 'd', d: C.addDays(today(), -1) });
     var r = sumRange(sf.m, sf.d), x = sumAgg(r[0], r[1]), xr = sumAgg(r[0], r[1], true), xLate = x.closed - xr.closed;
     var pct = function (a, b) { return b ? (a / b * 100).toFixed(1) + '%' : '–'; }, bt = function (v) { return v == null || !isFinite(v) ? '–' : F.int(Math.round(v)); };
+    // v86 — ▲▼ เทียบช่วงก่อน: วัน/สัปดาห์ = ย้อน 7 วัน · เดือน = วันที่ 1–N ของเดือนก่อน (N = วันที่ผ่านไปแล้ว)
+    var nEl = C.daysIncl(r[0], r[1] < today() ? r[1] : today());
+    var pr = sf.m === 'd' ? [C.addDays(r[0], -7), C.addDays(r[1], -7)] : sf.m === 'w' ? [C.addDays(r[0], -7), C.addDays(r[0], nEl - 8)] : (function () {
+      var dm = new Date(Number(r[0].slice(0, 4)), Number(r[0].slice(5, 7)) - 2, 1), pa = C.iso(dm), pe = sumRange('m', pa)[1], td = today();
+      var pb = C.addDays(pa, C.daysIncl(r[0], r[1] < td ? r[1] : td) - 1); return [pa, pb > pe ? pe : pb]; })();
+    var xp = sumAgg(pr[0], pr[1]);
+    var mo = function (v, p, bad) { if (!p || v == null || !isFinite(v)) return ''; var d = (v - p) / Math.abs(p) * 100, u = d >= 0, good = bad ? !u : u; return '<em class="sm-mo ' + (good ? 'up' : 'dn') + '">' + (u ? '▲' : '▼') + ' ' + Math.abs(d).toFixed(1) + '%</em>'; };
+    var prTxt = sf.m === 'd' ? 'วัน' + DOW[dowOf(pr[0])] + 'ที่แล้ว (' + thBE(pr[0], true) + ')' : sf.m === 'w' ? 'สัปดาห์ก่อน (' + thBE(pr[0], true) + ' – ' + thBE(pr[1], true) + ')' : thBE(pr[0], true) + ' – ' + thBE(pr[1], true);
     var html = '<div class="sm-wrap"><div class="sm-stmt">' +
       '<div class="sm-sh"><div class="d">' + (sf.m === 'd' ? 'สรุปประจำวัน' : sf.m === 'w' ? 'สรุปรายสัปดาห์' : 'สรุปรายเดือน') + '</div><h2>' + (sf.m === 'd' ? 'วัน' + DOW[dowOf(r[0])] + ' ' + thBE(r[0]) : sumTitle(sf.m, r).replace(/^สรุป(รายสัปดาห์|เดือน) /, '')) + '</h2>' +
         '<div class="sm-nav"><button data-sn="-1" aria-label="ก่อนหน้า">‹</button><input type="date" id="smD" value="' + sf.d + '"><button data-sn="1" aria-label="ถัดไป">›</button></div>' +
         '<div class="sm-closed"><b data-n>' + F.int(x.closed) + '</b><small>ปิดได้ (ตัว)</small>' +
           '<div class="sm-split"><span>เคสวันนั้น <b>' + F.int(xr.closed) + '</b></span><span class="pos">เคสวันก่อน <b>+' + F.int(xLate) + '</b></span></div></div></div>' +
       '<div class="sm-body">' +
-        '<div class="ln"><span>Conversion' + ' <small class="muted">(Google Ads)</small>' + '</span><b>' + F.int(Math.round(x.conv)) + '</b></div>' +
-        '<div class="ln sm-ga"><span>GA4 <small class="muted">(ทุกช่องทาง · ดูเทียบ ไม่ใช้คำนวณ)</small></span><b>' + ((S.data.ga4 || []).length ? F.int(Math.round(x.ga4)) : '<small class="muted">ยังไม่มีข้อมูล</small>') + '</b></div>' +
-        '<div class="ln"><span>ค่า Ads</span><b>' + F.int(Math.round(x.ads)) + '</b></div>' +
-        '<div class="ln"><span>ยอดรับซื้อ</span><b>' + F.int(x.bought) + '</b></div>' +
-        '<div class="ln"><span>ยอดขาย</span><b>' + F.int(x.sell) + '</b></div>' +
-        '<div class="ln"><span>ยอดส่วนต่าง</span><b>' + F.int(x.diff) + '</b></div>' +
-        '<div class="ln tot"><span>ส่วนต่างหลังหักค่า Ads</span><b class="' + (x.net < 0 ? 'neg' : '') + '">' + F.int(Math.round(x.net)) + '</b></div></div>' +
-      '<div class="sm-kp"><div><b>' + pct(x.closed, x.conv) + '</b>อัตราปิด</div><div><b>' + bt(x.conv ? x.ads / x.conv : null) + '</b>฿/conv.</div><div><b>' + bt(x.closed ? x.ads / x.closed : null) + '</b>฿/ตัว</div><div><b>' + pct(x.diff, x.bought) + '</b>ส่วนต่าง/รับซื้อ</div><div><b>' + pct(x.ads, x.diff) + '</b>Ads/ส่วนต่าง</div></div>' +
+        '<div class="ln"><span>Conversion' + ' <small class="muted">(Google Ads)</small>' + '</span><b>' + F.int(Math.round(x.conv)) + mo(x.conv, xp.conv) + '</b></div>' +
+        '<div class="ln sm-ga"><span>การกดทักทั้งหมด</span><b>' + ((S.data.ga4 || []).length ? F.int(Math.round(x.ga4)) : '<small class="muted">ยังไม่มีข้อมูล</small>') + '</b></div>' +
+        '<div class="ln"><span>จำนวนเคสประเมิน</span><b>' + F.int(x.est) + mo(x.est, xp.est) + '</b></div>' +
+        '<div class="ln"><span>ค่า Ads <small class="muted">(Google)</small></span><b>' + F.int(Math.round(x.ads)) + mo(x.ads, xp.ads, true) + '</b></div>' +
+        '<div class="ln"><span>ยอดรับซื้อ</span><b>' + F.int(x.bought) + mo(x.bought, xp.bought) + '</b></div>' +
+        '<div class="ln"><span>ยอดขาย</span><b>' + F.int(x.sell) + mo(x.sell, xp.sell) + '</b></div>' +
+        '<div class="ln"><span>ยอดส่วนต่าง</span><b>' + F.int(x.diff) + mo(x.diff, xp.diff) + '</b></div>' +
+        '<div class="ln tot"><span>ส่วนต่างหลังหักค่า Ads</span><b class="' + (x.net < 0 ? 'neg' : '') + '">' + F.int(Math.round(x.net)) + mo(x.net, xp.net) + '</b></div>' +
+        '<div class="sm-cmp">▲▼ เทียบ ' + prTxt + '</div></div>' +
+      '<div class="sm-kp k6"><div><b>' + pct(x.closed, x.est) + '</b>ปิด/เคสประเมิน</div><div><b>' + pct(x.est, x.conv) + '</b>Conv. → เคส</div><div><b>' + bt(x.est ? x.ads / x.est : null) + '</b>฿/เคสประเมิน</div>' +
+        '<div><b>' + bt(x.conv ? x.ads / x.conv : null) + '</b>฿/conv.</div><div><b>' + bt(x.closed ? x.ads / x.closed : null) + '</b>฿/ตัว</div><div><b>' + pct(x.diff, x.bought) + '</b>ส่วนต่าง/รับซื้อ</div></div>' +
       '<div class="sm-foot"><div class="chip-group">' + [['d', 'วัน'], ['w', 'สัปดาห์'], ['m', 'เดือน']].map(function (p) { return '<button data-sm="' + p[0] + '" class="' + (sf.m === p[0] ? 'on' : '') + '">' + p[1] + '</button>'; }).join('') + '</div>' +
         '<button class="btn line" id="smCopy">' + I.copy + ' LINE</button></div></div>';
     // ---- ย้อนหลัง 7 วัน ----
@@ -6756,16 +6795,14 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       var add = z.cur.closed - z.rep.closed, open = S.smOpen[z.d] && z.items.length;
       var plus = function (v, r) { return v > 0 ? '<span class="sm-bd">วันนั้น ' + F.int(Math.round(r)) + '<br><em>+ ตามมา ' + F.int(v) + '</em></span>' : ''; };
       var h = '<tr class="sm-row' + (z.items.length ? ' click' : '') + (open ? ' open' : '') + '" data-sd="' + z.d + '"><td class="dt"><b>' + thBE(z.d, true) + '</b><small>' + DOW_S[dowOf(z.d)] + '.</small></td>' +
-        '<td><div class="cnt">' + pbar(z.rep.closed, add, z.n) + '<span class="sm-cn"><b>' + z.cur.closed + '</b> / ' + z.n + (add > 0 ? '<small>วันนั้น ' + z.rep.closed + ' · <em>ตามมา ' + add + '</em></small>' : '') + '</span></div></td>' +
-        rateCell(z.rep.closed, z.cur.closed, z.n) + convCell(z.n, z.cur.conv) +
+        '<td class="r num">' + F.int(z.n) + '</td>' +
+        '<td><div class="cnt">' + pbar(z.rep.closed, add, z.n) + '<span class="sm-cn"><b>' + z.cur.closed + '</b>' + (add > 0 ? '<small>วันนั้น ' + z.rep.closed + ' · <em>ตามมา ' + add + '</em></small>' : '') + '</span></div></td>' +
+        rateCell(z.rep.closed, z.cur.closed, z.n) +
         '<td class="r num">' + F.int(z.cur.bought) + plus(z.cur.bought - z.rep.bought, z.rep.bought) + '</td>' +
         '<td class="r num">' + F.int(z.cur.diff) + plus(z.cur.diff - z.rep.diff, z.rep.diff) + '</td>' +
-        '<td class="r num">' + F.int(Math.round(z.cur.conv)) + '</td>' +
-        '<td class="r num">' + F.int(Math.round(z.cur.ads)) + '</td>' +
         '<td class="r num net"><b>' + F.int(Math.round(z.cur.net)) + '</b>' + plus(z.cur.diff - z.rep.diff, z.rep.net) + '</td>' +
-        cpc(z.cur.ads, z.rep.closed, z.cur.closed) +
-        '<td class="sm-car">' + (z.items.length ? '<span class="sm-tog' + (open ? ' on' : '') + '">' + (open ? 'ซ่อน ▴' : 'ดู ' + z.items.length + ' ▾') + '</span>' : '') + '</td></tr>';
-      if (open) h += '<tr class="sm-det"><td colspan="11"><div class="items">' + z.items.map(function (x, k) {
+        '<td class="sm-car">' + (z.items.length ? '<span class="sm-tog' + (open ? ' on' : '') + '">' + (open ? '▴' : z.items.length + ' ▾') + '</span>' : '') + '</td></tr>';
+      if (open) h += '<tr class="sm-det"><td colspan="8"><div class="sm-dx">Conversion ' + F.int(Math.round(z.cur.conv)) + ' · ค่า Ads (Google) ' + F.int(Math.round(z.cur.ads)) + ' · ต้นทุน Ads ต่อตัว ' + (z.cur.closed ? bt(z.cur.ads / z.cur.closed) : '–') + '</div><div class="items">' + z.items.map(function (x, k) {
         return '<div class="itm"><span class="no">+' + (k + 1) + '</span><div><b>' + esc(x.detail || x.cat || '–') + '</b><small>' + esc(x.cat || '') + ' · ปิด ' + thBE(x.date, true) + (dayGap(x.estDate, x.date) != null ? ' (หลังประเมิน ' + dayGap(x.estDate, x.date) + ' วัน)' : '') + '</small></div>' +
           '<div class="r"><small>รับซื้อ</small> ' + F.int(x.bought) + '</div><div class="r"><small>ส่วนต่าง</small> ' + (x.sell ? '<b class="pos">' + F.int(x.diff) + '</b>' : '–') + '</div><div class="r"><small>ขาย</small> ' + (x.sell ? F.int(x.sell) : '–') + '</div></div>'; }).join('') + '</div></td></tr>';
       return h;
@@ -6773,28 +6810,44 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     var T7 = sumAgg(C.addDays(sf.d, -6), sf.d, false, true), T7r = sumAgg(C.addDays(sf.d, -6), sf.d, true, true), t7add = T7.closed - T7r.closed;
     var tplus = function (v, r) { return v > 0 ? '<span class="sm-bd">วันนั้น ' + F.int(Math.round(r)) + '<br><em>+ ตามมา ' + F.int(v) + '</em></span>' : ''; };
     var totRow = '<tfoot><tr class="sm-tot"><td class="dt"><b>รวม 7 วัน</b></td>' +
-      '<td><div class="cnt">' + pbar(T7r.closed, t7add, estTot) + '<span class="sm-cn"><b>' + T7.closed + '</b> / ' + estTot + (t7add > 0 ? '<small>วันนั้น ' + T7r.closed + ' · <em>ตามมา ' + t7add + '</em></small>' : '') + '</span></div></td>' + rateCell(T7r.closed, T7.closed, estTot) + convCell(estTot, T7.conv) +
-      '<td class="r num"><b>' + F.int(T7.bought) + '</b>' + tplus(T7.bought - T7r.bought, T7r.bought) + '</td><td class="r num"><b>' + F.int(T7.diff) + '</b>' + tplus(T7.diff - T7r.diff, T7r.diff) + '</td><td class="r num"><b>' + F.int(Math.round(T7.conv)) + '</b></td><td class="r num"><b>' + F.int(Math.round(T7.ads)) + '</b></td>' +
-      '<td class="r num net"><b>' + F.int(Math.round(T7.net)) + '</b>' + tplus(T7.diff - T7r.diff, T7r.net) + '</td>' + cpc(T7.ads, T7r.closed, T7.closed) + '<td></td></tr></tfoot>';
+      '<td class="r num"><b>' + F.int(estTot) + '</b></td><td><div class="cnt">' + pbar(T7r.closed, t7add, estTot) + '<span class="sm-cn"><b>' + T7.closed + '</b>' + (t7add > 0 ? '<small>วันนั้น ' + T7r.closed + ' · <em>ตามมา ' + t7add + '</em></small>' : '') + '</span></div></td>' + rateCell(T7r.closed, T7.closed, estTot) +
+      '<td class="r num"><b>' + F.int(T7.bought) + '</b>' + tplus(T7.bought - T7r.bought, T7r.bought) + '</td><td class="r num"><b>' + F.int(T7.diff) + '</b>' + tplus(T7.diff - T7r.diff, T7r.diff) + '</td>' +
+      '<td class="r num net"><b>' + F.int(Math.round(T7.net)) + '</b>' + tplus(T7.diff - T7r.diff, T7r.net) + '</td><td></td></tr></tfoot>';
     var ptUp = estTot ? (curN - repN) / estTot * 100 : null;
-    var lateHtml = '<div class="card sm-late"><div class="card-head"><div><h2 class="card-title">ย้อนหลัง 7 วัน — อัตราปิดของเคสแต่ละวัน</h2><div class="card-sub">นับตามวันที่ประเมิน (การ์ดซ้ายนับตามวันที่ปิด ยอดจึงไม่เท่ากัน) · แท่ง = เคสประเมินทั้งหมดของวันนั้น 100% · ส้ม = ปิดในวันประเมิน · เขียว = ปิดตามมา · เทา = ยังไม่ปิด · กดแถว = ดูเครื่องที่ปิดตามมา</div></div></div>' +
+    var lateHtml = '<div class="card sm-late"><div class="card-head"><div><h2 class="card-title">ย้อนหลัง 7 วัน — อัตราปิดของเคสแต่ละวัน</h2><div class="card-sub">นับตามวันที่ประเมิน · กดแถวดูเครื่องที่ปิดตามมา</div></div></div>' +
       '<div class="sm-sum"><div><span>อัตราปิด วันประเมิน (7 วัน)</span><b>' + rp(repN, estTot) + '</b><small>ปิด ' + repN + ' จาก ' + F.int(estTot) + ' เคส</small></div>' +
         '<div><span>อัตราปิด ตอนนี้</span><b class="pos">' + rp(curN, estTot) + '</b><small>ปิด ' + curN + ' จาก ' + F.int(estTot) + ' เคส</small></div>' +
         '<div><span>เพิ่มขึ้นจากเคสที่ตามมา</span><b class="pos">' + (ptUp == null ? '–' : '+' + ptUp.toFixed(1) + ' จุด') + '</b><small>+' + lateN + ' ตัว · รับซื้อ +' + F.int(lateB) + ' · ส่วนต่าง +' + F.int(lateD) + '</small></div>' +
         '<div><span>เคสที่ปิดตามมา ใช้เวลาเฉลี่ย</span><b>' + (avgLag == null ? '–' : avgLag.toFixed(1) + ' วัน') + '</b><small>' + (avgLag == null ? 'ยังไม่มีเคสที่ปิดตามมา (60 วันล่าสุด)' : 'หลังประเมิน (60 วันล่าสุด)') + '</small></div></div>' +
-      '<div class="table-wrap"><table class="t sm-t"><thead><tr><th>วันที่ประเมิน</th><th>ปิดได้ / เคสประเมิน<br><small>ปิดได้รวม / เคสทั้งหมด</small></th><th>อัตราปิด<br><small>วันนั้น → ตอนนี้</small></th><th class="r">Conv. → เคส<br><small>เคส / Conversion</small></th><th class="r">ยอดรับซื้อ</th><th class="r">ส่วนต่าง</th><th class="r">Conversion</th><th class="r">ค่า Ads</th><th class="r">หลังหักค่า Ads</th><th class="r">ต้นทุน Ads ต่อตัว<br><small>วันนั้น → ตอนนี้</small></th><th></th></tr></thead><tbody>' + rows + '</tbody>' + totRow + '</table></div>' +
+      '<div class="table-wrap"><table class="t sm-t"><thead><tr><th>วันที่ประเมิน</th><th class="r">เคสประเมิน</th><th>ปิดได้</th><th>อัตราปิด<br><small>วันนั้น → ตอนนี้</small></th><th class="r">ยอดรับซื้อ</th><th class="r">ส่วนต่าง</th><th class="r">หลังหักค่า Ads</th><th></th></tr></thead><tbody>' + rows + '</tbody>' + totRow + '</table></div>' +
       '<div class="es-lg es-lg2"><span><i class="a"></i>ปิดในวันประเมิน</span><span><i class="late"></i>ปิดตามมา</span><span><i style="background:var(--bg-soft)"></i>ยังไม่ปิด</span></div></div>';
     // ---- กราฟ ----
     var pts = [];
     if (sf.m === 'd') for (var k = 13; k >= 0; k--) { var dd = C.addDays(sf.d, -k); pts.push({ l: String(Number(dd.slice(8))), t: 'วัน' + DOW[dowOf(dd)] + ' ' + thBE(dd), a: dd, b: dd }); }
     else if (sf.m === 'w') for (var k2 = 11; k2 >= 0; k2--) { var rw = sumRange('w', C.addDays(r[0], -7 * k2)); pts.push({ l: thBE(rw[0], true), t: thBE(rw[0], true) + ' – ' + thBE(rw[1]), a: rw[0], b: rw[1] }); }
     else for (var k3 = 11; k3 >= 0; k3--) { var dm = new Date(Number(r[0].slice(0, 4)), Number(r[0].slice(5, 7)) - 1 - k3, 1), rm = sumRange('m', C.iso(dm)); pts.push({ l: TH_MO[dm.getMonth()] + (dm.getMonth() === 0 || k3 === 11 ? ' ' + String(dm.getFullYear() + 543).slice(2) : ''), t: TH_MO[dm.getMonth()] + ' ' + (dm.getFullYear() + 543), a: rm[0], b: rm[1] }); }
-    pts.forEach(function (p) { var g = sumAgg(p.a, p.b); p.net = g.net; p.closed = g.closed; });
-    html += '<div class="sm-right"><div class="card sm-chart"><div class="card-head"><div><h2 class="card-title">' + (sf.m === 'd' ? '14 วันล่าสุด' : sf.m === 'w' ? '12 สัปดาห์ล่าสุด' : '12 เดือนล่าสุด') + '</h2><div class="card-sub">แท่ง (แกนซ้าย) = ส่วนต่างหลังหักค่า Ads · เส้น (แกนขวา) = ปิดได้</div></div></div>' +
+    pts.forEach(function (p) { var g = sumAgg(p.a, p.b); p.net = g.net; p.closed = g.closed; p.est = g.est; p.conv = Math.round(g.conv); });
+    // v86 — แยกหมวดสินค้าของช่วงที่เลือก (เคสประเมิน → ปิดได้ → เงิน)
+    var cm = {}, cNames = {}; C.KPI_CATS.forEach(function (c) { cNames[c.k] = c.n; }); cNames.other = 'อื่นๆ';
+    var cg = function (k) { return cm[k] || (cm[k] = { k: k, n: cNames[k] || k, est: 0, cl: 0, b: 0, m: 0 }); };
+    (S.data.estimates || []).forEach(function (e) { if (e.date && e.date >= r[0] && e.date <= r[1]) cg(C.prodCat(e.category, e.detail).k || 'other').est++; });
+    sumDeals().forEach(function (d) { if (d.date < r[0] || d.date > r[1]) return; var g = cg(C.prodCat(d.cat, d.detail).k || 'other'); g.cl++; g.b += d.bought; g.m += d.diff; });
+    var cl = C.KPI_CATS.map(function (c) { return c.k; }).concat(['other']).filter(function (k) { return cm[k]; }).map(function (k) { return cm[k]; });
+    var cT = { est: 0, cl: 0, b: 0, m: 0 }; cl.forEach(function (c) { cT.est += c.est; cT.cl += c.cl; cT.b += c.b; cT.m += c.m; });
+    var cMx = Math.max.apply(null, cl.map(function (c) { return c.m; }).concat([1]));
+    var catHtml = '<div class="card sm-cat"><div class="card-head"><div><h2 class="card-title">แยกหมวดสินค้า</h2><div class="card-sub">' + (sf.m === 'd' ? thBE(r[0]) : thBE(r[0], true) + ' – ' + thBE(r[1])) + ' · เคสประเมิน → ปิดได้ → เงิน</div></div></div>' +
+      (cl.length ? '<div class="table-wrap"><table class="t sm-ct"><thead><tr><th>หมวด</th><th class="r">เคสประเมิน</th><th class="r">ปิดได้</th><th class="r">ปิด/เคส</th><th class="r">ยอดรับซื้อ</th><th class="r">ส่วนต่าง</th></tr></thead><tbody>' +
+        cl.map(function (c) { return '<tr><td>' + esc(c.n) + '</td><td class="r num">' + F.int(c.est) + '</td><td class="r num pos">' + F.int(c.cl) + '</td><td class="r num">' + pct(c.cl, c.est) + '</td><td class="r num">' + F.int(c.b) + '</td><td class="r num"><span class="sm-cb"><i style="width:' + Math.max(0, c.m / cMx * 100) + '%"></i></span>' + F.int(c.m) + '</td></tr>'; }).join('') +
+        '</tbody><tfoot><tr><td>รวม</td><td class="r num">' + F.int(cT.est) + '</td><td class="r num pos">' + F.int(cT.cl) + '</td><td class="r num">' + pct(cT.cl, cT.est) + '</td><td class="r num">' + F.int(cT.b) + '</td><td class="r num">' + F.int(cT.m) + '</td></tr></tfoot></table></div>'
+        : '<div class="empty">ยังไม่มีเคสหรือเครื่องที่รับซื้อในช่วงนี้</div>') + '</div>';
+    var SL = S.smL || (S.smL = { closed: true, est: true, conv: false });
+    html += '<div class="sm-right"><div class="card sm-chart"><div class="card-head"><div><h2 class="card-title">' + (sf.m === 'd' ? '14 วันล่าสุด' : sf.m === 'w' ? '12 สัปดาห์ล่าสุด' : '12 เดือนล่าสุด') + '</h2><div class="card-sub">แท่ง (แกนซ้าย) = ส่วนต่างหลังหักค่า Ads · เส้น (แกนขวา) = กดเลือกด้านล่าง</div></div></div>' +
       '<div class="es-cw sm-cw"><svg class="es-svg" id="smCh"></svg><div class="es-tip" id="smTip"></div></div>' +
-      '<div class="es-lg es-lg2"><span><i class="a"></i>หลังหักค่า Ads (บาท) — แกนซ้าย</span><span><i class="ln" style="background:var(--text)"></i>ปิดได้ (ตัว) — แกนขวา</span></div></div></div></div>' + lateHtml;
+      '<div class="es-lg es-lg2"><span><i class="a"></i>หลังหักค่า Ads (บาท) — แกนซ้าย</span>' + [['closed', 'ปิดได้', 'var(--text)'], ['est', 'เคสประเมิน', '#6d28d9'], ['conv', 'Conversion', '#1a73e8']].map(function (q) { return '<button class="sm-lt' + (SL[q[0]] ? ' on' : '') + '" data-sml="' + q[0] + '"><i class="ln" style="background:' + q[2] + '"></i>' + q[1] + '</button>'; }).join('') + '<span class="muted">เส้น = แกนขวา</span></div></div></div></div>' +
+      '<div class="sm-row2">' + catHtml + lateHtml + '</div>';
     $('#page').innerHTML = html;
-    S.drawCharts = function () { smChart($('#smCh'), $('#smTip'), pts); };
+    S.drawCharts = function () { smChart($('#smCh'), $('#smTip'), pts, SL); };
+    $$('[data-sml]').forEach(function (b) { b.onclick = function () { SL[b.dataset.sml] = !SL[b.dataset.sml]; b.classList.toggle('on', SL[b.dataset.sml]); S.drawCharts(); }; });
     S.drawCharts();
     Charts.countUp($('#page'));
     $$('[data-sm]').forEach(function (b) { b.onclick = function () { sf.m = b.dataset.sm; pageSum(); }; });
@@ -6806,19 +6859,20 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
   function sumText(mode, r, x, days) {
     var pct = function (a, b) { return b ? (a / b * 100).toFixed(1) + '%' : '–'; }, f = function (v) { return F.int(Math.round(v)); };
     var L = [sumTitle(mode, r), '', 'ปิดได้ ' + x.closed + ' ตัว', '',
-      '- Conversion : ' + f(x.conv), '- ค่า Ads : ' + f(x.ads) + ' บาท', '- ยอดรับซื้อ : ' + f(x.bought) + ' บาท', '- ยอดขาย : ' + f(x.sell) + ' บาท', '- ยอดส่วนต่าง : ' + f(x.diff) + ' บาท', '- ส่วนต่างหลังหักค่า Ads : ' + f(x.net) + ' บาท', '',
+      '- Conversion : ' + f(x.conv), '- จำนวนเคสประเมิน : ' + f(x.est), '- ค่า Ads : ' + f(x.ads) + ' บาท', '- ยอดรับซื้อ : ' + f(x.bought) + ' บาท', '- ยอดขาย : ' + f(x.sell) + ' บาท', '- ยอดส่วนต่าง : ' + f(x.diff) + ' บาท', '- ส่วนต่างหลังหักค่า Ads : ' + f(x.net) + ' บาท', '',
       'ตัวชี้วัด', '- อัตราปิดการขาย : ' + pct(x.closed, x.conv), '- ต้นทุน Ads ต่อ 1 conversion : ' + (x.conv ? f(x.ads / x.conv) : '–') + ' บาท', '- ต้นทุน Ads ต่อการปิด 1 ตัว : ' + (x.closed ? f(x.ads / x.closed) : '–') + ' บาท',
       '- % ส่วนต่างต่อยอดรับซื้อ : ' + pct(x.diff, x.bought), '- ค่า Ads คิดเป็น ' + pct(x.ads, x.diff) + ' ของส่วนต่าง'];
     return L.join('\n');
   }
   /** แท่ง = หลังหักค่า Ads · เส้น = ปิดได้ · ชี้ = ป้ายลอย (ไม่วาดใหม่) */
-  function smChart(svg, tip, pts) {
+  function smChart(svg, tip, pts, SL) {
+    SL = SL || { closed: true }; var LN = [['closed', 'var(--text)', 'ปิดได้', ' ตัว'], ['est', '#6d28d9', 'เคสประเมิน', ' เคส'], ['conv', '#1a73e8', 'Conversion', '']].filter(function (q) { return SL[q[0]]; });
     if (!svg) return;
     var box = svg.parentNode, W = box.clientWidth || 800, H = Math.max(260, box.clientHeight || 340), L = 46, R = 34, T = 26, B = 26, pw = W - L - R, ph = H - T - B, base = T + ph, n = pts.length, gw = pw / n, bw = Math.min(36, gw * 0.56);
     function nice(m) { var st = [1, 2, 5, 10, 20, 25, 50, 100, 200, 250, 500, 1000, 2000, 2500, 5000, 1e4, 2e4, 2.5e4, 5e4, 1e5, 2e5, 2.5e5, 5e5, 1e6, 2e6, 5e6]; for (var i = 0; i < st.length; i++) if (m / st[i] <= 4) return st[i]; return 1e7; }
     var rawMx = Math.max.apply(null, pts.map(function (p) { return p.net; }).concat([1])), rawMn = Math.min(0, Math.min.apply(null, pts.map(function (p) { return p.net; })));
     var st = nice(Math.max(rawMx, -rawMn)), mx = Math.ceil(rawMx * 1.08 / st) * st || st, mn = rawMn < 0 ? Math.floor(rawMn * 1.08 / st) * st : 0;
-    var cMax = Math.max.apply(null, pts.map(function (p) { return p.closed; }).concat([1])), cst = nice(cMax), mc = Math.ceil(cMax * 1.15 / cst) * cst || cst;
+    var cMax = Math.max.apply(null, [1].concat.apply([1], LN.map(function (q) { return pts.map(function (p) { return p[q[0]] || 0; }); }))), cst = nice(cMax), mc = Math.ceil(cMax * 1.15 / cst) * cst || cst;
     function y(v) { return T + (mx - v) / (mx - mn) * ph; } function y2(v) { return base - v / mc * ph; } function cx(i) { return L + i * gw + gw / 2; }
     function k(v) { var a = Math.abs(v); return (v < 0 ? '−' : '') + (a >= 1e6 ? (a / 1e6).toFixed(a >= 1e7 ? 0 : 1) + 'M' : a >= 1000 ? Math.round(a / 1000) + 'k' : Math.round(a)); }
     svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.style.height = H + 'px';
@@ -6830,14 +6884,16 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       o += '<g class="eh" data-i="' + i + '"><rect class="eh-hit" x="' + (cx(i) - gw / 2) + '" y="' + T + '" width="' + gw + '" height="' + ph + '"/>' +
         (h ? '<rect class="ehb" x="' + (cx(i) - bw / 2) + '" y="' + top + '" width="' + bw + '" height="' + h + '" rx="' + Math.min(8, bw / 3) + '" fill="' + (p.net < 0 ? '#f04438' : 'url(#smG)') + '" style="opacity:.88;animation-delay:' + Math.min(i * 25, 400) + 'ms"/>' : '') + '</g>' +
         (i % lstep === 0 ? '<text class="es-x" x="' + cx(i) + '" y="' + (H - 8) + '" text-anchor="middle">' + p.l + '</text>' : ''); });
-    var pp = pts.map(function (p, i) { return [cx(i), y2(p.closed)]; });
-    o += '<path d="' + esSmooth(pp) + '" fill="none" stroke="var(--text)" stroke-width="2.4" stroke-linecap="round" pointer-events="none"/>';
-    pp.forEach(function (q, i) { o += '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="4" fill="var(--card)" stroke="var(--text)" stroke-width="2" pointer-events="none"/><text class="sm-pv" x="' + q[0] + '" y="' + (q[1] - 9) + '" text-anchor="middle" pointer-events="none">' + pts[i].closed + '</text>'; });
+    LN.forEach(function (L1, li) {
+      var pp = pts.map(function (p, i) { return [cx(i), y2(p[L1[0]] || 0)]; });
+      o += '<path d="' + esSmooth(pp) + '" fill="none" stroke="' + L1[1] + '" stroke-width="2.4" stroke-linecap="round" pointer-events="none"/>';
+      pp.forEach(function (q, i) { o += '<circle cx="' + q[0] + '" cy="' + q[1] + '" r="4" fill="var(--card)" stroke="' + L1[1] + '" stroke-width="2" pointer-events="none"/>' + (li === 0 ? '<text class="sm-pv" x="' + q[0] + '" y="' + (q[1] - 9) + '" text-anchor="middle" pointer-events="none">' + (pts[i][L1[0]] || 0) + '</text>' : ''); });
+    });
     svg.innerHTML = o; svg.classList.toggle('es-anim', !esReduced());
     var cur = -1;
     function show(i) { if (i === cur) return; cur = i; $$('g.eh', svg).forEach(function (g) { g.classList.toggle('on', Number(g.dataset.i) === i); }); svg.classList.toggle('hov', i >= 0);
       if (i < 0) { tip.style.opacity = 0; return; } var p = pts[i];
-      esTipAt(tip, svg, cx(i), Math.min(y(Math.max(p.net, 0)), y2(p.closed)) - 4, W, H, '<b>' + p.t + '</b><div><span>หลังหักค่า Ads</span><span>' + F.int(Math.round(p.net)) + '</span></div><div><span>ปิดได้</span><span>' + p.closed + ' ตัว</span></div>'); }
+      esTipAt(tip, svg, cx(i), Math.min(y(Math.max(p.net, 0)), y2(p.closed)) - 4, W, H, '<b>' + p.t + '</b><div><span>หลังหักค่า Ads</span><span>' + F.int(Math.round(p.net)) + '</span></div>' + LN.map(function (q) { return '<div><span><i style="background:' + q[1] + ';border-radius:50%"></i>' + q[2] + '</span><span>' + F.int(p[q[0]] || 0) + q[3] + '</span></div>'; }).join('')); }
     $$('g.eh', svg).forEach(function (g) { var i = Number(g.dataset.i); g.onmouseenter = g.onclick = function () { show(i); }; });
     svg.onmouseleave = function () { show(-1); };
   }
