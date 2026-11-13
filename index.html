@@ -2242,6 +2242,10 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gdw-lg { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12.5px; color: var(--text-3); margin-top: 12px; } .gdw-lg i { display: inline-block; width: 14px; height: 12px; border-radius: 4px; vertical-align: middle; margin-right: 5px; }
 .gdw-lg i.g { background: #00C853; } .gdw-lg i.m { background: #3b3b48; } .gdw-lg i.r { background: #BA0900; } .gdw-lg i.bst { outline: 3px solid #e8590c; }
 @media (max-width: 900px) { .gdw-d { grid-template-columns: repeat(4, minmax(0, 1fr)); } .gdw-top { grid-template-columns: minmax(0, 1fr); } }
+.es-svg .sm-bl { fill: none; stroke: var(--sm-est); stroke-width: 2.5; stroke-linecap: round; pointer-events: none; }
+.es-svg .sm-bd2 { fill: var(--card); stroke: var(--sm-est); stroke-width: 2.5; pointer-events: none; } .es-svg .sm-bd2.on { fill: var(--sm-est); }
+.es-svg .sm-bt { fill: var(--text-2, var(--text)); font-size: 11px; font-weight: 500; paint-order: stroke; stroke: var(--card); stroke-width: 3px; pointer-events: none; }
+.sm-lg i.sm-bli { height: 0 !important; width: 18px !important; border-top: 2.5px solid var(--sm-est); border-radius: 0 !important; background: none !important; }
 .sm-chd { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: flex-start; }
 .sm-big { font-size: 28px; font-weight: 600; line-height: 1.15; margin-top: 6px; color: var(--text); } .sm-big small { font-size: 13px; font-weight: 400; color: var(--text-3); margin-left: 6px; }
 .sm-box { display: flex; gap: 10px; flex-wrap: wrap; } .sm-box div { background: var(--bg-soft); border-radius: 12px; padding: 8px 14px; font-size: 12px; color: var(--text-3); min-width: 120px; } .sm-box b { display: block; font-size: 18px; color: var(--text); font-weight: 600; } .sm-box small { font-size: 12px; font-weight: 400; color: var(--text-3); }
@@ -7076,7 +7080,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     if (sf.m === 'd') for (var k = 13; k >= 0; k--) { var dd = C.addDays(sf.d, -k); pts.push({ l: String(Number(dd.slice(8))), t: 'วัน' + DOW[dowOf(dd)] + ' ' + thBE(dd), a: dd, b: dd }); }
     else if (sf.m === 'w') for (var k2 = 11; k2 >= 0; k2--) { var rw = sumRange('w', C.addDays(r[0], -7 * k2)); pts.push({ l: thBE(rw[0], true), t: thBE(rw[0], true) + ' – ' + thBE(rw[1]), a: rw[0], b: rw[1] }); }
     else for (var k3 = 11; k3 >= 0; k3--) { var dm = new Date(Number(r[0].slice(0, 4)), Number(r[0].slice(5, 7)) - 1 - k3, 1), rm = sumRange('m', C.iso(dm)); pts.push({ l: TH_MO[dm.getMonth()] + (dm.getMonth() === 0 || k3 === 11 ? ' ' + String(dm.getFullYear() + 543).slice(2) : ''), t: TH_MO[dm.getMonth()] + ' ' + (dm.getFullYear() + 543), a: rm[0], b: rm[1] }); }
-    pts.forEach(function (p) { var g = sumAgg(p.a, p.b); p.net = g.net; p.ads = g.ads; p.diff = g.diff; p.closed = g.closed; p.est = g.est; p.conv = Math.round(g.conv); if (sf.m === 'd') p.l = DOW_S[dowOf(p.a)] + '. ' + p.l; });
+    pts.forEach(function (p) { var g = sumAgg(p.a, p.b); p.net = g.net; p.ads = g.ads; p.diff = g.diff; p.bought = g.bought; p.closed = g.closed; p.est = g.est; p.conv = Math.round(g.conv); if (sf.m === 'd') p.l = DOW_S[dowOf(p.a)] + '. ' + p.l; });
     // v86 — แยกหมวดสินค้าของช่วงที่เลือก (เคสประเมิน → ปิดได้ → เงิน)
     var cm = {}, cNames = {}; C.KPI_CATS.forEach(function (c) { cNames[c.k] = c.n; }); cNames.other = 'อื่นๆ';
     var cg = function (k) { return cm[k] || (cm[k] = { k: k, n: cNames[k] || k, est: 0, cl: 0, b: 0, m: 0 }); };
@@ -7100,7 +7104,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     html += '<div class="sm-right"><div class="card sm-chart"><div class="sm-chd"><div><h2 class="card-title">' + (sf.m === 'd' ? '14 วันล่าสุด' : sf.m === 'w' ? '12 สัปดาห์ล่าสุด' : '12 เดือนล่าสุด') + '</h2><div class="card-sub">เหลือหลังหักค่า Ads</div>' +
       '<div class="sm-big">' + F.int(Math.round(tN)) + '<small>บาท · เฉลี่ย ' + F.int(Math.round(tN / pts.length)) + ' / ' + (sf.m === 'd' ? 'วัน' : sf.m === 'w' ? 'สัปดาห์' : 'เดือน') + '</small></div></div>' +
       '<div class="sm-box"><div>ยอดส่วนต่าง<b>' + F.int(Math.round(tD)) + '</b></div><div>ค่า Ads<b>' + F.int(Math.round(tA)) + (tD > 0 ? ' <small>(' + (tA / tD * 100).toFixed(1) + '%)</small>' : '') + '</b></div><div>ปิดได้<b>' + F.int(smTot('closed')) + ' ตัว</b></div></div></div>' +
-      '<div class="es-lg es-lg2 sm-lg"><span><i class="a"></i>เหลือหลังหักค่า Ads</span><span><i class="sm-avgi"></i>ค่าเฉลี่ย</span></div>' +
+      '<div class="es-lg es-lg2 sm-lg"><span><i class="a"></i>เหลือหลังหักค่า Ads</span><span><i class="sm-bli"></i>ยอดรับซื้อ</span><span><i class="sm-avgi"></i>ค่าเฉลี่ย</span></div>' +
       '<div class="es-cw sm-cw"><svg class="es-svg" id="smCh"></svg><div class="es-tip" id="smTip"></div></div></div></div></div>' +
       '<div class="sm-row3">' + lateHtml + catHtml + '</div>';
     $('#page').innerHTML = html;
@@ -7125,8 +7129,8 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
   // v92 — กราฟแบบ 2A: แท่งแคปซูล ขึ้น = เหลือหลังหักค่า Ads · ลง = ค่า Ads (สีเดียวกับการ์ดแยกหมวดสินค้า)
   function smChart(svg, tip, pts) {
     if (!svg) return;
-    var box = svg.parentNode, W = box.clientWidth || 800, H = Math.max(320, box.clientHeight || 340), L = 4, R = 4, T = 30, B = 30, GAP = 0, n = pts.length, gw = (W - L - R) / n, bw = Math.max(8, Math.min(40, gw * 0.6));
-    var up = Math.max.apply(null, pts.map(function (p) { return Math.abs(p.net); }).concat([1])) * 1.1, dn = 0;
+    var box = svg.parentNode, W = box.clientWidth || 800, H = Math.max(360, box.clientHeight || 380), L = 4, R = 4, T = 30, B = 30, GAP = 0, n = pts.length, gw = (W - L - R) / n, bw = Math.max(8, Math.min(40, gw * 0.6));
+    var up = Math.max.apply(null, pts.map(function (p) { return Math.abs(p.net); }).concat([1])) * 1.6, dn = 0; // v99 — แท่งใช้ ~60% ล่าง เส้นยอดรับซื้ออยู่แถบบน
     var ph = H - T - B - GAP, sc = ph / (up + dn), z = T + up * sc, z2 = z + GAP, avg = pts.reduce(function (t, p) { return t + p.net; }, 0) / n;
     function cx(i) { return L + i * gw + gw / 2; }
     function k(v) { var a = Math.abs(v); return (v < 0 ? '−' : '') + (a >= 1e6 ? (a / 1e6).toFixed(1) + 'M' : a >= 1000 ? (a / 1000).toFixed(a >= 1e5 ? 0 : 1).replace('.0', '') + 'k' : Math.round(a)); }
@@ -7143,12 +7147,19 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         }
         if (i % lstep === 0 || on || i === n - 1) o += '<text class="sm-xl' + (on || i === n - 1 ? ' on' : '') + '" x="' + cx(i) + '" y="' + (z + 20) + '" text-anchor="middle">' + p.l + '</text>'; });
       o += '<line class="sm-avg" x1="' + L + '" x2="' + (W - R) + '" y1="' + (z - avg * sc) + '" y2="' + (z - avg * sc) + '"/>';
+      // v99 — เส้นยอดรับซื้อ: เส้นโค้งเทาเข้ม + จุดกลมขอบเข้ม + ป้ายตัวเลขเล็ก (สเกลของตัวเอง อยู่แถบบนของกราฟ)
+      var bv = pts.map(function (p) { return p.bought || 0; }), bmx = Math.max.apply(null, bv.concat([1])), bmn = Math.min.apply(null, bv);
+      if (bmx > 0) {
+        var by = function (v) { return T + 14 + (1 - (v - bmn) / ((bmx - bmn) || 1)) * ph * 0.26; }, bp = bv.map(function (v, i) { return [cx(i), by(v)]; });
+        o += '<path class="sm-bl" d="' + esSmooth(bp) + '"/>';
+        bp.forEach(function (q, i) { var on = i === cur; o += '<circle class="sm-bd2' + (on ? ' on' : '') + '" cx="' + q[0] + '" cy="' + q[1] + '" r="' + (on ? 5.5 : 4) + '"/>' + (n <= 20 || on ? '<text class="sm-bt" x="' + q[0] + '" y="' + (q[1] - 10) + '" text-anchor="middle">' + k(bv[i]) + '</text>' : ''); });
+      }
       pts.forEach(function (p, i) { o += '<rect class="eh-hit" data-i="' + i + '" x="' + (cx(i) - gw / 2) + '" y="0" width="' + gw + '" height="' + H + '"/>'; });
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.style.height = H + 'px'; svg.innerHTML = o;
       $$('.eh-hit', svg).forEach(function (r) { r.onmouseenter = r.onclick = function () { var i = Number(r.dataset.i); if (i !== cur) { cur = i; draw(); } show(i); }; });
     }
     function show(i) { var p = pts[i];
-      esTipAt(tip, svg, cx(i), z - Math.max(p.net, 0) * sc - 26, W, H, '<b>' + p.t + '</b><div><span>ยอดส่วนต่าง</span><span>' + F.int(Math.round(p.diff)) + '</span></div><div><span>ค่า Ads</span><span>−' + F.int(Math.round(p.ads)) + (p.diff > 0 ? ' (' + (p.ads / p.diff * 100).toFixed(1) + '%)' : '') + '</span></div><div><span>เหลือหลังหักค่า Ads</span><span>' + F.int(Math.round(p.net)) + '</span></div><div><span>ปิดได้</span><span>' + F.int(p.closed) + ' ตัว</span></div>'); }
+      esTipAt(tip, svg, cx(i), z - Math.max(p.net, 0) * sc - 26, W, H, '<b>' + p.t + '</b><div><span>ยอดส่วนต่าง</span><span>' + F.int(Math.round(p.diff)) + '</span></div><div><span>ค่า Ads</span><span>−' + F.int(Math.round(p.ads)) + (p.diff > 0 ? ' (' + (p.ads / p.diff * 100).toFixed(1) + '%)' : '') + '</span></div><div><span>เหลือหลังหักค่า Ads</span><span>' + F.int(Math.round(p.net)) + '</span></div><div><span>ยอดรับซื้อ</span><span>' + F.int(Math.round(p.bought || 0)) + '</span></div><div><span>ปิดได้</span><span>' + F.int(p.closed) + ' ตัว</span></div>'); }
     draw(); svg.onmouseleave = function () { cur = -1; draw(); tip.style.opacity = 0; };
   }
 
