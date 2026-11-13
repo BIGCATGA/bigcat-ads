@@ -7104,7 +7104,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     html += '<div class="sm-right"><div class="card sm-chart"><div class="sm-chd"><div><h2 class="card-title">' + (sf.m === 'd' ? '14 วันล่าสุด' : sf.m === 'w' ? '12 สัปดาห์ล่าสุด' : '12 เดือนล่าสุด') + '</h2><div class="card-sub">เหลือหลังหักค่า Ads</div>' +
       '<div class="sm-big">' + F.int(Math.round(tN)) + '<small>บาท · เฉลี่ย ' + F.int(Math.round(tN / pts.length)) + ' / ' + (sf.m === 'd' ? 'วัน' : sf.m === 'w' ? 'สัปดาห์' : 'เดือน') + '</small></div></div>' +
       '<div class="sm-box"><div>ยอดส่วนต่าง<b>' + F.int(Math.round(tD)) + '</b></div><div>ค่า Ads<b>' + F.int(Math.round(tA)) + (tD > 0 ? ' <small>(' + (tA / tD * 100).toFixed(1) + '%)</small>' : '') + '</b></div><div>ปิดได้<b>' + F.int(smTot('closed')) + ' ตัว</b></div></div></div>' +
-      '<div class="es-lg es-lg2 sm-lg"><span><i class="a"></i>เหลือหลังหักค่า Ads</span><span><i class="sm-bli"></i>ยอดรับซื้อ</span><span><i class="sm-avgi"></i>ค่าเฉลี่ย</span></div>' +
+      '<div class="es-lg es-lg2 sm-lg"><span><i class="a"></i>เหลือหลังหักค่า Ads</span><span><i class="sm-bli"></i>จำนวนที่รับซื้อ (เครื่อง)</span><span><i class="sm-avgi"></i>ค่าเฉลี่ย</span></div>' +
       '<div class="es-cw sm-cw"><svg class="es-svg" id="smCh"></svg><div class="es-tip" id="smTip"></div></div></div></div></div>' +
       '<div class="sm-row3">' + lateHtml + catHtml + '</div>';
     $('#page').innerHTML = html;
@@ -7147,12 +7147,12 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         }
         if (i % lstep === 0 || on || i === n - 1) o += '<text class="sm-xl' + (on || i === n - 1 ? ' on' : '') + '" x="' + cx(i) + '" y="' + (z + 20) + '" text-anchor="middle">' + p.l + '</text>'; });
       o += '<line class="sm-avg" x1="' + L + '" x2="' + (W - R) + '" y1="' + (z - avg * sc) + '" y2="' + (z - avg * sc) + '"/>';
-      // v99 — เส้นยอดรับซื้อ: เส้นโค้งเทาเข้ม + จุดกลมขอบเข้ม + ป้ายตัวเลขเล็ก (สเกลของตัวเอง อยู่แถบบนของกราฟ)
-      var bv = pts.map(function (p) { return p.bought || 0; }), bmx = Math.max.apply(null, bv.concat([1])), bmn = Math.min.apply(null, bv);
+      // v100 — เส้นจำนวนเครื่องที่รับซื้อ (ปิดได้): เส้นโค้งเทาเข้ม + จุดกลมขอบเข้ม + ป้ายตัวเลขเล็ก (สเกลของตัวเอง อยู่แถบบนของกราฟ)
+      var bv = pts.map(function (p) { return p.closed || 0; }), bmx = Math.max.apply(null, bv.concat([1])), bmn = Math.min.apply(null, bv);
       if (bmx > 0) {
         var by = function (v) { return T + 14 + (1 - (v - bmn) / ((bmx - bmn) || 1)) * ph * 0.26; }, bp = bv.map(function (v, i) { return [cx(i), by(v)]; });
         o += '<path class="sm-bl" d="' + esSmooth(bp) + '"/>';
-        bp.forEach(function (q, i) { var on = i === cur; o += '<circle class="sm-bd2' + (on ? ' on' : '') + '" cx="' + q[0] + '" cy="' + q[1] + '" r="' + (on ? 5.5 : 4) + '"/>' + (n <= 20 || on ? '<text class="sm-bt" x="' + q[0] + '" y="' + (q[1] - 10) + '" text-anchor="middle">' + k(bv[i]) + '</text>' : ''); });
+        bp.forEach(function (q, i) { var on = i === cur; o += '<circle class="sm-bd2' + (on ? ' on' : '') + '" cx="' + q[0] + '" cy="' + q[1] + '" r="' + (on ? 5.5 : 4) + '"/>' + (n <= 20 || on ? '<text class="sm-bt" x="' + q[0] + '" y="' + (q[1] - 10) + '" text-anchor="middle">' + F.int(bv[i]) + '</text>' : ''); });
       }
       pts.forEach(function (p, i) { o += '<rect class="eh-hit" data-i="' + i + '" x="' + (cx(i) - gw / 2) + '" y="0" width="' + gw + '" height="' + H + '"/>'; });
       svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H); svg.style.height = H + 'px'; svg.innerHTML = o;
