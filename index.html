@@ -2335,6 +2335,45 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .sm-top .no { width: 22px; height: 22px; border-radius: 50%; background: var(--grad-h, var(--primary)); color: #fff; font-size: 12px; font-weight: 600; display: grid; place-items: center; flex: none; }
 .sm-top .d { flex: 1; min-width: 0; } .sm-top .d b { display: block; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; } .sm-top .d small { font-size: 12.5px; color: var(--text-3); }
 .sm-top .r > b { font-weight: 600; white-space: nowrap; }
+
+/* v101 — Report ประจำเดือน (Google Ads) */
+.gr{--gr-grad:linear-gradient(90deg,#eb6e28,#d03f22);--gr-gv:linear-gradient(180deg,#eb6e28,#d03f22);--gr-dk:#3b3b48;--gr-good:#00a844;--gr-acc:#c2410c}
+.gr-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.gr-seg{display:inline-flex;gap:4px;background:var(--card);border-radius:999px;padding:4px;flex-wrap:wrap}
+.gr-seg button{font:inherit;font-size:13.5px;padding:7px 16px;border-radius:999px;border:0;background:none;color:var(--text);cursor:pointer}
+.gr-seg button.on{background:var(--gr-dk);color:#fff;font-weight:500}.gr-seg.m button.on{background:var(--gr-grad)}
+.gr-hero{background:linear-gradient(135deg,#eb6e28 0%,#d03f22 55%,#a22242 100%);border-radius:22px;padding:24px 28px;color:#fff}
+.gr-hero h2{margin:0 0 14px;font-size:15px;font-weight:500;opacity:.92}
+.gr-h3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.gr-bx{background:rgba(0,0,0,.2);border-radius:16px;padding:16px 18px}.gr-bx small{font-size:12.5px;opacity:.9}
+.gr-bx b{display:block;font-size:34px;font-weight:600;line-height:1.15;margin:4px 0}.gr-bx b i{font-style:normal;font-size:15px;font-weight:400;opacity:.88;margin-left:6px}
+.gr-bx p{margin:0;font-size:13.5px;line-height:1.5}
+.gr-story{background:var(--card);border-radius:18px;padding:22px 26px;margin-top:16px}
+.gr-q{font-size:13px;color:var(--gr-acc);font-weight:500;margin-bottom:4px}
+.gr h3{margin:0;font-size:19px;font-weight:600;line-height:1.4}.gr h3 em{font-style:normal;color:var(--gr-acc)}
+.gr-flw{display:grid;grid-template-columns:1fr 26px 1fr 26px 1fr 26px 1fr 26px 1fr;align-items:stretch;gap:6px;margin-top:14px}
+.gr-flw>i{font-style:normal;font-size:22px;color:var(--text-3);align-self:center;text-align:center}
+.gr-fs{background:var(--bg-soft);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:5px;min-width:0}
+.gr-fs small{font-size:12.5px;color:var(--text-3)}.gr-fs b{font-size:23px;font-weight:600;line-height:1.15}.gr-fs em{font-style:normal;font-size:11.5px;color:var(--text-3)}
+.gr-fs.on{background:var(--gr-dk);color:#fff}.gr-fs.on small,.gr-fs.on em{color:#fff;opacity:.85}
+.gr-tg{display:inline-block;padding:1px 10px;border-radius:999px;font-size:11.5px;font-weight:500;color:#fff;white-space:nowrap}.gr-tg.g{background:#00C853}.gr-tg.k{background:var(--gr-dk)}.gr-fs.on .gr-tg.k{background:#fff;color:#3b3b48}
+.gr-lb{font-size:13px;color:var(--text-3);margin:22px 0 12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}.gr-lb b{color:var(--text);font-weight:600;font-size:15px}.gr-lb:before{content:"";width:5px;height:16px;border-radius:3px;background:var(--gr-gv)}
+.gr-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.gr-c{background:var(--card);border-radius:18px;padding:24px 26px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;align-items:center}
+.gr-no{font-size:12px;color:var(--text-3);display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.gr-num{font-size:44px;font-weight:600;line-height:1.1;margin:8px 0 4px}.gr-num small{font-size:14px;font-weight:400;color:var(--text-3);margin-left:6px}.gr-num.g{color:var(--gr-good)}
+.gr-c p{margin:0;font-size:13px;color:var(--text-3);line-height:1.6}.gr-c p b{color:var(--text);font-weight:600}.gr-sys{font-size:11.5px}
+.gr-v{background:var(--bg-soft);border-radius:14px;padding:16px 18px}
+.gr-vh{display:flex;justify-content:space-between;font-size:11.5px;color:var(--text-3)}.gr-av{display:flex;align-items:center;gap:6px;color:var(--text)}.gr-av i{width:18px;border-top:2px dashed var(--text)}
+.gr-bars{position:relative;display:flex;align-items:flex-end;gap:9px;height:130px;margin-top:30px}
+.gr-bars s{position:absolute;left:0;right:0;border-top:2px dashed var(--text);z-index:2}
+.gr-bars div{flex:1;border-radius:9px 9px 4px 4px;background:var(--gr-dk);position:relative;transform-origin:bottom;animation:grUp .5s ease-out both}.gr-bars div.on{background:var(--gr-gv)}.gr-bars div.na{background:none}
+.gr-bars div span{position:absolute;top:-19px;left:50%;transform:translateX(-50%);z-index:3;background:var(--bg-soft);padding:0 3px;border-radius:4px;white-space:nowrap;font-size:11.5px;font-weight:600;color:var(--text)}.gr-bars div.on span{color:var(--gr-acc)}.gr-bars div.na span{color:var(--text-3);font-weight:400;top:auto;bottom:4px}
+@keyframes grUp{from{transform:scaleY(0)}}
+.gr-bl{display:flex;gap:9px;margin-top:6px}.gr-bl span{flex:1;text-align:center;font-size:10.5px;color:var(--text-3)}
+.gr-foot{font-size:12.5px;color:var(--text-3);margin-top:14px}
+@media(max-width:1180px){.gr-grid{grid-template-columns:1fr}.gr-flw{grid-template-columns:1fr 1fr}.gr-flw>i{display:none}}
+@media(max-width:680px){.gr-c{grid-template-columns:1fr}.gr-h3{grid-template-columns:1fr}.gr-flw{grid-template-columns:1fr}.gr-num{font-size:36px}}
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -3985,6 +4024,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     { id: 'campaigns', label: 'ตั้งค่าแคมเปญ', nav: 'ตั้งค่าแคมเปญ', short: 'แคมเปญ', icon: I.mega, group: 'fb' },
     { id: 'gov', label: 'ภาพรวม Google Ads', nav: 'ภาพรวม', short: 'ภาพรวม G', icon: I.ggl, group: 'gg' },
     { id: 'gcamp', label: 'แคมเปญ Google Ads', nav: 'แคมเปญ', short: 'แคมเปญ G', icon: I.mega, group: 'gg' },
+    { id: 'grep', label: 'Report ประจำเดือน', nav: 'Report ประจำเดือน', short: 'Report', icon: I.sum, group: 'gg' },
     { id: 'settings', label: 'ตั้งค่า', short: 'ตั้งค่า', icon: I.gear, group: 'sys' }
   ];
 
@@ -4253,7 +4293,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     liveBadge();
     var ab = $('.bottom-nav .active'); if (ab) ab.parentNode.scrollLeft = ab.offsetLeft - ab.parentNode.clientWidth / 2 + ab.clientWidth / 2;
   }
-  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, buy: pageBuy, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, pgrp: pageGroups, fcamp: pageFcamp, ftl: pageTimeline, gov: pageGov, gcamp: pageGcamp, settings: pageSettings })[S.page](); }
+  function renderPage() { ({ dashboard: pageDashboard, chats: pageChats, campaigns: pageCampaigns, kpi: pageKpi, buy: pageBuy, est: pageEst, time: pageTime, sum: pageSum, track: pageTrack, pgrp: pageGroups, fcamp: pageFcamp, ftl: pageTimeline, gov: pageGov, gcamp: pageGcamp, grep: pageGrep, settings: pageSettings })[S.page](); }
 
   // ---- ยอดรับซื้อ + เคสประเมิน แบบเรียลไทม์: ถามหลังบ้านทุก 1 นาที (เฉพาะตอนเปิดแท็บอยู่) ----
   var LIVE = { ver: null, busy: false, off: false, at: '', err: '', last: 0, pending: false, timer: null };
@@ -7556,6 +7596,97 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       '<div><span class="g-ch l">LINE · Google</span><div class="kpi-v num">' + F.int(v) + ' <small>' + unit + '</small></div><div class="kpi-s">' + sub + '</div>' + (gDelta(v, pv, true) ? '<div class="kpi-d">' + gDelta(v, pv, true) + '</div>' : '') + '</div>' +
       '<div><span class="g-ch f">Facebook</span><div class="kpi-v num">' + F.int(vf) + ' <small>' + unit + '</small></div><div class="kpi-s">' + (subF || '&nbsp;') + '</div>' + (gDelta(vf, pvf, true) ? '<div class="kpi-d">' + gDelta(vf, pvf, true) + '</div>' : '') + '</div>' +
       '</div></div>';
+  }
+
+  // ============================================================
+  // v101 — Report ประจำเดือน (Google Ads) · แท็บ "ตัวชี้วัดหลัก" ใช้ข้อมูลจากแท็บ GAds ที่มีอยู่แล้ว
+  // ============================================================
+  function pageGrep() {
+    var st = S.gr || (S.gr = { m: '', tab: 'main' });
+    var G = {};
+    (S.data.gads || []).forEach(function (r) { if (!r.date) return; var k = r.date.slice(0, 7), o = G[k] || (G[k] = { cost: 0, im: 0, ck: 0, conv: 0 }); o.cost += r.cost; o.im += r.impressions; o.ck += r.clicks; o.conv += r.conversions; });
+    var keys = Object.keys(G).sort(), cur = today().slice(0, 7);
+    if (!keys.length) { $('#page').innerHTML = '<div class="card"><div class="empty">ยังไม่มีข้อมูล Google Ads</div></div>'; return; }
+    if (!st.m || !G[st.m]) { var done = keys.filter(function (k) { return k < cur; }); st.m = done.length ? done[done.length - 1] : keys[keys.length - 1]; }
+    function addM(k, n) { var y = +k.slice(0, 4), m = +k.slice(5, 7) - 1 + n; y += Math.floor(m / 12); m = ((m % 12) + 12) % 12; return y + '-' + (m < 9 ? '0' : '') + (m + 1); }
+    function mS(k) { return TH_MO[+k.slice(5, 7) - 1]; }
+    function mL(k) { return mS(k) + ' ' + (+k.slice(0, 4) + 543); }
+    var M6 = []; for (var i = 5; i >= 0; i--) M6.push(addM(st.m, -i));
+    var pm = M6[4], part = st.m === cur;
+    function fI(v) { return F.int(Math.round(v)); }
+    var MT = [
+      { k: 'cost', q: 'ใช้ค่าโฆษณาเท่าไหร่', nm: 'ใช้ค่าโฆษณา', fl: 'จ่ายค่าโฆษณา', sys: 'Cost', pre: '฿', dp: 0, unit: '', dir: 0, get: function (o) { return o.cost; } },
+      { k: 'im', q: 'โฆษณาถูกแสดงให้คนเห็นกี่ครั้ง', nm: 'โฆษณาแสดง', fl: 'โฆษณาแสดง', sys: 'Impressions (Impr.)', pre: '', dp: 0, unit: ' ครั้ง', dir: 1, get: function (o) { return o.im || null; } },
+      { k: 'ck', q: 'มีคนคลิกโฆษณากี่ครั้ง', nm: 'มีคนคลิก', fl: 'มีคนคลิก', sys: 'Clicks', pre: '', dp: 0, unit: ' ครั้ง', dir: 1, get: function (o) { return o.ck || null; } },
+      { k: 'cpc', q: 'จ่ายคลิกละเท่าไหร่', nm: 'จ่ายคลิกละ', sys: 'CPC = ค่าโฆษณา ÷ Clicks', pre: '฿', dp: 2, unit: '', dir: -1, get: function (o) { return o.ck ? o.cost / o.ck : null; } },
+      { k: 'conv', q: 'มีลูกค้าทักเข้ามากี่ราย', nm: 'ลูกค้าทักเข้ามา', fl: 'ลูกค้าทักเข้ามา', sys: 'Conversions', pre: '', dp: 0, unit: ' ราย', dir: 1, get: function (o) { return o.conv; } },
+      { k: 'cpr', q: 'ได้ลูกค้า 1 ราย ใช้เงินเท่าไหร่', nm: 'ได้ลูกค้า 1 ราย ใช้', fl: 'ต้นทุนต่อลูกค้า 1 ราย', sys: 'CPR = ค่าโฆษณา ÷ Conversions', pre: '฿', dp: 0, unit: '', dir: -1, get: function (o) { return o.conv ? o.cost / o.conv : null; } }
+    ];
+    function fm(m, v) { return v == null ? '–' : m.pre + (m.dp ? Number(v).toLocaleString('en-US', { minimumFractionDigits: m.dp, maximumFractionDigits: m.dp }) : fI(v)); }
+    function sh(m, v) { return v >= 100000 ? Math.round(v / 1000) + 'k' : v >= 10000 ? (v / 1000).toFixed(1) + 'k' : fm(m, v); }
+    MT.forEach(function (m) {
+      m.v = M6.map(function (k) { return G[k] ? m.get(G[k]) : null; });
+      m.now = m.v[5]; m.prev = m.v[4];
+      var ok = m.v.filter(function (x) { return x != null; });
+      m.n = ok.length; m.avg = ok.length ? ok.reduce(function (a, b) { return a + b; }, 0) / ok.length : null;
+      m.pct = m.now != null && m.prev ? (m.now - m.prev) / m.prev * 100 : null;
+      var ap = m.pct == null ? null : Math.abs(m.pct), pt = ap == null ? '' : (ap >= 10 ? Math.round(ap) : ap.toFixed(1)) + '%';
+      m.sg = m.pct == null ? '' : (m.pct >= 0 ? '+' : '−') + pt;
+      if (m.now == null) m.st = { c: 'k', t: 'ยังไม่มีข้อมูล' };
+      else if (m.pct == null) m.st = { c: 'k', t: 'ไม่มีเดือนก่อน' };
+      else if (ap < 1) m.st = { c: 'k', t: 'ทรงตัว' };
+      else if (m.dir && (m.pct > 0 ? 1 : -1) === m.dir) m.st = { c: 'g', t: 'ดีขึ้น ' + pt };
+      else m.st = { c: 'k', t: (m.pct > 0 ? 'เพิ่มขึ้น ' : 'ลดลง ') + pt };
+      m.tail = '';
+      if (m.n >= 3 && m.now != null) {
+        if (m.dir > 0 && m.now >= Math.max.apply(null, ok)) m.tail = 'สูงสุดใน ' + m.n + ' เดือน';
+        else if (m.dir < 0 && m.now <= Math.min.apply(null, ok)) m.tail = 'ต่ำสุดใน ' + m.n + ' เดือน';
+        else if (m.avg && Math.abs(m.now - m.avg) / m.avg < 0.02) m.tail = 'ใกล้เคียงค่าเฉลี่ย';
+      }
+      var dv = m.avg && m.now != null ? (m.now - m.avg) / m.avg * 100 : null;
+      m.vsAvg = dv == null || m.n < 2 ? '' : Math.abs(dv) < 1 ? 'ใกล้เคียงค่าเฉลี่ย ' + m.n + ' เดือน (' + fm(m, m.avg) + ')' : (dv > 0 ? 'สูงกว่า' : 'ต่ำกว่า') + 'ค่าเฉลี่ย ' + m.n + ' เดือน (<b>' + fm(m, m.avg) + '</b>) ' + Math.abs(dv).toFixed(0) + '%';
+    });
+    var by = {}; MT.forEach(function (m) { by[m.k] = m; });
+    var now = G[st.m];
+    by.cost.ex = by.cost.pct != null && by.conv.pct != null ? 'ค่าโฆษณา <b>' + by.cost.sg + '</b> · ลูกค้าทัก <b>' + by.conv.sg + '</b>' : '';
+    by.im.ex = now.im ? 'แสดง 100 ครั้ง ได้คลิก <b>' + (now.ck / now.im * 100).toFixed(1) + ' ครั้ง</b>' : '';
+    by.ck.ex = now.ck ? '100 คลิก ได้ลูกค้าทัก <b>' + (now.conv / now.ck * 100).toFixed(1) + ' ราย</b>' : '';
+    function tg(m) { return '<span class="gr-tg ' + m.st.c + '">' + m.st.t + '</span>'; }
+    function bars(m) {
+      var ok = m.v.filter(function (x) { return x != null; }), lo = Math.min.apply(null, ok), hi = Math.max.apply(null, ok);
+      var base = !ok.length || hi <= 0 || lo / hi < 0.8 ? 0 : lo - (hi - lo) * 1.2; if (hi === base) base = 0;
+      function h(v) { return Math.max(4, (v - base) / (hi - base) * 100); }
+      if (base > 0) S.grCut = true;
+      return '<div class="gr-v"><div class="gr-vh"><span>' + m.n + ' เดือนย้อนหลัง</span>' + (m.avg != null ? '<span class="gr-av"><i></i>เฉลี่ย ' + fm(m, m.avg) + '</span>' : '') + '</div><div class="gr-bars">' +
+        (m.avg != null && m.n > 1 ? '<s style="bottom:' + h(m.avg) + '%"></s>' : '') +
+        m.v.map(function (v, i) { return v == null ? '<div class="na" style="height:100%"><span>–</span></div>' : '<div class="' + (i === 5 ? 'on' : '') + '" style="height:' + h(v) + '%;animation-delay:' + i * 50 + 'ms"><span>' + sh(m, v) + '</span></div>'; }).join('') +
+        '</div><div class="gr-bl">' + M6.map(function (k) { return '<span>' + mS(k) + '</span>'; }).join('') + '</div></div>';
+    }
+    S.grCut = false;
+    var months = keys.slice(-6);
+    var html = '<div class="gr"><div class="gr-bar"><div class="gr-seg">' + [['main', 'ตัวชี้วัดหลัก'], ['search', 'เจาะลึก Google Search'], ['cust', 'รู้จักลูกค้า']].map(function (t) { return '<button data-grt="' + t[0] + '" class="' + (st.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>' +
+      '<div class="gr-seg m">' + months.map(function (k) { return '<button data-grm="' + k + '" class="' + (st.m === k ? 'on' : '') + '">' + mS(k) + (k === cur ? ' (ยังไม่จบเดือน)' : '') + '</button>'; }).join('') + '</div></div>';
+    if (st.tab !== 'main') {
+      html += '<div class="card"><div class="empty">หน้านี้รอข้อมูลชุดใหม่จากสคริปต์ Google Ads · จะเปิดใช้เมื่อติดตั้งสคริปต์แล้ว</div></div></div>';
+    } else {
+      var cv = by.conv, cp = by.cpr, co = by.cost;
+      html += '<div class="gr-hero"><h2>อ่าน 3 ประโยคนี้ก็เข้าใจทั้งหน้า · ' + mL(st.m) + (G[pm] ? ' เทียบ ' + mL(pm) : '') + (part ? ' · เดือนนี้ยังไม่จบ' : '') + '</h2><div class="gr-h3">' +
+        '<div class="gr-bx"><small>ลูกค้าทักเข้ามา' + (cv.tail ? ' ' + cv.tail : '') + '</small><b>' + fm(cv, cv.now) + '<i>ราย</i></b><p>' + (cv.prev != null ? 'เดือนก่อน ' + fm(cv, cv.prev) + ' ราย · ' : '') + cv.st.t + '</p></div>' +
+        '<div class="gr-bx"><small>ได้ลูกค้า 1 ราย ใช้เงิน' + (cp.tail ? ' ' + cp.tail : '') + '</small><b>' + fm(cp, cp.now) + '<i>ต่อราย</i></b><p>' + (cp.prev != null ? 'เดือนก่อน ' + fm(cp, cp.prev) : '') + (cp.avg != null && cp.n > 1 ? ' · ค่าเฉลี่ย ' + cp.n + ' เดือน ' + fm(cp, cp.avg) : '') + '</p></div>' +
+        '<div class="gr-bx"><small>ค่าโฆษณา กับ ลูกค้าที่ทักเข้ามา</small><b>' + (cv.sg || '–') + '<i>ลูกค้า</i></b><p>ค่าโฆษณา ' + (co.sg || '–') + ' (' + fm(co, co.now) + ')</p></div></div></div>';
+      html += '<div class="gr-story"><div class="gr-q">เงินโฆษณาเดินทางไปเป็นลูกค้าได้อย่างไร</div><h3>จ่าย ' + fm(co, co.now) + ' → ได้ลูกค้าทักเข้ามา <em>' + fm(cv, cv.now) + ' ราย</em></h3><div class="gr-flw">' +
+        ['cost', 'im', 'ck', 'conv', 'cpr'].map(function (k, i) { var m = by[k]; return '<div class="gr-fs' + (i > 2 ? ' on' : '') + '"><small>' + m.fl + '</small><b>' + fm(m, m.now) + (m.now == null ? '' : m.unit) + '</b><div>' + tg(m) + '</div><em>' + m.sys.split(' =')[0].replace(' (Impr.)', '') + (k === 'ck' && by.cpc.now != null ? ' · คลิกละ ' + fm(by.cpc, by.cpc.now) : '') + '</em></div>'; }).join('<i>→</i>') + '</div></div>';
+      html += '<div class="gr-lb"><b>ดูทีละตัว</b> เทียบเดือนก่อน และย้อนหลัง 6 เดือน · แท่งส้ม = ' + mS(st.m) + '</div><div class="gr-grid">' +
+        MT.map(function (m, i) {
+          return '<div class="gr-c"><div><div class="gr-no">0' + (i + 1) + ' ' + tg(m) + '</div><div class="gr-q">' + m.q + '</div><h3>' + m.nm + ' <em>' + (m.now == null ? 'ยังไม่มีข้อมูล' : fm(m, m.now) + m.unit) + '</em>' + (m.tail ? ' ' + m.tail : '') + '</h3>' +
+            '<div class="gr-num ' + (m.st.c === 'g' ? 'g' : '') + '">' + fm(m, m.now) + '<small>' + (m.prev != null ? 'เดือนก่อน ' + fm(m, m.prev) : '') + '</small></div>' +
+            '<p>' + [m.ex, m.vsAvg].filter(Boolean).join(' · ') + '<br><span class="gr-sys">ชื่อในระบบ: ' + m.sys + '</span></p></div>' + bars(m) + '</div>';
+        }).join('') + '</div>' +
+        '<div class="gr-foot">ข้อมูลจาก Google Ads' + (S.grCut ? ' · กราฟของตัวที่ขยับน้อย ขยายสเกลให้เห็นการขึ้นลง แกนไม่ได้เริ่มจากศูนย์' : '') + '</div></div>';
+    }
+    $('#page').innerHTML = html;
+    $$('[data-grt]').forEach(function (b) { b.onclick = function () { st.tab = b.getAttribute('data-grt'); pageGrep(); }; });
+    $$('[data-grm]').forEach(function (b) { b.onclick = function () { st.m = b.getAttribute('data-grm'); pageGrep(); }; });
   }
   function pageGov() {
     var gf = gRange(), a = gf.from, b = gf.to, n = C.daysIncl(a, b), pa = C.addDays(a, -n), pb = C.addDays(a, -1);
