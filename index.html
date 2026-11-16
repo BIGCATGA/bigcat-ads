@@ -2490,6 +2490,16 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr2-rt{margin-top:auto;padding-top:18px;display:flex;gap:10px}.gr2-rt div{flex:1;background:var(--bg-soft);border-radius:12px;padding:10px 12px}.gr2-rt small{display:block;font-size:11.5px;color:var(--text-3)}.gr2-rt b{font-size:22px;font-weight:600}.gr2-rt b i{font-style:normal;font-size:12px;font-weight:400;color:var(--text-3);margin-left:4px}
 .gr2-empty{padding:30px 0;text-align:center;color:var(--text-3)}
 @media(max-width:1100px){.gr2-2,.gr2-3,.gr2-tm{grid-template-columns:1fr}.gr2-cr{grid-template-columns:minmax(0,1fr) 90px 100px}.gr2-cr .gr2-bv,.gr2-cr .is{display:none}.gr2-kw{grid-template-columns:44px minmax(0,1fr) 80px}.gr2-kw .gr2-ind,.gr2-kw .cvx{display:none}.gr2-ad{grid-template-columns:28px minmax(0,1fr) 90px}}
+/* v110 — รายเขต */
+.gr5-hl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.gr5-hl>div{background:var(--bg-soft);border-radius:14px;padding:14px 16px;min-width:0}.gr5-hl small{display:block;font-size:13.5px;color:var(--text-3)}.gr5-hl b{display:block;font-size:28px;font-weight:600;line-height:1.25}.gr5-hl b i{font-style:normal;font-size:14px;font-weight:400;color:var(--text-3);margin-left:6px}.gr5-hl p{margin:2px 0 0;font-size:14px;color:var(--text-3)}
+.gr5-dg{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(5,auto);grid-auto-flow:column;gap:4px 36px;margin-top:14px}
+.gr5-dr{display:grid;grid-template-columns:26px 130px minmax(0,1fr) 160px;gap:12px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.gr5-dr .no{font-weight:600;color:var(--text-3);font-size:14px}.gr5-dr .no.t{color:var(--gr-acc)}
+.gr5-dr .l{font-weight:500;font-size:15.5px;min-width:0}.gr5-dr .l small{display:block;font-size:12px;color:var(--text-3);font-weight:400}
+.gr5-dr .gr2-bar{height:22px;border-radius:7px}.gr5-dr .gr2-bar i{border-radius:7px}
+.gr5-dr .v{text-align:right;font-size:13.5px;color:var(--text-3);font-variant-numeric:tabular-nums}.gr5-dr .v b{color:var(--text);font-size:17px;font-weight:600}
+@media(max-width:1100px){.gr5-hl,.gr5-dg{grid-template-columns:1fr}.gr5-dg{grid-auto-flow:row}.gr5-dr{grid-template-columns:24px 110px minmax(0,1fr) 120px}}
 /* v109 — ขยายตัวอักษรและตัวเลขสำคัญในหน้า Report ให้อ่านง่ายขึ้น */
 .gr-hero h2{font-size:16.5px}
 .gr-bx{padding:18px 20px}.gr-bx small{font-size:14.5px}.gr-bx b{font-size:42px}.gr-bx b i{font-size:17px}.gr-bx p{font-size:15px}
@@ -8032,10 +8042,29 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           '<div class="gr2-big" style="margin-top:22px">' + fI(conT) + ' <small>ครั้งที่ลูกค้าติดต่อเข้ามา</small></div></div>';
       } else html += emp('ยังไม่มีข้อมูลช่องทางติดต่อ');
       html += '</div>';
-      /* 04 คำค้นหา */
+      /* 04 รายเขต (v110) · ข้อมูล geo_district จากสคริปต์ Google Ads · key = "จังหวัด|เขต" */
+      var DTH = { Watthana: 'วัฒนา', Chatuchak: 'จตุจักร', 'Suan Luang': 'สวนหลวง', 'Huai Khwang': 'ห้วยขวาง', 'Bang Khen': 'บางเขน', Sathon: 'สาทร', Ratchathewi: 'ราชเทวี', 'Bang Sue': 'บางซื่อ', 'Bang Khun Thian': 'บางขุนเทียน', 'Bang Na': 'บางนา', 'Bang Na Tai': 'บางนาใต้', 'Bang Na Nuea': 'บางนาเหนือ', 'Khlong Chan': 'คลองจั่น', 'Bang Kapi': 'บางกะปิ', 'Phra Nakhon': 'พระนคร', 'Din Daeng': 'ดินแดง', Prawet: 'ประเวศ', Anusawari: 'อนุสาวรีย์', 'Khlong Toei': 'คลองเตย', 'Pathum Wan': 'ปทุมวัน', 'Bang Rak': 'บางรัก', 'Yan Nawa': 'ยานนาวา', 'Bang Kho Laem': 'บางคอแหลม', 'Phaya Thai': 'พญาไท', 'Dusit': 'ดุสิต', 'Pom Prap Sattru Phai': 'ป้อมปราบศัตรูพ่าย', 'Samphanthawong': 'สัมพันธวงศ์', 'Thon Buri': 'ธนบุรี', 'Khlong San': 'คลองสาน', 'Bangkok Noi': 'บางกอกน้อย', 'Bangkok Yai': 'บางกอกใหญ่', 'Bang Phlat': 'บางพลัด', 'Taling Chan': 'ตลิ่งชัน', 'Thawi Watthana': 'ทวีวัฒนา', 'Phasi Charoen': 'ภาษีเจริญ', 'Bang Khae': 'บางแค', 'Nong Khaem': 'หนองแขม', 'Chom Thong': 'จอมทอง', 'Rat Burana': 'ราษฎร์บูรณะ', 'Thung Khru': 'ทุ่งครุ', 'Bang Bon': 'บางบอน', 'Lat Phrao': 'ลาดพร้าว', 'Wang Thonglang': 'วังทองหลาง', 'Bueng Kum': 'บึงกุ่ม', 'Khan Na Yao': 'คันนายาว', 'Saphan Sung': 'สะพานสูง', 'Min Buri': 'มีนบุรี', 'Khlong Sam Wa': 'คลองสามวา', 'Nong Chok': 'หนองจอก', 'Lat Krabang': 'ลาดกระบัง', 'Sai Mai': 'สายไหม', 'Don Mueang': 'ดอนเมือง', 'Lak Si': 'หลักสี่', 'Phra Khanong': 'พระโขนง', 'Khlong Toei Nuea': 'คลองเตยเหนือ', 'Khlong Tan Nuea': 'คลองตันเหนือ', 'Phra Khanong Nuea': 'พระโขนงเหนือ', 'Thung Phaya Thai': 'ทุ่งพญาไท', 'Sam Sen Nai': 'สามเสนใน', 'Chom Phon': 'จอมพล', 'Chan Kasem': 'จันทรเกษม', 'Lat Yao': 'ลาดยาว', 'Sena Nikhom': 'เสนานิคม', 'Tha Raeng': 'ท่าแร้ง', 'Hua Mak': 'หัวหมาก', 'Khlong Kum': 'คลองกุ่ม', 'Nong Bon': 'หนองบอน', 'Dok Mai': 'ดอกไม้', 'Saen Saep': 'แสนแสบ', 'Bang Bua Thong': 'บางบัวทอง', 'Bang Yai': 'บางใหญ่', 'Bang Krasaw': 'บางกระสอ', 'Bang Krasor': 'บางกระสอ', 'Bang Phut': 'บางพูด', 'Ban Mai': 'บ้านใหม่', 'Bang Kruai': 'บางกรวย', 'Talat Khwan': 'ตลาดขวัญ', 'Bang Talat': 'บางตลาด', 'Sai Noi': 'ไทรน้อย', 'Bang Khu Rat': 'บางคูรัด', 'Khlong Kluea': 'คลองเกลือ', 'Pak Kret': 'ปากเกร็ด', 'Mueang Nonthaburi': 'เมืองนนทบุรี', 'Mueang Samut Prakan': 'เมืองสมุทรปราการ', 'Bang Phli': 'บางพลี', 'Bang Kaeo': 'บางแก้ว', 'Bang Bo': 'บางบ่อ', 'Samrong Nuea': 'สำโรงเหนือ', 'Racha Thewa': 'ราชาเทวะ', 'Pak Nam': 'ปากน้ำ', 'Bang Phriang': 'บางเพรียง', 'Sisa Chorakhe Noi': 'ศีรษะจรเข้น้อย', 'Sisa Chorakhe Yai': 'ศีรษะจรเข้ใหญ่', 'Phra Pradaeng': 'พระประแดง', 'Bang Sao Thong': 'บางเสาธง', 'Thanyaburi': 'ธัญบุรี', 'Lam Luk Ka': 'ลำลูกกา', 'Lak Hok': 'หลักหก', 'Bang Phun': 'บางพูน', 'Ban Klang': 'บ้านกลาง', 'Bang Kadi': 'บางกะดี', 'Khu Khot': 'คูคต', 'Khlong Luang': 'คลองหลวง', 'Mueang Pathum Thani': 'เมืองปทุมธานี', 'Sam Khok': 'สามโคก', 'Lat Lum Kaeo': 'ลาดหลุมแก้ว', 'Mueang Nakhon Pathom': 'เมืองนครปฐม', 'Mueang Samut Sakhon': 'เมืองสมุทรสาคร', 'Krathum Baen': 'กระทุ่มแบน' };
+      var dTh = function (en) { var b = String(en).replace(/ (District|Sub-district|Subdistrict)$/i, '').trim(); return DTH[b] || DTH[en] || b; };
+      var dAll = (segBy.geo_district || []).filter(function (r) { return r.clicks > 0 && String(r.key).indexOf('|') > 0; });
+      var dByP = {}; dAll.forEach(function (r) { var p = String(r.key).split('|'), pv = p[0], ds = p[1]; if (!ds || ds === 'ไม่ระบุ') return; var o = dByP[pv] || (dByP[pv] = { ck: 0, cv: 0, d: {} }); o.ck += r.clicks; o.cv += r.conversions; var x = o.d[ds] || (o.d[ds] = { n: ds, ck: 0, cv: 0 }); x.ck += r.clicks; x.cv += r.conversions; });
+      var dProv = Object.keys(dByP).filter(function (p) { return BMR.test(p); }).sort(function (a, b) { return dByP[b].ck - dByP[a].ck; });
+      if (dProv.length) {
+        var dSel = dProv.indexOf(st.dprov) >= 0 ? st.dprov : dProv[0], DP = dByP[dSel];
+        var dL = Object.keys(DP.d).map(function (k) { return DP.d[k]; }).sort(function (a, b) { return b.ck - a.ck; });
+        var dTop3 = dL.slice(0, 3).reduce(function (a, x) { return a + x.ck; }, 0), dBigs = dL.filter(function (x) { return x.ck >= 30; });
+        var dBest = dBigs.length ? dBigs.reduce(function (a, x) { return x.cv / x.ck > a.cv / a.ck ? x : a; }) : null, pTh = geoTH[dSel] || dSel, dMx = dL[0].ck || 1;
+        html += '<div class="gr-lb"><b>04 ลูกค้าอยู่เขตไหน</b> เจาะลึกรายเขตในกรุงเทพฯ และปริมณฑล</div><div class="gr2-c"><div class="gr3-chips">' +
+          dProv.map(function (p) { return '<button data-g5prov="' + e2(p) + '" class="' + (p === dSel ? 'on' : '') + '">' + e2(geoTH[p] || p) + ' · ' + fI(dByP[p].ck) + ' คลิก</button>'; }).join('') + '</div>' +
+          '<div class="gr5-hl"><div><small>เขตที่คลิกมากสุด</small><b>' + e2(dTh(dL[0].n)) + '<i>' + fI(dL[0].ck) + ' คลิก</i></b><p>' + Math.round(dL[0].ck / DP.ck * 100) + '% ของ' + pTh + '</p></div>' +
+          '<div><small>' + Math.min(3, dL.length) + ' อันดับแรกรวมกัน</small><b>' + Math.round(dTop3 / DP.ck * 100) + '%<i>ของคลิกใน' + pTh + '</i></b><p>' + dL.slice(0, 3).map(function (x) { return e2(dTh(x.n)); }).join(' · ') + '</p></div>' +
+          '<div><small>ลูกค้าทักง่ายสุด (เขตที่มี 30 คลิกขึ้นไป)</small><b>' + (dBest ? e2(dTh(dBest.n)) + '<i>' + Math.round(dBest.cv / dBest.ck * 100) + ' ทัก / 100 คลิก</i>' : '–') + '</b><p>ทั้ง' + pTh + 'เฉลี่ย ' + Math.round(DP.cv / DP.ck * 100) + ' ทัก / 100 คลิก</p></div></div>' +
+          '<div class="gr5-dg">' + dL.slice(0, 10).map(function (x, i) { var th = dTh(x.n), en = String(x.n).replace(/ (District|Sub-district|Subdistrict)$/i, ''); return '<div class="gr5-dr"><div class="no' + (i < 3 ? ' t' : '') + '">' + (i + 1) + '</div><div class="l">' + e2(th) + (th !== en ? '<small>' + e2(en) + '</small>' : '') + '</div><div class="gr2-bar"><i class="' + (i ? '' : 'o') + '" style="width:' + Math.max(2, x.ck / dMx * 100) + '%"></i></div><div class="v"><b>' + fI(x.ck) + '</b> คลิก · ทัก ' + fI(x.cv) + '</div></div>'; }).join('') + '</div>' +
+          '<div class="gr2-note">ข้อมูลจาก Google ตามที่อยู่ของคนที่คลิก · บางรายการ Google ให้เป็นระดับแขวง/ตำบล · ' + mL(st.m) + '</div></div>';
+      }
+      /* 05 คำค้นหา */
       var tA = {}; (S.data.rptTerms || []).forEach(function (r) { if (r.month !== st.m) return; var o = tA[r.term] || (tA[r.term] = { t: r.term, c: 0, cv: 0 }); o.c += r.cost; o.cv += r.conversions; });
       var tms = Object.keys(tA).map(function (k) { return tA[k]; }).filter(function (x) { return x.cv >= 1; }).sort(function (a, b) { return b.cv - a.cv; }).slice(0, 9);
-      html += '<div class="gr-lb"><b>04 คำที่ลูกค้าพิมพ์ค้นหาแล้วทักมา</b> เรียงตามจำนวนลูกค้าทัก</div>';
+      html += '<div class="gr-lb"><b>' + (typeof dProv !== 'undefined' && dProv.length ? '05' : '04') + ' คำที่ลูกค้าพิมพ์ค้นหาแล้วทักมา</b> เรียงตามจำนวนลูกค้าทัก</div>';
       if (tms.length) html += '<div class="gr2-c"><div class="gr2-tm">' + tms.map(function (x) { return '<div><b>' + e2(x.t) + '</b><span>ทัก <em>' + fI(x.cv) + ' ราย</em> · ฿' + fI(x.c / x.cv) + ' / ราย</span></div>'; }).join('') + '</div></div>';
       else html += emp('ยังไม่มีข้อมูลคำค้นหาในเดือนนี้ · สคริปต์เก็บคำค้นหาเดือนนี้และเดือนก่อน');
       html += '<div class="gr-foot">ข้อมูลจากสคริปต์ Google Ads Report · ' + mL(st.m) + '</div></div>';
@@ -8169,6 +8198,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     $('#page').innerHTML = html;
     $$('[data-grt]').forEach(function (b) { b.onclick = function () { st.tab = b.getAttribute('data-grt'); pageGrep(); }; });
     $$('[data-grm]').forEach(function (b) { b.onclick = function () { st.m = b.getAttribute('data-grm'); pageGrep(); }; });
+    $$('[data-g5prov]').forEach(function (b) { b.onclick = function () { st.dprov = b.getAttribute('data-g5prov'); pageGrep(); }; });
     $$('[data-g4adp]').forEach(function (b) { b.onclick = function () { st.adp = b.getAttribute('data-g4adp'); pageGrep(); }; });
     // v107 · เซกชัน 04 ก่อน–หลังการปรับแคมเปญ
     var G4 = S.gr4fn, s4 = S.gr4;
