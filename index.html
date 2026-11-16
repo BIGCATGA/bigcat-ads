@@ -2374,6 +2374,35 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr-foot{font-size:12.5px;color:var(--text-3);margin-top:14px}
 @media(max-width:1180px){.gr-grid{grid-template-columns:1fr}.gr-flw{grid-template-columns:1fr 1fr}.gr-flw>i{display:none}}
 @media(max-width:680px){.gr-c{grid-template-columns:1fr}.gr-h3{grid-template-columns:1fr}.gr-flw{grid-template-columns:1fr}.gr-num{font-size:36px}}
+/* v102 — Tab search + cust */
+.gr-tbl{overflow-x:auto;margin:14px 0 0;-webkit-overflow-scrolling:touch}
+.gr-tbl table{width:100%;border-collapse:collapse;font-size:13.5px;white-space:nowrap}
+.gr-tbl th{text-align:right;font-weight:500;padding:8px 12px;border-bottom:2px solid var(--border);font-size:12px;color:var(--text-3)}
+.gr-tbl td{text-align:right;padding:8px 12px;border-bottom:1px solid var(--border)}
+.gr-tbl .tl{text-align:left;font-weight:500;max-width:260px;white-space:normal;word-break:break-word}
+.gr-tbl .tl small{display:block;font-weight:400;font-size:11.5px;color:var(--text-3)}
+.gr-tbl .sm{font-size:11.5px;color:var(--text-3)}
+.gr-tbl .kw-t{max-width:200px}
+.gr-tbl tbody tr:hover{background:var(--bg-soft)}
+.qs-d{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;font-size:12px;font-weight:600;color:#fff}
+.qs-d.g3{background:#00a844}.qs-d.g2{background:#e8a400}.qs-d.g1{background:#d03f22}.qs-d.g0{background:var(--text-3);font-size:14px}
+.qs-l{display:inline-block;font-size:14px;font-weight:700;width:22px;text-align:center}
+.qs-l.g3{color:#00a844}.qs-l.g2{color:var(--text-3)}.qs-l.g1{color:#d03f22}.qs-l.g0{color:var(--text-3)}
+.gr-ast-sec{margin:16px 0 0}.gr-ast-sec>b{display:block;font-size:13px;color:var(--text-3);margin-bottom:8px}
+.gr-ast{background:var(--bg-soft);border-radius:12px;padding:12px 16px;margin-bottom:8px}
+.gr-ast-t{font-size:14px;font-weight:500;line-height:1.5}
+.gr-ast-m{font-size:12.5px;color:var(--text-3);margin-top:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.gr-lbl{display:inline-block;padding:1px 8px;border-radius:999px;font-size:10.5px;font-weight:600;color:#fff}
+.gr-lbl.g3{background:#00a844}.gr-lbl.g2{background:#1a73e8}.gr-lbl.g1{background:#e8a400}.gr-lbl.g0{background:var(--text-3)}
+.gr-hb{display:flex;flex-direction:column;gap:10px;margin:12px 0 0}
+.gr-hb-r{display:grid;grid-template-columns:140px minmax(0,1fr) auto;gap:10px;align-items:center}
+.gr-hb-l{display:flex;justify-content:space-between;font-size:13px;font-weight:500}.gr-hb-l span:last-child{font-weight:600;color:var(--gr-acc)}
+.gr-hb-t{height:28px;background:var(--bg-soft);border-radius:8px;overflow:hidden}
+.gr-hb-f{height:100%;background:var(--gr-gv);border-radius:8px;min-width:4px;transition:width .5s ease}
+.gr-hb-v{font-size:11.5px;color:var(--text-3);white-space:nowrap;min-width:120px}
+.gr-g3{grid-template-columns:repeat(3,minmax(0,1fr))}.gr-c1{grid-template-columns:1fr}
+@media(max-width:1180px){.gr-g3{grid-template-columns:1fr}}
+@media(max-width:680px){.gr-hb-r{grid-template-columns:100px minmax(0,1fr) auto}}
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -7044,14 +7073,14 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     var sf = S.sf || (S.sf = { m: 'd', d: C.addDays(today(), -1) });
     var r = sumRange(sf.m, sf.d), x = sumAgg(r[0], r[1]), xr = sumAgg(r[0], r[1], true), xLate = x.closed - xr.closed;
     var pct = function (a, b) { return b ? (a / b * 100).toFixed(1) + '%' : '–'; }, bt = function (v) { return v == null || !isFinite(v) ? '–' : F.int(Math.round(v)); };
-    // v86 — ▲▼ เทียบช่วงก่อน: วัน/สัปดาห์ = ย้อน 7 วัน · เดือน = วันที่ 1–N ของเดือนก่อน (N = วันที่ผ่านไปแล้ว)
+    // v86 — ▲▼ เทียบช่วงก่อน: วัน = เมื่อวาน · สัปดาห์ = ย้อน 7 วัน · เดือน = วันที่ 1–N ของเดือนก่อน (N = วันที่ผ่านไปแล้ว)
     var nEl = C.daysIncl(r[0], r[1] < today() ? r[1] : today());
-    var pr = sf.m === 'd' ? [C.addDays(r[0], -7), C.addDays(r[1], -7)] : sf.m === 'w' ? [C.addDays(r[0], -7), C.addDays(r[0], nEl - 8)] : (function () {
+    var pr = sf.m === 'd' ? [C.addDays(r[0], -1), C.addDays(r[1], -1)] : sf.m === 'w' ? [C.addDays(r[0], -7), C.addDays(r[0], nEl - 8)] : (function () {
       var dm = new Date(Number(r[0].slice(0, 4)), Number(r[0].slice(5, 7)) - 2, 1), pa = C.iso(dm), pe = sumRange('m', pa)[1], td = today();
       var pb = C.addDays(pa, C.daysIncl(r[0], r[1] < td ? r[1] : td) - 1); return [pa, pb > pe ? pe : pb]; })();
     var xp = sumAgg(pr[0], pr[1]);
     var mo = function (v, p, bad) { if (!p || v == null || !isFinite(v)) return ''; var d = (v - p) / Math.abs(p) * 100, u = d >= 0, good = bad ? !u : u; return '<em class="sm-mo ' + (good ? 'up' : 'dn') + '">' + (u ? '▲' : '▼') + ' ' + Math.abs(d).toFixed(1) + '%</em>'; };
-    var prTxt = sf.m === 'd' ? 'วัน' + DOW[dowOf(pr[0])] + 'ที่แล้ว (' + thBE(pr[0], true) + ')' : sf.m === 'w' ? 'สัปดาห์ก่อน (' + thBE(pr[0], true) + ' – ' + thBE(pr[1], true) + ')' : thBE(pr[0], true) + ' – ' + thBE(pr[1], true);
+    var prTxt = sf.m === 'd' ? 'วันก่อนหน้า · วัน' + DOW[dowOf(pr[0])] + ' ' + thBE(pr[0], true) : sf.m === 'w' ? 'สัปดาห์ก่อน (' + thBE(pr[0], true) + ' – ' + thBE(pr[1], true) + ')' : thBE(pr[0], true) + ' – ' + thBE(pr[1], true);
     var html = '<div class="sm-wrap"><div class="sm-stmt">' +
       '<div class="sm-sh"><div class="d">' + (sf.m === 'd' ? 'สรุปประจำวัน' : sf.m === 'w' ? 'สรุปรายสัปดาห์' : 'สรุปรายเดือน') + '</div><h2>' + (sf.m === 'd' ? 'วัน' + DOW[dowOf(r[0])] + ' ' + thBE(r[0]) : sumTitle(sf.m, r).replace(/^สรุป(รายสัปดาห์|เดือน) /, '')) + '</h2>' +
         '<div class="sm-nav"><button data-sn="-1" aria-label="ก่อนหน้า">‹</button><input type="date" id="smD" value="' + sf.d + '"><button data-sn="1" aria-label="ถัดไป">›</button></div>' +
@@ -7094,9 +7123,10 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         rateCell(z.rep.closed, z.cur.closed, z.n) +
         '<td class="r num">' + F.int(z.cur.bought) + plus(z.cur.bought - z.rep.bought, z.rep.bought) + '</td>' +
         '<td class="r num">' + F.int(z.cur.diff) + plus(z.cur.diff - z.rep.diff, z.rep.diff) + '</td>' +
+        '<td class="r num">' + F.int(Math.round(z.cur.ads)) + '</td>' +
         '<td class="r num net"><b>' + F.int(Math.round(z.cur.net)) + '</b>' + plus(z.cur.diff - z.rep.diff, z.rep.net) + '</td>' +
         '<td class="sm-car">' + (z.items.length ? '<span class="sm-tog' + (open ? ' on' : '') + '">' + (open ? '▴' : z.items.length + ' ▾') + '</span>' : '') + '</td></tr>';
-      if (open) h += '<tr class="sm-det"><td colspan="8"><div class="sm-dx">Conversion ' + F.int(Math.round(z.cur.conv)) + ' · ค่า Ads (Google) ' + F.int(Math.round(z.cur.ads)) + ' · ต้นทุน Ads ต่อตัว ' + (z.cur.closed ? bt(z.cur.ads / z.cur.closed) : '–') + '</div><div class="items">' + z.items.map(function (x, k) {
+      if (open) h += '<tr class="sm-det"><td colspan="9"><div class="sm-dx">Conversion ' + F.int(Math.round(z.cur.conv)) + ' · ค่า Ads (Google) ' + F.int(Math.round(z.cur.ads)) + ' · ต้นทุน Ads ต่อตัว ' + (z.cur.closed ? bt(z.cur.ads / z.cur.closed) : '–') + '</div><div class="items">' + z.items.map(function (x, k) {
         return '<div class="itm"><span class="no">+' + (k + 1) + '</span><div><b>' + esc(x.detail || x.cat || '–') + '</b><small>' + esc(x.cat || '') + ' · ปิด ' + thBE(x.date, true) + (dayGap(x.estDate, x.date) != null ? ' (หลังประเมิน ' + dayGap(x.estDate, x.date) + ' วัน)' : '') + '</small></div>' +
           '<div class="r"><small>รับซื้อ</small> ' + F.int(x.bought) + '</div><div class="r"><small>ส่วนต่าง</small> ' + (x.sell ? '<b class="pos">' + F.int(x.diff) + '</b>' : '–') + '</div><div class="r"><small>ขาย</small> ' + (x.sell ? F.int(x.sell) : '–') + '</div></div>'; }).join('') + '</div></td></tr>';
       return h;
@@ -7106,6 +7136,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     var totRow = '<tfoot><tr class="sm-tot"><td class="dt"><b>รวม 7 วัน</b></td>' +
       '<td class="r num"><b>' + F.int(estTot) + '</b></td><td><div class="cnt">' + pbar(T7r.closed, t7add, estTot) + '<span class="sm-cn"><b>' + T7.closed + '</b>' + (t7add > 0 ? '<small>วันนั้น ' + T7r.closed + ' · <em>ตามมา ' + t7add + '</em></small>' : '') + '</span></div></td>' + rateCell(T7r.closed, T7.closed, estTot) +
       '<td class="r num"><b>' + F.int(T7.bought) + '</b>' + tplus(T7.bought - T7r.bought, T7r.bought) + '</td><td class="r num"><b>' + F.int(T7.diff) + '</b>' + tplus(T7.diff - T7r.diff, T7r.diff) + '</td>' +
+      '<td class="r num"><b>' + F.int(Math.round(T7.ads)) + '</b></td>' +
       '<td class="r num net"><b>' + F.int(Math.round(T7.net)) + '</b>' + tplus(T7.diff - T7r.diff, T7r.net) + '</td><td></td></tr></tfoot>';
     var ptUp = estTot ? (curN - repN) / estTot * 100 : null;
     var lateHtml = '<div class="card sm-late"><div class="card-head"><div><h2 class="card-title">ย้อนหลัง 7 วัน — อัตราปิดของเคสแต่ละวัน</h2><div class="card-sub">นับตามวันที่ประเมิน · กดแถวดูเครื่องที่ปิดตามมา</div></div></div>' +
@@ -7113,7 +7144,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         '<div><span>อัตราปิด ตอนนี้</span><b class="pos">' + rp(curN, estTot) + '</b><small>ปิด ' + curN + ' จาก ' + F.int(estTot) + ' เคส</small></div>' +
         '<div><span>เพิ่มขึ้นจากเคสที่ตามมา</span><b class="pos">' + (ptUp == null ? '–' : '+' + ptUp.toFixed(1) + ' จุด') + '</b><small>+' + lateN + ' ตัว · รับซื้อ +' + F.int(lateB) + ' · ส่วนต่าง +' + F.int(lateD) + '</small></div>' +
         '<div><span>เคสที่ปิดตามมา ใช้เวลาเฉลี่ย</span><b>' + (avgLag == null ? '–' : avgLag.toFixed(1) + ' วัน') + '</b><small>' + (avgLag == null ? 'ยังไม่มีเคสที่ปิดตามมา (60 วันล่าสุด)' : 'หลังประเมิน (60 วันล่าสุด)') + '</small></div></div>' +
-      '<div class="table-wrap"><table class="t sm-t"><thead><tr><th>วันที่ประเมิน</th><th class="r">เคสประเมิน</th><th>ปิดได้</th><th>อัตราปิด<br><small>วันนั้น → ตอนนี้</small></th><th class="r">ยอดรับซื้อ</th><th class="r">ส่วนต่าง</th><th class="r">หลังหักค่า Ads</th><th></th></tr></thead><tbody>' + rows + '</tbody>' + totRow + '</table></div>' +
+      '<div class="table-wrap"><table class="t sm-t"><thead><tr><th>วันที่ประเมิน</th><th class="r">เคสประเมิน</th><th>ปิดได้</th><th>อัตราปิด<br><small>วันนั้น → ตอนนี้</small></th><th class="r">ยอดรับซื้อ</th><th class="r">ส่วนต่าง</th><th class="r">ค่า Ads</th><th class="r">หลังหักค่า Ads</th><th></th></tr></thead><tbody>' + rows + '</tbody>' + totRow + '</table></div>' +
       '<div class="es-lg es-lg2"><span><i class="a"></i>ปิดในวันประเมิน</span><span><i class="late"></i>ปิดตามมา</span><span><i style="background:var(--bg-soft)"></i>ยังไม่ปิด</span></div></div>';
     // ---- กราฟ ----
     var pts = [];
@@ -7666,8 +7697,123 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     var months = keys.slice(-6);
     var html = '<div class="gr"><div class="gr-bar"><div class="gr-seg">' + [['main', 'ตัวชี้วัดหลัก'], ['search', 'เจาะลึก Google Search'], ['cust', 'รู้จักลูกค้า']].map(function (t) { return '<button data-grt="' + t[0] + '" class="' + (st.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>' +
       '<div class="gr-seg m">' + months.map(function (k) { return '<button data-grm="' + k + '" class="' + (st.m === k ? 'on' : '') + '">' + mS(k) + (k === cur ? ' (ยังไม่จบเดือน)' : '') + '</button>'; }).join('') + '</div></div>';
-    if (st.tab !== 'main') {
-      html += '<div class="card"><div class="empty">หน้านี้รอข้อมูลชุดใหม่จากสคริปต์ Google Ads · จะเปิดใช้เมื่อติดตั้งสคริปต์แล้ว</div></div></div>';
+    if (st.tab === 'search') {
+      /* ── Tab 2: เจาะลึก Google Search ── */
+      var sCamp = (S.data.rptCamp || []).filter(function (r) { return r.month === st.m && r.channel === 'SEARCH'; });
+      var sKw   = (S.data.rptKw   || []).filter(function (r) { return r.month === st.m; });
+      var sAst  = (S.data.rptAssets|| []).filter(function (r) { return r.month === st.m; });
+      /* weighted averages */
+      var sTI = 0, sWIS = 0, sWLB = 0, sWLR = 0, sWTI = 0, sWAT = 0;
+      sCamp.forEach(function (r) { if (r.impressions > 0) { var w = r.impressions; sTI += w; sWIS += r.search_is * w; sWLB += r.lost_budget * w; sWLR += r.lost_rank * w; sWTI += r.top_is * w; sWAT += r.abs_top_is * w; } });
+      var aIS = sTI ? sWIS / sTI * 100 : null, aLB = sTI ? sWLB / sTI * 100 : null, aLR = sTI ? sWLR / sTI * 100 : null, aTI = sTI ? sWTI / sTI * 100 : null, aAT = sTI ? sWAT / sTI * 100 : null;
+      sCamp.sort(function (a, b) { return b.cost - a.cost; });
+      sKw.sort(function (a, b) { return b.cost - a.cost; });
+      var topKw = sKw.slice(0, 20);
+      /* Hero */
+      html += '<div class="gr-hero"><h2>เจาะลึก Google Search · ' + mL(st.m) + '</h2><div class="gr-h3">';
+      if (aIS != null) {
+        html += '<div class="gr-bx"><small>โฆษณาแสดงได้</small><b>' + aIS.toFixed(1) + '<i>%</i></b><p>ของทุกโอกาสที่มีคนค้นหา</p></div>';
+        html += '<div class="gr-bx"><small>แสดงตำแหน่งบนสุด</small><b>' + aAT.toFixed(1) + '<i>%</i></b><p>Absolute Top IS</p></div>';
+        html += '<div class="gr-bx"><small>แสดงอันดับต้น</small><b>' + aTI.toFixed(1) + '<i>%</i></b><p>Top IS</p></div>';
+      } else {
+        html += '<div class="gr-bx"><small>ยังไม่มีข้อมูล Search IS</small><b>–</b><p>รอข้อมูลจากสคริปต์ Google Ads</p></div>';
+      }
+      html += '</div></div>';
+      /* 01 แคมเปญ */
+      html += '<div class="gr-lb"><b>01 แคมเปญ Search</b> เรียงตามค่าใช้จ่าย</div>';
+      if (sCamp.length) {
+        html += '<div class="gr-tbl"><table><thead><tr><th class="tl">แคมเปญ</th><th>ค่าโฆษณา</th><th>คลิก</th><th>Conv.</th><th>CPC</th><th>ต้นทุน/Conv.</th><th>Search IS</th><th>Top IS</th></tr></thead><tbody>';
+        sCamp.forEach(function (r) {
+          var cpc = r.clicks > 0 ? r.cost / r.clicks : null, cpv = r.conversions > 0 ? r.cost / r.conversions : null;
+          html += '<tr><td class="tl">' + r.campaign + '</td><td>฿' + fI(r.cost) + '</td><td>' + fI(r.clicks) + '</td><td>' + fI(r.conversions) + '</td><td>' + (cpc != null ? '฿' + Math.round(cpc).toLocaleString() : '–') + '</td><td>' + (cpv != null ? '฿' + fI(Math.round(cpv)) : '–') + '</td><td>' + (r.search_is > 0 ? (r.search_is * 100).toFixed(1) + '%' : '–') + '</td><td>' + (r.top_is > 0 ? (r.top_is * 100).toFixed(1) + '%' : '–') + '</td></tr>';
+        });
+        html += '</tbody></table></div>';
+      } else { html += '<div class="card"><div class="empty">ยังไม่มีข้อมูลแคมเปญ Search ในเดือนนี้</div></div>'; }
+      /* 02 คีย์เวิร์ด */
+      var mtTh = { BROAD: 'กว้าง', PHRASE: 'วลี', EXACT: 'ตรง' };
+      var qInd = function (v) { return v === 'ABOVE_AVERAGE' ? '<span class="qs-l g3">↑</span>' : v === 'BELOW_AVERAGE' ? '<span class="qs-l g1">↓</span>' : '<span class="qs-l g2">–</span>'; };
+      html += '<div class="gr-lb"><b>02 คีย์เวิร์ดเด่น</b> Top ' + Math.min(20, sKw.length) + ' ตามค่าใช้จ่าย</div>';
+      if (topKw.length) {
+        html += '<div class="gr-tbl"><table><thead><tr><th class="tl kw-t">คีย์เวิร์ด</th><th>จับคู่</th><th>QS</th><th>CTR</th><th>Ad</th><th>LP</th><th>ค่าโฆษณา</th><th>คลิก</th><th>Conv.</th><th>Search IS</th></tr></thead><tbody>';
+        topKw.forEach(function (r) {
+          var qs = Number(r.qs), qc = qs >= 7 ? 'g3' : qs >= 4 ? 'g2' : qs >= 1 ? 'g1' : 'g0';
+          html += '<tr><td class="tl kw-t">' + r.keyword + '</td><td class="sm">' + (mtTh[r.match] || r.match) + '</td><td><span class="qs-d ' + qc + '">' + (qs > 0 ? qs : '–') + '</span></td><td>' + qInd(r.exp_ctr) + '</td><td>' + qInd(r.ad_rel) + '</td><td>' + qInd(r.lp_exp) + '</td><td>฿' + fI(r.cost) + '</td><td>' + fI(r.clicks) + '</td><td>' + fI(r.conversions) + '</td><td>' + (r.search_is > 0 ? (r.search_is * 100).toFixed(1) + '%' : '–') + '</td></tr>';
+        });
+        html += '</tbody></table></div>';
+      } else { html += '<div class="card"><div class="empty">ยังไม่มีข้อมูลคีย์เวิร์ดในเดือนนี้</div></div>'; }
+      /* 03 ข้อความโฆษณา */
+      var hdl = sAst.filter(function (r) { return r.type === 'HEADLINE'; }).sort(function (a, b) { return b.clicks - a.clicks; });
+      var dsc = sAst.filter(function (r) { return r.type === 'DESCRIPTION'; }).sort(function (a, b) { return b.clicks - a.clicks; });
+      var lC = { BEST: 'g3', GOOD: 'g2', LOW: 'g1', LEARNING: 'g0' }, lT = { BEST: 'ดีที่สุด', GOOD: 'ดี', LOW: 'ต่ำ', LEARNING: 'กำลังเรียนรู้' };
+      function astCard(r) { var ct = r.impressions > 0 ? (r.clicks / r.impressions * 100).toFixed(2) + '%' : '–'; return '<div class="gr-ast"><div class="gr-ast-t">' + r.text + '</div><div class="gr-ast-m"><span class="gr-lbl ' + (lC[r.label] || 'g0') + '">' + (lT[r.label] || r.label) + '</span><span>แสดง ' + fI(r.impressions) + ' · คลิก ' + fI(r.clicks) + ' · CTR ' + ct + '</span></div></div>'; }
+      html += '<div class="gr-lb"><b>03 ข้อความโฆษณา</b> Google ให้คะแนนตามประสิทธิภาพ</div>';
+      if (hdl.length || dsc.length) {
+        if (hdl.length) { html += '<div class="gr-ast-sec"><b>หัวข้อโฆษณา (Headlines)</b>'; hdl.forEach(function (r) { html += astCard(r); }); html += '</div>'; }
+        if (dsc.length) { html += '<div class="gr-ast-sec"><b>รายละเอียด (Descriptions)</b>'; dsc.forEach(function (r) { html += astCard(r); }); html += '</div>'; }
+      } else { html += '<div class="card"><div class="empty">ยังไม่มีข้อมูลข้อความโฆษณาในเดือนนี้</div></div>'; }
+      html += '<div class="gr-foot">ข้อมูลจากสคริปต์ Google Ads Report · ' + mL(st.m) + '</div></div>';
+
+    } else if (st.tab === 'cust') {
+      /* ── Tab 3: รู้จักลูกค้า ── */
+      var cSeg   = (S.data.rptSeg   || []).filter(function (r) { return r.month === st.m; });
+      var cTerms = (S.data.rptTerms || []).filter(function (r) { return r.month === st.m; });
+      var segBy = {}; cSeg.forEach(function (r) { if (!segBy[r.dim]) segBy[r.dim] = []; segBy[r.dim].push(r); });
+      var devD = (segBy.device || []).sort(function (a, b) { return b.clicks - a.clicks; });
+      var genD = (segBy.gender || []).sort(function (a, b) { return b.clicks - a.clicks; });
+      var ageD = (segBy.age    || []).sort(function (a, b) { return b.clicks - a.clicks; });
+      var geoD = (segBy.geo    || []).sort(function (a, b) { return b.clicks - a.clicks; }).slice(0, 10);
+      var conD = (segBy.conv_action || []).sort(function (a, b) { return b.conversions - a.conversions; });
+      var devN = { MOBILE: 'มือถือ', DESKTOP: 'คอมพิวเตอร์', TABLET: 'แท็บเล็ต' };
+      var genN = { MALE: 'ผู้ชาย', FEMALE: 'ผู้หญิง', UNDETERMINED: 'ไม่ระบุ' };
+      var ageFn = function (k) { return k.replace('AGE_RANGE_', '').replace('_', '-').replace('UNDETERMINED', 'ไม่ระบุ').replace('65-UP', '65+'); };
+      /* DOW from dow_hour */
+      var dowAcc = {};
+      (segBy.dow_hour || []).forEach(function (r) { var d = r.key.split('_')[0]; if (!dowAcc[d]) dowAcc[d] = { clicks: 0, cost: 0, conversions: 0 }; dowAcc[d].clicks += r.clicks; dowAcc[d].cost += r.cost; dowAcc[d].conversions += r.conversions; });
+      var dowOrd = ['MONDAY','TUESDAY','WEDNESDAY','THURSDAY','FRIDAY','SATURDAY','SUNDAY'];
+      var dowTh = { MONDAY:'จันทร์', TUESDAY:'อังคาร', WEDNESDAY:'พุธ', THURSDAY:'พฤหัสบดี', FRIDAY:'ศุกร์', SATURDAY:'เสาร์', SUNDAY:'อาทิตย์' };
+      var dowArr = dowOrd.filter(function (d) { return dowAcc[d]; }).map(function (d) { return { key: d, clicks: dowAcc[d].clicks, cost: dowAcc[d].cost, conversions: dowAcc[d].conversions }; });
+      /* Hero */
+      var td = devD[0], ta = ageD[0], tg2 = genD[0];
+      var sumCk = function (arr) { return arr.reduce(function (s, r) { return s + r.clicks; }, 0); };
+      html += '<div class="gr-hero"><h2>รู้จักลูกค้า · ' + mL(st.m) + '</h2><div class="gr-h3">';
+      html += '<div class="gr-bx"><small>อุปกรณ์หลัก</small><b>' + (td ? (devN[td.key] || td.key) : '–') + '</b><p>' + (td ? fI(td.clicks) + ' คลิก (' + (sumCk(devD) ? (td.clicks / sumCk(devD) * 100).toFixed(0) : 0) + '%)' : 'ยังไม่มีข้อมูล') + '</p></div>';
+      html += '<div class="gr-bx"><small>กลุ่มอายุหลัก</small><b>' + (ta ? ageFn(ta.key) + ' ปี' : '–') + '</b><p>' + (ta ? fI(ta.clicks) + ' คลิก' : 'ยังไม่มีข้อมูล') + '</p></div>';
+      html += '<div class="gr-bx"><small>เพศที่คลิกมากสุด</small><b>' + (tg2 ? (genN[tg2.key] || tg2.key) : '–') + '</b><p>' + (tg2 ? fI(tg2.clicks) + ' คลิก' : 'ยังไม่มีข้อมูล') + '</p></div>';
+      html += '</div></div>';
+      /* horizontal bar builder */
+      function hBar(items, lFn, vFn, sFn) {
+        if (!items.length) return '<div class="card"><div class="empty">ยังไม่มีข้อมูล</div></div>';
+        var mx = Math.max.apply(null, items.map(vFn));
+        var o = '<div class="gr-hb">'; items.forEach(function (r) { var v = vFn(r); o += '<div class="gr-hb-r"><div class="gr-hb-l"><span>' + lFn(r) + '</span></div><div class="gr-hb-t"><div class="gr-hb-f" style="width:' + (mx > 0 ? Math.max(2, v / mx * 100) : 0) + '%"></div></div><div class="gr-hb-v">' + sFn(r) + '</div></div>'; }); o += '</div>'; return o;
+      }
+      /* 01 อุปกรณ์ · เพศ · อายุ */
+      html += '<div class="gr-lb"><b>01 ใครคลิกโฆษณา</b> แยกตามอุปกรณ์ · เพศ · อายุ</div><div class="gr-c gr-g3">';
+      html += '<div><div class="gr-q">อุปกรณ์</div>' + hBar(devD, function (r) { return devN[r.key] || r.key; }, function (r) { return r.clicks; }, function (r) { return fI(r.clicks) + ' คลิก · ฿' + fI(r.cost); }) + '</div>';
+      html += '<div><div class="gr-q">เพศ</div>' + hBar(genD, function (r) { return genN[r.key] || r.key; }, function (r) { return r.clicks; }, function (r) { return fI(r.clicks) + ' คลิก · ฿' + fI(r.cost); }) + '</div>';
+      html += '<div><div class="gr-q">กลุ่มอายุ</div>' + hBar(ageD, function (r) { return ageFn(r.key) + ' ปี'; }, function (r) { return r.clicks; }, function (r) { return fI(r.clicks) + ' คลิก · ฿' + fI(r.cost); }) + '</div>';
+      html += '</div>';
+      /* 02 พื้นที่ */
+      html += '<div class="gr-lb"><b>02 พื้นที่ที่คลิกมากสุด</b> Top 10</div>';
+      html += hBar(geoD, function (r) { return r.key; }, function (r) { return r.clicks; }, function (r) { return fI(r.clicks) + ' คลิก · Conv. ' + fI(r.conversions) + ' · ฿' + fI(r.cost); });
+      /* 03 คำค้นหา */
+      cTerms.sort(function (a, b) { return b.cost - a.cost; });
+      var topT = cTerms.slice(0, 25);
+      html += '<div class="gr-lb"><b>03 คำค้นหาจริงของลูกค้า</b> Top ' + Math.min(25, cTerms.length) + ' ตามค่าใช้จ่าย</div>';
+      if (topT.length) {
+        html += '<div class="gr-tbl"><table><thead><tr><th class="tl">คำค้นหา</th><th>ค่าโฆษณา</th><th>แสดง</th><th>คลิก</th><th>Conv.</th><th>CTR</th></tr></thead><tbody>';
+        topT.forEach(function (r) { var ct = r.impressions > 0 ? (r.clicks / r.impressions * 100).toFixed(2) + '%' : '–'; html += '<tr><td class="tl">' + r.term + '</td><td>฿' + fI(r.cost) + '</td><td>' + fI(r.impressions) + '</td><td>' + fI(r.clicks) + '</td><td>' + fI(r.conversions) + '</td><td>' + ct + '</td></tr>'; });
+        html += '</tbody></table></div>';
+      } else { html += '<div class="card"><div class="empty">ยังไม่มีข้อมูลคำค้นหาในเดือนนี้</div></div>'; }
+      /* 04 ช่องทางติดต่อ */
+      html += '<div class="gr-lb"><b>04 ช่องทางที่ลูกค้าติดต่อ</b> Conversion Actions</div>';
+      if (conD.length) { html += hBar(conD, function (r) { return r.key; }, function (r) { return r.conversions; }, function (r) { return fI(r.conversions) + ' ครั้ง · ฿' + fI(r.cost); }); }
+      else { html += '<div class="card"><div class="empty">ยังไม่มีข้อมูล Conversion Actions</div></div>'; }
+      /* 05 วันในสัปดาห์ */
+      html += '<div class="gr-lb"><b>05 วันในสัปดาห์</b> คลิกและ Conversion แต่ละวัน</div>';
+      if (dowArr.length) { html += hBar(dowArr, function (r) { return dowTh[r.key] || r.key; }, function (r) { return r.clicks; }, function (r) { return fI(r.clicks) + ' คลิก · Conv. ' + fI(r.conversions) + ' · ฿' + fI(r.cost); }); }
+      else { html += '<div class="card"><div class="empty">ยังไม่มีข้อมูลรายวัน</div></div>'; }
+      html += '<div class="gr-foot">ข้อมูลจากสคริปต์ Google Ads Report · ' + mL(st.m) + '</div></div>';
+
     } else {
       var cv = by.conv, cp = by.cpr, co = by.cost;
       html += '<div class="gr-hero"><h2>อ่าน 3 ประโยคนี้ก็เข้าใจทั้งหน้า · ' + mL(st.m) + (G[pm] ? ' เทียบ ' + mL(pm) : '') + (part ? ' · เดือนนี้ยังไม่จบ' : '') + '</h2><div class="gr-h3">' +
