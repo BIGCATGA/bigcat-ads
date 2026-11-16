@@ -2372,6 +2372,45 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 @keyframes grUp{from{transform:scaleY(0)}}
 .gr-bl{display:flex;gap:9px;margin-top:6px}.gr-bl span{flex:1;text-align:center;font-size:10.5px;color:var(--text-3)}
 .gr-foot{font-size:12.5px;color:var(--text-3);margin-top:14px}
+/* v107 — แท็บ ประเมิน → ปิดยอด */
+.gr3-fn{display:grid;grid-template-columns:minmax(0,1fr) 110px minmax(0,1fr) 110px minmax(0,1fr);align-items:center;margin-top:18px}
+.gr3-fs{background:var(--bg-soft);border-radius:16px;padding:18px 20px}.gr3-fs.on{background:linear-gradient(135deg,#eb6e28,#d03f22);color:#fff}
+.gr3-fs small{display:block;font-size:12.5px;color:var(--text-3)}.gr3-fs.on small{color:#fff;opacity:.9}
+.gr3-fs b{display:block;font-size:34px;font-weight:600;line-height:1.15}.gr3-fs b i{font-style:normal;font-size:14px;font-weight:400;margin-left:6px;opacity:.8}
+.gr3-fs p{margin:2px 0 0;font-size:12.5px;color:var(--text-3)}.gr3-fs.on p{color:#fff}
+.gr3-fa{text-align:center}.gr3-fa b{display:block;font-size:22px;font-weight:600;color:var(--gr-good)}.gr3-fa small{font-size:11.5px;color:var(--text-3)}.gr3-fa i{display:block;font-style:normal;color:var(--text-3);font-size:18px}
+.gr3-pr{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,3fr) 96px 96px 110px;gap:16px;align-items:center;padding:12px 0;border-top:1px solid var(--border)}
+.gr3-pr.h{border-top:0;padding-top:0;font-size:11.5px;color:var(--text-3)}.gr3-pr .n{font-weight:500;min-width:0}.gr3-pr .n small{display:block;font-size:11.5px;color:var(--text-3);font-weight:400}
+.gr3-f3{display:flex;flex-direction:column;gap:4px}.gr3-f3>div{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--text-3)}.gr3-f3 .gr2-bar{flex:1;height:9px}.gr3-f3 span{width:56px;text-align:right;font-variant-numeric:tabular-nums}.gr3-f3 span.t{width:44px;text-align:left}.gr3-f3 span b{color:var(--text);font-weight:600}
+.gr3-f3 .c1 i{background:#3b3b48}.gr3-f3 .c2 i{background:#b45309}.gr3-f3 .c3 i{background:var(--gr-grad)}
+.gr3-pc{text-align:right;font-variant-numeric:tabular-nums}.gr3-pc b{font-size:18px;font-weight:600}.gr3-pc small{display:block;font-size:11px;color:var(--text-3)}.gr3-pc.g b{color:var(--gr-good)}
+.gr3-cmp{display:grid;grid-template-columns:minmax(0,1.3fr) 1fr 30px 1fr 90px;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--border);font-variant-numeric:tabular-nums}
+.gr3-cmp.h{border-top:0;padding-top:0;font-size:11.5px;color:var(--text-3)}.gr3-cmp .k{font-weight:500}.gr3-cmp .k small{display:block;font-size:11.5px;color:var(--text-3);font-weight:400}
+.gr3-cmp .v{text-align:right;font-size:18px;font-weight:600}.gr3-cmp .v.a{color:var(--gr-acc)}.gr3-cmp .ar{text-align:center;color:var(--text-3)}
+.gr3-chg{justify-self:end;font-size:12px;padding:3px 10px;border-radius:999px;background:var(--gr-dk);color:#fff;white-space:nowrap}.gr3-chg.g{background:var(--gr-good)}
+.gr3-cmp.key{background:var(--bg-soft);border-radius:12px;padding:12px 14px;border-top:0;margin:4px 0}
+.gr3-evp{position:relative;margin:10px 0 12px}
+.gr3-evb{width:100%;display:flex;align-items:center;gap:12px;text-align:left;font:inherit;color:inherit;border:1px solid var(--border);background:var(--card);border-radius:14px;padding:10px 14px;cursor:pointer}
+.gr3-evb:hover{border-color:var(--gr-dk)}
+.gr3-evd{flex:none;width:46px;text-align:center;background:var(--gr-dk);color:#fff;border-radius:10px;padding:4px 0;line-height:1.1}.gr3-evd b{display:block;font-size:17px;font-weight:600}.gr3-evd small{font-size:10.5px;opacity:.85}
+.gr3-evt{flex:1;min-width:0}.gr3-evt b{display:block;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gr3-evt b small{color:var(--text-3);font-weight:400}
+.gr3-evt span{display:inline-block;max-width:100%;margin-top:3px;font-size:11.5px;padding:2px 8px;border-radius:6px;background:#3b3b48;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;vertical-align:top}.gr3-evt span.b{background:#c2410c}
+.gr3-evc{flex:none;color:var(--text-3);font-size:12px}
+.gr3-evl{position:absolute;left:0;right:0;top:calc(100% + 6px);background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 14px 34px rgba(20,20,30,.18);padding:6px;z-index:20;max-height:380px;overflow:auto}
+.gr3-it{display:flex;align-items:center;gap:12px;padding:8px 10px;border-radius:10px;cursor:pointer}.gr3-it:hover{background:var(--bg-soft)}.gr3-it.on{background:#1d1d26;color:#fff}.gr3-it.on .gr3-evt b small{color:#c9c9d6}.gr3-it.on .gr3-evd{background:#d03f22}
+.gr3-it.add{border-top:1px solid var(--border);margin-top:4px;padding-top:10px;color:var(--gr-acc);font-weight:500}
+.gr3-per{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:10px}
+.gr3-pb{border-radius:14px;padding:12px 14px;background:var(--bg-soft)}.gr3-pb.a{background:#1d1d26;color:#fff}
+.gr3-pb small{display:block;font-size:11.5px;color:var(--text-3);margin-bottom:6px}.gr3-pb.a small{color:#c9c9d6}
+.gr3-pb .rg{display:flex;align-items:center;gap:6px}.gr3-pb input{flex:1;min-width:0;font:inherit;font-size:13px;padding:7px 8px;border-radius:9px;border:1px solid transparent;background:var(--card);color:var(--text)}
+.gr3-pb.a input{background:#2c2c38;color:#fff;color-scheme:dark}.gr3-pb .rg i{font-style:normal;color:var(--text-3)}
+.gr3-pb .dn{margin-top:6px;font-size:12px;color:var(--text-3)}.gr3-pb.a .dn{color:#c9c9d6}
+.gr3-pre{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px}.gr3-pre>span{font-size:12px;color:var(--text-3);margin-right:4px}
+.gr3-pre button,.gr3-chips button{font:inherit;font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);cursor:pointer}.gr3-pre button.on,.gr3-chips button.on{background:var(--gr-dk);border-color:var(--gr-dk);color:#fff}
+.gr3-chips{display:flex;gap:6px;flex-wrap:wrap}
+.gr3-evline{position:absolute;top:-14px;bottom:0;border-left:2px dashed #d03f22;z-index:3}.gr3-evline b{position:absolute;top:-22px;left:6px;font-size:11.5px;color:var(--gr-acc);font-weight:600;white-space:nowrap}
+.gr2-cc .b.af{background:#6b6b7e}.gr2-lg i.o{background:#d03f22}.gr2-lg i.x{background:#6b6b7e}
+@media(max-width:1100px){.gr3-fn,.gr3-per{grid-template-columns:1fr}.gr3-fa{padding:8px 0}.gr3-pr{grid-template-columns:minmax(0,1fr) 80px 80px}.gr3-pr .gr3-f3,.gr3-pr .cpu{display:none}.gr3-cmp{grid-template-columns:minmax(0,1fr) 70px 20px 70px}.gr3-cmp .gr3-chg{display:none}}
 /* v106 — แท็บ เจาะลึก Google Search + รู้จักลูกค้า */
 .gr2-cr[hidden]{display:none}
 .gr2-c{background:var(--card);border-radius:18px;padding:22px 24px;min-width:0}
@@ -7752,9 +7791,9 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     }
     S.grCut = false;
     var months = keys.slice(-6);
-    var html = '<div class="gr"><div class="gr-bar"><div class="gr-seg">' + [['main', 'ตัวชี้วัดหลัก'], ['search', 'เจาะลึก Google Search'], ['cust', 'รู้จักลูกค้า']].map(function (t) { return '<button data-grt="' + t[0] + '" class="' + (st.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>' +
+    var html = '<div class="gr"><div class="gr-bar"><div class="gr-seg">' + [['main', 'ตัวชี้วัดหลัก'], ['search', 'เจาะลึก Google Search'], ['cust', 'รู้จักลูกค้า'], ['est', 'ประเมิน → ปิดยอด']].map(function (t) { return '<button data-grt="' + t[0] + '" class="' + (st.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>' +
       '<div class="gr-seg m">' + months.map(function (k) { return '<button data-grm="' + k + '" class="' + (st.m === k ? 'on' : '') + '">' + mS(k) + (k === cur ? ' (ยังไม่จบเดือน)' : '') + '</button>'; }).join('') + '</div></div>';
-    if (st.tab === 'search' || st.tab === 'cust') {
+    if (st.tab === 'search' || st.tab === 'cust' || st.tab === 'est') {
       /* ── v106 · helpers ร่วมของแท็บ 2–3 ── */
       var e2 = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
       var p0 = function (v) { return (v >= 10 ? Math.round(v) : v.toFixed(1)); };
@@ -7916,6 +7955,117 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       if (tms.length) html += '<div class="gr2-c"><div class="gr2-tm">' + tms.map(function (x) { return '<div><b>' + e2(x.t) + '</b><span>ทัก <em>' + fI(x.cv) + ' ราย</em> · ฿' + fI(x.c / x.cv) + ' / ราย</span></div>'; }).join('') + '</div></div>';
       else html += emp('ยังไม่มีข้อมูลคำค้นหาในเดือนนี้ · สคริปต์เก็บคำค้นหาเดือนนี้และเดือนก่อน');
       html += '<div class="gr-foot">ข้อมูลจากสคริปต์ Google Ads Report · ' + mL(st.m) + '</div></div>';
+    } else if (st.tab === 'est') {
+      /* ── Tab 4: ประเมิน → ปิดยอด (v107) · Google Ads × เคสประเมินจากลูกค้า LINE ── */
+      var GRP = [['iMac', /iMac/i, /^MacPC$/i], ['iPhone', /iPhone/i, /^iPhone$/i], ['iPad', /iPad/i, /^iPad$/i], ['MacBook', /Macbook/i, /^MacBook$/i], ['Notebook', /Laptop|Notebook/i, /^Notebook/i], ['คอมพิวเตอร์', /ComPC|Comset/i, /^Comset/i], ['จอคอม', /Monitor/i, /Monitor/i], ['Apple Watch', /AppleWatch/i, /^Apple Watch$/i], ['Smart Watch', /SportWatch|SmartWatch/i, /^Smart Watch$/i], ['เกมคอนโซล', /GameConsole|PS[45]|Nintendo/i, /^Game Console$/i], ['Tablet', /Tablet/i, /^Tablet$/i], ['มือถือ Android', /SmartPhone|Samsung|Xiaomi|Huawei/i, /^Smart Phone$/i], ['AirPods', /Airpods/i, /^AirPods$/i], ['หูฟัง', /Headphone/i, /^Headphone$/i], ['ลำโพง', /Speaker/i, /Speaker/i]];
+      var gOf = function (c) { c = String(c || ''); for (var i = 0; i < GRP.length; i++) if (GRP[i][1].test(c)) return i; return -1; };
+      var eOf = function (c) { c = String(c || '').trim(); for (var i = 0; i < GRP.length; i++) if (GRP[i][2].test(c)) return i; return -1; };
+      var gads = S.data.gads || [], ests = (S.data.estimates || []).filter(function (e) { return e.line; });
+      var aggM = function (mon) {
+        var o = GRP.map(function () { return { c: 0, cv: 0, es: 0, cl: 0 }; });
+        gads.forEach(function (r) { if (!r.date || r.date.slice(0, 7) !== mon) return; var g = gOf(r.campaign); if (g >= 0) { o[g].c += r.cost; o[g].cv += r.conversions; } });
+        ests.forEach(function (e) { if (e.date.slice(0, 7) !== mon) return; var g = eOf(e.category); if (g >= 0) { o[g].es++; if (e.closed) o[g].cl++; } });
+        return o;
+      };
+      var cM = aggM(st.m), pM = aggM(pm);
+      var tot = function (o) { return o.reduce(function (a, x) { a.c += x.c; a.cv += x.cv; a.es += x.es; a.cl += x.cl; return a; }, { c: 0, cv: 0, es: 0, cl: 0 }); };
+      var T = tot(cM), PT = tot(pM), pc = function (a, b) { return b ? a / b * 100 : 0; };
+      html += '<div class="gr-hero"><h2>ประเมิน → ปิดยอด · Google Ads · ' + mL(st.m) + (part ? ' (ยังไม่จบเดือน)' : '') + '</h2><div class="gr-h3">' +
+        '<div class="gr-bx"><small>ลูกค้าทักจากโฆษณา</small><b>' + fI(T.cv) + '<i>ราย</i></b><p>ค่าโฆษณา ฿' + fI(T.c) + (T.cv ? ' · ฿' + fI(T.c / T.cv) + ' ต่อราย' : '') + '</p></div>' +
+        '<div class="gr-bx"><small>ส่งเข้าประเมินราคา</small><b>' + fI(T.es) + '<i>เคส · ' + Math.round(pc(T.es, T.cv)) + '% ของคนทัก</i></b><p>' + (PT.cv ? 'เดือนก่อน ' + Math.round(pc(PT.es, PT.cv)) + '% · ' : '') + (T.es ? '฿' + fI(T.c / T.es) + ' ต่อเคส' : '') + '</p></div>' +
+        '<div class="gr-bx"><small>ปิดยอดรับซื้อได้</small><b>' + fI(T.cl) + '<i>เครื่อง · ' + Math.round(pc(T.cl, T.es)) + '% ของเคส</i></b><p>' + (PT.es ? 'เดือนก่อน ' + Math.round(pc(PT.cl, PT.es)) + '% · ' : '') + (T.cl ? '฿' + fI(T.c / T.cl) + ' ต่อเครื่อง' : '') + '</p></div></div></div>';
+      /* 01 funnel รวม */
+      html += '<div class="gr-lb"><b>01 จากคนทัก ถึงรับซื้อได้</b> ทุกสินค้ารวมกัน</div>';
+      if (T.cv || T.es) {
+        html += '<div class="gr2-c"><div class="gr-q">ลูกค้าทัก 100 ราย</div><h3>ส่งประเมิน <em>' + Math.round(pc(T.es, T.cv)) + ' ราย</em> · ปิดยอดได้ <em>' + Math.round(pc(T.cl, T.cv)) + ' เครื่อง</em></h3>' +
+          '<div class="gr3-fn"><div class="gr3-fs"><small>ลูกค้าทัก (Conversion)</small><b>' + fI(T.cv) + '<i>ราย</i></b><p>' + (T.cv ? '฿' + fI(T.c / T.cv) + ' ต่อราย' : '') + '</p></div>' +
+          '<div class="gr3-fa"><i>→</i><b>' + Math.round(pc(T.es, T.cv)) + '%</b><small>ส่งประเมิน</small></div>' +
+          '<div class="gr3-fs"><small>เคสประเมิน</small><b>' + fI(T.es) + '<i>เคส</i></b><p>' + (T.es ? '฿' + fI(T.c / T.es) + ' ต่อเคส' : '') + '</p></div>' +
+          '<div class="gr3-fa"><i>→</i><b>' + Math.round(pc(T.cl, T.es)) + '%</b><small>ปิดยอด</small></div>' +
+          '<div class="gr3-fs on"><small>ปิดยอดรับซื้อ</small><b>' + fI(T.cl) + '<i>เครื่อง</i></b><p>' + (T.cl ? '฿' + fI(T.c / T.cl) + ' ต่อเครื่อง' : '') + '</p></div></div>' +
+          '<div class="gr2-note">เคสประเมิน = เคสที่ลูกค้าทักทาง LINE (ช่องทางของ Google)' + (part ? ' · เดือนที่ยังไม่จบ เคสที่ "รอปิด" อาจปิดได้เพิ่มภายหลัง' : '') + '</div></div>';
+      } else html += emp('ยังไม่มีข้อมูลเดือนนี้');
+      /* 02 แต่ละสินค้า */
+      var rows = GRP.map(function (g, i) { return { n: g[0], c: cM[i].c, cv: cM[i].cv, es: cM[i].es, cl: cM[i].cl, p: pM[i] }; }).filter(function (r) { return r.cv > 0 || r.es > 0; }).sort(function (a, b) { return b.cv - a.cv; });
+      var bigE = rows.filter(function (r) { return r.es >= 30; }); if (bigE.length < 3) bigE = rows.filter(function (r) { return r.es >= 10; });
+      var best = bigE.length ? bigE.reduce(function (a, r) { return pc(r.cl, r.es) > pc(a.cl, a.es) ? r : a; }) : null;
+      html += '<div class="gr-lb"><b>02 แต่ละสินค้า</b> เรียงตามจำนวนลูกค้าทัก</div>';
+      if (rows.length) {
+        var rMx = Math.max.apply(null, rows.map(function (r) { return Math.max(r.cv, r.es); })) || 1;
+        html += '<div class="gr2-c"><div class="gr3-pr h"><div>สินค้า</div><div>ทัก → ประเมิน → ปิดยอด</div><div class="gr3-pc">ส่งประเมิน</div><div class="gr3-pc">ปิดยอด</div><div class="gr3-pc cpu">ค่าโฆษณา / เครื่อง</div></div>';
+        rows.forEach(function (r) {
+          html += '<div class="gr3-pr"><div class="n">' + r.n + (r === best ? ' <span class="gr2-pill">ปิดยอดดีสุด</span>' : '') + '<small>ค่าโฆษณา ฿' + fI(r.c) + '</small></div><div class="gr3-f3">' +
+            [['c1', 'ทัก', r.cv], ['c2', 'ประเมิน', r.es], ['c3', 'ปิดยอด', r.cl]].map(function (x) { return '<div class="' + x[0] + '"><span class="t">' + x[1] + '</span><div class="gr2-bar"><i style="width:' + Math.max(1, x[2] / rMx * 100) + '%"></i></div><span><b>' + fI(x[2]) + '</b></span></div>'; }).join('') + '</div>' +
+            '<div class="gr3-pc"><b>' + (r.cv ? Math.round(pc(r.es, r.cv)) + '%' : '–') + '</b><small>ของคนทัก</small></div><div class="gr3-pc' + (r === best ? ' g' : '') + '"><b>' + (r.es ? Math.round(pc(r.cl, r.es)) + '%' : '–') + '</b><small>ของเคส</small></div>' +
+            '<div class="gr3-pc cpu"><b>' + (r.cl ? '฿' + fI(r.c / r.cl) : '–') + '</b><small>' + fI(r.cl) + ' เครื่อง</small></div></div>';
+        });
+        html += '<div class="gr2-note">ส่งประเมินเกิน 100% = มีลูกค้า LINE ที่ไม่ได้มาจากโฆษณาด้วย (เช่น ค้นเจอเว็บเอง หรือลูกค้าเก่า)</div></div>';
+      } else html += emp('ยังไม่มีข้อมูลเดือนนี้');
+      /* 03 % ปิดยอดเทียบเดือนก่อน */
+      if (best && bigE.length >= 2) {
+        html += '<div class="gr-lb"><b>03 สินค้าไหนปิดยอดได้ดี</b> เทียบ' + mL(pm) + ' · สินค้าที่มีเคสมากพอ</div><div class="gr2-c"><div class="gr-q">เคสประเมิน 100 เคส ปิดยอดได้กี่เครื่อง</div><h3><em>' + best.n + '</em> ปิดได้สูงสุด ' + Math.round(pc(best.cl, best.es)) + ' เครื่อง จาก 100 เคส</h3>' +
+          colChart(bigE.map(function (r) { return [r.n, pc(r.cl, r.es), pc(r.p.cl, r.p.es)]; }), { on: bigE.indexOf(best), line: 1, lmax: Math.max.apply(null, bigE.map(function (r) { return Math.max(pc(r.cl, r.es), pc(r.p.cl, r.p.es)); })) || 1, fb: function (v) { return Math.round(v) + '%'; } }) +
+          '<div class="gr2-lg"><span><i></i>แท่ง = ' + mS(st.m) + '</span><span><i class="l"></i>เส้น = ' + mS(pm) + '</span></div></div>';
+      }
+      /* 04 ก่อน–หลังการปรับแคมเปญ */
+      var s4 = S.gr4 || (S.gr4 = { ev: null, pre: 5, b: null, a: null, open: false, sel: null });
+      var addD = function (d, n) { var t = new Date(d + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() + n); return t.toISOString().slice(0, 10); };
+      var nDays = function (a, b) { return Math.round((new Date(b + 'T00:00:00Z') - new Date(a + 'T00:00:00Z')) / 864e5) + 1; };
+      var thD = function (d) { return +d.slice(8) + ' ' + TH_MO[+d.slice(5, 7) - 1]; };
+      var yday = addD(today(), -1);
+      var campOk = {}; gads.forEach(function (r) { if (r.date >= addD(today(), -120)) campOk[r.campaign] = (campOk[r.campaign] || 0) + r.cost; });
+      var EVS = (S.data.rptChanges || []).filter(function (e) { return e.date && campOk[e.campaign] != null; }).sort(function (a, b) { return a.date < b.date ? 1 : a.date > b.date ? -1 : 0; }).slice(0, 60);
+      var setPre = function (n) { var e = s4.evDate; s4.pre = n; var a1 = addD(e, n - 1); if (a1 > yday) a1 = yday; s4.a = [e, a1 < e ? e : a1]; var L = nDays(s4.a[0], s4.a[1]); s4.b = [addD(e, -L), addD(e, -1)]; };
+      var pickEv = function (i) {
+        s4.ev = i; var e = EVS[i];
+        s4.evDate = e.date; s4.set = EVS.filter(function (x) { return x.date === e.date && x.tag === e.tag; }).map(function (x) { return x.campaign; }).filter(function (c, k, a) { return a.indexOf(c) === k; });
+        s4.sel = s4.set.slice(); setPre(s4.pre || 5);
+      };
+      if (s4.ev == null && s4.evDate == null) { var di = -1; EVS.some(function (e, i) { if (/Bid|Strategy|กลยุทธ์/.test(e.tag)) { di = i; return true; } }); if (di < 0 && EVS.length) di = 0; if (di >= 0) pickEv(di); }
+      if (s4.evDate == null) { s4.evDate = addD(today(), -7); var tc = Object.keys(campOk).sort(function (a, b) { return campOk[b] - campOk[a]; }); s4.set = tc.slice(0, 12); s4.sel = tc.slice(0, 1); setPre(5); }
+      html += '<div class="gr-lb"><b>04 ผลก่อน–หลังการปรับแคมเปญ</b> เลือกการเปลี่ยนแปลงและช่วงเวลาที่อยากเทียบ</div>';
+      var selG = {}; (s4.sel || []).forEach(function (c) { var g = gOf(c); if (g >= 0) selG[g] = true; });
+      var segR = function (r) {
+        var o = [0, 0, 0, 0, 0];
+        gads.forEach(function (x) { if (x.date < r[0] || x.date > r[1] || (s4.sel || []).indexOf(x.campaign) < 0) return; o[0] += x.cost; o[1] += x.clicks; o[2] += x.conversions; });
+        ests.forEach(function (e) { if (e.date < r[0] || e.date > r[1] || !selG[eOf(e.category)]) return; o[3]++; if (e.closed) o[4]++; });
+        return o;
+      };
+      var B = segR(s4.b), Aq = segR(s4.a), lb = nDays(s4.b[0], s4.b[1]), la = nDays(s4.a[0], s4.a[1]), eq = lb === la, fb = eq ? 1 : lb, fa = eq ? 1 : la, u = eq ? '' : ' ต่อวัน';
+      var cRow = function (k, sub, b, a, fmt, good, key) { var ok = isFinite(b) && isFinite(a) && b, ch = ok ? (a - b) / b * 100 : 0, g = good ? (good > 0 ? ch > 0 : ch < 0) : false; return '<div class="gr3-cmp' + (key ? ' key' : '') + '"><div class="k">' + k + '<small>' + sub + '</small></div><div class="v">' + fmt(b) + '</div><div class="ar">→</div><div class="v a">' + fmt(a) + '</div>' + (ok ? '<span class="gr3-chg' + (g ? ' g' : '') + '">' + (ch >= 0 ? '+' : '') + Math.round(ch) + '%</span>' : '<span></span>') + '</div>'; };
+      var bF = function (v) { return isFinite(v) && v ? '฿' + fI(v) : '–'; }, nF = function (v) { return isFinite(v) ? (v < 10 && v % 1 ? v.toFixed(1) : fI(v)) : '–'; }, pF = function (v) { return isFinite(v) ? Math.round(v) + '%' : '–'; };
+      var cShort = function (c) { return String(c).replace(/^[\d-]+\s*Search-/i, '').replace(/-BKK/gi, '').replace(/_/g, ' ').replace(/\s+รับซื้อ$/, ''); };
+      var evCard = function (e, i, cls) { return '<div class="' + cls + '" data-g4ev="' + i + '"><div class="gr3-evd"><b>' + (+e.date.slice(8)) + '</b><small>' + TH_MO[+e.date.slice(5, 7) - 1] + '</small></div><div class="gr3-evt"><b>' + e2(cShort(e.campaign)) + ' <small>· ' + e2(e.tag) + '</small></b><span class="' + (/Bid|Strategy|กลยุทธ์/.test(e.tag) ? 'b' : '') + '">' + e2(e.detail || e.tag) + '</span></div></div>'; };
+      var cur4 = s4.ev != null && EVS[s4.ev] ? EVS[s4.ev] : null;
+      html += '<div class="gr2-2"><div class="gr2-c"><div class="gr-q">การเปลี่ยนแปลง · ดึงจากประวัติ Google Ads อัตโนมัติ</div><div class="gr3-evp"><button class="gr3-evb" data-g4open>' +
+        (cur4 ? evCard(cur4, s4.ev, '').replace(/^<div class="" data-g4ev="\d+">/, '').replace(/<\/div>$/, '') : '<div class="gr3-evd"><b>✎</b><small>เอง</small></div><div class="gr3-evt"><b>กำหนดเอง</b><span>เลือกวันที่และแคมเปญเอง</span></div>') + '<span class="gr3-evc">' + (s4.open ? '▲' : '▼') + '</span></button>' +
+        (s4.open ? '<div class="gr3-evl">' + (EVS.length ? EVS.map(function (e, i) { return evCard(e, i, 'gr3-it' + (i === s4.ev ? ' on' : '')); }).join('') : '<div class="gr2-empty">ยังไม่มีประวัติการปรับ · ต้องใช้หลังบ้าน v26</div>') + '<div class="gr3-it add" data-g4ev="-1">+ กำหนดเอง · เลือกวันที่และแคมเปญเอง</div></div>' : '') + '</div>' +
+        '<div class="gr3-pre"><span>ช่วงที่เทียบ</span>' + [3, 5, 7, 14].map(function (v) { return '<button data-g4pre="' + v + '" class="' + (s4.pre === v ? 'on' : '') + '">' + v + ' วัน</button>'; }).join('') + '<button data-g4pre="0" class="' + (s4.pre === 0 ? 'on' : '') + '">กำหนดเอง</button></div>' +
+        '<div class="gr3-per"><div class="gr3-pb"><small>ช่วงก่อนเปลี่ยน</small><div class="rg"><input type="date" data-g4r="b0" value="' + s4.b[0] + '"><i>–</i><input type="date" data-g4r="b1" value="' + s4.b[1] + '"></div><div class="dn">' + thD(s4.b[0]) + ' – ' + thD(s4.b[1]) + ' · ' + lb + ' วัน</div></div>' +
+        '<div class="gr3-pb a"><small>ช่วงหลังเปลี่ยน</small><div class="rg"><input type="date" data-g4r="a0" value="' + s4.a[0] + '"><i>–</i><input type="date" data-g4r="a1" value="' + s4.a[1] + '"></div><div class="dn">' + thD(s4.a[0]) + ' – ' + thD(s4.a[1]) + ' · ' + la + ' วัน</div></div></div>' +
+        '<div class="gr3-chips">' + (s4.set.length > 1 ? '<button data-g4w="*" class="' + (s4.sel.length === s4.set.length ? 'on' : '') + '">รวม ' + s4.set.length + ' แคมเปญ</button>' : '') + s4.set.map(function (c) { return '<button data-g4w="' + e2(c) + '" title="' + e2(c) + '" class="' + (s4.sel.indexOf(c) >= 0 && s4.sel.length !== s4.set.length || s4.set.length === 1 ? 'on' : '') + '">' + e2(cShort(c)) + '</button>'; }).join('') + '</div>' +
+        '<h3 style="margin:14px 0 10px">คนทัก 100 ราย ส่งประเมิน <em>' + pF(B[3] / B[2] * 100).replace('%', '') + ' → ' + pF(Aq[3] / Aq[2] * 100).replace('%', '') + ' เคส</em></h3>' +
+        (eq ? '' : '<div class="gr2-note" style="margin:-4px 0 8px">ช่วงยาวไม่เท่ากัน ตัวเลขด้านล่างเทียบเป็น "ต่อวัน"</div>') +
+        '<div class="gr3-cmp h"><div></div><div style="text-align:right">ก่อน</div><div></div><div style="text-align:right">หลัง</div><div style="text-align:right">เปลี่ยนไป</div></div>' +
+        cRow('ค่าโฆษณา', eq ? 'รวมทั้งช่วง' : 'เฉลี่ยต่อวัน', B[0] / fb, Aq[0] / fa, bF) + cRow('จ่ายต่อคลิก', 'CPC', B[0] / B[1], Aq[0] / Aq[1], bF) + cRow('ลูกค้าทัก', 'Conversion' + u, B[2] / fb, Aq[2] / fa, nF, 1) +
+        cRow('เคสประเมิน', 'จากลูกค้า LINE' + u, B[3] / fb, Aq[3] / fa, nF, 1, 1) + cRow('คนทัก 100 ราย ส่งประเมิน', 'เคส ÷ ลูกค้าทัก', B[3] / B[2] * 100, Aq[3] / Aq[2] * 100, pF, 1, 1) + cRow('ค่าโฆษณาต่อเคสประเมิน', '', B[0] / B[3], Aq[0] / Aq[3], bF, -1, 1) + cRow('ปิดยอด', 'เคสช่วงหลังบางส่วนอาจยังรอปิด' + u, B[4] / fb, Aq[4] / fa, nF, 1) +
+        '<div class="gr2-note">เคสประเมินนับจากหมวดสินค้าของแคมเปญที่เลือก ถ้ามีหลายแคมเปญในหมวดเดียวกัน (เช่น iPhone) เคสจะรวมทั้งหมวด</div></div>';
+      /* กราฟรายวัน */
+      var d0 = s4.b[0] < addD(s4.evDate, -14) ? s4.b[0] : addD(s4.evDate, -14), d1 = s4.a[1] > yday ? s4.a[1] : yday; if (nDays(d0, d1) > 45) d0 = addD(d1, -44);
+      var dd = []; for (var dk = d0; dk <= d1; dk = addD(dk, 1)) dd.push({ d: dk, cv: 0, es: 0 });
+      var dI = {}; dd.forEach(function (x, i) { dI[x.d] = i; });
+      gads.forEach(function (x) { var i = dI[x.date]; if (i == null || s4.sel.indexOf(x.campaign) < 0) return; dd[i].cv += x.conversions; });
+      ests.forEach(function (e) { var i = dI[e.date]; if (i == null || !selG[eOf(e.category)]) return; dd[i].es++; });
+      var cmx = Math.max.apply(null, dd.map(function (x) { return x.cv; }).concat([1])), emx = Math.max.apply(null, dd.map(function (x) { return x.es; }).concat([1])), evI = dI[s4.evDate];
+      html += '<div class="gr2-c"><div class="gr-q">รายวัน · ' + thD(d0) + ' – ' + thD(d1) + '</div><h3>แท่ง = ลูกค้าทัก · เส้น = เคสประเมิน</h3><div class="gr2-cc" style="gap:4px;height:260px">' +
+        (evI != null ? '<div class="gr3-evline" style="left:' + (evI / dd.length * 100) + '%"><b>' + thD(s4.evDate) + (cur4 ? ' · ' + e2(cur4.tag) : '') + '</b></div>' : '') +
+        dd.map(function (x) { var c = x.d >= s4.a[0] && x.d <= s4.a[1] ? ' on' : x.d >= s4.b[0] && x.d <= s4.b[1] ? '' : ' af'; return '<div class="b' + c + '" style="height:' + Math.max(2, x.cv / cmx * 100) + '%"></div>'; }).join('') +
+        '<svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline fill="none" stroke="#00a844" stroke-width="2.4" vector-effect="non-scaling-stroke" points="' + dd.map(function (x, i) { return ((i + .5) / dd.length * 100).toFixed(2) + ',' + (100 - x.es / emx * 100 * .55).toFixed(2); }).join(' ') + '"/></svg></div>' +
+        '<div class="gr2-cx" style="gap:4px">' + dd.map(function (x, i) { return '<span>' + (dd.length > 24 && i % 2 ? '' : +x.d.slice(8)) + '</span>'; }).join('') + '</div>' +
+        '<div class="gr2-lg"><span><i></i>ช่วงก่อน</span><span><i class="o"></i>ช่วงหลัง</span><span><i class="x"></i>นอกช่วงที่เทียบ</span><span><i class="l"></i>เคสประเมินต่อวัน</span></div>' +
+        '<div class="gr2-note">การเปลี่ยนกลยุทธ์ราคาประมูล Google ต้องใช้เวลาเรียนรู้ราว 1–2 สัปดาห์ ควรอ่านผลเมื่อครบ 14 วัน · ไม่นับวันนี้เพราะข้อมูลยังไม่ครบวัน</div></div></div>';
+      html += '<div class="gr-foot">ข้อมูลจาก Google Ads (แท็บ GAds) + ชีต Estimates (ลูกค้า LINE) · ' + mL(st.m) + '</div></div>';
+      S.gr4fn = { pickEv: pickEv, setPre: setPre, topC: Object.keys(campOk).sort(function (a, b) { return campOk[b] - campOk[a]; }).slice(0, 12) };
     } else {
       var cv = by.conv, cp = by.cpr, co = by.cost;
       html += '<div class="gr-hero"><h2>อ่าน 3 ประโยคนี้ก็เข้าใจทั้งหน้า · ' + mL(st.m) + (G[pm] ? ' เทียบ ' + mL(pm) : '') + (part ? ' · เดือนนี้ยังไม่จบ' : '') + '</h2><div class="gr-h3">' +
@@ -7935,6 +8085,15 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     $('#page').innerHTML = html;
     $$('[data-grt]').forEach(function (b) { b.onclick = function () { st.tab = b.getAttribute('data-grt'); pageGrep(); }; });
     $$('[data-grm]').forEach(function (b) { b.onclick = function () { st.m = b.getAttribute('data-grm'); pageGrep(); }; });
+    // v107 · เซกชัน 04 ก่อน–หลังการปรับแคมเปญ
+    var G4 = S.gr4fn, s4 = S.gr4;
+    if (G4 && s4) {
+      $$('[data-g4open]').forEach(function (b) { b.onclick = function () { s4.open = !s4.open; pageGrep(); }; });
+      $$('[data-g4ev]').forEach(function (b) { b.onclick = function (ev) { ev.stopPropagation(); var i = +b.getAttribute('data-g4ev'); s4.open = false; if (i >= 0) G4.pickEv(i); else { s4.ev = -1; s4.pre = 0; s4.set = G4.topC.slice(); s4.sel = s4.sel && s4.sel.length && s4.set.indexOf(s4.sel[0]) >= 0 ? [s4.sel[0]] : s4.set.slice(0, 1); } pageGrep(); }; });
+      $$('[data-g4pre]').forEach(function (b) { b.onclick = function () { var v = +b.getAttribute('data-g4pre'); if (v) G4.setPre(v); else s4.pre = 0; pageGrep(); }; });
+      $$('[data-g4r]').forEach(function (b) { b.onchange = function () { var k = b.getAttribute('data-g4r'); if (!b.value) return; s4[k[0]][+k[1]] = b.value; if (s4[k[0]][0] > s4[k[0]][1]) s4[k[0]] = [s4[k[0]][1], s4[k[0]][0]]; if (k === 'a0' && s4.ev === -1) s4.evDate = b.value; s4.pre = 0; pageGrep(); }; });
+      $$('[data-g4w]').forEach(function (b) { b.onclick = function () { var c = b.getAttribute('data-g4w'); if (c === '*') s4.sel = s4.set.slice(); else if (s4.sel.length === s4.set.length && s4.set.length > 1) s4.sel = [c]; else { var i = s4.sel.indexOf(c); if (i >= 0) { if (s4.sel.length > 1) s4.sel.splice(i, 1); } else s4.sel.push(c); } pageGrep(); }; });
+    }
     $$('[data-g2more]').forEach(function (b) { b.onclick = function () { var x = $$('[data-g2x]'), op = x.length && x[0].hidden; x.forEach(function (e) { e.hidden = !op; }); b.textContent = op ? 'ย่อเหลือ 8 แคมเปญ' : 'ดูทั้งหมด ' + (x.length + 8) + ' แคมเปญ'; }; });
   }
   function pageGov() {
