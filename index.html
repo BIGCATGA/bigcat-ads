@@ -2894,6 +2894,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           switch (action) {
             case 'users': return resolve(db.users.map(function (u) { return u.name; }));
             case 'login': return resolve({ token: 'demo', name: me });
+            case 'changeMyPin': return resolve({ token: 'demo', name: me });
             case 'bootstrap': return resolve(JSON.parse(JSON.stringify(db)));
             case 'saveChat':
               if (!String(p.chat.customer || '').trim()) throw new Error('ต้องใส่ชื่อลูกค้า');
@@ -4238,6 +4239,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
   }
   function fail(e) {
     if (e && e.code === 'AUTH') { API.token(null); boot(); }
+    if (e && e.code === 'WEAKPIN') { renderSetPin(''); }
     toast(e && e.message ? e.message : 'เกิดข้อผิดพลาด', true);
   }
   /** แปลงวันที่ทุกรูปแบบ → yyyy-mm-dd (รองรับ ISO timestamp, d/m/yyyy, ปี พ.ศ., ข้อความวันที่) */
@@ -4407,6 +4409,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       }
     }).catch(function (e) {
       if (e.code === 'AUTH') { API.token(null); return renderLogin(); }
+      if (e.code === 'WEAKPIN') return renderSetPin('');
       root.innerHTML = '<div class="loading"><div style="text-align:center"><p>โหลดข้อมูลไม่ได้: ' + esc(e.message) + '</p><button class="btn" id="retry">ลองใหม่</button></div></div>';
       $('#retry').onclick = boot;
     });
@@ -4419,7 +4422,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       '<div class="f"><label for="lgName">ชื่อ</label><select id="lgName"><option>กำลังโหลด…</option></select></div>' +
       '<div class="f"><label for="lgPin">PIN</label><input id="lgPin" class="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="current-password" required></div>' +
       '<button class="btn" type="submit" style="justify-content:center">เข้าสู่ระบบ</button>' +
-      '<div class="muted" style="font-size:13px">ลืม PIN ให้คนที่เข้าระบบได้ไปตั้งใหม่ที่หน้า ตั้งค่า</div>' +
+      '<div class="muted" style="font-size:13px">ลืม PIN ให้แอดมินตั้งใหม่ที่หน้า ตั้งค่า · กรอกผิด 5 ครั้งติดกันจะถูกล็อก 15 นาที</div>' +
       '</form></div>';
     API.call('users').then(function (names) {
       var last = API.userName();
@@ -4429,9 +4432,47 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       e.preventDefault();
       var name = $('#lgName').value, pin = $('#lgPin').value;
       API.call('login', { name: name, pin: pin }).then(function (r) {
-        API.token(r.token); API.userName(r.name); boot();
+        API.token(r.token); API.userName(r.name);
+        if (r.weak) renderSetPin(pin); else boot();
       }).catch(fail);
     };
+  }
+
+  /** v112 · บังคับตั้ง PIN ใหม่ 6 หลัก (PIN เดิมสั้นกว่า 6 หลัก) */
+  function renderSetPin(oldPin) {
+    root.innerHTML = '<div class="login-wrap"><form class="login" id="pinForm">' +
+      '<div class="brand"><div class="brand-mark">B</div><div class="brand-name">' + esc(window.APP_CONFIG.BRAND) + ' <span>Ads</span></div></div>' +
+      '<h1>ตั้ง PIN ใหม่ 6 หลัก</h1><div class="muted" style="font-size:14px">' + esc(API.userName() || '') + ' · เพื่อความปลอดภัย PIN ต้องเป็นตัวเลข 6 หลัก ตั้งใหม่ครั้งเดียวแล้วใช้งานต่อได้เลย</div>' +
+      (oldPin ? '' : '<div class="f"><label for="spOld">PIN เดิม</label><input id="spOld" class="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="current-password" required></div>') +
+      '<div class="f"><label for="spNew">PIN ใหม่ (6 หลัก)</label><input id="spNew" class="pin" type="password" inputmode="numeric" maxlength="6" pattern="\\d{6}" autocomplete="new-password" required></div>' +
+      '<div class="f"><label for="spNew2">ยืนยัน PIN ใหม่</label><input id="spNew2" class="pin" type="password" inputmode="numeric" maxlength="6" pattern="\\d{6}" autocomplete="new-password" required></div>' +
+      '<button class="btn" type="submit" style="justify-content:center">บันทึก PIN ใหม่</button>' +
+      '<button class="btn ghost" type="button" id="spOut" style="justify-content:center">ออกจากระบบ</button></form></div>';
+    $('#spOut').onclick = function () { API.token(null); boot(); };
+    $('#pinForm').onsubmit = function (e) {
+      e.preventDefault();
+      var a = $('#spNew').value, b = $('#spNew2').value, o = oldPin || $('#spOld').value;
+      if (!/^\d{6}$/.test(a)) return toast('PIN ใหม่ต้องเป็นตัวเลข 6 หลัก', true);
+      if (a !== b) return toast('PIN ใหม่ 2 ช่องไม่ตรงกัน', true);
+      API.call('changeMyPin', { oldPin: o, pin: a }).then(function (r) { API.token(r.token); toast('ตั้ง PIN ใหม่แล้ว'); boot(); }).catch(function (err) { toast(err.message, true); });
+    };
+  }
+
+  /** v112 · เปลี่ยน PIN ของตัวเอง (ทุกคนทำได้) */
+  function changeMyPin() {
+    modal('<h3>เปลี่ยน PIN ของฉัน</h3><form id="cpForm" class="form-grid">' +
+      '<div class="f c12"><label>PIN เดิม</label><input id="cpOld" class="pin" type="password" inputmode="numeric" maxlength="6" autocomplete="current-password" required></div>' +
+      '<div class="f c12"><label>PIN ใหม่ (6 หลัก)</label><input id="cpNew" class="pin" type="password" inputmode="numeric" maxlength="6" pattern="\\d{6}" autocomplete="new-password" required></div>' +
+      '<div class="f c12"><label>ยืนยัน PIN ใหม่</label><input id="cpNew2" class="pin" type="password" inputmode="numeric" maxlength="6" pattern="\\d{6}" autocomplete="new-password" required><div class="hint">เปลี่ยนแล้ว เครื่องอื่นที่ล็อกอินชื่อนี้ไว้จะหลุดออกทันที</div></div>' +
+      '<div class="c12 actions"><button type="button" class="btn ghost" data-close>ยกเลิก</button><button class="btn" type="submit">บันทึก</button></div></form>',
+      function (el, close) {
+        $('#cpForm', el).onsubmit = function (e) {
+          e.preventDefault();
+          var a = $('#cpNew', el).value;
+          if (a !== $('#cpNew2', el).value) return toast('PIN ใหม่ 2 ช่องไม่ตรงกัน', true);
+          API.call('changeMyPin', { oldPin: $('#cpOld', el).value, pin: a }).then(function (r) { API.token(r.token); close(); toast('เปลี่ยน PIN แล้ว'); }).catch(fail);
+        };
+      });
   }
 
   // ============================================================
@@ -8728,12 +8769,12 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       '<div class="f c8"><label for="cfgTarget">เป้าต้นทุน/เคส (บาท)</label><input type="number" id="cfgTarget" min="1" value="' + esc(S.data.config.target_cost_per_case) + '"><div class="hint">ใช้ตัดสินในหน้าภาพรวมว่าต้นทุนต่อเคสผ่านเป้าไหม</div></div>' +
       '<div class="f c8"><label for="cfgVat">VAT ในใบเสร็จ Facebook (%)</label><input type="number" id="cfgVat" min="0" max="20" step="0.01" value="' + esc(S.data.config.fb_vat_pct || 0) + '"><div class="hint">Ads Manager แสดงค่า Ads ไม่รวม VAT แต่ใบเสร็จรวม VAT 7% · ใส่ 7 ถ้าอยากให้ค่า Ads ในเว็บตรงกับใบเสร็จ · ใส่ 0 ให้ตรงกับ Ads Manager</div></div>' +
       '<div class="f c4" style="align-self:start;padding-top:27px"><button class="btn" type="submit">บันทึก</button></div></form></div>' +
-      '<div class="card"><div class="card-head"><h2 class="card-title">ผู้ใช้</h2><button class="btn sm" id="addUser">+ เพิ่มผู้ใช้</button></div>' +
+      '<div class="card"><div class="card-head"><h2 class="card-title">ผู้ใช้</h2><div style="display:flex;gap:8px"><button class="btn ghost sm" id="myPin">เปลี่ยน PIN ของฉัน</button>' + (S.data.meAdmin || API.isDemo ? '<button class="btn sm" id="addUser">+ เพิ่มผู้ใช้</button>' : '') + '</div></div>' +
       '<table class="t"><tbody>' + S.data.users.map(function (u) {
         return '<tr><td><div class="name-cell"><div class="avatar" style="width:32px;height:32px;font-size:13px;box-shadow:none">' + esc(initials(u.name)) + '</div>' + esc(u.name) + '</div></td>' +
-          '<td>' + (u.active ? '<span class="pill good">ใช้งาน</span>' : '<span class="pill">ปิด</span>') + '</td>' +
-          '<td class="r"><button class="btn ghost sm" data-user="' + esc(u.name) + '">แก้</button></td></tr>';
-      }).join('') + '</tbody></table></div></div>';
+          '<td>' + (u.active ? '<span class="pill good">ใช้งาน</span>' : '<span class="pill">ปิด</span>') + (u.admin ? ' <span class="pill">แอดมิน</span>' : '') + '</td>' +
+          '<td class="r">' + (S.data.meAdmin || API.isDemo ? '<button class="btn ghost sm" data-user="' + esc(u.name) + '">แก้</button>' : '') + '</td></tr>';
+      }).join('') + '</tbody></table>' + (S.data.meAdmin || API.isDemo ? '' : '<div class="muted" style="font-size:13px;margin-top:10px">เพิ่ม/แก้ผู้ใช้ได้เฉพาะแอดมิน</div>') + '</div></div>';
     var fbLast = S.data.config.fb_last_sync, fbRes = {};
     try { fbRes = JSON.parse(S.data.config.fb_last_result || '{}'); } catch (e) { fbRes = {}; }
     html += '<div class="card mt"><div class="card-head"><div><h2 class="card-title">ดึงข้อมูลจาก Facebook Ads อัตโนมัติ</h2>' +
@@ -8783,7 +8824,8 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       var v = list.join('\n');
       API.call('saveConfig', { key: 'products', value: v }).then(function () { S.data.config.products = v; toast('บันทึกประเภทสินค้าแล้ว'); pageSettings(); }).catch(fail);
     };
-    $('#addUser').onclick = function () { editUser(null); };
+    if ($('#addUser')) $('#addUser').onclick = function () { editUser(null); };
+    if ($('#myPin')) $('#myPin').onclick = changeMyPin;
     $$('[data-user]').forEach(function (b) { b.onclick = function () { editUser(b.dataset.user); }; });
     if ($('#resetDemo')) $('#resetDemo').onclick = function () { API.resetDemo(); boot(); toast('รีเซ็ตแล้ว'); };
   }
@@ -8837,7 +8879,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     var u = name ? S.data.users.filter(function (x) { return x.name === name; })[0] : null;
     modal('<h3>' + (u ? 'แก้ไขผู้ใช้' : 'เพิ่มผู้ใช้') + '</h3><form id="uForm" class="form-grid">' +
       '<div class="f c12"><label>ชื่อ</label><input id="uName" value="' + esc(name || '') + '"' + (u ? ' readonly' : '') + ' required></div>' +
-      '<div class="f c12"><label>' + (u ? 'PIN ใหม่ (เว้นว่าง = ไม่เปลี่ยน)' : 'PIN') + '</label><input id="uPin" class="pin" type="password" inputmode="numeric" maxlength="6" pattern="\\d{4,6}"' + (u ? '' : ' required') + '><div class="hint">ตัวเลข 4–6 หลัก</div></div>' +
+      '<div class="f c12"><label>' + (u ? 'PIN ใหม่ (เว้นว่าง = ไม่เปลี่ยน)' : 'PIN') + '</label><input id="uPin" class="pin" type="password" inputmode="numeric" maxlength="6" pattern="\\d{6}"' + (u ? '' : ' required') + '><div class="hint">ตัวเลข 6 หลัก · เปลี่ยน PIN แล้วเครื่องที่ล็อกอินชื่อนี้ไว้จะหลุดออกทันที</div></div>' +
       (u ? '<div class="f c12"><label><input type="checkbox" id="uActive"' + (u.active ? ' checked' : '') + ' style="width:auto;margin-right:8px">ใช้งานได้</label></div>' : '') +
       '<div class="c12 actions"><button type="button" class="btn ghost" data-close>ยกเลิก</button><button class="btn" type="submit">บันทึก</button></div></form>',
       function (el, close) {
