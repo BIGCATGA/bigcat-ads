@@ -4099,6 +4099,20 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       d.fbads.forEach(function (r) { if (r.spend !== '' && r.spend != null) r.spend = Math.round(Number(r.spend) * k * 100) / 100; });
       d.fbhourly_vat = k; }
     d.gads = (d.gads || []).map(function (r) { r.date = nd(r.date); r.cost = Number(r.cost) || 0; r.conversions = Number(r.conversions) || 0; r.impressions = Number(r.impressions) || 0; r.clicks = Number(r.clicks) || 0; r.budget = r.budget === '' || r.budget == null ? null : Number(r.budget); r.impr_share = r.impr_share === '' || r.impr_share == null ? null : Number(r.impr_share); return r; });
+    // v104 — แท็บ RPT_* เก็บตัวเลขเป็นข้อความ (format @) → แปลงเป็นตัวเลขก่อนคำนวณ · ช่อง % / QS ที่ว่าง = null
+    (function () {
+      var CNT = /^(cost|impressions|clicks|conversions)$/, OPT = /^(search_is|lost_budget|lost_rank|top_is|abs_top_is|qs)$/;
+      ['rptCamp', 'rptKw', 'rptTerms', 'rptSeg', 'rptAssets'].forEach(function (k) {
+        d[k] = (d[k] || []).map(function (r) {
+          Object.keys(r).forEach(function (c) {
+            if (CNT.test(c)) r[c] = Number(r[c]) || 0;
+            else if (OPT.test(c)) r[c] = r[c] === '' || r[c] == null || isNaN(Number(r[c])) ? null : Number(r[c]);
+            else if (c === 'month') r[c] = String(r[c] || '').slice(0, 7);
+          });
+          return r;
+        });
+      });
+    })();
     d.purchases = (d.purchases || []).map(function (a) { var o = Array.isArray(a) ? { date: nd(a[0]), category: a[1], fb: !!a[2], line: !!a[3], bought: a[4], repair: a[5], sell: a[6], fbName: a[7] || '', detail: a[8] || '', seen: String(a[9] || ''), pid: String(a[10] || ''), estRef: String(a[11] || '') } : a, pc = C.prodCat(o.category, o.detail); o.k = pc.k; o.cat = pc.sub; o.guess = pc.guess; return o; });
     d.ga4 = (d.ga4 || []).map(function (a) { return Array.isArray(a) ? { date: nd(a[0]), event: String(a[1]), count: Number(a[2]) || 0 } : a; }).filter(function (e) { return e.date; });
     d.estimates = (d.estimates || []).map(function (a) { var o = Array.isArray(a) ? { date: nd(a[0]), hour: Number(a[1]), category: a[2], fb: !!a[3], line: !!a[4], closed: !!a[5], detail: a[6] || '', closeDate: nd(a[7]) || '', pid: String(a[8] || ''), estId: String(a[9] || '') } : a, pc = C.prodCat(o.category, o.detail); o.k = pc.k; o.cat = pc.sub; o.guess = pc.guess; return o; }).filter(function (e) { return e.date; });
@@ -7704,7 +7718,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       var sAst  = (S.data.rptAssets|| []).filter(function (r) { return r.month === st.m; });
       /* weighted averages */
       var sTI = 0, sWIS = 0, sWLB = 0, sWLR = 0, sWTI = 0, sWAT = 0;
-      sCamp.forEach(function (r) { if (r.impressions > 0) { var w = r.impressions; sTI += w; sWIS += r.search_is * w; sWLB += r.lost_budget * w; sWLR += r.lost_rank * w; sWTI += r.top_is * w; sWAT += r.abs_top_is * w; } });
+      sCamp.forEach(function (r) { if (r.impressions > 0 && r.search_is != null) { var w = r.impressions; sTI += w; sWIS += r.search_is * w; sWLB += r.lost_budget * w; sWLR += r.lost_rank * w; sWTI += r.top_is * w; sWAT += r.abs_top_is * w; } });
       var aIS = sTI ? sWIS / sTI * 100 : null, aLB = sTI ? sWLB / sTI * 100 : null, aLR = sTI ? sWLR / sTI * 100 : null, aTI = sTI ? sWTI / sTI * 100 : null, aAT = sTI ? sWAT / sTI * 100 : null;
       sCamp.sort(function (a, b) { return b.cost - a.cost; });
       sKw.sort(function (a, b) { return b.cost - a.cost; });
