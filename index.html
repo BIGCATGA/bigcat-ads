@@ -2575,6 +2575,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr6-pn .nm em{font-style:normal;font-weight:600;font-variant-numeric:tabular-nums;font-size:14.5px}.gr6-pn .row.me .nm .n{color:#c2410c;font-weight:600}.gr6-pn .row.zero .nm em{color:var(--text-3);font-weight:500}
 .gr6-pn .tr{height:10px;background:var(--bg-soft);border-radius:5px}.gr6-pn .tr i{display:block;height:100%;border-radius:5px;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
 .gr6-pn .tr i.k{background:#3b3b48}.gr6-pn .tr i.o{background:#c2410c}.gr6-pn .tr i.g{background:#00a844}.gr6-pn .tr i.gr{background:linear-gradient(90deg,#eb6e28,#d03f22)}.gr6-pn .tr i.h{background:repeating-linear-gradient(45deg,#3b3b48 0 3px,#8a8a9c 3px 6px)}
+.gr6-pn .row.lo .nm .n,.gr6-pn .row.lo .nm em{color:var(--text-3);font-weight:400}.gr6-pn .row.lo .tr i{opacity:.35}
 .gr6-pn .more{font:inherit;border:0;background:none;padding:8px 0 0;font-size:12.5px;color:var(--text-3);cursor:pointer}
 @media(max-width:1200px){.gr6-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.gr6-grid,.gr6-hero .g3{grid-template-columns:1fr}.gr6-up{margin-left:0}}
@@ -8449,7 +8450,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         html += emp(AU.length ? 'ยังไม่มีข้อมูลของ ' + mL(aMo) + ' ในชุดที่เลือก · อัปโหลดไฟล์ที่มีเดือนนี้' : 'ยังไม่มีข้อมูล · ใน Google Ads เปิดหน้า Auction insights → Segment → Time → Month → Download .csv แล้วกดปุ่ม "อัปโหลดไฟล์ Auction insights"');
       } else {
         var me = D.me, C = D.c, OV = {}; C.forEach(function (c) { OV[c[0]] = c[2]; });
-        var above = C.filter(function (c) { return c[3] > 0.05; }).sort(function (a, b) { return b[3] - a[3]; });
+        var above = C.filter(function (c) { return c[3] > 0.05 && c[2] >= 5; }) /* v117 · ไม่นับคู่แข่งที่เจอเราไม่ถึง 5 ใน 100 ครั้ง */.sort(function (a, b) { return b[3] - a[3]; });
         /* แถบสรุป: ประโยค + แท่ง 6 เดือน */
         var hm = aMonths.filter(function (m) { return m <= aMo; }).slice(-6), hv = hm.map(function (m) { var d = comb(m); return d ? d.me : null; });
         var sp = function (j) { var vs = hv.map(function (x) { return x ? x[j] : 0; }), mx = Math.max.apply(null, vs.concat([1])), mn = Math.min.apply(null, vs.filter(function (v) { return v > 0; }).concat([mx])), rg = (mx - mn) || 1;
@@ -8462,7 +8463,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         /* 6 กราฟ */
         var COL6 = [{ t: 'ส่วนแบ่งการแสดงผล', e: 'Impression share', j: 1, me: 0, cls: 'k' }, { t: 'ขึ้นพร้อมเรา', e: 'Overlap rate', j: 2, cls: 'k' }, { t: 'แซงเรา', e: 'Position above rate', j: 3, cls: 'o', warn: 1 },
           { t: 'ได้อยู่ด้านบนของหน้า', e: 'Top of page rate', j: 4, me: 1, cls: 'k' }, { t: 'ได้อันดับ 1 บนสุด', e: 'Abs. top of page rate', j: 5, me: 2, cls: 'o', warn: 1 }, { t: 'เราชนะ', e: 'Outranking share', j: 6, cls: 'g', win: 1 }];
-        var ins = function (col, rows) { var comp = rows.filter(function (r) { return !r.me; }), top = comp[0] || { n: '–', v: 0 }, lo = comp[comp.length - 1] || top, n = comp.filter(function (r) { return r.v > 0.05; }).length;
+        var ins = function (col, rows) { var comp = rows.filter(function (r) { return !r.me && !r.lo; }), top = comp[0] || { n: '–', v: 0 }, lo = comp[comp.length - 1] || top, n = comp.filter(function (r) { return r.v > 0.05; }).length;
           if (col.j === 1) { var rk = rows.findIndex(function (r) { return r.me; }) + 1; return rk === 1 ? 'เราขึ้นบ่อยสุด <b>' + aF(me[0]) + '</b> · ห่างอันดับ 2 (' + e2(top.n) + ') <span class="tg">' + Math.round((me[0] - (top.v < 0 ? 5 : top.v)) * 10) / 10 + ' จุด</span>' : 'เราอยู่อันดับ <b>' + rk + '</b> · ' + e2(top.n) + ' ขึ้นบ่อยกว่าเรา'; }
           if (col.j === 2) return '<b>' + e2(top.n) + '</b> เจอเราบ่อยสุด <b>' + Math.round(top.v) + ' ใน 100</b> ครั้ง';
           if (col.j === 3) return n ? '<span class="to">' + n + ' ราย</span>แซงเราได้ · มากสุด <b>' + e2(top.n) + '</b> <span class="to">' + aF(top.v) + '</span>' : '<span class="tg">ไม่มีคู่แข่งรายไหนแซงเราได้เลย</span>';
@@ -8470,7 +8471,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           if (col.j === 5) return 'เราได้อันดับ 1 <b>' + aF(me[2]) + '</b>' + (n ? ' · คู่แข่งที่แย่งอันดับ 1 ได้ <span class="to">' + n + ' ราย</span>' : ' · <span class="tg">ไม่มีใครแย่งได้</span>');
           return 'เราชนะทุกราย <span class="tg">' + aF(lo.v) + ' ขึ้นไป</span> · ชนะยากสุดคือ <b>' + e2(lo.n) + '</b>'; };
         html += '<div class="gr6-grid">' + COL6.map(function (col, ci) {
-          var rows = C.map(function (c) { var p = PM[c[0]]; return { n: c[0], v: c[col.j], p: p ? p[col.j] : null }; });
+          var rows = C.map(function (c) { var p = PM[c[0]]; return { n: c[0], v: c[col.j], p: p ? p[col.j] : null, lo: c[2] < 5 }; });
           if (col.me != null) rows.push({ n: 'เรา', v: me[col.me], me: 1, p: P ? P.me[col.me] : null });
           var key = function (v) { return v < 0 ? 5 : v; }; rows.sort(function (a, b) { return key(b.v) - key(a.v); });
           var all = st.aall === ci, lim = all ? rows.length : 5, sh = rows.slice(0, lim);
@@ -8484,7 +8485,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           return '<div class="gr6-pn' + (col.warn ? ' warn' : '') + (col.win ? ' win' : '') + '"><div class="top"><span class="no">' + (ci + 1) + '</span><div><h4>' + col.t + '</h4><div class="en">' + col.e + '</div></div>' + corner + '</div>' +
             '<div class="ins">' + ins(col, rows) + '</div>' +
             sh.map(function (r) { var cls = r.me ? 'gr' : r.v < 0 ? 'h' : col.cls;
-              return '<div class="row' + (r.me ? ' me' : '') + (r.v >= 0 && r.v <= 0.05 ? ' zero' : '') + '"><span class="rk">' + (rows.indexOf(r) + 1) + '</span><div class="rb"><div class="nm"><span class="n">' + (r.me ? 'เรา' : e2(r.n)) + '</span><em>' + aF(r.v) + '</em></div><div class="tr"><i class="' + cls + '" data-gw="' + (r.v < 0 ? 6 : Math.max(r.v > 0.05 ? 1.5 : 0, Math.min(100, r.v))) + '"></i></div></div></div>'; }).join('') +
+              return '<div class="row' + (r.me ? ' me' : '') + (r.lo ? ' lo' : '') + (r.v >= 0 && r.v <= 0.05 ? ' zero' : '') + '"' + (r.lo ? ' title="เจอเราไม่ถึง 5 ใน 100 ครั้ง · ไม่นับในกล่องสรุป"' : '') + '><span class="rk">' + (rows.indexOf(r) + 1) + '</span><div class="rb"><div class="nm"><span class="n">' + (r.me ? 'เรา' : e2(r.n)) + '</span><em>' + aF(r.v) + '</em></div><div class="tr"><i class="' + cls + '" data-gw="' + (r.v < 0 ? 6 : Math.max(r.v > 0.05 ? 1.5 : 0, Math.min(100, r.v))) + '"></i></div></div></div>'; }).join('') +
             (rows.length > 5 ? '<button class="more" data-g6all="' + ci + '">' + (all ? 'ย่อ' : '+ อีก ' + (rows.length - lim) + ' ราย (กดดูทั้งหมด)') + '</button>' : '') + '</div>';
         }).join('') + '</div>';
       }
