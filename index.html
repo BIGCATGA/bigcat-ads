@@ -2379,7 +2379,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr4-nm{display:flex;align-items:baseline;gap:8px;margin-bottom:6px;min-width:0}.gr4-nm b{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gr4-nm small{color:var(--text-3);font-size:11.5px;white-space:nowrap}
 .gr4-bl{display:flex;align-items:center;gap:10px}.gr4-bl .gr2-bar{flex:1;height:12px;border-radius:7px}.gr4-bl .gr2-bar i{border-radius:7px}.gr4-bl em{font-style:normal;font-weight:600;font-variant-numeric:tabular-nums;min-width:78px;text-align:right}.gr4-bl span{font-size:11.5px;color:var(--text-3);min-width:34px}
 .gr4-mt{text-align:right;font-variant-numeric:tabular-nums}.gr4-mt b{display:block;font-size:17px;font-weight:600}.gr4-mt b small{font-size:11px;color:var(--text-3);font-weight:400}.gr4-mt.g b{color:var(--gr-good)}
-.gr4-dl{display:inline-block;margin-top:3px;font-size:11px;padding:1px 7px;border-radius:6px;background:var(--bg-soft);color:var(--text-3);white-space:nowrap}.gr4-dl.g{background:var(--gr-good);color:#fff}.gr4-dl.k{background:var(--gr-dk);color:#fff}
+.gr4-dl{display:inline-block;margin-top:3px;font-size:12.5px;font-weight:500;padding:1px 10px;border-radius:999px;background:var(--gr-dk);color:#fff;white-space:nowrap}.gr4-dl.n{background:#c2410c}.gr4-dl.g{background:var(--gr-good);color:#fff}.gr4-dl.k{background:var(--gr-dk);color:#fff}
 .gr4-rw{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .gr4-ring{--p:50;width:46px;height:46px;border-radius:50%;background:conic-gradient(var(--gr-good) calc(var(--p)*1%),var(--line) 0);display:flex;align-items:center;justify-content:center}.gr4-ring.lo{background:conic-gradient(var(--gr-dk) calc(var(--p)*1%),var(--line) 0)}
 .gr4-ring span{width:36px;height:36px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600}
@@ -2538,6 +2538,46 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .sm-cr .m{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--text-2)}.sm-cr .m b{color:var(--text);font-weight:600}.sm-cr .m .pos{color:#00a844}
 .sm-cr .r.tot{background:var(--bg-soft);border-radius:12px;padding:11px 12px;margin-top:6px;border-top:0}
 .sm-cr-note{font-size:12.5px;color:var(--text-3);margin-top:8px}
+/* v114 — ข้อมูลเชิงลึกการประมูล */
+.gr6-fb{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--card);border-radius:16px;padding:12px 14px;margin-bottom:14px}
+.gr6-dd{position:relative}
+.gr6-db{font:inherit;display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 14px;cursor:pointer;min-width:220px;max-width:380px;text-align:left;color:var(--text)}
+.gr6-db span{min-width:0}.gr6-db small{display:block;font-size:11.5px;color:var(--text-3);line-height:1.2}.gr6-db b{display:block;font-weight:600;font-size:14.5px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gr6-db .cv{margin-left:auto;color:var(--text-3);transition:transform .2s}.gr6-dd.open .gr6-db{border-color:var(--gr-dk)}.gr6-dd.open .cv{transform:rotate(180deg)}.gr6-db[disabled]{opacity:.55;cursor:default}
+.gr6-pop{position:absolute;top:calc(100% + 6px);left:0;z-index:20;background:var(--card);border-radius:14px;box-shadow:0 14px 40px rgba(29,29,38,.18);padding:8px;min-width:300px;max-height:360px;overflow:auto;display:none}
+.gr6-dd.open .gr6-pop{display:block}
+.gr6-op{font:inherit;width:100%;display:flex;align-items:center;gap:10px;border:0;background:none;border-radius:10px;padding:9px 10px;cursor:pointer;text-align:left;font-size:14px;color:var(--text)}
+.gr6-op:hover{background:var(--bg-soft)}.gr6-op .ck{width:17px;color:#c2410c;font-weight:600;flex:none}
+.gr6-op .bx{width:17px;height:17px;border-radius:5px;border:1.5px solid #b9b9c6;display:grid;place-items:center;font-size:11px;color:#fff;flex:none}.gr6-op.on .bx{background:#c2410c;border-color:#c2410c}
+.gr6-pop hr{border:0;border-top:1px solid var(--line);margin:6px 4px}
+.gr6-info{font-size:13px;color:var(--text-3)}
+.gr6-up{font:inherit;margin-left:auto;border:0;background:var(--gr-dk);color:#fff;border-radius:999px;padding:8px 16px;cursor:pointer;font-size:13.5px}
+.gr6-dl{display:inline-block;padding:1px 10px;border-radius:999px;font-size:12.5px;font-weight:500;color:#fff;white-space:nowrap;vertical-align:middle}
+.gr6-dl.up{background:#00a844}.gr6-dl.dn,.gr6-dl.eq{background:#3b3b48}
+.gr6-hero{background:linear-gradient(135deg,#eb6e28 0%,#d03f22 55%,#a22242 100%);border-radius:20px;padding:22px 24px;color:#fff;position:relative;overflow:hidden}
+.gr6-hero:after{content:"";position:absolute;right:-80px;top:-120px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none}
+.gr6-hero .t{font-size:14px;opacity:.9;margin:0 0 4px}.gr6-hero h2{margin:0 0 16px;font-size:21px;font-weight:500;line-height:1.5}.gr6-hero h2 em{font-style:normal;background:rgba(0,0,0,.22);border-radius:8px;padding:0 8px;font-weight:600}
+.gr6-hero .g3{display:grid;grid-template-columns:1.2fr 1.2fr 1fr;gap:12px;position:relative;z-index:1}
+.gr6-hero .bx{background:rgba(0,0,0,.2);border-radius:16px;padding:14px 16px}.gr6-hero small{font-size:12.5px;opacity:.9;display:block}
+.gr6-hero b.big{display:block;font-size:34px;font-weight:600;line-height:1.15;margin:4px 0 2px}.gr6-hero b.big .gr6-dl{margin-left:10px;vertical-align:6px}.gr6-hero p{margin:4px 0 0;font-size:13px;opacity:.95}
+.gr6-sp{display:flex;align-items:flex-end;gap:5px;height:46px;margin-top:8px}.gr6-sp i{flex:1;background:rgba(255,255,255,.3);border-radius:4px 4px 2px 2px;animation:g6up .8s cubic-bezier(.2,.8,.2,1) both}.gr6-sp i.cur{background:#fff}@keyframes g6up{from{height:0}}
+.gr6-spl{display:flex;justify-content:space-between;gap:4px;font-size:10.5px;opacity:.75;margin-top:3px}.gr6-spl span{flex:1;text-align:center}
+.gr6-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:16px}
+.gr6-pn{background:var(--card);border-radius:18px;padding:18px 20px 16px}
+.gr6-pn .top{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.gr6-pn .no{width:32px;height:32px;border-radius:10px;background:#3b3b48;color:#fff;display:grid;place-items:center;font-weight:600;flex:none}.gr6-pn.warn .no{background:#c2410c}.gr6-pn.win .no{background:#00a844}
+.gr6-pn h4{margin:0;font-size:16.5px;font-weight:600;line-height:1.3}.gr6-pn .en{font-size:12px;color:var(--text-3)}
+.gr6-pn .sw{margin-left:auto;text-align:right}.gr6-pn .sw small{display:block;font-size:11.5px;color:var(--text-3)}.gr6-pn .sw b{display:block;font-size:24px;font-weight:600;line-height:1.1}
+.gr6-pn .ins{margin:12px 0 8px;background:var(--bg-soft);border-radius:12px;padding:10px 12px;font-size:13.5px;color:var(--text-2)}.gr6-pn .ins b{color:var(--text);font-weight:600}.gr6-pn .ins .to{color:#c2410c;font-weight:600}.gr6-pn .ins .tg{color:#00a844;font-weight:600}
+.gr6-pn .row{display:grid;grid-template-columns:20px minmax(0,1fr);gap:8px;align-items:center;padding:6px 0;border-top:1px solid var(--line)}
+.gr6-pn .rk{font-size:12px;color:var(--text-3);font-weight:600;text-align:right}.gr6-pn .row.me .rk{color:#c2410c}
+.gr6-pn .nm{display:flex;align-items:baseline;gap:8px;font-size:13.5px;margin-bottom:5px}.gr6-pn .nm .n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-2)}
+.gr6-pn .nm em{font-style:normal;font-weight:600;font-variant-numeric:tabular-nums;font-size:14.5px}.gr6-pn .row.me .nm .n{color:#c2410c;font-weight:600}.gr6-pn .row.zero .nm em{color:var(--text-3);font-weight:500}
+.gr6-pn .tr{height:10px;background:var(--bg-soft);border-radius:5px}.gr6-pn .tr i{display:block;height:100%;border-radius:5px;width:0;transition:width 1s cubic-bezier(.2,.8,.2,1)}
+.gr6-pn .tr i.k{background:#3b3b48}.gr6-pn .tr i.o{background:#c2410c}.gr6-pn .tr i.g{background:#00a844}.gr6-pn .tr i.gr{background:linear-gradient(90deg,#eb6e28,#d03f22)}.gr6-pn .tr i.h{background:repeating-linear-gradient(45deg,#3b3b48 0 3px,#8a8a9c 3px 6px)}
+.gr6-pn .more{font:inherit;border:0;background:none;padding:8px 0 0;font-size:12.5px;color:var(--text-3);cursor:pointer}
+@media(max-width:1200px){.gr6-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){.gr6-grid,.gr6-hero .g3{grid-template-columns:1fr}.gr6-up{margin-left:0}}
 /* v109 — ขยายตัวอักษรและตัวเลขสำคัญในหน้า Report ให้อ่านง่ายขึ้น */
 .gr-hero h2{font-size:16.5px}
 .gr-bx{padding:18px 20px}.gr-bx small{font-size:14.5px}.gr-bx b{font-size:42px}.gr-bx b i{font-size:17px}.gr-bx p{font-size:15px}
@@ -2562,7 +2602,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr3-evt b{font-size:15px}.gr3-evt span{font-size:12.5px}
 .gr4-cr.h,.gr4-kw.h,.gr3-pr.h,.gr3-cmp.h{font-size:13px}
 .gr4-nm b{font-size:16px}.gr4-nm small{font-size:12.5px}.gr4-bl em{font-size:16.5px}.gr4-bl span{font-size:12.5px}
-.gr4-mt b{font-size:21px}.gr4-mt b small{font-size:12.5px}.gr4-dl{font-size:12px;padding:2px 8px}
+.gr4-mt b{font-size:21px}.gr4-mt b small{font-size:12.5px}.gr4-dl{font-size:12.5px;padding:1px 10px}
 .gr4-ring{width:52px;height:52px}.gr4-ring span{width:41px;height:41px;font-size:13px}
 .gr4-kw .kn b{font-size:16px}.gr4-kl{font-size:13.5px}
 .gr4-sec{font-size:13.5px}.gr4-al .tx{font-size:15.5px}.gr4-al .tx small{font-size:12.5px}.gr4-al .ct b{font-size:16px}.gr4-al .no{font-size:16px}
@@ -2922,6 +2962,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
             case 'users': return resolve(db.users.map(function (u) { return u.name; }));
             case 'login': return resolve({ token: 'demo', name: me });
             case 'changeMyPin': return resolve({ token: 'demo', name: me });
+            case 'saveAuction': return resolve({ rows: (p.rows || []).length });
             case 'bootstrap': return resolve(JSON.parse(JSON.stringify(db)));
             case 'saveChat':
               if (!String(p.chat.customer || '').trim()) throw new Error('ต้องใส่ชื่อลูกค้า');
@@ -7884,6 +7925,61 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
   // ============================================================
   // v101 — Report ประจำเดือน (Google Ads) · แท็บ "ตัวชี้วัดหลัก" ใช้ข้อมูลจากแท็บ GAds ที่มีอยู่แล้ว
   // ============================================================
+  /* v114 · อ่านไฟล์ Auction insights (CSV / TSV · UTF-8 หรือ UTF-16) → แถวข้อมูล */
+  function parseAuction(text) {
+    var lines = String(text).replace(/^﻿/, '').split(/\r?\n/), hi = -1, sep = ',';
+    for (var i = 0; i < Math.min(lines.length, 15); i++) { if (/Display URL domain|โดเมน URL/i.test(lines[i])) { hi = i; sep = lines[i].indexOf('\t') >= 0 ? '\t' : ','; break; } }
+    if (hi < 0) return { err: 'ไม่พบคอลัมน์ "Display URL domain" · ต้องเป็นไฟล์จากหน้า Auction insights' };
+    var split = function (l) { var o = [], c = '', q = false; for (var k = 0; k < l.length; k++) { var ch = l[k]; if (ch === '"') { if (q && l[k + 1] === '"') { c += '"'; k++; } else q = !q; } else if (ch === sep && !q) { o.push(c); c = ''; } else c += ch; } o.push(c); return o.map(function (x) { return x.trim(); }); };
+    var H = split(lines[hi]), ix = function (re) { for (var k = 0; k < H.length; k++) if (re.test(H[k])) return k; return -1; };
+    var col = { month: ix(/^(Month|เดือน)$/i), camp: ix(/^(Campaign|แคมเปญ)$/i), kw: ix(/^(Keyword|Search keyword|คีย์เวิร์ด)$/i), dom: ix(/Display URL domain|โดเมน/i),
+      is: ix(/^(Search )?Impression share$|ส่วนแบ่งการแสดงผล$/i), ov: ix(/Overlap|ซ้อน/i), ab: ix(/Position above|สูงกว่า/i), top: ix(/^(Search )?Top of page rate|ด้านบนของหน้า$/i), abs: ix(/Abs\.? Top|บนสุด/i), out: ix(/Outranking|เหนือกว่า/i) };
+    if (col.is < 0 || col.ov < 0) return { err: 'อ่านหัวคอลัมน์ไม่ได้ · ต้องมี Impression share และ Overlap rate' };
+    var MO = { january: 1, february: 2, march: 3, april: 4, may: 5, june: 6, july: 7, august: 8, september: 9, october: 10, november: 11, december: 12, 'มกราคม': 1, 'กุมภาพันธ์': 2, 'มีนาคม': 3, 'เมษายน': 4, 'พฤษภาคม': 5, 'มิถุนายน': 6, 'กรกฎาคม': 7, 'สิงหาคม': 8, 'กันยายน': 9, 'ตุลาคม': 10, 'พฤศจิกายน': 11, 'ธันวาคม': 12 };
+    var pm = function (s) { s = String(s || '').trim(); var m = s.match(/^(\d{4})-(\d{1,2})/); if (m) return m[1] + '-' + ('0' + m[2]).slice(-2); m = s.match(/^([^\s\d]+)\s+(\d{4})$/); if (m && MO[m[1].toLowerCase()]) { var y = +m[2]; if (y > 2400) y -= 543; return y + '-' + ('0' + MO[m[1].toLowerCase()]).slice(-2); } return ''; };
+    var pv = function (s) { s = String(s || '').trim(); if (!s || /^[-–—]+$/.test(s)) return null; if (/^</.test(s)) return -1; var n = parseFloat(s.replace(/[%,\s]/g, '')); return isNaN(n) ? null : n; };
+    var rows = [], months = {};
+    for (var r = hi + 1; r < lines.length; r++) { if (!lines[r].trim()) continue; var c = split(lines[r]); if (!c[col.dom]) continue;
+      var o = { month: col.month >= 0 ? pm(c[col.month]) : '', domain: /^(You|คุณ)$/i.test(c[col.dom]) ? 'You' : c[col.dom], is: pv(c[col.is]), overlap: pv(c[col.ov]), above: col.ab >= 0 ? pv(c[col.ab]) : null, top: col.top >= 0 ? pv(c[col.top]) : null, abs: col.abs >= 0 ? pv(c[col.abs]) : null, outrank: col.out >= 0 ? pv(c[col.out]) : null };
+      if (col.camp >= 0) o.campaign = c[col.camp]; if (col.kw >= 0) o.keyword = c[col.kw];
+      if (o.month) months[o.month] = 1; rows.push(o); }
+    if (!rows.length) return { err: 'ไม่พบแถวข้อมูลในไฟล์' };
+    return { rows: rows, months: Object.keys(months).sort(), hasMonth: col.month >= 0, hasCamp: col.camp >= 0, hasKw: col.kw >= 0 };
+  }
+  function aucUpload(st) {
+    var camps = {}; (S.data.rptCamp || []).forEach(function (r) { if (r.campaign) camps[r.campaign] = 1; }); (S.data.auction || []).forEach(function (r) { if (r.campaign) camps[r.campaign] = 1; });
+    var kws = {}; (S.data.rptKw || []).forEach(function (r) { if (r.keyword) kws[r.keyword] = 1; });
+    var parsed = null;
+    modal('<h3>อัปโหลดไฟล์ Auction insights</h3><form id="auForm" class="form-grid">' +
+      '<div class="f c12"><label>ไฟล์ .csv จาก Google Ads</label><input type="file" id="auFile" accept=".csv,.tsv,text/csv"><div class="hint">Google Ads → Auction insights → Segment → Time → Month → Download → .csv</div></div>' +
+      '<div class="f c12" id="auPrev" style="display:none"></div>' +
+      '<div class="f c12"><label>ไฟล์นี้เป็นของแคมเปญ</label><select id="auCamp"><option value="">ทุกแคมเปญ (ไฟล์รวม)</option>' + Object.keys(camps).sort().map(function (c) { return '<option' + (c === st.acamp ? ' selected' : '') + '>' + esc(c) + '</option>'; }).join('') + '</select></div>' +
+      '<div class="f c12"><label>คีย์เวิร์ด (เว้นว่าง = ทั้งแคมเปญ)</label><input id="auKw" list="auKwL" placeholder="เช่น รับซื้อไอโฟน"><datalist id="auKwL">' + Object.keys(kws).sort().map(function (k) { return '<option value="' + esc(k) + '">'; }).join('') + '</datalist></div>' +
+      '<div class="f c12" id="auMoW" style="display:none"><label>ไฟล์นี้ไม่มีคอลัมน์เดือน · เป็นข้อมูลของเดือน</label><input id="auMo" type="month" value="' + esc(st.m) + '"></div>' +
+      '<div class="c12 actions"><button type="button" class="btn ghost" data-close>ยกเลิก</button><button class="btn" type="submit" id="auSave" disabled>บันทึก</button></div></form>',
+      function (el, close) {
+        $('#auFile', el).onchange = function () {
+          var f = this.files[0]; if (!f) return; var rd = new FileReader();
+          rd.onload = function () { var b = new Uint8Array(rd.result), txt = (b[0] === 0xFF && b[1] === 0xFE) ? new TextDecoder('utf-16le').decode(b) : new TextDecoder('utf-8').decode(b);
+            parsed = parseAuction(txt); var pv = $('#auPrev', el); pv.style.display = 'block';
+            if (parsed.err) { pv.innerHTML = '<div class="hint" style="color:#c2410c">' + esc(parsed.err) + '</div>'; $('#auSave', el).disabled = true; return; }
+            var doms = {}; parsed.rows.forEach(function (r) { if (r.domain !== 'You') doms[r.domain] = 1; });
+            pv.innerHTML = '<div class="hint">อ่านได้ ' + parsed.rows.length + ' แถว · คู่แข่ง ' + Object.keys(doms).length + ' ราย' + (parsed.months.length ? ' · ' + parsed.months.length + ' เดือน (' + parsed.months[0] + ' ถึง ' + parsed.months[parsed.months.length - 1] + ')' : '') + (parsed.hasCamp ? ' · มีคอลัมน์แคมเปญในไฟล์' : '') + (parsed.hasKw ? ' · มีคอลัมน์คีย์เวิร์ดในไฟล์' : '') + '</div>';
+            $('#auMoW', el).style.display = parsed.hasMonth ? 'none' : 'block'; $('#auSave', el).disabled = false; };
+          rd.readAsArrayBuffer(f); };
+        $('#auForm', el).onsubmit = function (e) { e.preventDefault(); if (!parsed || parsed.err) return;
+          var mo = $('#auMo', el).value, camp = $('#auCamp', el).value, kw = $('#auKw', el).value.trim();
+          var rows = parsed.rows.map(function (r) { var o = Object.assign({}, r); if (!o.month) o.month = mo; return o; }).filter(function (r) { return r.month; });
+          if (!rows.length) return toast('เลือกเดือนของไฟล์ก่อน', true);
+          $('#auSave', el).disabled = true;
+          API.call('saveAuction', { campaign: camp, keyword: kw, rows: rows }).then(function (res) {
+            var now = new Date().toISOString(), add = rows.map(function (r) { return { campaign: r.campaign != null ? r.campaign : camp, keyword: r.keyword != null ? r.keyword : kw, month: r.month, domain: r.domain, is: r.is == null ? '' : r.is, overlap: r.overlap == null ? '' : r.overlap, above: r.above == null ? '' : r.above, top: r.top == null ? '' : r.top, abs: r.abs == null ? '' : r.abs, outrank: r.outrank == null ? '' : r.outrank, at: now }; });
+            var gk = {}; add.forEach(function (r) { gk[r.campaign + '|' + r.keyword + '|' + r.month] = 1; });
+            S.data.auction = (S.data.auction || []).filter(function (r) { return !gk[(r.campaign || '') + '|' + (r.keyword || '') + '|' + r.month]; }).concat(add);
+            st.acamp = camp; st.akw = kw ? [kw] : []; close(); toast('บันทึกแล้ว ' + (res && res.rows || add.length) + ' แถว'); pageGrep();
+          }).catch(function (err) { $('#auSave', el).disabled = false; fail(err); }); };
+      });
+  }
   /* v113 · ขอบเขต 50 เขตกรุงเทพฯ (ย่อแล้ว) สำหรับแผนที่รายเขต */
   var BKK_GEO={W:600,H:466,d:[["Bang Phlat","บางพลัด","M185 156L173 173L166 188L160 195L152 183L139 169L136 169L136 168L170 156L184 143L186 148L185 156Z",164,167],["Huai Khwang","ห้วยขวาง","M256 153L258 170L261 177L262 194L265 199L272 206L268 210L266 216L231 209L234 196L241 185L243 155L256 153Z",255,187],["Wang Thonglang","วังทองหลาง","M280 161L282 157L291 156L293 168L296 168L297 172L296 182L295 181L297 194L283 195L279 199L271 206L263 195L261 177L258 170L256 154L264 155L263 157L267 160L280 161Z",279,173],["Thawi Watthana","ทวีวัฒนา","M68 154L82 155L77 207L40 203L24 205L25 206L31 219L5 222L1 191L2 168L0 152L68 154Z",35,186],["Lat Krabang","ลาดกระบัง","M459 162L460 165L458 173L465 175L472 175L478 172L486 177L486 179L496 189L501 189L505 186L524 187L528 192L531 207L536 214L543 217L518 258L524 261L522 268L452 241L434 242L431 242L431 241L396 240L395 239L375 239L374 226L375 200L372 200L381 185L382 178L399 182L404 179L404 185L411 185L411 179L420 179L424 181L429 175L441 173L446 175L447 157L453 156L459 162Z",451,197],["Din Daeng","ดินแดง","M243 155L241 185L234 196L233 202L221 201L215 196L212 194L217 193L218 190L230 168L229 161L234 162L235 157L243 155Z",229,180],["Taling Chan","ตลิ่งชัน","M96 156L128 158L139 162L136 167L138 177L128 179L124 188L124 194L130 201L132 208L132 213L127 213L126 215L107 217L92 213L87 210L77 207L82 155L96 156Z",116,189],["Dusit","ดุสิต","M206 159L188 204L186 204L186 202L173 187L168 184L172 175L185 156L201 158L202 157L206 159Z",188,177],["Saphan Sung","สะพานสูง","M371 159L372 158L376 166L382 180L381 185L372 200L375 200L374 225L325 219L330 217L329 215L334 210L339 208L343 208L345 205L336 201L335 190L331 181L371 159Z",354,194],["Phaya Thai","พญาไท","M219 160L229 161L229 170L217 193L212 194L206 189L197 182L206 159L219 160Z",215,174],["Bangkok Noi","บางกอกน้อย","M138 169L160 195L157 201L158 209L148 211L147 213L134 214L132 212L131 204L124 193L125 183L130 178L137 177L136 170L138 169Z",140,193],["Ratchathewi","ราชเทวี","M207 191L221 201L233 202L231 209L216 208L194 208L188 204L197 182L207 191Z",210,200],["Phra Nakhon","พระนคร","M173 187L178 193L169 218L162 215L158 208L157 202L160 196L166 188L168 184L173 187Z",166,198],["Pom Prap Sattru Phai","ป้อมปราบศัตรูพ่าย","M181 196L185 200L186 205L185 219L179 215L173 210L175 201L178 193L181 196Z",180,204],["Pathum Wan","ปทุมวัน","M188 204L194 208L209 207L218 208L221 234L185 219L186 204L188 204Z",199,211],["Bang Khae","บางแค","M72 206L84 209L85 218L87 219L88 226L95 225L98 270L65 288L60 290L56 286L56 282L53 266L24 205L40 203L72 206Z",69,240],["Suan Luang","สวนหลวง","M318 216L326 219L316 228L314 240L318 239L316 250L317 254L301 257L299 253L297 253L297 252L283 253L283 251L281 251L274 252L269 245L274 242L274 238L273 237L272 219L266 219L268 209L278 213L303 207L312 211L315 213L314 214L318 216Z",296,234],["Watthana","วัฒนา","M231 209L266 216L266 219L272 219L273 237L274 239L274 242L269 245L273 251L269 253L266 247L219 214L218 208L231 209Z",257,229],["Bangkok Yai","บางกอกใหญ่","M158 209L161 215L157 222L154 232L148 235L142 235L137 232L133 225L132 213L141 214L147 213L148 211L158 209Z",147,220],["Phasi Charoen","ภาษีเจริญ","M132 213L133 225L137 232L141 234L139 241L133 239L133 243L125 246L126 249L123 247L120 252L109 248L105 259L108 264L98 270L97 266L95 225L88 226L87 219L85 218L84 209L105 217L120 216L126 215L127 213L132 213Z",116,235],["Samphanthawong","สัมพันธวงศ์","M175 211L185 219L183 226L181 228L180 224L176 220L169 218L173 210L175 211Z",177,219],["Khlong Toei","คลองเตย","M233 223L266 247L268 250L269 253L251 261L232 252L223 252L219 214L233 223Z",244,242],["Thon Buri","ธนบุรี","M163 216L168 218L161 234L162 244L168 252L161 257L159 263L152 263L149 259L147 249L141 250L136 248L138 245L141 235L148 235L154 232L158 219L161 215L163 216Z",154,239],["Khlong San","คลองสาน","M169 218L179 223L181 228L181 237L177 246L168 252L162 243L161 234L166 221L169 218Z",171,232],["Prawet","ประเวศ","M374 225L378 256L376 256L371 283L365 294L364 302L344 296L333 291L327 286L326 288L322 286L320 289L312 288L307 281L304 262L302 258L301 257L307 255L317 254L316 250L318 239L314 240L316 228L325 219L374 225Z",333,264],["Bang Rak","บางรัก","M190 221L213 231L191 238L186 239L181 238L181 228L184 225L185 219L190 221Z",189,229],["Nong Khaem","หนองแขม","M31 219L53 266L56 282L56 286L32 297L29 296L28 298L23 300L21 303L19 303L11 303L13 297L10 280L8 281L6 276L2 258L2 254L5 249L5 245L10 245L11 240L8 236L8 228L5 222L31 219Z",19,267],["Sathon","สาทร","M221 234L222 241L217 238L210 247L212 250L208 253L206 250L202 252L197 252L199 255L194 257L192 255L183 253L186 248L177 245L181 238L186 239L213 231L221 234Z",201,246],["Yan Nawa","ยานนาวา","M223 252L220 256L221 270L219 280L215 286L209 288L200 286L186 275L193 265L200 258L197 252L202 252L206 250L208 253L212 250L210 247L217 238L222 241L223 252Z",210,261],["Chom Thong","จอมทอง","M139 241L136 248L141 250L147 249L149 260L152 262L151 267L158 273L157 275L158 278L150 289L152 293L145 294L145 297L140 298L140 299L133 304L130 303L120 299L123 289L122 282L119 282L119 276L117 276L105 259L109 248L120 252L123 247L126 249L125 246L133 243L133 239L139 241Z",135,270],["Bang Kho Laem","บางคอแหลม","M186 248L183 253L191 254L194 257L199 255L200 258L198 261L186 275L168 271L162 267L159 261L162 256L173 249L177 245L186 248Z",182,257],["Phra Khanong","พระโขนง","M273 251L274 252L283 251L283 253L297 252L297 253L299 253L304 262L307 280L292 279L290 273L278 273L268 278L256 275L256 266L251 261L273 251Z",281,263],["Rat Burana","ราษฎร์บูรณะ","M159 263L162 267L166 270L182 273L190 277L191 279L189 282L191 283L190 289L186 291L186 296L183 296L178 295L175 298L172 296L169 304L166 302L166 299L162 297L161 301L155 300L153 300L151 296L149 296L145 296L145 294L152 293L150 289L158 278L157 275L158 273L151 268L151 265L153 263L159 263Z",166,286],["Bang Bon","บางบอน","M108 264L117 275L46 340L43 338L42 333L36 331L33 325L30 324L28 316L24 318L13 319L10 315L11 303L20 303L28 298L29 296L32 297L36 294L54 286L58 287L59 290L64 289L108 264Z",45,305],["Bang Na","บางนา","M256 275L268 278L278 273L290 273L292 279L307 280L313 289L320 289L317 299L317 306L306 304L301 311L297 309L298 307L286 303L286 302L285 301L284 304L274 301L275 299L273 299L268 300L269 297L264 297L247 289L256 275Z",286,294],["Bang Khun Thian","บางขุนเทียน","M119 276L119 282L122 282L123 289L120 299L133 304L140 299L145 328L142 334L148 339L151 343L149 353L143 359L143 365L139 366L137 362L136 355L134 353L127 354L124 353L123 356L121 364L117 372L114 405L124 460L106 464L89 464L81 466L77 452L77 440L82 433L85 421L89 418L90 414L85 408L86 402L83 402L83 404L79 405L75 404L72 406L66 405L62 396L63 390L61 389L56 380L57 373L52 367L55 365L50 357L46 340L117 275L119 276Z",103,371],["Don Mueang","ดอนเมือง","M289 4L293 29L278 56L273 60L262 68L251 65L255 56L236 46L231 42L227 41L236 3L242 0L259 4L273 11L272 1L281 0L289 4Z",262,29],["Nong Chok","หนองจอก","M484 18L503 14L576 6L569 70L568 95L567 97L564 107L575 109L570 118L600 142L590 155L572 166L543 217L536 214L531 207L528 192L524 187L505 186L501 189L496 189L484 175L478 172L472 175L465 175L458 172L460 168L459 162L461 159L472 148L467 148L466 147L465 139L468 130L470 130L472 119L470 110L472 102L463 106L452 75L455 73L462 63L457 61L456 58L457 23L484 18Z",501,126],["Sai Mai","สายไหม","M325 24L356 24L353 34L353 38L350 43L353 46L358 57L358 69L356 72L356 76L350 81L347 76L342 76L339 74L339 76L335 75L331 74L328 77L325 76L322 74L322 70L320 69L319 72L311 73L310 70L307 69L296 70L291 72L276 67L279 63L276 59L293 29L289 4L292 7L293 17L306 17L306 23L308 23L325 24Z",323,55],["Khlong Sam Wa","คลองสามวา","M457 23L456 58L457 61L462 63L455 73L452 75L463 106L414 134L412 131L409 121L405 119L401 119L400 118L395 120L395 128L393 128L388 128L388 118L386 119L385 124L380 125L381 134L371 135L363 141L363 136L356 124L354 121L354 117L350 108L343 104L337 103L349 94L352 86L350 81L356 76L356 71L358 69L358 57L353 46L350 44L350 41L353 38L353 36L378 34L457 23Z",387,94],["Lak Si","หลักสี่","M227 41L255 56L251 65L262 68L256 75L254 97L234 100L212 106L227 41Z",242,72],["Bang Khen","บางเขน","M278 56L276 59L279 63L276 67L290 72L296 70L307 69L310 70L311 73L319 72L320 69L322 70L323 74L328 77L331 74L339 76L340 74L342 76L347 76L352 86L348 95L342 99L335 99L331 101L329 100L329 101L328 107L326 108L315 110L315 108L308 109L300 113L296 113L288 108L281 107L274 107L257 112L254 97L256 76L263 67L278 56Z",308,86],["Chatuchak","จตุจักร","M254 97L259 118L256 153L235 157L234 162L228 161L206 159L213 138L211 135L205 134L212 106L234 100L254 97Z",231,132],["Khan Na Yao","คันนายาว","M342 99L337 103L343 104L350 108L354 117L354 121L356 124L363 136L363 144L367 147L366 152L371 159L345 173L341 175L340 173L343 170L340 160L335 151L333 151L330 146L329 146L326 132L328 122L324 123L324 120L315 122L314 112L317 111L315 110L328 107L329 100L331 101L335 99L342 99Z",339,130],["Min Buri","มีนบุรี","M472 102L470 110L472 119L470 130L468 130L465 139L466 147L467 148L472 148L462 158L459 162L453 156L446 158L446 175L441 173L429 175L424 181L420 179L411 179L411 185L404 185L404 179L399 182L382 178L372 158L370 159L366 152L367 147L363 142L362 141L371 135L381 134L380 125L385 124L386 119L388 118L388 129L395 128L395 120L400 118L401 119L405 119L409 121L412 131L414 134L472 102Z",417,145],["Lat Phrao","ลาดพร้าว","M286 107L296 113L300 113L304 111L280 162L267 160L263 157L264 155L256 153L256 143L259 119L258 112L274 106L286 107Z",275,130],["Bang Sue","บางซื่อ","M208 125L205 134L211 135L213 138L206 159L202 157L201 158L185 156L186 150L185 144L176 140L175 137L177 133L179 132L178 131L180 130L182 131L205 110L212 106L208 125Z",194,137],["Bueng Kum","บึงกุ่ม","M315 110L317 111L314 112L315 122L324 120L324 123L328 122L326 132L329 146L330 146L333 151L335 151L343 170L340 173L341 175L336 178L323 186L315 172L309 170L307 164L306 152L301 147L298 141L298 137L293 137L291 139L304 111L308 109L315 108L315 110Z",318,141],["Bang Kapi","บางกะปิ","M291 139L293 137L298 137L298 141L301 147L306 152L307 164L309 170L315 172L323 186L331 181L335 190L336 201L345 205L343 208L339 208L332 210L329 215L330 217L326 219L322 218L315 215L315 213L312 211L303 207L278 213L269 209L282 196L297 194L295 181L296 182L297 173L296 168L293 168L291 156L282 157L291 139Z",309,184],["Thung Khru","ทุ่งครุ","M145 296L151 296L153 300L161 301L163 298L166 299L166 302L169 304L172 296L175 298L178 295L183 296L186 296L186 303L190 316L186 320L187 323L183 330L185 346L189 350L190 353L183 356L180 362L174 361L169 363L168 367L164 371L159 370L152 366L150 361L146 359L146 355L149 352L151 343L148 339L142 334L145 328L140 298L145 296Z",166,328]]};
   function pageGrep() {
@@ -7949,9 +8045,9 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     }
     S.grCut = false;
     var months = keys.slice(-6);
-    var html = '<div class="gr"><div class="gr-bar"><div class="gr-seg">' + [['main', 'ตัวชี้วัดหลัก'], ['search', 'เจาะลึก Google Search'], ['cust', 'รู้จักลูกค้า'], ['est', 'ประเมิน → ปิดยอด']].map(function (t) { return '<button data-grt="' + t[0] + '" class="' + (st.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>' +
+    var html = '<div class="gr"><div class="gr-bar"><div class="gr-seg">' + [['main', 'ตัวชี้วัดหลัก'], ['search', 'เจาะลึก Google Search'], ['cust', 'รู้จักลูกค้า'], ['est', 'ประเมิน → ปิดยอด'], ['auc', 'ข้อมูลเชิงลึกการประมูล']].map(function (t) { return '<button data-grt="' + t[0] + '" class="' + (st.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>'; }).join('') + '</div>' +
       '<div class="gr-seg m">' + months.map(function (k) { return '<button data-grm="' + k + '" class="' + (st.m === k ? 'on' : '') + '">' + mS(k) + (k === cur ? ' (ยังไม่จบเดือน)' : '') + '</button>'; }).join('') + '</div></div>';
-    if (st.tab === 'search' || st.tab === 'cust' || st.tab === 'est') {
+    if (st.tab === 'search' || st.tab === 'cust' || st.tab === 'est' || st.tab === 'auc') {
       /* ── v106 · helpers ร่วมของแท็บ 2–3 ── */
       var e2 = function (s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
       var p0 = function (v) { return (v >= 10 ? Math.round(v) : v.toFixed(1)); };
@@ -7992,7 +8088,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       } else html += emp('ยังไม่มีข้อมูล Search IS');
       /* 02 แคมเปญ (v108) */
       var cName = function (s) { return String(s).replace(/^[\d-]+\s*Search-/i, '').replace(/-BKK/gi, '').replace(/_/g, ' ').replace(/-/g, ' ').replace(/\s+รับซื้อ$/, '').replace(/^Apple(?=i|Mac|Watch|Air)/, '').replace(/\bKW\b/g, ' ').replace(/\bGameConsole\b/, 'Game').replace(/TopFunnel\s*/, '· ').replace(/\s+/g, ' ').trim(); };
-      var dl = function (now, prev, goodUp, pts) { if (prev == null || !isFinite(prev) || (!pts && !prev)) return '<span class="gr4-dl">ใหม่</span>'; var d = pts ? now - prev : (now - prev) / prev * 100; if (Math.abs(d) < 1) return '<span class="gr4-dl">ทรงตัว</span>'; var up = d > 0, g = goodUp ? up : !up; return '<span class="gr4-dl ' + (g ? 'g' : 'k') + '">' + (up ? '▲' : '▼') + ' ' + Math.round(Math.abs(d)) + (pts ? ' จุด' : '%') + '</span>'; };
+      var dl = function (now, prev, goodUp, pts) { if (prev == null || !isFinite(prev) || (!pts && !prev)) return '<span class="gr4-dl n">ใหม่</span>'; var d = pts ? now - prev : (now - prev) / prev * 100; if (Math.abs(d) < 1) return '<span class="gr4-dl k">ทรงตัว</span>'; var up = d > 0, g = goodUp ? up : !up, a = Math.abs(d); return '<span class="gr4-dl ' + (g ? 'g' : 'k') + '">' + (g ? 'ดีขึ้น ' : up ? 'เพิ่มขึ้น ' : 'ลดลง ') + (a >= 10 ? Math.round(a) : a.toFixed(1)) + (pts ? ' จุด' : '%') + '</span>'; };
       html += '<div class="gr-lb"><b>02 เงินโฆษณาไปที่สินค้าไหน</b> แคมเปญ Search เรียงตามค่าใช้จ่าย · ป้ายเล็ก = เทียบ' + mS(pm) + '</div>';
       if (sCamp.length) {
         var cMx = sCamp[0].cost || 1, cTot = sCamp.reduce(function (a, r) { return a + r.cost; }, 0) || 1, top8 = sCamp.slice(0, 8).filter(function (r) { return r.conversions > 0; });
@@ -8307,6 +8403,91 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         '<div class="gr2-note">การเปลี่ยนกลยุทธ์ราคาประมูล Google ต้องใช้เวลาเรียนรู้ราว 1–2 สัปดาห์ ควรอ่านผลเมื่อครบ 14 วัน · ไม่นับวันนี้เพราะข้อมูลยังไม่ครบวัน</div></div></div>';
       html += '<div class="gr-foot">ข้อมูลจาก Google Ads (แท็บ GAds) + ชีต Estimates (ลูกค้า LINE) · ' + mL(st.m) + '</div></div>';
       S.gr4fn = { pickEv: pickEv, setPre: setPre, topC: Object.keys(campOk).sort(function (a, b) { return campOk[b] - campOk[a]; }).slice(0, 12) };
+    } else if (st.tab === 'auc') {
+      /* ── v114 · Tab 5: ข้อมูลเชิงลึกการประมูล (Auction insights จากไฟล์ CSV ที่อัปโหลด) ── */
+      var AU = S.data.auction || [], aMo = st.m;
+      var aF = function (v) { return v == null || v === '' ? '–' : v < 0 ? '< 10%' : (Math.round(v * 10) / 10) + '%'; };
+      var aN = function (v) { return v === '' || v == null ? null : Number(v); };
+      var scOf = function (r) { return (r.campaign || '') + '|' + (r.keyword || ''); };
+      var aCamps = {}; AU.forEach(function (r) { var c = r.campaign || ''; (aCamps[c] = aCamps[c] || {})[r.keyword || ''] = 1; });
+      var aCList = Object.keys(aCamps).sort(function (a, b) { return a === '' ? -1 : b === '' ? 1 : a < b ? -1 : 1; });
+      if (st.acamp == null || !aCamps[st.acamp]) st.acamp = aCList[0] != null ? aCList[0] : '';
+      var aKws = aCamps[st.acamp] ? Object.keys(aCamps[st.acamp]).filter(function (k) { return k; }).sort() : [], aHasAll = !!(aCamps[st.acamp] && aCamps[st.acamp]['']);
+      st.akw = (st.akw || []).filter(function (k) { return aKws.indexOf(k) >= 0; });
+      var aSel = st.akw.length ? st.akw : aHasAll ? [''] : aKws.slice();
+      /* น้ำหนักคีย์เวิร์ด = impressions ของคีย์เวิร์ดในเดือนนั้น (ถ้าไม่มี = เท่ากัน) */
+      var kwW = function (kw, mo) { if (!kw) return 1; var t = 0; (S.data.rptKw || []).forEach(function (r) { if (r.month === mo && String(r.keyword || '').toLowerCase() === kw.toLowerCase()) t += Number(r.impressions) || 0; }); return t || 1; };
+      var comb = function (mo) {
+        var rows = AU.filter(function (r) { return r.month === mo && (r.campaign || '') === st.acamp && aSel.indexOf(r.keyword || '') >= 0; });
+        if (!rows.length) return null;
+        var W = {}, tw = 0; aSel.forEach(function (k) { if (rows.some(function (r) { return (r.keyword || '') === k; })) { W[k] = kwW(k, mo); tw += W[k]; } });
+        var me = { is: 0, top: 0, abs: 0 }, M = {};
+        rows.forEach(function (r) { var w = (W[r.keyword || ''] || 0) / (tw || 1), is = aN(r.is);
+          if (r.domain === 'You') { me.is += (is < 0 ? 5 : is || 0) * w; me.top += (aN(r.top) || 0) * w; me.abs += (aN(r.abs) || 0) * w; return; }
+          var o = M[r.domain] || (M[r.domain] = { n: r.domain, is: 0, low: true, ov: 0, a: [0, 0, 0, 0], aw: 0 }); if (is >= 0) o.low = false;
+          o.is += (is < 0 ? 5 : is || 0) * w; var ov = aN(r.overlap) || 0; o.ov += ov * w; var ww = w * Math.max(ov, .01);
+          o.a[0] += (aN(r.above) || 0) * ww; o.a[1] += (aN(r.top) || 0) * ww; o.a[2] += (aN(r.abs) || 0) * ww; o.a[3] += (aN(r.outrank) || 0) * ww; o.aw += ww; });
+        return { me: [me.is, me.top, me.abs], c: Object.keys(M).map(function (k) { var o = M[k], aw = o.aw || 1; return [o.n, o.low && o.is < 10 ? -1 : o.is, o.ov, o.a[0] / aw, o.a[1] / aw, o.a[2] / aw, o.a[3] / aw]; }) };
+      };
+      var aMonths = Object.keys(AU.reduce(function (a, r) { if ((r.campaign || '') === st.acamp) a[r.month] = 1; return a; }, {})).sort();
+      var aPrevMo = aMonths.filter(function (m) { return m < aMo; }).pop();
+      var D = comb(aMo), P = aPrevMo ? comb(aPrevMo) : null, PM = {}; if (P) P.c.forEach(function (c) { PM[c[0]] = c; });
+      var chip = function (d, better) { if (d == null) return ''; var a = Math.round(Math.abs(d) * 10) / 10; return a < 0.5 ? '<span class="gr6-dl eq">ทรงตัว</span>' : '<span class="gr6-dl ' + (better ? 'up' : 'dn') + '">' + (better ? 'ดีขึ้น ' : d > 0 ? 'เพิ่มขึ้น ' : 'ลดลง ') + a + ' จุด</span>'; };
+      /* แถบเลือก + ปุ่มอัปโหลด */
+      var aCampName = function (c) { return c === '' ? 'ทุกแคมเปญ' : c; };
+      var kwLabel = !aKws.length ? (aHasAll ? 'ทั้งแคมเปญ' : '–') : st.akw.length ? (st.akw.length === 1 ? st.akw[0] : 'เลือก ' + st.akw.length + ' คีย์เวิร์ด') : aHasAll ? 'ทั้งแคมเปญ' : 'ทุกคีย์เวิร์ด (' + aKws.length + ')';
+      html += '<div class="gr6-fb">' +
+        '<div class="gr6-dd' + (st.aopen === 'c' ? ' open' : '') + '"><button class="gr6-db" data-g6open="c"><span><small>แคมเปญ</small><b>' + e2(aCampName(st.acamp)) + '</b></span><span class="cv">▾</span></button><div class="gr6-pop">' +
+        aCList.map(function (c) { return '<button class="gr6-op" data-g6c="' + e2(c) + '"><span class="ck">' + (c === st.acamp ? '✓' : '') + '</span>' + e2(aCampName(c)) + '</button>'; }).join('') + '</div></div>' +
+        '<div class="gr6-dd' + (st.aopen === 'k' ? ' open' : '') + '"><button class="gr6-db" data-g6open="k"' + (aKws.length ? '' : ' disabled') + '><span><small>คีย์เวิร์ด</small><b>' + e2(kwLabel) + '</b></span><span class="cv">▾</span></button><div class="gr6-pop">' +
+        (aHasAll ? '<button class="gr6-op' + (!st.akw.length ? ' on' : '') + '" data-g6k=""><span class="bx">' + (!st.akw.length ? '✓' : '') + '</span><b>ทั้งแคมเปญ</b></button><hr>' : '') +
+        aKws.map(function (k) { var on = st.akw.indexOf(k) >= 0; return '<button class="gr6-op' + (on ? ' on' : '') + '" data-g6k="' + e2(k) + '"><span class="bx">' + (on ? '✓' : '') + '</span>' + e2(k) + '</button>'; }).join('') + '</div></div>' +
+        '<span class="gr6-info">' + (aMonths.length ? 'มีข้อมูล ' + aMonths.length + ' เดือน (' + mS(aMonths[0]) + ' – ' + mS(aMonths[aMonths.length - 1]) + ')' : '') + '</span>' +
+        '<button class="gr6-up" data-g6up="1">อัปโหลดไฟล์ Auction insights</button></div>';
+      if (!D) {
+        html += emp(AU.length ? 'ยังไม่มีข้อมูลของ ' + mL(aMo) + ' ในชุดที่เลือก · อัปโหลดไฟล์ที่มีเดือนนี้' : 'ยังไม่มีข้อมูล · ใน Google Ads เปิดหน้า Auction insights → Segment → Time → Month → Download .csv แล้วกดปุ่ม "อัปโหลดไฟล์ Auction insights"');
+      } else {
+        var me = D.me, C = D.c, OV = {}; C.forEach(function (c) { OV[c[0]] = c[2]; });
+        var above = C.filter(function (c) { return c[3] > 0.05; }).sort(function (a, b) { return b[3] - a[3]; });
+        /* แถบสรุป: ประโยค + แท่ง 6 เดือน */
+        var hm = aMonths.filter(function (m) { return m <= aMo; }).slice(-6), hv = hm.map(function (m) { var d = comb(m); return d ? d.me : null; });
+        var sp = function (j) { var vs = hv.map(function (x) { return x ? x[j] : 0; }), mx = Math.max.apply(null, vs.concat([1])), mn = Math.min.apply(null, vs.filter(function (v) { return v > 0; }).concat([mx])), rg = (mx - mn) || 1;
+          return '<div class="gr6-sp">' + vs.map(function (v, i) { return '<i class="' + (i === vs.length - 1 ? 'cur' : '') + '" style="height:' + (v ? 25 + (v - mn) / rg * 75 : 3) + '%" title="' + mS(hm[i]) + ' ' + aF(v) + '"></i>'; }).join('') + '</div><div class="gr6-spl">' + hm.map(function (m) { return '<span>' + mS(m) + '</span>'; }).join('') + '</div>'; };
+        var hd = function (j) { return P ? chip(me[j] - P.me[j], me[j] - P.me[j] > 0) : ''; };
+        html += '<div class="gr6-hero"><div class="t">สรุป ' + mL(aMo) + '</div><h2>โฆษณาเราขึ้น <em>' + aF(me[0]) + '</em> ของการค้นหา ได้อันดับ 1 บนสุด <em>' + aF(me[2]) + '</em> และมีคู่แข่ง <em>' + above.length + ' ราย</em> ที่แซงเราได้</h2>' +
+          '<div class="g3"><div class="bx"><small>โฆษณาเราขึ้น · ' + hm.length + ' เดือน</small><b class="big">' + aF(me[0]) + hd(0) + '</b>' + sp(0) + '</div>' +
+          '<div class="bx"><small>ได้อันดับ 1 บนสุด · ' + hm.length + ' เดือน</small><b class="big">' + aF(me[2]) + hd(2) + '</b>' + sp(2) + '</div>' +
+          '<div class="bx"><small>คู่แข่งที่แซงเราได้</small><b class="big">' + above.length + ' ราย</b><p>จากคู่แข่งทั้งหมด ' + C.length + ' ราย</p><p>' + (above.length ? 'มากสุด ' + e2(above[0][0]) + ' ' + aF(above[0][3]) : 'ไม่มีใครแซงเราได้') + '</p></div></div></div>';
+        /* 6 กราฟ */
+        var COL6 = [{ t: 'ส่วนแบ่งการแสดงผล', e: 'Impression share', j: 1, me: 0, cls: 'k' }, { t: 'ขึ้นพร้อมเรา', e: 'Overlap rate', j: 2, cls: 'k' }, { t: 'แซงเรา', e: 'Position above rate', j: 3, cls: 'o', warn: 1 },
+          { t: 'ได้อยู่ด้านบนของหน้า', e: 'Top of page rate', j: 4, me: 1, cls: 'k' }, { t: 'ได้อันดับ 1 บนสุด', e: 'Abs. top of page rate', j: 5, me: 2, cls: 'o', warn: 1 }, { t: 'เราชนะ', e: 'Outranking share', j: 6, cls: 'g', win: 1 }];
+        var ins = function (col, rows) { var comp = rows.filter(function (r) { return !r.me; }), top = comp[0] || { n: '–', v: 0 }, lo = comp[comp.length - 1] || top, n = comp.filter(function (r) { return r.v > 0.05; }).length;
+          if (col.j === 1) { var rk = rows.findIndex(function (r) { return r.me; }) + 1; return rk === 1 ? 'เราขึ้นบ่อยสุด <b>' + aF(me[0]) + '</b> · ห่างอันดับ 2 (' + e2(top.n) + ') <span class="tg">' + Math.round((me[0] - (top.v < 0 ? 5 : top.v)) * 10) / 10 + ' จุด</span>' : 'เราอยู่อันดับ <b>' + rk + '</b> · ' + e2(top.n) + ' ขึ้นบ่อยกว่าเรา'; }
+          if (col.j === 2) return '<b>' + e2(top.n) + '</b> เจอเราบ่อยสุด <b>' + Math.round(top.v) + ' ใน 100</b> ครั้ง';
+          if (col.j === 3) return n ? '<span class="to">' + n + ' ราย</span>แซงเราได้ · มากสุด <b>' + e2(top.n) + '</b> <span class="to">' + aF(top.v) + '</span>' : '<span class="tg">ไม่มีคู่แข่งรายไหนแซงเราได้เลย</span>';
+          if (col.j === 4) return 'เราได้ <b>' + aF(me[1]) + '</b> · คู่แข่งที่ได้มากสุด ' + e2(top.n) + ' ' + aF(top.v);
+          if (col.j === 5) return 'เราได้อันดับ 1 <b>' + aF(me[2]) + '</b>' + (n ? ' · คู่แข่งที่แย่งอันดับ 1 ได้ <span class="to">' + n + ' ราย</span>' : ' · <span class="tg">ไม่มีใครแย่งได้</span>');
+          return 'เราชนะทุกราย <span class="tg">' + aF(lo.v) + ' ขึ้นไป</span> · ชนะยากสุดคือ <b>' + e2(lo.n) + '</b>'; };
+        html += '<div class="gr6-grid">' + COL6.map(function (col, ci) {
+          var rows = C.map(function (c) { var p = PM[c[0]]; return { n: c[0], v: c[col.j], p: p ? p[col.j] : null }; });
+          if (col.me != null) rows.push({ n: 'เรา', v: me[col.me], me: 1, p: P ? P.me[col.me] : null });
+          var key = function (v) { return v < 0 ? 5 : v; }; rows.sort(function (a, b) { return key(b.v) - key(a.v); });
+          var all = st.aall === ci, lim = all ? rows.length : 5, sh = rows.slice(0, lim);
+          if (!all && !sh.some(function (r) { return r.me; }) && rows.some(function (r) { return r.me; })) sh[lim - 1] = rows.filter(function (r) { return r.me; })[0];
+          /* ตัวเลขของเรามุมขวา (แซงเรา / เราชนะ = ค่าเฉลี่ยถ่วงตามการเจอกัน) */
+          var corner = '';
+          if (col.me != null) corner = '<div class="sw"><small>ของเรา</small><b>' + aF(me[col.me]) + '</b>' + (P ? chip(me[col.me] - P.me[col.me], me[col.me] - P.me[col.me] > 0) : '') + '</div>';
+          else if (col.j === 3 || col.j === 6) { var ws = 0, a = 0, pa = 0, pw = 0; C.forEach(function (c) { var w = OV[c[0]] || 0; ws += w; a += c[col.j] * w; var pc = PM[c[0]]; if (pc) { pw += w; pa += pc[col.j] * w; } });
+            var av = a / (ws || 1), pv = pw ? pa / pw : null, dd = pv == null ? null : av - pv;
+            corner = '<div class="sw"><small>' + (col.j === 3 ? 'โดนแซงเฉลี่ย' : 'ชนะเฉลี่ย') + '</small><b>' + aF(av) + '</b>' + (dd == null ? '' : chip(dd, col.j === 3 ? dd < 0 : dd > 0)) + '</div>'; }
+          return '<div class="gr6-pn' + (col.warn ? ' warn' : '') + (col.win ? ' win' : '') + '"><div class="top"><span class="no">' + (ci + 1) + '</span><div><h4>' + col.t + '</h4><div class="en">' + col.e + '</div></div>' + corner + '</div>' +
+            '<div class="ins">' + ins(col, rows) + '</div>' +
+            sh.map(function (r) { var cls = r.me ? 'gr' : r.v < 0 ? 'h' : col.cls;
+              return '<div class="row' + (r.me ? ' me' : '') + (r.v >= 0 && r.v <= 0.05 ? ' zero' : '') + '"><span class="rk">' + (rows.indexOf(r) + 1) + '</span><div class="rb"><div class="nm"><span class="n">' + (r.me ? 'เรา' : e2(r.n)) + '</span><em>' + aF(r.v) + '</em></div><div class="tr"><i class="' + cls + '" data-gw="' + (r.v < 0 ? 6 : Math.max(r.v > 0.05 ? 1.5 : 0, Math.min(100, r.v))) + '"></i></div></div></div>'; }).join('') +
+            (rows.length > 5 ? '<button class="more" data-g6all="' + ci + '">' + (all ? 'ย่อ' : '+ อีก ' + (rows.length - lim) + ' ราย (กดดูทั้งหมด)') + '</button>' : '') + '</div>';
+        }).join('') + '</div>';
+      }
+      html += '<div class="gr-foot">ข้อมูลจากไฟล์ Auction insights ที่อัปโหลด' + (aSel.length > 1 ? ' · รวมหลายคีย์เวิร์ดโดยถ่วงน้ำหนักตามจำนวนครั้งที่โฆษณาเราขึ้น' : '') + ' · "&lt; 10%" = Google ไม่บอกตัวเลขจริง · ' + mL(aMo) + '</div></div>';
     } else {
       var cv = by.conv, cp = by.cpr, co = by.cost;
       html += '<div class="gr-hero"><h2>อ่าน 3 ประโยคนี้ก็เข้าใจทั้งหน้า · ' + mL(st.m) + (G[pm] ? ' เทียบ ' + mL(pm) : '') + (part ? ' · เดือนนี้ยังไม่จบ' : '') + '</h2><div class="gr-h3">' +
@@ -8329,6 +8510,15 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     $$('[data-g5prov]').forEach(function (b) { b.onclick = function () { st.dprov = b.getAttribute('data-g5prov'); pageGrep(); }; });
     $$('[data-g5prod]').forEach(function (b) { b.onclick = function () { var v = b.getAttribute('data-g5prod'); st.dprod = v === '' ? null : +v; pageGrep(); }; });
     $$('.gr5-dr.cl').forEach(function (r) { r.onclick = function (e) { if (!e.target.closest('.dt')) r.classList.toggle('open'); }; });
+    /* v114 · ข้อมูลเชิงลึกการประมูล: ตัวเลือก + อัปโหลด */
+    $$('[data-g6open]').forEach(function (b) { b.onclick = function (e) { e.stopPropagation(); if (b.disabled) return; st.aopen = st.aopen === b.getAttribute('data-g6open') ? null : b.getAttribute('data-g6open'); pageGrep(); }; });
+    $$('.gr6-pop').forEach(function (p) { p.onclick = function (e) { e.stopPropagation(); }; });
+    if (!S.g6doc) { S.g6doc = 1; document.addEventListener('click', function () { if (S.gr && S.gr.aopen && S.page === 'grep') { S.gr.aopen = null; pageGrep(); } }); }
+    $$('[data-g6c]').forEach(function (b) { b.onclick = function () { st.acamp = b.getAttribute('data-g6c'); st.akw = []; st.aopen = null; pageGrep(); }; });
+    $$('[data-g6k]').forEach(function (b) { b.onclick = function () { var k = b.getAttribute('data-g6k'); if (!k) st.akw = []; else { var i = (st.akw || []).indexOf(k); if (i >= 0) st.akw.splice(i, 1); else (st.akw = st.akw || []).push(k); } pageGrep(); }; });
+    $$('[data-g6all]').forEach(function (b) { b.onclick = function () { var c = +b.getAttribute('data-g6all'); st.aall = st.aall === c ? null : c; pageGrep(); }; });
+    $$('[data-g6up]').forEach(function (b) { b.onclick = function () { aucUpload(st); }; });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { $$('.gr6-pn').forEach(function (p, pi) { p.querySelectorAll('[data-gw]').forEach(function (e, i) { e.style.transitionDelay = (pi * 70 + i * 40) + 'ms'; e.style.width = e.getAttribute('data-gw') + '%'; }); }); }); });
     $$('[data-g5met]').forEach(function (b) { b.onclick = function () { st.dmet = +b.getAttribute('data-g5met'); pageGrep(); }; });
     (function () { /* v113 แผนที่: ไล่สีตามอันดับ · ชี้ดูตัวเลข · กดเขตเปิดรายละเอียด */
       var mb = document.querySelector('.gr5-mb'); if (!mb) return; var tip = mb.querySelector('.gr5-tip');
