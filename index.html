@@ -2579,6 +2579,44 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr6-pn .more{font:inherit;border:0;background:none;padding:8px 0 0;font-size:12.5px;color:var(--text-3);cursor:pointer}
 @media(max-width:1200px){.gr6-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:760px){.gr6-grid,.gr6-hero .g3{grid-template-columns:1fr}.gr6-up{margin-left:0}}
+/* v118 · ไอคอน + นาฬิกา + สีโฟกัส (ส้ม = เรื่องที่ประโยคพูดถึง · เทา = ที่เหลือ) */
+.gr{--gr-gy:#d4d4dc;--gr-gyi:#a3a3b1}
+.gr2-bar i.gy{background:var(--gr-gy)}
+:root[data-theme="dark"] .gr{--gr-gy:#3a3a48;--gr-gyi:#62627a}
+.gr7-ic{display:flex;align-items:flex-end;justify-content:space-around;gap:10px;margin-top:6px}
+.gr7-ic .it{flex:1;min-width:0;text-align:center}
+.gr7-ic svg{display:block;margin:0 auto 6px;animation:gr7pop .6s cubic-bezier(.3,1.3,.5,1) both}
+.gr7-ic .it b{display:block;font-size:26px;font-weight:600;line-height:1.1;color:var(--gr-acc)}.gr7-ic .it:not(.on) b{color:var(--text-2);font-size:20px}
+.gr7-ic .it small{display:block;font-size:12.5px;color:var(--text-3)}
+.gr7-ic .rt{display:inline-block;margin-top:6px;font-size:12.5px;border-radius:999px;padding:1px 10px;background:var(--bg-soft);color:var(--text-2);white-space:nowrap}.gr7-ic .it.on .rt{background:var(--gr-acc);color:#fff}
+.gr7-on{fill:url(#gr7og)}.gr7-off{fill:var(--gr-gyi)}
+.gr7-age .r{display:grid;grid-template-columns:56px minmax(0,1fr) 46px;gap:10px;align-items:center;padding:4px 0}
+.gr7-age .r span{font-size:13px;color:var(--text-2)}.gr7-age .r.on span{color:var(--gr-acc);font-weight:600}
+.gr7-age .ppl{display:flex;gap:2px;flex-wrap:wrap}.gr7-age .ppl svg{flex:none;animation:gr7pop .4s both}
+.gr7-age .r em{font-style:normal;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}.gr7-age .r:not(.on) em{color:var(--text-2);font-weight:500}
+.gr7-clk{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:22px;align-items:center;margin-top:6px}
+.gr7-clk svg{width:100%;height:auto;max-width:300px;display:block;margin:0 auto}.gr7-clk svg text{font-family:inherit}
+.gr7-clk path{transform-origin:150px 150px;animation:gr7sc .6s cubic-bezier(.3,1.3,.5,1) both}
+.gr7-hl{display:flex;flex-direction:column;gap:10px}.gr7-hl div{background:var(--bg-soft);border-radius:12px;padding:10px 14px}.gr7-hl small{display:block;font-size:12.5px;color:var(--text-3)}.gr7-hl b{font-size:21px;font-weight:600}.gr7-hl b i{font-style:normal;font-size:13px;color:var(--text-3);font-weight:400;margin-left:6px}.gr7-hl .on b{color:var(--gr-acc)}
+.gr7-wk{display:flex;align-items:flex-end;gap:10px;height:210px;margin-top:22px}
+.gr7-wk .c{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;min-width:0}
+.gr7-wk .c i{display:block;width:100%;border-radius:10px 10px 4px 4px;background:var(--gr-gy);animation:gr7up .9s cubic-bezier(.2,.8,.2,1) both}.gr7-wk .c.on i{background:var(--gr-gv)}
+.gr7-wk .c span{font-size:12px;color:var(--text-2);margin-bottom:4px;font-weight:500}.gr7-wk .c.on span{color:var(--gr-acc);font-weight:600}
+.gr7-wk .c small{font-size:12px;color:var(--text-3);margin-top:6px}.gr7-wk .c.on small{color:var(--gr-acc);font-weight:600}
+@keyframes gr7up{from{height:0}}@keyframes gr7sc{from{transform:scale(.4);opacity:0}}@keyframes gr7pop{from{transform:scale(.5);opacity:0}}
+@media(max-width:760px){.gr7-clk{grid-template-columns:1fr}}
+/* auction แบบ A */
+.gr6-pn .top{border-bottom:0;padding-bottom:0;min-height:64px}
+.gr6-pn .sw b{font-size:30px;color:var(--gr-acc)}
+.gr6-pn .ins{background:none;padding:0;margin:10px 0 10px;font-size:14px}.gr6-pn .ins .to{color:var(--gr-acc)}
+.gr6-pn .r7{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr) 54px;gap:8px;align-items:center;padding:4px 0;font-size:13px}
+.gr6-pn .r7 span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--text-3)}.gr6-pn .r7 em{font-style:normal;text-align:right;color:var(--text-3);font-variant-numeric:tabular-nums}
+.gr6-pn .r7 .tr{height:8px;border-radius:4px}.gr6-pn .r7 .tr i{background:var(--gr-gy);border-radius:4px}
+.gr6-pn .r7.me span,.gr6-pn .r7.me em{color:var(--gr-acc);font-weight:600}.gr6-pn .r7.me .tr,.gr6-pn .r7.key .tr{height:14px;border-radius:7px}.gr6-pn .r7.me .tr i{background:var(--gr-grad);border-radius:7px}
+.gr6-pn .r7.key span,.gr6-pn .r7.key em{color:var(--text);font-weight:600}.gr6-pn .r7.key .tr i{background:var(--gr-dk);border-radius:7px}
+.gr6-pn .r7 .tr i.h{background:repeating-linear-gradient(45deg,var(--gr-gyi) 0 3px,var(--gr-gy) 3px 6px)}
+.gr6-pn .r7.lo span,.gr6-pn .r7.lo em{opacity:.6}
+
 /* v109 — ขยายตัวอักษรและตัวเลขสำคัญในหน้า Report ให้อ่านง่ายขึ้น */
 .gr-hero h2{font-size:16.5px}
 .gr-bx{padding:18px 20px}.gr-bx small{font-size:14.5px}.gr-bx b{font-size:42px}.gr-bx b i{font-size:17px}.gr-bx p{font-size:15px}
@@ -8189,11 +8227,36 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         return '<div class="gr2-c"><div class="gr-q">' + q + '</div><h3>' + t + '</h3>' + stk(arr, CL) + '<div class="gr2-stl">' + arr.map(function (x, i) { return '<span><i style="background:' + CL[i % 4] + '"></i>' + x.n + ' · ' + fI(x.v) + ' คลิก · ทัก ' + fI(x.cv) + '</span>'; }).join('') + '</div>' + (note ? '<div class="gr2-note">' + note + '</div>' : '') +
           '<div class="gr2-rt">' + arr.filter(function (x) { return x.n !== 'ไม่ระบุ'; }).slice(0, 2).map(function (x) { return '<div><small>' + x.n + '</small><b>' + (x.v ? Math.round(x.cv / x.v * 100) : 0) + '<i>ทัก / 100 คลิก</i></b></div>'; }).join('') + '</div></div>';
       };
+      /* v118 · ไอคอนแทนแท่ง · ส้ม = เรื่องที่หัวการ์ดพูดถึง */
+      html += '<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="gr7og" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eb6e28"/><stop offset="1" stop-color="#d03f22"/></linearGradient>' +
+        '<symbol id="gr7-phone" viewBox="0 0 24 24"><path d="M8 1.5h8a2.5 2.5 0 0 1 2.5 2.5v16A2.5 2.5 0 0 1 16 22.5H8A2.5 2.5 0 0 1 5.5 20V4A2.5 2.5 0 0 1 8 1.5Zm0 2a.5.5 0 0 0-.5.5v14h9V4a.5.5 0 0 0-.5-.5Zm4 15.3a1.1 1.1 0 1 0 0 2.2 1.1 1.1 0 0 0 0-2.2Z"/></symbol>' +
+        '<symbol id="gr7-laptop" viewBox="0 0 24 24"><path d="M4.5 4h15A1.5 1.5 0 0 1 21 5.5V16H3V5.5A1.5 1.5 0 0 1 4.5 4Zm.5 2v8h14V6ZM1 17.5h22l-1.2 1.9a1.5 1.5 0 0 1-1.3.6h-17a1.5 1.5 0 0 1-1.3-.6Z"/></symbol>' +
+        '<symbol id="gr7-tab" viewBox="0 0 24 24"><path d="M6 1.5h12A2.5 2.5 0 0 1 20.5 4v16a2.5 2.5 0 0 1-2.5 2.5H6A2.5 2.5 0 0 1 3.5 20V4A2.5 2.5 0 0 1 6 1.5Zm-.5 3V19h13V4.5Zm6.5 15.6a.9.9 0 1 0 0 1.8.9.9 0 0 0 0-1.8Z"/></symbol>' +
+        '<symbol id="gr7-tv" viewBox="0 0 24 24"><path d="M3.5 4h17A1.5 1.5 0 0 1 22 5.5v11a1.5 1.5 0 0 1-1.5 1.5h-17A1.5 1.5 0 0 1 2 16.5v-11A1.5 1.5 0 0 1 3.5 4Zm.5 2v10h16V6ZM7 19.5h10V21H7Z"/></symbol>' +
+        '<symbol id="gr7-woman" viewBox="0 0 24 24"><circle cx="12" cy="4.2" r="3"/><path d="M12 8.2c-2.3 0-3.6 1.2-4.2 3.3L6.2 17H9v5.5h6V17h2.8l-1.6-5.5c-.6-2.1-1.9-3.3-4.2-3.3Z"/></symbol>' +
+        '<symbol id="gr7-man" viewBox="0 0 24 24"><circle cx="12" cy="4.2" r="3"/><path d="M8.5 8.4h7A2.5 2.5 0 0 1 18 10.9V16h-2.2v6.5H8.2V16H6v-5.1a2.5 2.5 0 0 1 2.5-2.5Z"/></symbol>' +
+        '<symbol id="gr7-p" viewBox="0 0 24 24"><circle cx="12" cy="5" r="4"/><path d="M5 22v-5.5A5.5 5.5 0 0 1 10.5 11h3a5.5 5.5 0 0 1 5.5 5.5V22Z"/></symbol></defs></svg>';
+      var rt7 = function (x) { return x.v ? Math.round(x.cv / x.v * 100) : 0; };
+      var icCard = function (q, t, arr, onI, icOf, note) {
+        if (!arr.length) return '<div class="gr2-c"><div class="gr-q">' + q + '</div><div class="gr2-empty">ยังไม่มีข้อมูล</div></div>';
+        var tt = sum(arr), mx = Math.max.apply(null, arr.map(function (x) { return x.v; })), hi = arr[onI] || arr[0];
+        arr = [hi].concat(arr.filter(function (x) { return x !== hi; })); onI = 0;
+        return '<div class="gr2-c"><div class="gr-q">' + q + '</div><h3>' + t + '</h3><div class="gr7-ic">' + arr.slice(0, 3).map(function (x, i) { var on = i === onI, sz = Math.round(36 + 56 * Math.sqrt(x.v / mx));
+          return '<div class="it' + (on ? ' on' : '') + '"><svg width="' + sz + '" height="' + sz + '" style="animation-delay:' + (i * 90) + 'ms"><use href="#gr7-' + icOf(x) + '" class="' + (on ? 'gr7-on' : 'gr7-off') + '"/></svg><b>' + Math.round(x.v / tt * 100) + '%</b><small>' + x.n + ' · ' + fI(x.v) + ' คลิก</small><span class="rt">ทัก ' + rt7(x) + ' / 100' + (on ? ' คลิก' : '') + '</span></div>'; }).join('') + '</div>' +
+          '<div class="gr2-note">' + (note || 'ขนาดไอคอนตามสัดส่วนคลิก') + '</div></div>';
+      };
       html += '<div class="gr-lb"><b>01 ใครคือลูกค้า</b> สัดส่วนจากจำนวนคลิก</div><div class="gr2-3">';
-      html += stCard('ใช้อุปกรณ์อะไร', devD[0] ? devD[0].n + ' <em>' + Math.round(devD[0].v / sum(devD) * 100) + '%</em>' : '', devD);
-      var g1 = genD.filter(function (x) { return x.n !== 'ไม่ระบุ'; }), gTx = g1.length > 1 ? (Math.abs(g1[0].v - g1[1].v) / Math.max(g1[0].v, g1[1].v) < 0.2 ? 'ผู้หญิงกับผู้ชาย <em>ใกล้เคียงกัน</em>' : g1[0].n + ' <em>' + Math.round(g1[0].v / sum(genD) * 100) + '%</em>') : '';
-      html += stCard('เพศ', gTx, genD, genD.some(function (x) { return x.n === 'ไม่ระบุ'; }) ? '"ไม่ระบุ" = Google ไม่ทราบเพศของผู้ใช้' : '');
-      html += '<div class="gr2-c"><div class="gr-q">อายุ</div>' + (ageT ? '<h3><em>' + ageD[ageI].n + ' ปี</em> คลิกมากสุด</h3>' + colChart(ageD.map(function (x) { return [x.n, x.v]; }), { on: ageI, sm: 1, fb: function (v) { return fI(v); } }) + '<div class="gr2-note">ไม่รวมกลุ่มที่ Google ไม่ทราบอายุ</div>' : '<div class="gr2-empty">ยังไม่มีข้อมูล</div>') + '</div>';
+      var devIc = function (x) { return x.n === 'มือถือ' ? 'phone' : x.n === 'คอมพิวเตอร์' ? 'laptop' : x.n === 'แท็บเล็ต' ? 'tab' : x.n === 'ทีวี' ? 'tv' : 'p'; };
+      html += icCard('ใช้อุปกรณ์อะไร', devD[0] ? 'ส่วนใหญ่ใช้<em>' + devD[0].n + ' ' + Math.round(devD[0].v / sum(devD) * 100) + '%</em>' : '', devD, 0, devIc);
+      var g1 = genD.filter(function (x) { return x.n !== 'ไม่ระบุ'; }), gOn = 0, gTx = '';
+      if (g1.length > 1) { var gR = g1.slice().sort(function (a, b) { return rt7(b) - rt7(a); }), close = Math.abs(g1[0].v - g1[1].v) / Math.max(g1[0].v, g1[1].v) < 0.2;
+        if (close && rt7(gR[0]) > rt7(gR[1])) { gOn = genD.indexOf(gR[0]); gTx = 'ผู้หญิงกับผู้ชายใกล้กัน · <em>' + gR[0].n + 'ทักง่ายกว่า</em>'; }
+        else if (close) { gOn = genD.indexOf(g1[0]); gTx = 'ผู้หญิงกับผู้ชาย <em>ใกล้เคียงกัน</em>'; }
+        else { gOn = genD.indexOf(g1[0]); gTx = 'ส่วนใหญ่เป็น<em>' + g1[0].n + ' ' + Math.round(g1[0].v / sum(genD) * 100) + '%</em>'; } }
+      else if (genD[0]) gTx = '<em>' + genD[0].n + '</em>';
+      html += icCard('เพศ', gTx, genD, gOn, function (x) { return x.n === 'ผู้หญิง' ? 'woman' : x.n === 'ผู้ชาย' ? 'man' : 'p'; }, genD.some(function (x) { return x.n === 'ไม่ระบุ'; }) ? '"ไม่ระบุ" = Google ไม่ทราบเพศของผู้ใช้' : '');
+      html += '<div class="gr2-c gr7-age"><div class="gr-q">อายุ</div>' + (ageT ? '<h3><em>' + ageD[ageI].n + ' ปี</em> คลิกมากสุด</h3>' + ageD.map(function (x, i) { var pc = x.v / ageT * 100, n = x.v ? Math.max(1, Math.round(pc / 4)) : 0, on = i === ageI;
+        return '<div class="r' + (on ? ' on' : '') + '"><span>' + x.n + '</span><div class="ppl">' + Array.apply(null, Array(n)).map(function (_, k) { return '<svg width="16" height="20" style="animation-delay:' + (i * 70 + k * 30) + 'ms"><use href="#gr7-p" class="' + (on ? 'gr7-on' : 'gr7-off') + '"/></svg>'; }).join('') + '</div><em>' + Math.round(pc) + '%</em></div>'; }).join('') + '<div class="gr2-note">1 ไอคอน = 4% ของคลิก · ไม่รวมกลุ่มที่ Google ไม่ทราบอายุ</div>' : '<div class="gr2-empty">ยังไม่มีข้อมูล</div>') + '</div>';
       html += '</div>';
       /* 02 ช่วงเวลา */
       var hrA = {}, dwA = {};
@@ -8201,12 +8264,31 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       var hrK = Object.keys(hrA).map(Number).filter(function (h) { return hrA[h][0] > 0; }).sort(function (a, b) { return a - b; });
       var dwO = ['MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'], dwS = ['จ.', 'อ.', 'พ.', 'พฤ.', 'ศ.', 'ส.', 'อา.'], dwL = ['จันทร์', 'อังคาร', 'พุธ', 'พฤหัสบดี', 'ศุกร์', 'เสาร์', 'อาทิตย์'];
       var dwK = dwO.filter(function (d) { return dwA[d]; });
-      html += '<div class="gr-lb"><b>02 ลูกค้าค้นหาช่วงไหน</b> แท่ง = คลิก · เส้น = ลูกค้าทัก</div>';
+      html += '<div class="gr-lb"><b>02 ลูกค้าค้นหาช่วงไหน</b> นับจากลูกค้าที่ทักเข้ามา</div>';
       if (hrK.length) {
         var hB = hrK.reduce(function (a, h) { return hrA[h][1] > hrA[a][1] ? h : a; }, hrK[0]);
         var dB = dwK.reduce(function (a, d) { return dwA[d][1] > dwA[a][1] ? d : a; }, dwK[0]);
-        html += '<div class="gr2-2"><div class="gr2-c"><div class="gr-q">ช่วงเวลาในวัน</div><h3>ลูกค้าทักมากสุดช่วง <em>' + hB + ':00–' + (hB + 1) + ':00 น.</em></h3>' + colChart(hrK.map(function (h) { return [h + '', hrA[h][0], hrA[h][1]]; }), { on: hrK.indexOf(hB), line: 1, lsc: .85, fb: function (v) { return fI(v); } }) + '<div class="gr2-note">โฆษณามีคนคลิกช่วง ' + hrK[0] + ':00–' + (hrK[hrK.length - 1] + 1) + ':00 น.</div></div>';
-        html += '<div class="gr2-c"><div class="gr-q">วันในสัปดาห์</div><h3>วัน<em>' + dwL[dwO.indexOf(dB)] + '</em> ลูกค้าทักมากสุด ' + fI(dwA[dB][1]) + ' ราย</h3>' + colChart(dwK.map(function (d) { return [dwS[dwO.indexOf(d)], dwA[d][0], dwA[d][1]]; }), { on: dwK.indexOf(dB), line: 1, lsc: .85, fb: function (v) { return fI(v); } }) + '<div class="gr2-lg"><span><i></i>คลิก</span><span><i class="l"></i>ลูกค้าทัก</span></div></div></div>';
+        /* v118 · นาฬิกา: กลีบยาว = ลูกค้าทักเยอะ · ช่วงที่ทักมากสุด = ส้ม */
+        var hV = function (h) { return hrA[h][1]; }, hMx = Math.max.apply(null, hrK.map(hV)) || 1, hTot = hrK.reduce(function (a, h) { return a + hV(h); }, 0) || 1;
+        var h12 = hrK[hrK.length - 1] - hrK[0] < 12, nS = h12 ? 12 : 24, cx = 150, cy = 150, r0 = 46, r1 = 126;
+        var ck = '<circle cx="150" cy="150" r="134" style="fill:var(--bg-soft)"/><circle cx="150" cy="150" r="' + (r0 - 4) + '" style="fill:var(--card)"/>';
+        for (var q = 0; q < nS; q++) { if (!h12 && q % 3) continue; var aq = ((h12 ? q + 1 : q) / nS) * Math.PI * 2 - Math.PI / 2; ck += '<text x="' + (cx + Math.cos(aq) * 143).toFixed(1) + '" y="' + (cy + Math.sin(aq) * 143 + 4).toFixed(1) + '" font-size="11" text-anchor="middle" style="fill:var(--text-3)">' + (h12 ? q + 1 : q) + '</text>'; }
+        hrK.forEach(function (h, i) { var ps = h % nS, a0 = ps / nS * Math.PI * 2 - Math.PI / 2 + .04, a1 = (ps + 1) / nS * Math.PI * 2 - Math.PI / 2 - .04, rr = r0 + (r1 - r0) * hV(h) / hMx, on = h === hB;
+          var pt = function (a, r) { return (cx + Math.cos(a) * r).toFixed(1) + ' ' + (cy + Math.sin(a) * r).toFixed(1); };
+          ck += '<path d="M' + pt(a0, r0) + 'L' + pt(a0, rr) + 'A' + rr.toFixed(1) + ' ' + rr.toFixed(1) + ' 0 0 1 ' + pt(a1, rr) + 'L' + pt(a1, r0) + 'A' + r0 + ' ' + r0 + ' 0 0 0 ' + pt(a0, r0) + 'Z" style="fill:' + (on ? 'url(#gr7og)' : 'var(--gr-gy)') + ';animation-delay:' + (i * 60) + 'ms"><title>' + h + ':00–' + (h + 1) + ':00 · ทัก ' + fI(hV(h)) + ' · คลิก ' + fI(hrA[h][0]) + '</title></path>';
+          if (on) { var am = (a0 + a1) / 2; ck += '<text x="' + (cx + Math.cos(am) * (rr + 13)).toFixed(1) + '" y="' + (cy + Math.sin(am) * (rr + 13) + 4).toFixed(1) + '" font-size="12" font-weight="600" text-anchor="middle" style="fill:var(--gr-acc)">' + fI(hV(h)) + '</text>'; } });
+        ck += '<text x="150" y="146" font-size="12" text-anchor="middle" style="fill:var(--text-3)">ทักมากสุด</text><text x="150" y="166" font-size="17" font-weight="600" text-anchor="middle" style="fill:var(--gr-acc)">' + hB + '–' + (hB + 1) + ' น.</text>';
+        var hLo = hrK.reduce(function (a, h) { return hV(h) < hV(a) ? h : a; }, hrK[0]), w3 = -1, w3v = -1;
+        hrK.forEach(function (h) { var v = [h, h + 1, h + 2].reduce(function (a, k) { return a + (hrA[k] ? hV(k) : 0); }, 0); if (v > w3v) { w3v = v; w3 = h; } });
+        html += '<div class="gr2-2"><div class="gr2-c"><div class="gr-q">ช่วงเวลาในวัน</div><h3>ลูกค้าทักมากสุดช่วง <em>' + hB + ':00–' + (hB + 1) + ':00 น.</em></h3><div class="gr7-clk"><svg viewBox="0 0 300 300">' + ck + '</svg><div class="gr7-hl">' +
+          '<div class="on"><small>ช่วงที่ทักมากสุด</small><b>' + hB + ':00–' + (hB + 1) + ':00<i>' + fI(hV(hB)) + ' ราย</i></b></div>' +
+          '<div><small>ช่วงที่เงียบสุด</small><b>' + hLo + ':00–' + (hLo + 1) + ':00<i>' + fI(hV(hLo)) + ' ราย</i></b></div>' +
+          (hrK.length > 4 ? '<div><small>3 ชั่วโมงที่ทักมากสุด</small><b>' + w3 + ':00–' + (w3 + 3) + ':00<i>' + Math.round(w3v / hTot * 100) + '% ของทั้งวัน</i></b></div>' : '') + '</div></div>' +
+          '<div class="gr2-note">' + (h12 ? 'หน้าปัด 12 ชั่วโมง · ' : 'หน้าปัด 24 ชั่วโมง · ') + 'โฆษณามีคนคลิกช่วง ' + hrK[0] + ':00–' + (hrK[hrK.length - 1] + 1) + ':00 น. · กลีบยิ่งยาว ลูกค้ายิ่งทักเยอะ</div></div>';
+        var dMx = Math.max.apply(null, dwK.map(function (d) { return dwA[d][1]; })) || 1;
+        html += '<div class="gr2-c"><div class="gr-q">วันในสัปดาห์</div><h3>วัน<em>' + dwL[dwO.indexOf(dB)] + '</em> ลูกค้าทักมากสุด ' + fI(dwA[dB][1]) + ' ราย</h3><div class="gr7-wk">' +
+          dwK.map(function (d, i) { var on = d === dB; return '<div class="c' + (on ? ' on' : '') + '" title="คลิก ' + fI(dwA[d][0]) + '"><span>' + fI(dwA[d][1]) + '</span><i style="height:' + Math.max(2, dwA[d][1] / dMx * 85) + '%;animation-delay:' + (i * 60) + 'ms"></i><small>' + dwS[dwO.indexOf(d)] + '</small></div>'; }).join('') +
+          '</div><div class="gr2-note">ตัวเลขบนแท่ง = ลูกค้าทัก (ราย)</div></div></div>';
       } else html += emp('ยังไม่มีข้อมูลรายวัน / รายชั่วโมง');
       /* 03 พื้นที่ + ช่องทาง */
       var geoTH = { Bangkok: 'กรุงเทพฯ', Nonthaburi: 'นนทบุรี', 'Pathum Thani': 'ปทุมธานี', 'Samut Prakan': 'สมุทรปราการ', 'Nakhon Pathom': 'นครปฐม', 'Samut Sakhon': 'สมุทรสาคร', 'Chon Buri': 'ชลบุรี', 'Chonburi': 'ชลบุรี', 'Nakhon Ratchasima': 'นครราชสีมา', 'Khon Kaen': 'ขอนแก่น', Rayong: 'ระยอง', Songkhla: 'สงขลา', 'Chiang Mai': 'เชียงใหม่', Ayutthaya: 'อยุธยา', 'Phra Nakhon Si Ayutthaya': 'อยุธยา' };
@@ -8215,10 +8297,11 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       html += '<div class="gr-lb"><b>03 ลูกค้าอยู่ที่ไหน · ทักผ่านช่องทางไหน</b> 5 จังหวัดที่คลิกมากสุด</div><div class="gr2-2">';
       if (geo5.length) {
         html += '<div class="gr2-c"><div class="gr-q">กรุงเทพฯ และปริมณฑล</div><h3>รวมกัน <em>' + Math.round(geoB / (geoT || 1) * 100) + '%</em> ของคลิกทั้งหมด</h3>';
-        geo5.forEach(function (r, i) { html += '<div class="gr2-hb"><div class="l">' + e2(geoTH[r.key] || r.key) + '</div><div class="gr2-bar"><i class="' + (i ? '' : 'o') + '" style="width:' + Math.max(1.5, r.clicks / geo5[0].clicks * 100) + '%"></i></div><div class="v"><b>' + fI(r.clicks) + '</b> คลิก · ทัก ' + fI(r.conversions) + '</div></div>'; });
+        geo5.forEach(function (r, i) { html += '<div class="gr2-hb"><div class="l">' + e2(geoTH[r.key] || r.key) + '</div><div class="gr2-bar"><i class="' + (BMR.test(r.key) ? 'o' : 'gy') + '" style="width:' + Math.max(1.5, r.clicks / geo5[0].clicks * 100) + '%"></i></div><div class="v"><b>' + fI(r.clicks) + '</b> คลิก · ทัก ' + fI(r.conversions) + '</div></div>'; });
         html += '</div>';
       } else html += emp('ยังไม่มีข้อมูลพื้นที่');
       if (conD.length) {
+        var conGy = ['#c2410c', '#6b6b7b', '#9a9aaa', '#bdbdc8']; conD.forEach(function (x, i) { conC[x.n] = conGy[Math.min(i, 3)]; }); /* v118 · ช่องทางหลัก = ส้ม ที่เหลือเทา */
         html += '<div class="gr2-c"><div class="gr-q">ลูกค้าทักผ่านช่องทางไหน</div><h3><em>' + conD[0].n + '</em> คือช่องทางหลัก</h3>' + stk(conD, conD.map(function (x) { return conC[x.n]; }), 1) +
           '<div class="gr2-stl">' + conD.map(function (x) { return '<span><i style="background:' + conC[x.n] + '"></i>' + x.n + ' · ' + fI(x.v) + ' ครั้ง</span>'; }).join('') + '</div>' +
           '<div class="gr2-big" style="margin-top:22px">' + fI(conT) + ' <small>ครั้งที่ลูกค้าติดต่อเข้ามา</small></div></div>';
@@ -8461,20 +8544,23 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           '<div class="bx"><small>ได้อันดับ 1 บนสุด · ' + hm.length + ' เดือน</small><b class="big">' + aF(me[2]) + hd(2) + '</b>' + sp(2) + '</div>' +
           '<div class="bx"><small>คู่แข่งที่แซงเราได้</small><b class="big">' + above.length + ' ราย</b><p>จากคู่แข่งทั้งหมด ' + C.length + ' ราย</p><p>' + (above.length ? 'มากสุด ' + e2(above[0][0]) + ' ' + aF(above[0][3]) : 'ไม่มีใครแซงเราได้') + '</p></div></div></div>';
         /* 6 กราฟ */
-        var COL6 = [{ t: 'ส่วนแบ่งการแสดงผล', e: 'Impression share', j: 1, me: 0, cls: 'k' }, { t: 'ขึ้นพร้อมเรา', e: 'Overlap rate', j: 2, cls: 'k' }, { t: 'แซงเรา', e: 'Position above rate', j: 3, cls: 'o', warn: 1 },
-          { t: 'ได้อยู่ด้านบนของหน้า', e: 'Top of page rate', j: 4, me: 1, cls: 'k' }, { t: 'ได้อันดับ 1 บนสุด', e: 'Abs. top of page rate', j: 5, me: 2, cls: 'o', warn: 1 }, { t: 'เราชนะ', e: 'Outranking share', j: 6, cls: 'g', win: 1 }];
+        /* v118 · เรียงสำคัญจากซ้ายไปขวา: ส่วนแบ่ง → อันดับ 1 → แซงเรา → ด้านบน → เราชนะ → ขึ้นพร้อมเรา */
+        var COL6 = [{ t: 'ส่วนแบ่งการแสดงผล', e: 'Impression share', j: 1, me: 0 }, { t: 'ได้อันดับ 1 บนสุด', e: 'Abs. top of page rate', j: 5, me: 2 }, { t: 'แซงเรา', e: 'Position above rate', j: 3 },
+          { t: 'ได้อยู่ด้านบนของหน้า', e: 'Top of page rate', j: 4, me: 1 }, { t: 'เราชนะ', e: 'Outranking share', j: 6 }, { t: 'ขึ้นพร้อมเรา', e: 'Overlap rate', j: 2 }];
         var ins = function (col, rows) { var comp = rows.filter(function (r) { return !r.me && !r.lo; }), top = comp[0] || { n: '–', v: 0 }, lo = comp[comp.length - 1] || top, n = comp.filter(function (r) { return r.v > 0.05; }).length;
           if (col.j === 1) { var rk = rows.findIndex(function (r) { return r.me; }) + 1; return rk === 1 ? 'เราขึ้นบ่อยสุด <b>' + aF(me[0]) + '</b> · ห่างอันดับ 2 (' + e2(top.n) + ') <span class="tg">' + Math.round((me[0] - (top.v < 0 ? 5 : top.v)) * 10) / 10 + ' จุด</span>' : 'เราอยู่อันดับ <b>' + rk + '</b> · ' + e2(top.n) + ' ขึ้นบ่อยกว่าเรา'; }
-          if (col.j === 2) return '<b>' + e2(top.n) + '</b> เจอเราบ่อยสุด <b>' + Math.round(top.v) + ' ใน 100</b> ครั้ง';
+          if (col.j === 2) return '<b>' + e2(top.n) + '</b> เจอเราบ่อยสุด <span class="to">' + Math.round(top.v) + ' ใน 100</span> ครั้ง';
           if (col.j === 3) return n ? '<span class="to">' + n + ' ราย</span>แซงเราได้ · มากสุด <b>' + e2(top.n) + '</b> <span class="to">' + aF(top.v) + '</span>' : '<span class="tg">ไม่มีคู่แข่งรายไหนแซงเราได้เลย</span>';
-          if (col.j === 4) return 'เราได้ <b>' + aF(me[1]) + '</b> · คู่แข่งที่ได้มากสุด ' + e2(top.n) + ' ' + aF(top.v);
-          if (col.j === 5) return 'เราได้อันดับ 1 <b>' + aF(me[2]) + '</b>' + (n ? ' · คู่แข่งที่แย่งอันดับ 1 ได้ <span class="to">' + n + ' ราย</span>' : ' · <span class="tg">ไม่มีใครแย่งได้</span>');
-          return 'เราชนะทุกราย <span class="tg">' + aF(lo.v) + ' ขึ้นไป</span> · ชนะยากสุดคือ <b>' + e2(lo.n) + '</b>'; };
+          if (col.j === 4) return 'เราอยู่ด้านบน <span class="to">' + aF(me[1]) + '</span> · <b>' + e2(top.n) + '</b> ใกล้เราสุด ' + aF(top.v);
+          if (col.j === 5) return 'เราได้อันดับ 1 <span class="to">' + aF(me[2]) + '</span>' + (n ? ' · แย่งได้มากสุดคือ <b>' + e2(top.n) + '</b> ' + aF(top.v) : ' · <span class="tg">ไม่มีใครแย่งได้</span>');
+          return 'ชนะยากสุดคือ <b>' + e2(lo.n) + '</b> <span class="to">' + aF(lo.v) + '</span>'; };
         html += '<div class="gr6-grid">' + COL6.map(function (col, ci) {
           var rows = C.map(function (c) { var p = PM[c[0]]; return { n: c[0], v: c[col.j], p: p ? p[col.j] : null, lo: c[2] < 5 }; });
           if (col.me != null) rows.push({ n: 'เรา', v: me[col.me], me: 1, p: P ? P.me[col.me] : null });
           var key = function (v) { return v < 0 ? 5 : v; }; rows.sort(function (a, b) { return key(b.v) - key(a.v); });
+          var cmp7 = rows.filter(function (r) { return !r.me && !r.lo; }), key7 = col.j === 6 ? cmp7[cmp7.length - 1] : cmp7[0]; if (key7) key7.key = 1;
           var all = st.aall === ci, lim = all ? rows.length : 5, sh = rows.slice(0, lim);
+          if (!all && key7 && sh.indexOf(key7) < 0) sh[sh.length - 1 - (sh[sh.length - 1].me ? 1 : 0)] = key7;
           if (!all && !sh.some(function (r) { return r.me; }) && rows.some(function (r) { return r.me; })) sh[lim - 1] = rows.filter(function (r) { return r.me; })[0];
           /* ตัวเลขของเรามุมขวา (แซงเรา / เราชนะ = ค่าเฉลี่ยถ่วงตามการเจอกัน) */
           var corner = '';
@@ -8482,10 +8568,10 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           else if (col.j === 3 || col.j === 6) { var ws = 0, a = 0, pa = 0, pw = 0; C.forEach(function (c) { var w = OV[c[0]] || 0; ws += w; a += c[col.j] * w; var pc = PM[c[0]]; if (pc) { pw += w; pa += pc[col.j] * w; } });
             var av = a / (ws || 1), pv = pw ? pa / pw : null, dd = pv == null ? null : av - pv;
             corner = '<div class="sw"><small>' + (col.j === 3 ? 'โดนแซงเฉลี่ย' : 'ชนะเฉลี่ย') + '</small><b>' + aF(av) + '</b>' + (dd == null ? '' : chip(dd, col.j === 3 ? dd < 0 : dd > 0)) + '</div>'; }
-          return '<div class="gr6-pn' + (col.warn ? ' warn' : '') + (col.win ? ' win' : '') + '"><div class="top"><span class="no">' + (ci + 1) + '</span><div><h4>' + col.t + '</h4><div class="en">' + col.e + '</div></div>' + corner + '</div>' +
+          return '<div class="gr6-pn"><div class="top"><div><h4>' + col.t + '</h4><div class="en">' + col.e + '</div></div>' + corner + '</div>' +
             '<div class="ins">' + ins(col, rows) + '</div>' +
-            sh.map(function (r) { var cls = r.me ? 'gr' : r.v < 0 ? 'h' : col.cls;
-              return '<div class="row' + (r.me ? ' me' : '') + (r.lo ? ' lo' : '') + (r.v >= 0 && r.v <= 0.05 ? ' zero' : '') + '"' + (r.lo ? ' title="เจอเราไม่ถึง 5 ใน 100 ครั้ง · ไม่นับในกล่องสรุป"' : '') + '><span class="rk">' + (rows.indexOf(r) + 1) + '</span><div class="rb"><div class="nm"><span class="n">' + (r.me ? 'เรา' : e2(r.n)) + '</span><em>' + aF(r.v) + '</em></div><div class="tr"><i class="' + cls + '" data-gw="' + (r.v < 0 ? 6 : Math.max(r.v > 0.05 ? 1.5 : 0, Math.min(100, r.v))) + '"></i></div></div></div>'; }).join('') +
+            sh.slice().sort(function (a, b) { return rows.indexOf(a) - rows.indexOf(b); }).map(function (r) {
+              return '<div class="r7' + (r.me ? ' me' : r.key ? ' key' : '') + (r.lo ? ' lo' : '') + '"' + (r.lo ? ' title="เจอเราไม่ถึง 5 ใน 100 ครั้ง · ไม่นับในประโยคสรุป"' : ' title="อันดับ ' + (rows.indexOf(r) + 1) + '"') + '><span>' + (r.me ? 'เรา' : e2(r.n)) + '</span><div class="tr"><i class="' + (r.v < 0 && !r.me && !r.key ? 'h' : '') + '" data-gw="' + (r.v < 0 ? 6 : Math.max(r.v > 0.05 ? 1.5 : 0, Math.min(100, r.v))) + '"></i></div><em>' + aF(r.v) + '</em></div>'; }).join('') +
             (rows.length > 5 ? '<button class="more" data-g6all="' + ci + '">' + (all ? 'ย่อ' : '+ อีก ' + (rows.length - lim) + ' ราย (กดดูทั้งหมด)') + '</button>' : '') + '</div>';
         }).join('') + '</div>';
       }
