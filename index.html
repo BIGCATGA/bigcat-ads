@@ -2553,7 +2553,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr6-info{font-size:13px;color:var(--text-3)}
 .gr6-up{font:inherit;margin-left:auto;border:0;background:var(--gr-dk);color:#fff;border-radius:999px;padding:8px 16px;cursor:pointer;font-size:13.5px}
 .gr6-dl{display:inline-block;padding:1px 10px;border-radius:999px;font-size:12.5px;font-weight:500;color:#fff;white-space:nowrap;vertical-align:middle}
-.gr6-dl.up{background:#00a844}.gr6-dl.dn,.gr6-dl.eq{background:#3b3b48}
+.gr6-dl.up{background:#00a844}.gr6-dl.eq{background:#3b3b48}.gr6-dl.dn{background:#dc2626}
 .gr6-hero{background:linear-gradient(135deg,#eb6e28 0%,#d03f22 55%,#a22242 100%);border-radius:20px;padding:22px 24px;color:#fff;position:relative;overflow:hidden}
 .gr6-hero:after{content:"";position:absolute;right:-80px;top:-120px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none}
 .gr6-hero .t{font-size:14px;opacity:.9;margin:0 0 4px}.gr6-hero h2{margin:0 0 18px;font-size:28px;font-weight:500;line-height:1.45}.gr6-hero h2 em{font-style:normal;background:rgba(0,0,0,.22);border-radius:8px;padding:0 8px;font-weight:600}
@@ -2606,7 +2606,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 @keyframes gr7up{from{height:0}}@keyframes gr7sc{from{transform:scale(.4);opacity:0}}@keyframes gr7pop{from{transform:scale(.5);opacity:0}}
 @media(max-width:760px){.gr7-clk{grid-template-columns:1fr}}
 /* auction แบบ A */
-.gr6-pn .top{border-bottom:0;padding-bottom:0;min-height:64px}
+.gr6-pn .top{border-bottom:0;padding-bottom:0;min-height:64px}.gr6-pn .top .en{font-size:12.5px;color:var(--text-2);margin-top:2px;line-height:1.4}
 .gr6-pn .sw b{font-size:30px;color:var(--gr-acc)}
 .gr6-pn .ins{background:none;padding:0;margin:10px 0 10px;font-size:14px}.gr6-pn .ins .to{color:var(--gr-acc)}
 .gr6-pn .r7{display:grid;grid-template-columns:minmax(0,120px) minmax(0,1fr) 54px;gap:8px;align-items:center;padding:4px 0;font-size:13px}
@@ -2626,6 +2626,23 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr-vh{font-size:13px}.gr-bars div span{font-size:13px}.gr-bl span{font-size:12px}
 .gr-fs small{font-size:13.5px}.gr-fs b{font-size:27px}.gr-fs em{font-size:12.5px}
 .gr-tg{font-size:12.5px}.gr-tg.g{background:var(--gr-good)}
+/* v119 · ป้ายแย่ลง = แดง */
+.gr-tg.r,.gr4-dl.r{background:#dc2626;color:#fff}
+/* v120 · 02 แต่ละสินค้า แบบ A */
+.gr8-pt{margin-top:10px}
+.gr8-pt .h,.gr8-pt .r{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,2.4fr) 80px 80px 104px;gap:14px;align-items:center}
+.gr8-pt .h{font-size:11.5px;color:var(--text-3);padding-bottom:6px;border-bottom:1px solid var(--line)}.gr8-pt .h span:nth-child(n+3){text-align:right}
+.gr8-pt .r{padding:9px 0;border-bottom:1px solid var(--line)}.gr8-pt .r:last-child{border-bottom:0}
+.gr8-pt .n{font-weight:500;min-width:0}.gr8-pt .n small{font-size:11.5px;color:var(--text-3);font-weight:400;margin-left:6px}
+.gr8-pt .fn{position:relative;height:18px;border-radius:5px;background:var(--bg-soft)}.gr8-pt .fn i{position:absolute;left:0;top:0;bottom:0;border-radius:5px}
+.gr8-pt .fn .a,.gr8-lg .a{background:var(--gr-gy)}.gr8-pt .fn .b,.gr8-lg .b{background:var(--gr-gyi)}.gr8-pt .fn .b{top:3px;bottom:3px}.gr8-pt .fn .c,.gr8-lg .c{background:var(--gr-dk)}.gr8-pt .fn .c{top:6px;bottom:6px}
+.gr8-pt .r.on .fn .c{background:var(--gr-grad)}
+.gr8-pt .fv{font-size:11.5px;color:var(--text-3);margin-top:2px;font-variant-numeric:tabular-nums}.gr8-pt .fv b{color:var(--text);font-weight:500}
+.gr8-pt .v{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}.gr8-pt .v small{display:block;font-size:11px;color:var(--text-3);font-weight:400}
+.gr8-pt .r.on .v.cl{color:var(--gr-good);font-weight:600}
+.gr8-lg{display:flex;gap:14px;font-size:12px;color:var(--text-3);margin-top:10px}.gr8-lg i{display:inline-block;width:14px;height:8px;border-radius:2px;margin-right:5px;vertical-align:1px}
+@media(max-width:900px){.gr8-pt .h,.gr8-pt .r{grid-template-columns:minmax(0,1fr) 60px 60px 80px}.gr8-pt .h span:nth-child(2),.gr8-pt .r .fb{display:none}}
+.gr-fs.on .gr-tg.r{background:#dc2626;color:#fff}
 .gr-foot{font-size:13.5px}
 .gr2-sub,.gr2-note{font-size:13.5px}.gr2-stl{font-size:14px}.gr2-stl i{width:12px;height:12px}
 .gr2-stk{height:50px}.gr2-stk div{font-size:14px}
@@ -8057,7 +8074,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       else if (m.pct == null) m.st = { c: 'k', t: 'ไม่มีเดือนก่อน' };
       else if (ap < 1) m.st = { c: 'k', t: 'ทรงตัว' };
       else if (m.dir && (m.pct > 0 ? 1 : -1) === m.dir) m.st = { c: 'g', t: 'ดีขึ้น ' + pt };
-      else m.st = { c: 'k', t: (m.pct > 0 ? 'เพิ่มขึ้น ' : 'ลดลง ') + pt };
+      else m.st = { c: m.dir ? 'r' : 'k', t: (m.pct > 0 ? 'เพิ่มขึ้น ' : 'ลดลง ') + pt }; /* v119 · แย่ลง = แดง */
       m.tail = '';
       if (m.n >= 3 && m.now != null) {
         if (m.dir > 0 && m.now >= Math.max.apply(null, ok)) m.tail = 'สูงสุดใน ' + m.n + ' เดือน';
@@ -8128,7 +8145,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       } else html += emp('ยังไม่มีข้อมูล Search IS');
       /* 02 แคมเปญ (v108) */
       var cName = function (s) { return String(s).replace(/^[\d-]+\s*Search-/i, '').replace(/-BKK/gi, '').replace(/_/g, ' ').replace(/-/g, ' ').replace(/\s+รับซื้อ$/, '').replace(/^Apple(?=i|Mac|Watch|Air)/, '').replace(/\bKW\b/g, ' ').replace(/\bGameConsole\b/, 'Game').replace(/TopFunnel\s*/, '· ').replace(/\s+/g, ' ').trim(); };
-      var dl = function (now, prev, goodUp, pts) { if (prev == null || !isFinite(prev) || (!pts && !prev)) return '<span class="gr4-dl n">ใหม่</span>'; var d = pts ? now - prev : (now - prev) / prev * 100; if (Math.abs(d) < 1) return '<span class="gr4-dl k">ทรงตัว</span>'; var up = d > 0, g = goodUp ? up : !up, a = Math.abs(d); return '<span class="gr4-dl ' + (g ? 'g' : 'k') + '">' + (g ? 'ดีขึ้น ' : up ? 'เพิ่มขึ้น ' : 'ลดลง ') + (a >= 10 ? Math.round(a) : a.toFixed(1)) + (pts ? ' จุด' : '%') + '</span>'; };
+      var dl = function (now, prev, goodUp, pts) { if (prev == null || !isFinite(prev) || (!pts && !prev)) return '<span class="gr4-dl n">ใหม่</span>'; var d = pts ? now - prev : (now - prev) / prev * 100; if (Math.abs(d) < 1) return '<span class="gr4-dl k">ทรงตัว</span>'; var up = d > 0, g = goodUp ? up : !up, a = Math.abs(d); return '<span class="gr4-dl ' + (g ? 'g' : 'r') + '">' + (g ? 'ดีขึ้น ' : up ? 'เพิ่มขึ้น ' : 'ลดลง ') + (a >= 10 ? Math.round(a) : a.toFixed(1)) + (pts ? ' จุด' : '%') + '</span>'; };
       html += '<div class="gr-lb"><b>02 เงินโฆษณาไปที่สินค้าไหน</b> แคมเปญ Search เรียงตามค่าใช้จ่าย · ป้ายเล็ก = เทียบ' + mS(pm) + '</div>';
       if (sCamp.length) {
         var cMx = sCamp[0].cost || 1, cTot = sCamp.reduce(function (a, r) { return a + r.cost; }, 0) || 1, top8 = sCamp.slice(0, 8).filter(function (r) { return r.conversions > 0; });
@@ -8414,13 +8431,17 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       html += '<div class="gr-lb"><b>02 แต่ละสินค้า</b> เรียงตามจำนวนลูกค้าทัก</div>';
       if (rows.length) {
         var rMx = Math.max.apply(null, rows.map(function (r) { return Math.max(r.cv, r.es); })) || 1;
-        html += '<div class="gr2-c"><div class="gr3-pr h"><div>สินค้า</div><div>ทัก → ประเมิน → ปิดยอด</div><div class="gr3-pc">ส่งประเมิน</div><div class="gr3-pc">ปิดยอด</div><div class="gr3-pc cpu">ค่าโฆษณา / เครื่อง</div></div>';
-        rows.forEach(function (r) {
-          html += '<div class="gr3-pr"><div class="n">' + r.n + (r === best ? ' <span class="gr2-pill">ปิดยอดดีสุด</span>' : '') + '<small>ค่าโฆษณา ฿' + fI(r.c) + '</small></div><div class="gr3-f3">' +
-            [['c1', 'ทัก', r.cv], ['c2', 'ประเมิน', r.es], ['c3', 'ปิดยอด', r.cl]].map(function (x) { return '<div class="' + x[0] + '"><span class="t">' + x[1] + '</span><div class="gr2-bar"><i style="width:' + Math.max(1, x[2] / rMx * 100) + '%"></i></div><span><b>' + fI(x[2]) + '</b></span></div>'; }).join('') + '</div>' +
-            '<div class="gr3-pc"><b>' + (r.cv ? Math.round(pc(r.es, r.cv)) + '%' : '–') + '</b><small>ของคนทัก</small></div><div class="gr3-pc' + (r === best ? ' g' : '') + '"><b>' + (r.es ? Math.round(pc(r.cl, r.es)) + '%' : '–') + '</b><small>ของเคส</small></div>' +
-            '<div class="gr3-pc cpu"><b>' + (r.cl ? '฿' + fI(r.c / r.cl) : '–') + '</b><small>' + fI(r.cl) + ' เครื่อง</small></div></div>';
+        /* v120 · ตารางแถวเดียว (แบบ A): ทัก/ประเมิน/ปิดยอด ซ้อนในหลอดเดียว · ปิดยอดดีสุด = ส้ม ที่เหลือเทา */
+        html += '<div class="gr2-c">' + (best ? '<div class="gr-q">สินค้าไหนปิดยอดได้ดี</div><h3><em>' + best.n + '</em> ปิดยอดได้ดีสุด ' + Math.round(pc(best.cl, best.es)) + '% ของเคส</h3>' : '') +
+          '<div class="gr8-pt"><div class="h"><span>สินค้า</span><span>ทัก → ประเมิน → ปิดยอด</span><span>ส่งประเมิน</span><span>ปิดยอด</span><span>ค่าโฆษณา/เครื่อง</span></div>';
+        rows.forEach(function (r) { var on = r === best;
+          html += '<div class="r' + (on ? ' on' : '') + '"><div class="n">' + r.n + (on ? ' <span class="gr2-pill">ปิดยอดดีสุด</span>' : '') + '<small>฿' + fI(r.c) + '</small></div>' +
+            '<div class="fb"><div class="fn"><i class="a" style="width:' + Math.max(.5, r.cv / rMx * 100) + '%"></i><i class="b" style="width:' + Math.max(.5, r.es / rMx * 100) + '%"></i><i class="c" style="width:' + Math.max(r.cl ? .8 : 0, r.cl / rMx * 100) + '%"></i></div>' +
+            '<div class="fv"><b>' + fI(r.cv) + '</b> ทัก › <b>' + fI(r.es) + '</b> ประเมิน › <b>' + fI(r.cl) + '</b> ปิด</div></div>' +
+            '<div class="v">' + (r.cv ? Math.round(pc(r.es, r.cv)) + '%' : '–') + '<small>ของคนทัก</small></div><div class="v cl">' + (r.es ? Math.round(pc(r.cl, r.es)) + '%' : '–') + '<small>ของเคส</small></div>' +
+            '<div class="v">' + (r.cl ? '฿' + fI(r.c / r.cl) : '–') + '<small>' + fI(r.cl) + ' เครื่อง</small></div></div>';
         });
+        html += '</div><div class="gr8-lg"><span><i class="a"></i>ทัก</span><span><i class="b"></i>ประเมิน</span><span><i class="c"></i>ปิดยอด</span></div>';
         html += '<div class="gr2-note">ส่งประเมินเกิน 100% = มีลูกค้า LINE ที่ไม่ได้มาจากโฆษณาด้วย (เช่น ค้นเจอเว็บเอง หรือลูกค้าเก่า)</div></div>';
       } else html += emp('ยังไม่มีข้อมูลเดือนนี้');
       /* 03 % ปิดยอดเทียบเดือนก่อน */
@@ -8545,15 +8566,16 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           '<div class="bx"><small>คู่แข่งที่แซงเราได้</small><b class="big">' + above.length + ' ราย</b><p>จากคู่แข่งทั้งหมด ' + C.length + ' ราย</p><p>' + (above.length ? 'มากสุด ' + e2(above[0][0]) + ' ' + aF(above[0][3]) : 'ไม่มีใครแซงเราได้') + '</p></div></div></div>';
         /* 6 กราฟ */
         /* v118 · เรียงสำคัญจากซ้ายไปขวา: ส่วนแบ่ง → อันดับ 1 → แซงเรา → ด้านบน → เราชนะ → ขึ้นพร้อมเรา */
-        var COL6 = [{ t: 'ส่วนแบ่งการแสดงผล', e: 'Impression share', j: 1, me: 0 }, { t: 'ได้อันดับ 1 บนสุด', e: 'Abs. top of page rate', j: 5, me: 2 }, { t: 'แซงเรา', e: 'Position above rate', j: 3 },
-          { t: 'ได้อยู่ด้านบนของหน้า', e: 'Top of page rate', j: 4, me: 1 }, { t: 'เราชนะ', e: 'Outranking share', j: 6 }, { t: 'ขึ้นพร้อมเรา', e: 'Overlap rate', j: 2 }];
+        /* v120 · หัวข้ออังกฤษเป็นตัวนำ · ไทยอธิบายแบบคนเล่า */
+        var COL6 = [{ e: 'Impression share', t: 'มีคนค้นหา 100 ครั้ง โฆษณาเราได้ขึ้นกี่ครั้ง', j: 1, me: 0 }, { e: 'Abs. top of page rate', t: 'ทุกครั้งที่โฆษณาเราขึ้น ได้อยู่บนสุดเป็นตัวแรกกี่ %', j: 5, me: 2 }, { e: 'Position above rate', t: 'ตอนที่ขึ้นพร้อมกัน คู่แข่งได้อยู่สูงกว่าเรากี่ %', j: 3 },
+          { e: 'Top of page rate', t: 'ทุกครั้งที่โฆษณาเราขึ้น ได้อยู่โซนบนเหนือผลค้นหาปกติกี่ %', j: 4, me: 1 }, { e: 'Outranking share', t: 'เราอยู่สูงกว่าคู่แข่ง หรือเราขึ้นแต่เขาไม่ขึ้น กี่ %', j: 6 }, { e: 'Overlap rate', t: 'ทุกครั้งที่โฆษณาเราขึ้น คู่แข่งขึ้นในหน้าเดียวกันกี่ %', j: 2 }];
         var ins = function (col, rows) { var comp = rows.filter(function (r) { return !r.me && !r.lo; }), top = comp[0] || { n: '–', v: 0 }, lo = comp[comp.length - 1] || top, n = comp.filter(function (r) { return r.v > 0.05; }).length;
-          if (col.j === 1) { var rk = rows.findIndex(function (r) { return r.me; }) + 1; return rk === 1 ? 'เราขึ้นบ่อยสุด <b>' + aF(me[0]) + '</b> · ห่างอันดับ 2 (' + e2(top.n) + ') <span class="tg">' + Math.round((me[0] - (top.v < 0 ? 5 : top.v)) * 10) / 10 + ' จุด</span>' : 'เราอยู่อันดับ <b>' + rk + '</b> · ' + e2(top.n) + ' ขึ้นบ่อยกว่าเรา'; }
-          if (col.j === 2) return '<b>' + e2(top.n) + '</b> เจอเราบ่อยสุด <span class="to">' + Math.round(top.v) + ' ใน 100</span> ครั้ง';
-          if (col.j === 3) return n ? '<span class="to">' + n + ' ราย</span>แซงเราได้ · มากสุด <b>' + e2(top.n) + '</b> <span class="to">' + aF(top.v) + '</span>' : '<span class="tg">ไม่มีคู่แข่งรายไหนแซงเราได้เลย</span>';
-          if (col.j === 4) return 'เราอยู่ด้านบน <span class="to">' + aF(me[1]) + '</span> · <b>' + e2(top.n) + '</b> ใกล้เราสุด ' + aF(top.v);
-          if (col.j === 5) return 'เราได้อันดับ 1 <span class="to">' + aF(me[2]) + '</span>' + (n ? ' · แย่งได้มากสุดคือ <b>' + e2(top.n) + '</b> ' + aF(top.v) : ' · <span class="tg">ไม่มีใครแย่งได้</span>');
-          return 'ชนะยากสุดคือ <b>' + e2(lo.n) + '</b> <span class="to">' + aF(lo.v) + '</span>'; };
+          if (col.j === 1) { var rk = rows.findIndex(function (r) { return r.me; }) + 1; return rk === 1 ? 'เราขึ้นบ่อยกว่าทุกคน ส่วน <b>' + e2(top.n) + '</b> ที่ตามมาเป็นที่ 2 ขึ้นแค่ ' + aF(top.v) + ' น้อยกว่าเรา <span class="tg">' + Math.round((me[0] - (top.v < 0 ? 5 : top.v)) * 10) / 10 + ' จุด</span>' : 'เราขึ้นบ่อยเป็นที่ <b>' + rk + '</b> · <b>' + e2(top.n) + '</b> ขึ้นบ่อยกว่าเรา'; }
+          if (col.j === 2) return 'คนที่ชนกับเราบ่อยสุดคือ <b>' + e2(top.n) + '</b> โฆษณาเราขึ้น 100 ครั้ง เจอเขา <span class="to">' + Math.round(top.v) + ' ครั้ง</span>';
+          if (col.j === 3) return n ? 'มีคู่แข่ง <span class="to">' + n + ' ราย</span>ที่เคยอยู่เหนือเรา ตัวที่แซงบ่อยสุดคือ <b>' + e2(top.n) + '</b> <span class="to">' + aF(top.v) + '</span> ของครั้งที่เจอกัน' : '<span class="tg">ยังไม่มีคู่แข่งรายไหนอยู่เหนือเราได้เลย</span>';
+          if (col.j === 4) return 'โฆษณาเราอยู่โซนบน <span class="to">' + aF(me[1]) + '</span> ของครั้งที่ขึ้น คู่แข่งที่ใกล้เราสุดคือ <b>' + e2(top.n) + '</b> ' + aF(top.v);
+          if (col.j === 5) return 'เราได้เป็นตัวแรกบนสุด <span class="to">' + aF(me[2]) + '</span> ของครั้งที่ขึ้น' + (n ? ' คนที่แย่งตำแหน่งนี้ได้บ่อยสุดคือ <b>' + e2(top.n) + '</b> ' + aF(top.v) : ' · <span class="tg">ไม่มีใครแย่งได้เลย</span>');
+          return 'เราชนะทุกรายเกิน ' + aF(lo.v) + ' ของครั้งที่เจอกัน คู่แข่งที่ชนะยากสุดคือ <b>' + e2(lo.n) + '</b> <span class="to">' + aF(lo.v) + '</span>'; };
         html += '<div class="gr6-grid">' + COL6.map(function (col, ci) {
           var rows = C.map(function (c) { var p = PM[c[0]]; return { n: c[0], v: c[col.j], p: p ? p[col.j] : null, lo: c[2] < 5 }; });
           if (col.me != null) rows.push({ n: 'เรา', v: me[col.me], me: 1, p: P ? P.me[col.me] : null });
@@ -8568,7 +8590,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           else if (col.j === 3 || col.j === 6) { var ws = 0, a = 0, pa = 0, pw = 0; C.forEach(function (c) { var w = OV[c[0]] || 0; ws += w; a += c[col.j] * w; var pc = PM[c[0]]; if (pc) { pw += w; pa += pc[col.j] * w; } });
             var av = a / (ws || 1), pv = pw ? pa / pw : null, dd = pv == null ? null : av - pv;
             corner = '<div class="sw"><small>' + (col.j === 3 ? 'โดนแซงเฉลี่ย' : 'ชนะเฉลี่ย') + '</small><b>' + aF(av) + '</b>' + (dd == null ? '' : chip(dd, col.j === 3 ? dd < 0 : dd > 0)) + '</div>'; }
-          return '<div class="gr6-pn"><div class="top"><div><h4>' + col.t + '</h4><div class="en">' + col.e + '</div></div>' + corner + '</div>' +
+          return '<div class="gr6-pn"><div class="top"><div><h4>' + col.e + '</h4><div class="en">' + col.t + '</div></div>' + corner + '</div>' +
             '<div class="ins">' + ins(col, rows) + '</div>' +
             sh.slice().sort(function (a, b) { return rows.indexOf(a) - rows.indexOf(b); }).map(function (r) {
               return '<div class="r7' + (r.me ? ' me' : r.key ? ' key' : '') + (r.lo ? ' lo' : '') + '"' + (r.lo ? ' title="เจอเราไม่ถึง 5 ใน 100 ครั้ง · ไม่นับในประโยคสรุป"' : ' title="อันดับ ' + (rows.indexOf(r) + 1) + '"') + '><span>' + (r.me ? 'เรา' : e2(r.n)) + '</span><div class="tr"><i class="' + (r.v < 0 && !r.me && !r.key ? 'h' : '') + '" data-gw="' + (r.v < 0 ? 6 : Math.max(r.v > 0.05 ? 1.5 : 0, Math.min(100, r.v))) + '"></i></div><em>' + aF(r.v) + '</em></div>'; }).join('') +
