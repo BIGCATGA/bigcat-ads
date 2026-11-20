@@ -2691,6 +2691,19 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr9-ph .vid{background:#1d1d26;height:110px;margin-top:6px;position:relative}
 @media(max-width:1200px){.gr9-plw{grid-template-columns:1fr}.gr9-ph{margin:0 auto}.gr9-flw{grid-template-columns:1fr 1fr}.gr9-flw>i{display:none}}
 @media(max-width:760px){.gr9-win{grid-template-columns:1fr}.gr9-th.big{width:100%;max-width:220px}.gr9-rk .r{grid-template-columns:42px minmax(0,1fr) 64px}.gr9-rk .r .v:last-child{display:none}.gr9-vf .s{grid-template-columns:100px minmax(0,1fr) 90px}.gr9-vf .rt{grid-template-columns:1fr}.gr9-hb .r,.gr9-rt .r{grid-template-columns:96px minmax(0,1fr) 104px}}
+
+/* v122 · การ์ดกลับมาทักเอง (แบบ B) */
+.gr9-vt .sub{font-size:14px;color:var(--text-2);margin:2px 0 14px}
+.gr9-vt .paths{display:grid;grid-template-columns:150px minmax(0,1fr);gap:0 18px;align-items:center}
+.gr9-vt .adm{grid-row:span 2;text-align:center}.gr9-vt .adm .ph{width:96px;height:160px;border:3px solid #cfcfd8;border-radius:18px;margin:0 auto;padding:6px;background:#fff}
+.gr9-vt .adm .ph img,.gr9-vt .adm .ph span{display:grid;place-items:center;width:100%;height:100%;border-radius:12px;object-fit:cover;background:var(--gr-grad);color:#fff;font-size:11px;font-weight:600;text-align:center}.gr9-vt .adm small{display:block;margin-top:6px;font-size:12.5px;color:var(--text-3)}
+.gr9-vt .path{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:14px;align-items:center;padding:12px 0}
+.gr9-vt .line{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--text-2)}
+.gr9-vt .step{background:var(--bg-soft);border-radius:10px;padding:6px 12px;white-space:nowrap}
+.gr9-vt .arw{flex:1;height:3px;border-radius:2px;background:var(--gr-gy);position:relative;min-width:20px}.gr9-vt .arw:after{content:"";position:absolute;right:-2px;top:-4px;border-left:8px solid var(--gr-gy);border-top:5.5px solid transparent;border-bottom:5.5px solid transparent}
+.gr9-vt .path.on .step{background:var(--gr-grad);color:#fff;font-weight:500}.gr9-vt .path.on .arw{background:repeating-linear-gradient(90deg,#d03f22 0 8px,transparent 8px 13px)}.gr9-vt .path.on .arw:after{border-left-color:#d03f22}
+.gr9-vt .res{text-align:right}.gr9-vt .res b{display:block;font-size:30px;font-weight:600;line-height:1.1}.gr9-vt .res small{font-size:12.5px;color:var(--text-3)}.gr9-vt .path.on .res b{color:var(--gr-acc)}.gr9-vt .path:not(.on) .res b{color:var(--text-2)}
+@media(max-width:860px){.gr9-vt .paths{grid-template-columns:1fr}.gr9-vt .adm{grid-row:auto;margin-bottom:8px}.gr9-vt .path{grid-template-columns:1fr}.gr9-vt .res{text-align:left}.gr9-vt .line{flex-wrap:wrap}.gr9-vt .arw{min-width:40px}}
 /* v121 · ตารางแต่ละสินค้า ตัวใหญ่ขึ้น (ทั้ง Google และ Facebook) */
 .gr8-pt .h{font-size:13px}.gr8-pt .n{font-size:16px}.gr8-pt .n small{font-size:13px}.gr8-pt .fv{font-size:13px}.gr8-pt .v{font-size:18px}.gr8-pt .v small{font-size:12.5px}.gr8-pt .r{padding:12px 0}.gr8-pt .fn{height:20px}
 @media(min-width:901px){.gr8-pt .h,.gr8-pt .r{grid-template-columns:minmax(0,1.2fr) minmax(0,2.2fr) 92px 92px 120px}}
@@ -8190,12 +8203,13 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 
     if (st.tab === 'cre') {
       /* ── ครีเอทีฟ ── */
-      var ads = (D.ad || []).map(function (r) { var x = r.x || {}; return { id: r.key, n: x.n || 'โฆษณา', c: x.c || '', s: x.s || '', t: x.t || '', v: !!x.v, sp: +r.spend || 0, im: +r.impressions || 0, re: +r.reach || 0, lc: +r.link_clicks || 0, ch: +r.chats || 0, v3: +r.v3s || 0, tp: +r.thruplay || 0 }; })
+      var isVid = function (r) { var x = r.x || {}; return !!x.v || +r.v3s > 0 || /วีดีโอ|วิดีโอ|video|vdo|clip|คลิป/i.test(x.n || ''); }; /* v122 · มียอดดู 3 วิ = วิดีโอ */
+      var ads = (D.ad || []).map(function (r) { var x = r.x || {}; return { id: r.key, n: x.n || 'โฆษณา', c: x.c || '', s: x.s || '', t: x.t || '', v: isVid(r), sp: +r.spend || 0, im: +r.impressions || 0, re: +r.reach || 0, lc: +r.link_clicks || 0, ch: +r.chats || 0, v3: +r.v3s || 0, tp: +r.thruplay || 0 }; })
         .filter(function (a) { return a.sp > 0 || a.ch > 0; }).sort(function (a, b) { return b.ch - a.ch || a.sp - b.sp; });
       var vids = ads.filter(function (a) { return a.v; }), imgs = ads.filter(function (a) { return !a.v; });
       var agg = function (a) { return a.reduce(function (o, x) { o.sp += x.sp; o.ch += x.ch; o.im += x.im; o.v3 += x.v3; o.tp += x.tp; return o; }, { sp: 0, ch: 0, im: 0, v3: 0, tp: 0 }); };
       var VA = agg(vids), IA = agg(imgs), tot = agg(ads);
-      var pVids = (PD.ad || []).filter(function (r) { return r.x && r.x.v; }), PV = { im: sum(pVids, 'impressions'), v3: sum(pVids, 'v3s'), tp: sum(pVids, 'thruplay') };
+      var pVids = (PD.ad || []).filter(isVid), PV = { im: sum(pVids, 'impressions'), v3: sum(pVids, 'v3s'), tp: sum(pVids, 'thruplay') };
       var ts = VA.im ? VA.v3 / VA.im * 100 : null, hold = VA.v3 ? VA.tp / VA.v3 * 100 : null, pts_ = PV.im ? PV.v3 / PV.im * 100 : null, phold = PV.v3 ? PV.tp / PV.v3 * 100 : null;
       var best = ads[0], cpr = function (a) { return a.ch ? '฿' + fI(a.sp / a.ch) : '–'; };
       html += '<div class="gr-hero"><h2>ครีเอทีฟ · ' + mL(st.m) + (part ? ' (ยังไม่จบเดือน)' : '') + '</h2><div class="gr-h3">' +
@@ -8292,12 +8306,21 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         var AUD = function (a, nm) { var s = (a || []).join(' ') + ' ' + nm; return /^WEBSITE:|(^|\s)WEBSITE:/.test(s) || /เว็บ|web|pixel|visit/i.test(s) ? 'เคยเข้าเว็บ' : /video|วิดีโอ|วีดีโอ|thruplay/i.test(s) ? 'เคยดูวิดีโอ' : /LOOKALIKE:|lookalike|\blal\b/i.test(s) ? 'คล้ายลูกค้าเดิม (Lookalike)' : /ENGAGEMENT:|page|เพจ|messag|ทัก|engag|inbox/i.test(s) ? 'เคยทัก / มีส่วนร่วมกับเพจ' : /CUSTOM:|รายชื่อ|customer/i.test(s) ? 'รายชื่อลูกค้า' : 'คนใหม่'; };
         var rtA = {}; (D.adset || []).forEach(function (r) { var x = r.x || {}, k = AUD(x.a, r.key + ' '), o = rtA[k] || (rtA[k] = { n: k, v: 0, sp: 0 }); o.v += +r.chats; o.sp += +r.spend; });
         var rt = Object.keys(rtA).map(function (k) { var o = rtA[k]; o.c = o.v ? o.sp / o.v : null; return o; }).filter(function (o) { return o.v > 0; }).sort(function (a, b) { return a.c - b.c; }), rtx = rt.filter(function (o) { return o.n !== 'คนใหม่'; });
-        html += '<div class="gr-lb"><b>02 ลูกค้าใหม่ หรือเคยรู้จักเรา</b></div><div class="gr2-3">';
+        /* v122 · แบบ B: ลูกค้าเดิน 2 ทาง (กดแล้วทักทันที / เห็นแล้วกลับมาทักเอง) */
+        html += '<div class="gr-lb"><b>02 ลูกค้าใหม่ หรือเคยรู้จักเรา</b></div>';
+        if (atT) {
+          var vp = Math.round(at.view / atT * 100), cpp = 100 - vp;
+          html += '<div class="gr2-c gr9-vt"><div class="gr-q">ทักทันที หรือกลับมาทักทีหลัง</div><h3>ลูกค้า <em>' + fI(at.view) + ' คน</em> เห็นโฆษณาแล้วไม่ได้กด แต่กลับมาทักเองภายหลัง</h3>' +
+            '<div class="sub">โฆษณาไม่ได้ทำงานแค่ตอนกด — บางคนเห็นแล้วจำไว้ แล้วค่อยเข้ามาทักเพจเอง</div><div class="paths">' +
+            '<div class="adm"><div class="ph">' + (bx.t ? '<img src="' + e2(bx.t) + '" alt="">' : '<span>โฆษณา BIGCAT</span>') + '</div><small>คนเห็นโฆษณา</small></div>' +
+            '<div class="path"><div class="line"><span class="step">กดโฆษณา</span><span class="arw"></span><span class="step">ทักแชททันที</span></div><div class="res"><b>' + fI(at.click) + '</b><small>แชท · ' + cpp + '%</small></div></div>' +
+            '<div class="path on"><div class="line"><span class="step">ไม่ได้กด เลื่อนผ่าน</span><span class="arw"></span><span class="step">ภายใน 1 วัน ค้นเพจ / ทักเอง</span></div><div class="res"><b>' + fI(at.view) + '</b><small>แชท · ' + vp + '%</small></div></div></div>' +
+            '<div class="gr2-note">เส้นประส้ม = เส้นทางที่อยากให้ดู · แยกตามช่วงนับผลของ Facebook (คลิก 7 วัน / เห็น 1 วัน)</div></div>';
+        } else html += emp('ยังไม่มีข้อมูลการทักทันที / กลับมาทักเอง');
+        html += '<div class="gr2-2" style="margin-top:16px">';
         html += '<div class="gr2-c"><div class="gr-q">เคยทักเพจมาก่อนไหม</div>' + (ch0 ? '<h3><em>ลูกค้าใหม่ ' + Math.round(nw / ch0 * 100) + '%</em> ไม่เคยทักเพจมาก่อน</h3><div class="gr7-ic">' +
           '<div class="it on"><svg width="88" height="88"><use href="#gr9-new" class="gr7-on"/></svg><b>' + Math.round(nw / ch0 * 100) + '%</b><small>ลูกค้าใหม่ · ' + fI(nw) + ' แชท</small><span class="rt">ไม่เคยทักมาก่อน</span></div>' +
           '<div class="it"><svg width="' + Math.round(36 + 50 * Math.sqrt(ret / Math.max(nw, 1))) + '" height="' + Math.round(36 + 50 * Math.sqrt(ret / Math.max(nw, 1))) + '"><use href="#gr9-back" class="gr7-off"/></svg><b>' + Math.round(ret / ch0 * 100) + '%</b><small>เคยทักแล้ว · ' + fI(ret) + ' แชท</small><span class="rt">ทักซ้ำ</span></div></div><div class="gr2-note">Facebook นับ "ผู้ติดต่อใหม่" แยกจากแชททั้งหมด</div>' : '<div class="gr2-empty">ยังไม่มีแชท</div>') + '</div>';
-        html += '<div class="gr2-c"><div class="gr-q">ทักทันที หรือกลับมาทักทีหลัง</div>' + (atT ? '<h3>เห็นโฆษณาแล้ว<em>กลับมาทักเอง ' + Math.round(at.view / atT * 100) + '%</em></h3><div class="gr9-sp"><div class="row"><span>กดโฆษณาแล้วทัก</span><b>' + Math.round(at.click / atT * 100) + '%</b></div><div class="bar"><i style="width:' + at.click / atT * 100 + '%"></i><u style="width:' + at.view / atT * 100 + '%"></u></div><div class="row lo"><span>เห็นโฆษณา ไม่ได้กด แต่ทักเข้ามาภายใน 1 วัน</span><b>' + Math.round(at.view / atT * 100) + '%</b></div></div>' +
-          '<div class="gr9-kv two"><div><small>กดแล้วทัก</small><b>' + fI(at.click) + '</b></div><div class="on"><small>เห็นแล้วกลับมาทัก</small><b>' + fI(at.view) + '</b></div></div><div class="gr2-note">แยกตามช่วงนับผลของ Facebook (คลิก 7 วัน / เห็น 1 วัน)</div>' : '<div class="gr2-empty">ยังไม่มีข้อมูล</div>') + '</div>';
         html += '<div class="gr2-c gr9-hb gr9-rt"><div class="gr-q">ยิงหาคนที่รู้จักเราแล้ว (Retargeting)</div>' + (rtx.length ? '<h3>กลุ่ม<em>' + rt[0].n + '</em> ต่อแชทถูกสุด ฿' + fI(rt[0].c) + '</h3>' +
           hbar(rt.map(function (o) { return { n: o.n, v: o.c, sp: o.sp, ch: o.v }; }), function (x, i) { return i === 0; }, function (x) { return '<b>฿' + fI(x.v) + '</b> · ' + fI(x.ch) + ' แชท'; }) + '<div class="gr2-note">แท่ง = ต้นทุนต่อแชท ยิ่งสั้นยิ่งถูก · แยกตามกลุ่มเป้าหมายของ Ad set</div>'
           : '<h3>เดือนนี้ยิงหา<em>คนใหม่</em>ทั้งหมด</h3><div class="gr2-empty" style="padding:18px 0">ยังไม่มี Ad set ที่ยิงหาคนเคยเข้าเว็บ / ดูวิดีโอ / ทักเพจ — ถ้าเพิ่มจะเห็นการเทียบต้นทุนต่อแชทที่นี่</div>') + '</div>';
