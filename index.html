@@ -2718,9 +2718,18 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr9-pa .h{font-size:13px;color:var(--text-3);padding-bottom:6px;border-bottom:1px solid var(--line)}.gr9-pa .h span:nth-child(n+3){text-align:right}
 .gr9-pa .r{padding:12px 0;border-bottom:1px solid var(--line)}.gr9-pa .r:last-child{border-bottom:0}
 .gr9-pa .n{font-weight:500;font-size:16px;min-width:0}.gr9-pa .n small{display:block;font-size:12.5px;color:var(--text-3);font-weight:400}
-.gr9-pa .bar{height:22px;border-radius:6px;background:var(--bg-soft);position:relative}.gr9-pa .bar i{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--gr-gyi)}.gr9-pa .bar u{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--gr-dk)}
+.gr9-pa .bar{height:22px;border-radius:6px;background:var(--bg-soft);position:relative}.gr9-pa .bar i,.gr9-pa .bar s{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--gr-gy)}.gr9-pa .bar s{background:var(--gr-gyi)}.gr9-pa .bar u{position:absolute;left:0;top:0;bottom:0;border-radius:6px;background:var(--gr-dk)}
 .gr9-pa .r.on .bar u{background:var(--gr-grad)}.gr9-pa .blx{font-size:13px;color:var(--text-3);margin-top:3px}.gr9-pa .blx b{color:var(--text);font-weight:500}
 .gr9-pa .v{text-align:right;font-size:18px;font-weight:500;font-variant-numeric:tabular-nums}.gr9-pa .v small{display:block;font-size:12.5px;color:var(--text-3);font-weight:400}.gr9-pa .r.on .v.cl{color:var(--gr-good);font-weight:600}
+.gr9-ret .tl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gr9-ret .tl>div{background:var(--bg-soft);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.gr9-ret .tl .ic{width:36px;height:36px;border-radius:10px;background:var(--card);display:grid;place-items:center}.gr9-ret .tl .ic svg{width:20px;height:20px;fill:none;stroke:var(--text-2);stroke-width:1.8;stroke-linejoin:round}
+.gr9-ret .tl .nm{font-weight:500;font-size:15px;line-height:1.35}.gr9-ret .tl .nm small{display:block;font-size:12px;color:var(--text-3);font-weight:400;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gr9-ret .tl b{font-size:28px;font-weight:600;line-height:1.1}.gr9-ret .tl b i{font-style:normal;font-size:13px;font-weight:400;margin-left:5px;opacity:.8}.gr9-ret .tl b.na{font-size:17px;font-weight:500;color:var(--text-3)}
+.gr9-ret .tl .kv{font-size:13px;color:var(--text-2);display:flex;flex-direction:column;gap:2px}.gr9-ret .tl .kv span{display:flex;justify-content:space-between;gap:8px}.gr9-ret .tl .kv em{font-style:normal;font-weight:600;color:var(--text)}
+.gr9-ret .tl .vd{margin-top:auto;padding-top:8px;border-top:1px solid var(--line);font-size:13px;font-weight:500;color:var(--text-3)}.gr9-ret .tl .vd.g{color:var(--gr-good)}.gr9-ret .tl .vd.r{color:#dc2626}
+.gr9-ret .tl .on{background:var(--gr-grad);color:#fff}.gr9-ret .tl .on .ic{background:rgba(255,255,255,.2)}.gr9-ret .tl .on .ic svg{stroke:#fff}.gr9-ret .tl .on .nm small,.gr9-ret .tl .on .kv,.gr9-ret .tl .on .kv em,.gr9-ret .tl .on .vd{color:#fff}.gr9-ret .tl .on .vd{border-color:rgba(255,255,255,.3)}
+@media(max-width:860px){.gr9-ret .tl{grid-template-columns:1fr}}
 .gr9-ret .sub,.gr9-lk .sub{font-size:14px;color:var(--text-2);margin:2px 0 14px}.gr9-ret .sub b,.gr9-lk .sub b{color:var(--text)}
 .gr9-ret .rw{display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;align-items:center}
 .gr9-ret .ring{position:relative;width:150px;height:150px}.gr9-ret .ring svg{width:100%;height:100%;transform:rotate(-90deg)}.gr9-ret .ring>div{position:absolute;inset:0;display:grid;place-items:center;text-align:center}.gr9-ret .ring b{font-size:32px;font-weight:600;color:var(--gr-acc);line-height:1}.gr9-ret .ring small{display:block;font-size:12.5px;color:var(--text-3);margin-top:4px}
@@ -8195,8 +8204,9 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     if (!st.m || !TOT[st.m]) { var done = keys.filter(function (k) { return k < cur; }); st.m = done.length ? done[done.length - 1] : keys[keys.length - 1]; }
     var M6 = []; for (var i = 5; i >= 0; i--) M6.push(addM(st.m, -i));
     var pm = M6[4], part = st.m === cur, D = byM[st.m] || {}, PD = byM[pm] || {}, hasR = !!D.total;
-    /* เคสประเมิน / ปิดยอด ช่องทาง Facebook */
-    var EST = {}; (S.data.estimates || []).forEach(function (e) { if (!e.fb || !e.date) return; var k = e.date.slice(0, 7), o = EST[k] || (EST[k] = { es: 0, cl: 0 }); o.es++; if (e.closed) o.cl++; });
+    /* v126 · ประเมิน / ปิดยอด นับจากหน้าบันทึกแชทเท่านั้น (ประเมิน = สถานะ 3/4/5 · ปิด = 5) */
+    var ES_ST = { '3-ประเมินราคาแล้ว': 1, '4-นัดรับของ': 1, '5-ปิดการขาย': 1 };
+    var EST = {}; (S.data.chats || []).forEach(function (c) { if (!c.date || c.status === '6-ขอซื้อสินค้า') return; var k = String(c.date).slice(0, 7), o = EST[k] || (EST[k] = { es: 0, cl: 0 }); if (ES_ST[c.status]) o.es++; if (c.status === '5-ปิดการขาย') o.cl++; });
     var G = {}; Object.keys(TOT).forEach(function (k) { var t = TOT[k], e = EST[k] || { es: 0, cl: 0 }; G[k] = { spend: +t.spend || 0, im: +t.impressions || 0, reach: t.est ? null : +t.reach || null, lc: +t.link_clicks || 0, chats: +t.chats || 0, es: e.es, cl: e.cl }; });
     var MT = [
       { k: 'chats', q: 'ลูกค้าทักแชทกี่แชท', sys: 'Messaging conversations started', pre: '', dp: 0, unit: ' แชท', dir: 1, get: function (o) { return o.chats; } },
@@ -8397,19 +8407,25 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
             '<div class="path on"><div class="line"><span class="step">ไม่ได้กด เลื่อนผ่าน</span><span class="arw"></span><span class="step">ภายใน 1 วัน ค้นเพจ / ทักเอง</span></div><div class="res"><b>' + fI(at.view) + '</b><small>แชท · ' + vp + '%</small></div></div></div>' +
             '<div class="gr2-note">เส้นประส้ม = เส้นทางที่อยากให้ดู · แยกตามช่วงนับผลของ Facebook (คลิก 7 วัน / เห็น 1 วัน)</div></div>';
         } else html += emp('ยังไม่มีข้อมูลการทักทันที / กลับมาทักเอง');
-        html += '<div class="gr2-2" style="margin-top:16px">';
+        html += '<div style="display:grid;gap:16px;margin-top:16px">';
         /* v123 · ปิดยอดจากหน้าบันทึกแชท (สถานะ 5-ปิดการขาย) แยกตามกลุ่มเป้าหมายของ Ad set */
         var setCls = {}; (D.adset || []).forEach(function (r) { setCls[r.key] = AUD((r.x || {}).a, r.key + ' '); });
         var clsCl = {}; (S.data.chats || []).forEach(function (c) { if (c.status !== '5-ปิดการขาย') return; var d = String(c.closed_date || c.date || ''); if (d.slice(0, 7) !== st.m) return; var k = setCls[c.adset] || (c.adset ? AUD([], c.adset) : ''); if (k) clsCl[k] = (clsCl[k] || 0) + 1; });
-        var RET = ['เคยทัก / มีส่วนร่วมกับเพจ', 'เคยเข้าเว็บ', 'เคยดูวิดีโอ', 'รายชื่อลูกค้า'], RETN = { 'เคยทัก / มีส่วนร่วมกับเพจ': 'เคยทักเพจ' };
-        var rets = RET.map(function (k) { var o = rtA[k]; return o && o.v > 0 ? { n: RETN[k] || k, v: o.v, sp: o.sp, cl: clsCl[k] || 0 } : null; }).filter(Boolean).sort(function (a, b) { return a.sp / a.v - b.sp / b.v; });
-        var retCl = rets.reduce(function (a, x) { return a + x.cl; }, 0), rp = ch0 ? Math.round(ret / ch0 * 100) : 0;
-        html += '<div class="gr2-c gr9-ret"><div class="gr-q">ได้ลูกค้าเก่ากลับมาทักไหม</div>' + (ch0 ? '<h3>ยิงโฆษณาแล้ว<em>ลูกค้าเก่ากลับมาทัก ' + fI(ret) + ' คน</em> · ' + rp + '% ของแชท</h3>' +
-          '<div class="sub">คนที่<b>เคยทักเพจ BIGCAT มาก่อน</b> แล้วเห็นโฆษณาจึงกลับมาทักอีกครั้ง</div><div class="rw"><div class="ring"><svg viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" style="stroke:var(--bg-soft)" stroke-width="6"/><circle cx="21" cy="21" r="15.9" fill="none" stroke="url(#gr7og)" stroke-width="6" stroke-dasharray="' + rp + ' ' + (100 - rp) + '" stroke-linecap="round"/></svg><div><span><b>' + rp + '%</b><small>ลูกค้าเก่า</small></span></div></div>' +
-          '<div><div class="gr9-kv"><div class="on"><small>ลูกค้าเก่ากลับมาทัก</small><b>' + fI(ret) + '</b></div><div><small>ลูกค้าใหม่</small><b>' + fI(nw) + '</b></div><div class="on"><small>ปิดยอดจากการยิงหาลูกค้าเก่า</small><b>' + fI(retCl) + ' เครื่อง</b></div></div>' +
-          (rets.length ? '<div class="src"><div class="t">ยิงหาลูกค้าเก่าโดยตรง (Retargeting) ได้ผลแค่ไหน</div>' + rets.map(function (x, i) { var mxv = Math.max.apply(null, rets.map(function (y) { return y.v; })); return '<div class="r' + (i ? '' : ' on') + '"><span>' + x.n + '</span><div class="tr"><i style="width:' + Math.max(2, x.v / mxv * 100) + '%"></i></div><div class="v"><b>' + fI(x.v) + '</b> แชท · ฿' + fI(x.sp / x.v) + ' · ปิด ' + x.cl + '</div></div>'; }).join('') + '</div>'
-            : '<div class="src"><div class="t">ยังไม่มี Ad set ที่ยิงหาลูกค้าเก่าโดยตรง (เคยทักเพจ / เคยเข้าเว็บ / เคยดูวิดีโอ)</div></div>') + '</div></div>' +
-          '<div class="gr2-note">ลูกค้าเก่า = แชททั้งหมด − ผู้ติดต่อใหม่ (Facebook นับให้) · ปิดยอด = แชทที่บันทึกว่าปิดการขายในหน้าบันทึกแชท</div>' : '<div class="gr2-empty">ยังไม่มีแชท</div>') + '</div>';
+        /* v126 · แบบ A: ยิงหาคนที่เคยรู้จัก BIGCAT (เว็บ 30 วัน / มีส่วนร่วมกับเพจ / ดูวิดีโอ 50%) ได้ผลไหม · เทียบคนใหม่ */
+        var auN = {}; (D.adset || []).forEach(function (r) { var x = r.x || {}, k = AUD(x.a, r.key + ' '); (x.a || []).forEach(function (n) { n = String(n).replace(/^[A-Z_]+:/, ''); (auN[k] = auN[k] || []).indexOf(n) < 0 && auN[k].push(n); }); });
+        var NB = rtA['คนใหม่'], nbc = NB && NB.v ? NB.sp / NB.v : null;
+        var RT3 = [['เคยเข้าเว็บ', 'เคยเข้าเว็บ BIGCAT', '30 วันล่าสุด', 'web'], ['เคยทัก / มีส่วนร่วมกับเพจ', 'เคยมีส่วนร่วมกับเพจ', 'ทัก / กดไลก์ / คอมเมนต์', 'pg'], ['เคยดูวิดีโอ', 'เคยดูวิดีโอ 50% ขึ้นไป', 'วิดีโอในเพจ BIGCAT', 'vd']]
+          .map(function (g) { var o = rtA[g[0]], v = o ? o.v : 0, sp = o ? o.sp : 0; return { k: g[0], n: g[1], d: (auN[g[0]] || []).slice(0, 2).join(' · ') || g[2], ic: g[3], v: v, sp: sp, c: v ? sp / v : null, cl: clsCl[g[0]] || 0 }; });
+        var rtOn = RT3.filter(function (x) { return x.v > 0; }), rtB = rtOn.length ? rtOn.reduce(function (a, x) { return x.c < a.c ? x : a; }) : null, dB = rtB && nbc ? (nbc - rtB.c) / nbc * 100 : null;
+        var ICO = { web: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/>', pg: '<path d="M7 11v9H4v-9zM7 11l4-8c1.5 0 2.5 1 2.5 2.5V9h5a2 2 0 0 1 2 2.3l-1.2 6.5a2 2 0 0 1-2 1.7H7"/>', vd: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.5v5l4.5-2.5z"/>' };
+        html += '<div class="gr2-c gr9-ret"><div class="gr-q">ยิงหาคนที่เคยรู้จัก BIGCAT ได้ผลไหม</div><h3>' + (!rtB ? 'เดือนนี้<em>ยังไม่ได้ยิง</em>หาคนที่เคยรู้จัก BIGCAT' : 'กลุ่ม<em>' + rtB.n + '</em> ' + (dB == null ? 'ได้แชทถูกสุด ฿' + fI(rtB.c) : dB >= 1 ? 'ได้ผลดีสุด แชทถูกกว่าคนใหม่ ' + Math.round(dB) + '%' : dB <= -1 ? 'ได้แชทถูกสุด แต่ยังแพงกว่าคนใหม่ ' + Math.round(-dB) + '%' : 'ได้แชทถูกสุด ใกล้เคียงคนใหม่')) + '</h3>' +
+          '<div class="sub">เทียบแต่ละกลุ่มกับการยิงหา<b>คนใหม่ทั่วไป</b>' + (nbc ? ' (฿' + fI(nbc) + ' ต่อแชท)' : '') + '</div><div class="tl">' +
+          RT3.map(function (x) { var on = x === rtB && (dB == null || dB >= 1), d = x.c != null && nbc ? (nbc - x.c) / nbc * 100 : null;
+            var vd = x.v ? (d == null ? '' : d >= 1 ? '<div class="vd g">ได้ผล · ถูกกว่าคนใหม่ ' + Math.round(d) + '%</div>' : d <= -1 ? '<div class="vd r">ยังไม่คุ้ม · แพงกว่าคนใหม่ ' + Math.round(-d) + '%</div>' : '<div class="vd">ใกล้เคียงคนใหม่</div>') : '<div class="vd">–</div>';
+            return '<div class="' + (on ? 'on' : x.v ? '' : 'off') + '"><div class="ic"><svg viewBox="0 0 24 24">' + ICO[x.ic] + '</svg></div><div class="nm">' + x.n + '<small>' + e2(x.d) + '</small></div>' +
+              (x.v ? '<b>' + fI(x.v) + '<i>แชท</i></b><div class="kv"><span>ค่าโฆษณา<em>฿' + fI(x.sp) + '</em></span><span>ได้ 1 แชท ใช้เงิน<em>฿' + fI(x.c) + '</em></span><span>ปิดยอด<em>' + x.cl + ' เครื่อง</em></span></div>'
+                : '<b class="na">ยังไม่ได้ยิง</b><div class="kv">เดือนนี้ไม่มี Ad set ที่ยิงหากลุ่มนี้</div>') + vd + '</div>'; }).join('') + '</div>' +
+          '<div class="gr2-note">แยกจากกลุ่มเป้าหมายของ Ad set (ดูจากชื่อกลุ่มเป้าหมาย) · ปิดยอด = แชทที่บันทึกว่าปิดการขายในหน้าบันทึกแชท · ส้ม = กลุ่มที่ได้ผลดีสุด</div></div>';
         var LK = rtA['คล้ายลูกค้าเดิม (Lookalike)'], NW = rtA['คนใหม่'];
         html += '<div class="gr2-c gr9-lk"><div class="gr-q">ยิงหากลุ่มคล้ายลูกค้าเดิม (Lookalike)</div>';
         if (LK && LK.v > 0) {
@@ -8464,14 +8480,15 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
       var gOf = function (c) { c = String(c || ''); for (var i = 0; i < GRP.length; i++) if (GRP[i][1].test(c)) return i; return -1; };
       var eOf = function (c) { c = String(c || '').trim(); for (var i = 0; i < GRP.length; i++) if (GRP[i][2].test(c)) return i; return -1; };
       var aggF = function (mon, DD) {
-        var o = GRP.map(function () { return { c: 0, cv: 0, es: 0, cl: 0 }; }), mix = { c: 0, cv: 0 };
+        var o = GRP.map(function () { return { c: 0, cv: 0, rc: 0, es: 0, cl: 0 }; }), mix = { c: 0, cv: 0 }; o.un = { c: 0, cv: 0, rc: 0, es: 0, cl: 0 };
         var src = DD && DD.adset ? DD.adset.map(function (r) { return { n: r.key + ' ' + ((r.x || {}).c || ''), c: +r.spend, cv: +r.chats }; })
           : C.fbRows(S.data, mon + '-01', mon + '-31').map(function (r) { return { n: (r.adset || '') + ' ' + (r.ad || '') + ' ' + (r.campaign || ''), c: Number(r.spend) || 0, cv: Number(r.chats) || 0 }; });
         src.forEach(function (r) { var g = gOf(r.n), t = g >= 0 ? o[g] : mix; t.c += r.c; t.cv += r.cv; });
-        (S.data.estimates || []).forEach(function (e) { if (!e.fb || !e.date || e.date.slice(0, 7) !== mon) return; var g = eOf(e.category); if (g >= 0) { o[g].es++; if (e.closed) o[g].cl++; } });
-        /* แคมเปญที่ไม่บอกสินค้า (เช่น Apple) → แบ่งค่าโฆษณา/แชทตามสัดส่วนเคสประเมิน */
-        var tE = o.reduce(function (a, x) { return a + x.es; }, 0);
-        if (mix.c || mix.cv) o.forEach(function (x) { var s = tE ? x.es / tE : 0; x.c += mix.c * s; x.cv += mix.cv * s; });
+        /* v126 · แชท → ประเมิน → ปิดยอด นับจากหน้าบันทึกแชทเท่านั้น · สินค้าดูจากช่อง "สินค้า" ถ้าว่างดูจากชื่อแคมเปญ/Ad set */
+        (S.data.chats || []).forEach(function (c) { if (!c.date || String(c.date).slice(0, 7) !== mon || c.status === '6-ขอซื้อสินค้า') return; var g = gOf(c.product); if (g < 0) g = gOf((c.adset || '') + ' ' + (c.ad || '') + ' ' + (c.campaign || '')); var t = g >= 0 ? o[g] : o.un; t.rc++; if (ES_ST[c.status]) t.es++; if (c.status === '5-ปิดการขาย') t.cl++; });
+        /* แคมเปญที่ไม่บอกสินค้า (เช่น Apple) → แบ่งค่าโฆษณา/แชทตามสัดส่วนแชทที่บันทึก */
+        var tE = o.reduce(function (a, x) { return a + x.rc; }, 0);
+        if (mix.c || mix.cv) o.forEach(function (x) { var s = tE ? x.rc / tE : 0; x.c += mix.c * s; x.cv += mix.cv * s; });
         o.mixed = mix.c > 0; return o;
       };
       var cM = aggF(st.m, D), pM = aggF(pm, PD);
@@ -8481,24 +8498,25 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         '<div class="gr-bx"><small>ลูกค้าทักจากโฆษณา</small><b>' + fI(T.cv) + '<i>แชท</i></b><p>ค่าโฆษณา ฿' + fI(T.c) + (T.cv ? ' · ฿' + (T.c / T.cv).toFixed(1) + ' ต่อแชท' : '') + '</p></div>' +
         '<div class="gr-bx"><small>ส่งเข้าประเมินราคา</small><b>' + fI(T.es) + '<i>เคส · ' + Math.round(pc(T.es, T.cv)) + '% ของแชท</i></b><p>' + (PT.cv ? 'เดือนก่อน ' + Math.round(pc(PT.es, PT.cv)) + '% · ' : '') + (T.es ? '฿' + fI(T.c / T.es) + ' ต่อเคส' : '') + '</p></div>' +
         '<div class="gr-bx"><small>ปิดยอดรับซื้อได้</small><b>' + fI(T.cl) + '<i>เครื่อง · ' + Math.round(pc(T.cl, T.es)) + '% ของเคส</i></b><p>' + (PT.es ? 'เดือนก่อน ' + Math.round(pc(PT.cl, PT.es)) + '% · ' : '') + (T.cl ? '฿' + fI(T.c / T.cl) + ' ต่อเครื่อง' : '') + '</p></div></div></div>';
-      var rows = GRP.map(function (g, i) { return { n: g[0], c: cM[i].c, cv: cM[i].cv, es: cM[i].es, cl: cM[i].cl }; }).filter(function (r) { return r.cv >= 0.5 || r.es > 0; }).sort(function (a, b) { return b.cv - a.cv; });
-      var bigE = rows.filter(function (r) { return r.es >= 20; }); if (bigE.length < 2) bigE = rows.filter(function (r) { return r.es >= 5; });
-      var best = bigE.length ? bigE.reduce(function (a, r) { return pc(r.cl, r.es) > pc(a.cl, a.es) ? r : a; }) : null;
-      html += '<div class="gr-lb"><b>01 แต่ละสินค้า</b> เรียงตามจำนวนเคสประเมิน</div>';
+      var rows = GRP.map(function (g, i) { return { n: g[0], c: cM[i].c, cv: cM[i].cv, rc: cM[i].rc, es: cM[i].es, cl: cM[i].cl }; }).filter(function (r) { return r.cv >= 0.5 || r.rc > 0; }).sort(function (a, b) { return b.rc - a.rc; });
+      if (cM.un.rc) rows.push({ n: 'ไม่ระบุสินค้า', un: 1, c: 0, cv: 0, rc: cM.un.rc, es: cM.un.es, cl: cM.un.cl });
+      var bigE = rows.filter(function (r) { return !r.un && r.rc >= 20; }); if (bigE.length < 2) bigE = rows.filter(function (r) { return !r.un && r.rc >= 5; });
+      var best = bigE.length ? bigE.reduce(function (a, r) { return pc(r.cl, r.rc) > pc(a.cl, a.rc) ? r : a; }) : null; if (best && !best.cl) best = null;
+      html += '<div class="gr-lb"><b>01 แต่ละสินค้า</b> เรียงตามจำนวนแชทที่บันทึก</div>';
       if (rows.length) {
         var rMx = Math.max.apply(null, rows.map(function (r) { return Math.max(r.cv, r.es); })) || 1;
-        html += '<div class="gr2-c">' + (best ? '<div class="gr-q">สินค้าไหนปิดยอดได้ดี</div><h3><em>' + best.n + '</em> ปิดยอดได้ดีสุด ' + Math.round(pc(best.cl, best.es)) + '% ของเคส</h3>' : '') +
-          '<div class="gr9-pa"><div class="h"><span>สินค้า</span><span>เคสประเมิน → ปิดยอด</span><span>ปิดยอด</span><span>ค่าโฆษณา</span><span>ค่าโฆษณา/เครื่อง</span></div>';
-        /* v123 · แบบ A: หลอด = เคสประเมิน → ปิดยอด (แชทแสดงเป็นตัวเลขเล็ก เพราะ Facebook บอกไม่ได้ว่าแชทไหนเป็นสินค้าอะไร) */
-        var eMx = Math.max.apply(null, rows.map(function (r) { return r.es; })) || 1;
-        rows.slice().sort(function (a, b) { return b.es - a.es || b.cv - a.cv; }).forEach(function (r) { var on = r === best;
-          html += '<div class="r' + (on ? ' on' : '') + '"><div class="n">' + r.n + (on ? ' <span class="gr2-pill">ปิดยอดดีสุด</span>' : '') + '<small>' + fI(r.cv) + ' แชทจากโฆษณา</small></div>' +
-            '<div class="fb"><div class="bar"><i style="width:' + Math.max(.8, r.es / eMx * 100) + '%"></i><u style="width:' + (r.cl ? Math.max(.8, r.cl / eMx * 100) : 0) + '%"></u></div><div class="blx"><b>' + fI(r.es) + '</b> เคสประเมิน › <b>' + fI(r.cl) + '</b> ปิด</div></div>' +
-            '<div class="v cl">' + (r.es ? Math.round(pc(r.cl, r.es)) + '%' : '–') + '<small>ของเคส</small></div><div class="v sp">฿' + fI(r.c) + '<small>ค่าโฆษณา</small></div>' +
-            '<div class="v">' + (r.cl ? '฿' + fI(r.c / r.cl) : '–') + '<small>' + fI(r.cl) + ' เครื่อง</small></div></div>';
+        html += '<div class="gr2-c"><div class="gr-q">ปิดยอดแยกตามสินค้า</div><h3>แต่ละสินค้า ลูกค้าทักมา ประเมิน และ<em>ปิดยอดได้กี่เครื่อง</em></h3>' +
+          '<div class="gr9-pa"><div class="h"><span>สินค้า</span><span>แชทที่บันทึก → ประเมิน → ปิดยอด</span><span>ปิดยอด</span><span>ค่าโฆษณา</span><span>ค่าโฆษณา/เครื่อง</span></div>';
+        /* v126 · หลอด 3 ชั้น = แชทที่บันทึก → ประเมิน → ปิดยอด (นับจากหน้าบันทึกแชท) */
+        var eMx = Math.max.apply(null, rows.map(function (r) { return r.rc; })) || 1;
+        rows.forEach(function (r) { var on = r === best;
+          html += '<div class="r' + (on ? ' on' : '') + '"><div class="n">' + r.n + (on ? ' <span class="gr2-pill">ปิดยอดดีสุด</span>' : '') + '<small>' + (r.un ? 'แชทที่ยังไม่ได้ใส่สินค้า' : 'Facebook นับ ' + fI(r.cv) + ' แชท') + '</small></div>' +
+            '<div class="fb"><div class="bar"><i style="width:' + (r.rc ? Math.max(.8, r.rc / eMx * 100) : 0) + '%"></i><s style="width:' + (r.es ? Math.max(.8, r.es / eMx * 100) : 0) + '%"></s><u style="width:' + (r.cl ? Math.max(.8, r.cl / eMx * 100) : 0) + '%"></u></div><div class="blx"><b>' + fI(r.rc) + '</b> แชท › <b>' + fI(r.es) + '</b> ประเมิน › <b>' + fI(r.cl) + '</b> ปิด</div></div>' +
+            '<div class="v cl">' + (r.rc ? Math.round(pc(r.cl, r.rc)) + '%' : '–') + '<small>ของแชท</small></div><div class="v sp">' + (r.un ? '–' : '฿' + fI(r.c)) + '<small>ค่าโฆษณา</small></div>' +
+            '<div class="v">' + (r.cl && !r.un ? '฿' + fI(r.c / r.cl) : '–') + '<small>' + fI(r.cl) + ' เครื่อง</small></div></div>';
         });
-        html += '</div><div class="gr8-lg"><span><i class="b"></i>เคสประเมิน</span><span><i class="c"></i>ปิดยอด</span></div>' +
-          '<div class="gr2-note">เทียบ "ปิดยอดดีสุด" เฉพาะสินค้าที่มีเคสประเมินมากพอ · เคสประเมิน / ปิดยอด = เคสช่องทาง Facebook ในชีตประเมินราคาของบริษัท' + (cM.mixed ? ' · ค่าโฆษณาของ Ad set ที่ไม่ระบุสินค้า (เช่น Apple) แบ่งตามสัดส่วนเคสประเมิน' : '') + '</div></div>';
+        html += '</div><div class="gr8-lg"><span><i class="a"></i>แชทที่บันทึก</span><span><i class="b"></i>ประเมินราคา</span><span><i class="c"></i>ปิดยอด</span></div>' +
+          '<div class="gr2-note">นับจากหน้าบันทึกแชทเท่านั้น · สินค้าดูจากช่อง "สินค้า" ถ้าว่างดูจากชื่อแคมเปญ / Ad set · ประเมิน = สถานะประเมินราคาแล้วขึ้นไป · ปิดยอดดีสุด เทียบเฉพาะสินค้าที่มีแชทมากพอ' + (cM.mixed ? ' · ค่าโฆษณาของ Ad set ที่ไม่ระบุสินค้า (เช่น Apple) แบ่งตามสัดส่วนแชทที่บันทึก' : '') + '</div></div>';
       } else html += emp('ยังไม่มีข้อมูลเดือนนี้');
       /* v123 · เอาส่วน "เดือนนี้ปรับอะไรไปบ้าง" ออก */
     } else {
@@ -8516,7 +8534,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         ['ปิดยอดรับซื้อ', fI(now.cl), chip(prevG ? pctCh(now.cl, prevG.cl) : null, 1), now.es ? Math.round(now.cl / now.es * 100) + '% ของเคสประเมิน' : '']];
       html += '<div class="gr-story"><div class="gr-q">เงินโฆษณาเดินทางไปเป็นลูกค้าได้อย่างไร</div><h3>จ่าย ฿' + fI(now.spend) + (now.reach ? ' → คนเห็น ' + fI(now.reach) + ' คน' : '') + ' → ได้แชท <em>' + fI(now.chats) + ' แชท</em> → ปิดได้ <em>' + fI(now.cl) + ' เครื่อง</em></h3><div class="gr-flw gr9-flw">' +
         FS.map(function (f, i) { return '<div class="gr-fs' + (i === 5 ? ' hi' : i > 2 ? ' on' : '') + '"><small>' + f[0] + '</small><b>' + f[1] + '</b><div>' + f[2] + '</div><em>' + f[3] + '</em></div>'; }).join('<i>→</i>') + '</div>' +
-        '<div class="gr2-note">ประเมิน / ปิดยอด = เคสช่องทาง Facebook ในชีตประเมินราคาของบริษัท</div></div>';
+        '<div class="gr2-note">ประเมิน / ปิดยอด = นับจากหน้าบันทึกแชท (ประเมิน = สถานะประเมินราคาแล้วขึ้นไป)</div></div>';
       html += '<div class="gr-lb"><b>ดูทีละตัว</b> เทียบเดือนก่อน และย้อนหลัง 6 เดือน · แท่งส้ม = ' + mS(st.m) + '</div><div class="gr-grid">' +
         MT.map(function (m, i) {
           return '<div class="gr-c"><div><div class="gr-no">0' + (i + 1) + ' ' + tg(m) + '</div><h3>' + m.q + (m.tail ? ' <em>· ' + m.tail + '</em>' : '') + '</h3>' +
