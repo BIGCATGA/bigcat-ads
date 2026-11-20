@@ -2839,6 +2839,14 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 
 /* v129 · มือถือ: ให้เนื้อหาเต็มจอ (กฎ g2app 260px เดิมทับกฎมือถือ) */
 @media (max-width: 860px) { .app.g2app, html[data-sb="a"] .app.g2app { grid-template-columns: 1fr; background: var(--bg); } }
+
+/* v130 · Video funnel แบบ B */
+.gr9-vf h3{margin-bottom:18px}
+.gr9-vf .vb{display:grid;grid-template-columns:minmax(0,1fr) 116px minmax(0,1fr) 116px minmax(0,1fr) 116px minmax(0,1fr);align-items:center}
+.gr9-vf .vb .st{background:var(--bg-soft);border-radius:16px;padding:18px 20px;min-width:0}.gr9-vf .vb .st small{display:block;font-size:16px;color:var(--text-2);margin-bottom:4px}.gr9-vf .vb .st b{font-size:34px;font-weight:600;line-height:1.1;font-variant-numeric:tabular-nums}
+.gr9-vf .rg{display:grid;justify-items:center;gap:8px}.gr9-vf .rg svg{width:84px;height:84px;display:block}.gr9-vf .rg circle{fill:none;stroke-width:9}.gr9-vf .rg .t{stroke:var(--gr-gy)}.gr9-vf .rg .p{stroke:var(--text-2);stroke-linecap:round}.gr9-vf .rg.on .p{stroke:#e05a26}
+.gr9-vf .rg text{font-family:inherit;font-size:21px;font-weight:600;fill:var(--text)}.gr9-vf .rg.on text{fill:var(--gr-acc)}.gr9-vf .rg .gr4-dl{font-size:13px;padding:5px 10px;margin:0;white-space:nowrap}
+@media(max-width:860px){.gr9-vf .vb{grid-template-columns:1fr;gap:10px}.gr9-vf .rg{grid-auto-flow:column;justify-content:start;align-items:center;padding-left:14px;gap:14px}.gr9-vf .rg svg{width:64px;height:64px}}
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -8337,14 +8345,13 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
           /* v125 · Video funnel แบบ A · 4 ขั้น ซ้าย → ขวา */
           var pf = function (p) { return p < 1 ? p.toFixed(1) : String(Math.round(p)); };
           var r1 = VA.v3 / VA.im * 100, r2 = VA.v3 ? VA.tp / VA.v3 * 100 : 0, r3 = VA.tp ? Math.min(100, VA.ch / VA.tp * 100) : 0, wk = r1 <= r2 ? 0 : 1;
-          var VF = [['เห็นวิดีโอ', VA.im, 'ครั้ง'], ['หยุดดูเกิน 3 วิ', VA.v3, 'ครั้ง'], ['ดูถึง 15 วิ', VA.tp, 'ครั้ง'], ['ทักแชท', VA.ch, 'แชท']], VR = [[r1, 'ไปต่อ'], [r2, 'ไปต่อ'], [r3, 'ทักแชท']];
-          html += '<div class="gr2-c gr9-vf"><div class="gr-q">คนดูวิดีโอเราไปถึงไหน</div><h3>' + (wk === 0 ? 'คนหลุดเยอะสุดที่ <em>3 วิแรก</em> — ' + pf(100 - r1) + '% เลื่อนผ่านไปเลย' : 'คนหลุดเยอะสุด<em>ระหว่างดูคลิป</em> — ' + pf(100 - r2) + '% ดูไม่ถึง 15 วิ') + '</h3>' +
-            '<div class="sub">' + (wk === 0 ? 'ถ้าอยากได้แชทเพิ่ม ให้แก้ <b>ช่วงเปิดคลิป</b> ก่อน เพราะคนที่ดูต่อแล้ว ไปต่อได้ดีกว่ามาก' : 'ช่วงเปิดคลิปหยุดคนได้แล้ว ให้แก้ <b>เนื้อหาช่วงกลางคลิป</b> ให้คนดูต่อ') + '</div><div class="stp">' +
-            VF.map(function (x, i) { return (i ? '<div class="ar' + (i - 1 === wk ? ' on' : '') + '"><span>' + VR[i - 1][1] + '</span><b>' + pf(VR[i - 1][0]) + '%</b><div class="ln"></div>' + (i - 1 === wk ? '<span>หลุดเยอะสุด</span>' : '') + '</div>' : '') +
-              '<div class="st' + (i === 3 ? ' end' : '') + '"><small>' + x[0] + '</small><b>' + fI(x[1]) + '</b><i>' + x[2] + '</i></div>'; }).join('') + '</div>' +
-            '<div class="rt"><div><small>Thumbstop · หยุดดูเกิน 3 วิ ÷ ครั้งที่เห็น</small><b>' + Math.round(ts) + '%</b> ' + chip(pts_ != null ? ts - pts_ : null, 1, 1) + '<p>3 วิแรกของคลิป หยุดนิ้วคนที่กำลังเลื่อนได้ดีแค่ไหน</p></div>' +
-            '<div><small>Hold rate · ดูถึง 15 วิ ÷ ดูเกิน 3 วิ</small><b>' + (hold != null ? Math.round(hold) + '%' : '–') + '</b> ' + chip(phold != null && hold != null ? hold - phold : null, 1, 1) + '<p>เนื้อหาคลิป ดึงคนให้ดูต่อได้ดีแค่ไหน</p></div></div>' +
-            '<div class="gr2-note">% บนลูกศร = จากขั้นก่อนหน้า ไปถึงขั้นถัดไปกี่ % · เส้นประส้ม = จุดที่หลุดเยอะสุด · วิดีโอทุกตัวรวมกัน</div></div>';
+          var VF = [['เห็นวิดีโอ', VA.im, 'ครั้ง'], ['ดูเกิน 3 วิ', VA.v3, 'ครั้ง'], ['ดูถึง 15 วิ', VA.tp, 'ครั้ง'], ['ทักแชท', VA.ch, 'แชท']], VR = [[r1, 'ไปต่อ'], [r2, 'ไปต่อ'], [r3, 'ทักแชท']];
+          /* v130 · Video funnel แบบ B · 4 ขั้น + วงกลม % ระหว่างขั้น */
+          var VC = [pts_ != null ? r1 - pts_ : null, phold != null && VA.v3 ? r2 - phold : null, null];
+          var ring = function (k) { var p = VR[k][0], d = Math.max(.8, Math.min(100, p)) / 100 * 213.6;
+            return '<div class="rg' + (k === wk ? ' on' : '') + '"><svg viewBox="0 0 84 84"><circle class="t" cx="42" cy="42" r="34"/><circle class="p" cx="42" cy="42" r="34" stroke-dasharray="' + d.toFixed(1) + ' 214" transform="rotate(-90 42 42)"/><text x="42" y="49" text-anchor="middle">' + pf(p) + '%</text></svg>' + (VC[k] != null ? chip(VC[k], 1, 1) : '') + '</div>'; };
+          html += '<div class="gr2-c gr9-vf"><div class="gr-q">Video funnel</div><h3>' + (wk === 0 ? 'คนหลุดเยอะสุดที่ <em>3 วินาทีแรก</em> · ' + pf(100 - r1) + '% เลื่อนผ่าน' : 'คนหลุดเยอะสุด <em>ระหว่างดูคลิป</em> · ' + pf(100 - r2) + '% ดูไม่ถึง 15 วิ') + '</h3><div class="vb">' +
+            VF.map(function (x, i) { return (i ? ring(i - 1) : '') + '<div class="st"><small>' + x[0] + '</small><b>' + fI(x[1]) + '</b></div>'; }).join('') + '</div></div>';
         } else html += emp('เดือนนี้ไม่มีโฆษณาวิดีโอ');
       }
     } else if (st.tab === 'aud') {
