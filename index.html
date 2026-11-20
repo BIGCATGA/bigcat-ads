@@ -2824,6 +2824,21 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr-g3{grid-template-columns:repeat(3,minmax(0,1fr))}.gr-c1{grid-template-columns:1fr}
 @media(max-width:1180px){.gr-g3{grid-template-columns:1fr}}
 @media(max-width:680px){.gr-hb-r{grid-template-columns:100px minmax(0,1fr) auto}}
+/* v129 · เก็บความเรียบร้อย Report ประจำเดือน */
+.gr-num{font-size:38px}.gr-num small{white-space:nowrap;display:inline-block}
+.gr-best{display:inline-block;padding:1px 9px;border-radius:999px;font-size:11.5px;font-weight:500;color:#fff;background:var(--gr-acc);margin-left:4px;vertical-align:1px;letter-spacing:0}
+.gr9-map .mp{grid-template-columns:minmax(0,560px) minmax(0,1fr);align-items:start}.gr9-map .mp>div:last-child{padding-top:24px}
+.gr9-ct .tb{grid-template-columns:200px minmax(0,1fr) minmax(0,1fr)}
+:root[data-theme="dark"] .gr9-ph{background:#2a2a35;border-color:#3a3a48;color:#e8e8ee}:root[data-theme="dark"] .gr9-ph .scr{background:#20202a}:root[data-theme="dark"] .gr9-ph .nb,:root[data-theme="dark"] .gr9-ph .sk,:root[data-theme="dark"] .gr9-ph .pst{background:#2a2a35}
+:root[data-theme="dark"] .gr9-ph .sk b,:root[data-theme="dark"] .gr9-ph .sk s,:root[data-theme="dark"] .gr9-ph .sk .im,:root[data-theme="dark"] .gr9-ph .grid>div,:root[data-theme="dark"] .gr9-ph .nb u,:root[data-theme="dark"] .gr9-ph .cta b{background:#3a3a48;color:#e8e8ee}
+.gr2-cc.nar{justify-content:space-around;gap:0;height:200px}.gr2-cc.nar .b{flex:0 1 84px}.gr2-cx.nar{justify-content:space-around;gap:0}.gr2-cx.nar span{flex:0 1 84px;white-space:nowrap}
+.gr2-cc .b span{z-index:3;background:var(--card);padding:0 4px;border-radius:4px}
+.gr3-cmp.key{margin:4px -14px}.gr9-vf .stp{padding:0;background:none;border:0;border-radius:0}.gr3-chg.r{background:#dc2626}
+@media(max-width:900px){.gr8-pt .n small{display:block;margin-left:0}}
+@media(max-width:860px){.gr9-map .mp{grid-template-columns:1fr}.gr9-map .mp>div:last-child{padding-top:0}.gr9-ct .tb{grid-template-columns:96px minmax(0,1fr) minmax(0,1fr);gap:0 10px}}
+
+/* v129 · มือถือ: ให้เนื้อหาเต็มจอ (กฎ g2app 260px เดิมทับกฎมือถือ) */
+@media (max-width: 860px) { .app.g2app, html[data-sb="a"] .app.g2app { grid-template-columns: 1fr; background: var(--bg); } }
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -8395,7 +8410,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         var mp = '';
         BMR_GEO.d.forEach(function (x, i) { var r = bmrK.indexOf(x[0]), v = bmrV[x[0]] || 0; mp += '<path d="' + x[1] + '" style="fill:' + (r < 0 ? 'var(--gr-gy)' : MCOL[r]) + ';animation-delay:' + i * 80 + 'ms"><title>' + RTH[x[0]] + ' · ' + fI(v) + unit + (rgT ? ' (' + (v / rgT * 100).toFixed(1) + '%)' : '') + '</title></path>'; });
         BMR_GEO.d.forEach(function (x) { var v = bmrV[x[0]] || 0, on = bmrK[0] === x[0], pc0 = rgT ? v / rgT * 100 : 0;
-          mp += '<text x="' + x[2] + '" y="' + (x[3] - 4) + '" text-anchor="middle" font-size="' + (on ? 15 : 12.5) + '" font-weight="600" fill="#fff">' + RTH[x[0]] + '</text><text x="' + x[2] + '" y="' + (x[3] + 14) + '" text-anchor="middle" font-size="' + (on ? 14 : 11.5) + '" fill="#fff" opacity=".92">' + (pc0 < 10 ? pc0.toFixed(1) : Math.round(pc0)) + '%</text>'; });
+          mp += '<text x="' + x[2] + '" y="' + (x[3] - 6) + '" text-anchor="middle" font-size="' + (on ? 20 : 16.5) + '" font-weight="600" fill="#fff">' + RTH[x[0]] + '</text><text x="' + x[2] + '" y="' + (x[3] + 16) + '" text-anchor="middle" font-size="' + (on ? 17 : 14) + '" fill="#fff" opacity=".92">' + (pc0 < 10 ? pc0.toFixed(1) : Math.round(pc0)) + '%</text>'; });
         var topN = bmrK[0], topP = rgT && topN ? Math.round(bmrV[topN] / rgT * 100) : 0;
         html += '<div class="gr2-c gr9-map" style="margin-top:16px"><div class="gr-q">จังหวัด</div>' + (rg.length ? '<h3><em>' + (RTH[topN] || 'กรุงเทพฯ') + '</em> ' + topP + (rgCh ? '% ของแชท' : '% ของครั้งที่เห็นโฆษณา') + ' · ปริมณฑลรวม ' + Math.max(0, Math.round(rgB / (rgT || 1) * 100) - topP) + '%</h3>' +
           '<div class="mp"><svg viewBox="-4 -4 ' + (BMR_GEO.W + 8) + ' ' + (BMR_GEO.H + 8) + '">' + mp + '</svg><div><div class="ls">' +
@@ -8561,7 +8576,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         '<div class="gr2-note">ปิดยอด = นับจากหน้าบันทึกแชท (สถานะปิดการขาย)</div></div>';
       html += '<div class="gr-lb"><b>ดูทีละตัว</b> เทียบเดือนก่อน และย้อนหลัง 6 เดือน · แท่งส้ม = ' + mS(st.m) + '</div><div class="gr-grid">' +
         MT.map(function (m, i) {
-          return '<div class="gr-c"><div><div class="gr-no">0' + (i + 1) + ' ' + tg(m) + '</div><h3>' + m.q + (m.tail ? ' <em>· ' + m.tail + '</em>' : '') + '</h3>' +
+          return '<div class="gr-c"><div><div class="gr-no">0' + (i + 1) + ' ' + tg(m) + (m.tail ? ' <span class="gr-best">' + m.tail + '</span>' : '') + '</div><h3>' + m.q + '</h3>' +
             '<div class="gr-num ' + (m.st.c === 'g' ? 'g' : '') + '">' + fm(m, m.now) + (m.now == null ? '' : '<small class="u">' + m.unit.trim() + '</small>') + '<small>' + (m.prev != null ? 'เดือนก่อน ' + fm(m, m.prev) : '') + '</small></div>' +
             '<p class="gr-sys">' + m.sys + '</p></div>' + bars(m) + '</div>';
         }).join('') + '</div>' +
@@ -8651,9 +8666,9 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         var mx = Math.max.apply(null, items.map(function (x) { return x[1]; }).concat([1e-9]));
         var lm = o.lmax || Math.max.apply(null, items.map(function (x) { return x[2] || 0; }).concat([1e-9]));
         var on = o.on == null ? items.length - 1 : o.on;
-        var h = '<div class="gr2-cc' + (o.sm ? ' sm' : '') + '">' + items.map(function (x, i) { return '<div class="b' + (i === on ? ' on' : '') + '" style="height:' + Math.max(3, x[1] / mx * 100) + '%;animation-delay:' + i * 40 + 'ms"><span>' + o.fb(x[1]) + '</span></div>'; }).join('');
+        var h = '<div class="gr2-cc nar' + (o.sm ? ' sm' : '') + '">' + items.map(function (x, i) { return '<div class="b' + (i === on ? ' on' : '') + '" style="height:' + Math.max(3, x[1] / mx * 100) + '%;animation-delay:' + i * 40 + 'ms"><span>' + o.fb(x[1]) + '</span></div>'; }).join('');
         if (o.line) h += '<svg viewBox="0 0 100 100" preserveAspectRatio="none"><polyline fill="none" stroke="#00a844" stroke-width="2.4" vector-effect="non-scaling-stroke" points="' + items.map(function (x, i) { return ((i + .5) / items.length * 100).toFixed(2) + ',' + (100 - (x[2] || 0) / lm * 100 * (o.lsc || 1)).toFixed(2); }).join(' ') + '"/></svg>';
-        return h + '</div><div class="gr2-cx">' + items.map(function (x) { return '<span>' + x[0] + '</span>'; }).join('') + '</div>';
+        return h + '</div><div class="gr2-cx nar">' + items.map(function (x) { return '<span>' + x[0] + '</span>'; }).join('') + '</div>';
       };
       var stk = function (arr, cols, lbl) { var s = arr.reduce(function (a, x) { return a + x.v; }, 0) || 1; return '<div class="gr2-stk">' + arr.map(function (x, i) { var p = x.v / s * 100; return '<div style="width:' + p + '%;background:' + cols[i % cols.length] + '">' + (p > (lbl ? 10 : 12) ? (lbl ? x.n + ' ' : '') + p.toFixed(0) + '%' : '') + '</div>'; }).join('') + '</div>'; };
     }
@@ -9012,7 +9027,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         return o;
       };
       var B = segR(s4.b), Aq = segR(s4.a), lb = nDays(s4.b[0], s4.b[1]), la = nDays(s4.a[0], s4.a[1]), eq = lb === la, fb = eq ? 1 : lb, fa = eq ? 1 : la, u = eq ? '' : ' ต่อวัน';
-      var cRow = function (k, sub, b, a, fmt, good, key) { var ok = isFinite(b) && isFinite(a) && b, ch = ok ? (a - b) / b * 100 : 0, g = good ? (good > 0 ? ch > 0 : ch < 0) : false; return '<div class="gr3-cmp' + (key ? ' key' : '') + '"><div class="k">' + k + '<small>' + sub + '</small></div><div class="v">' + fmt(b) + '</div><div class="ar">→</div><div class="v a">' + fmt(a) + '</div>' + (ok ? '<span class="gr3-chg' + (g ? ' g' : '') + '">' + (ch >= 0 ? '+' : '') + Math.round(ch) + '%</span>' : '<span></span>') + '</div>'; };
+      var cRow = function (k, sub, b, a, fmt, good, key) { var ok = isFinite(b) && isFinite(a) && b, ch = ok ? (a - b) / b * 100 : 0, g = good ? (good > 0 ? ch > 0 : ch < 0) : false; return '<div class="gr3-cmp' + (key ? ' key' : '') + '"><div class="k">' + k + '<small>' + sub + '</small></div><div class="v">' + fmt(b) + '</div><div class="ar">→</div><div class="v a">' + fmt(a) + '</div>' + (ok ? '<span class="gr3-chg' + (good && Math.abs(ch) >= 1 ? (g ? ' g' : ' r') : '') + '">' + (ch >= 0 ? '+' : '') + Math.round(ch) + '%</span>' : '<span></span>') + '</div>'; };
       var bF = function (v) { return isFinite(v) && v ? '฿' + fI(v) : '–'; }, nF = function (v) { return isFinite(v) ? (v < 10 && v % 1 ? v.toFixed(1) : fI(v)) : '–'; }, pF = function (v) { return isFinite(v) ? Math.round(v) + '%' : '–'; };
       var cShort = function (c) { return String(c).replace(/^[\d-]+\s*Search-/i, '').replace(/-BKK/gi, '').replace(/_/g, ' ').replace(/\s+รับซื้อ$/, ''); };
       var evCard = function (e, i, cls) { return '<div class="' + cls + '" data-g4ev="' + i + '"><div class="gr3-evd"><b>' + (+e.date.slice(8)) + '</b><small>' + TH_MO[+e.date.slice(5, 7) - 1] + '</small></div><div class="gr3-evt"><b>' + e2(cShort(e.campaign)) + ' <small>· ' + e2(e.tag) + '</small></b><span class="' + (/Bid|Strategy|กลยุทธ์/.test(e.tag) ? 'b' : '') + '">' + e2(e.detail || e.tag) + '</span></div></div>'; };
@@ -9145,7 +9160,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
         ['cost', 'im', 'ck', 'conv', 'cpr'].map(function (k, i) { var m = by[k]; return '<div class="gr-fs' + (i > 2 ? ' on' : '') + '"><small>' + m.fl + '</small><b>' + fm(m, m.now) + (m.now == null ? '' : m.unit) + '</b><div>' + tg(m) + '</div><em>' + m.sys.split(' =')[0].replace(' (Impr.)', '') + (k === 'ck' && by.cpc.now != null ? ' · คลิกละ ' + fm(by.cpc, by.cpc.now) : '') + '</em></div>'; }).join('<i>→</i>') + '</div></div>';
       html += '<div class="gr-lb"><b>ดูทีละตัว</b> เทียบเดือนก่อน และย้อนหลัง 6 เดือน · แท่งส้ม = ' + mS(st.m) + '</div><div class="gr-grid">' +
         MT.map(function (m, i) {
-          return '<div class="gr-c"><div><div class="gr-no">0' + (i + 1) + ' ' + tg(m) + '</div><h3>' + m.q + (m.tail ? ' <em>· ' + m.tail + '</em>' : '') + '</h3>' +
+          return '<div class="gr-c"><div><div class="gr-no">0' + (i + 1) + ' ' + tg(m) + (m.tail ? ' <span class="gr-best">' + m.tail + '</span>' : '') + '</div><h3>' + m.q + '</h3>' +
             '<div class="gr-num ' + (m.st.c === 'g' ? 'g' : '') + '">' + fm(m, m.now) + (m.now == null ? '' : '<small class="u">' + m.unit.trim() + '</small>') + '<small>' + (m.prev != null ? 'เดือนก่อน ' + fm(m, m.prev) : '') + '</small></div>' +
             '<p>' + [m.ex, m.vsAvg].filter(Boolean).join(' · ') + '</p></div>' + bars(m) + '</div>';
         }).join('') + '</div>' +
