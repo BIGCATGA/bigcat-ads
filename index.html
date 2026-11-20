@@ -2661,7 +2661,15 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr9-vf .s{display:grid;grid-template-columns:160px minmax(0,1fr) 120px;gap:12px;align-items:center;padding:7px 0}.gr9-vf .s span{font-size:14px;color:var(--text-2)}.gr9-vf .s span small{display:block;font-size:12px;color:var(--text-3)}
 .gr9-vf .tr{height:30px;border-radius:8px;background:var(--bg-soft)}.gr9-vf .tr i{display:block;height:100%;border-radius:8px;background:var(--gr-gy);animation:gr7gw 1s both}.gr9-vf .s.on .tr i{background:var(--gr-grad)}
 .gr9-vf .s em{font-style:normal;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;font-size:16px}.gr9-vf .s em small{display:block;font-size:11.5px;color:var(--text-3);font-weight:400}
-.gr9-vf .rt{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.gr9-vf .rt>div{background:var(--bg-soft);border-radius:12px;padding:12px 14px}.gr9-vf .rt small{display:block;font-size:12.5px;color:var(--text-3)}.gr9-vf .rt b{font-size:26px;font-weight:600;color:var(--gr-acc);vertical-align:middle}.gr9-vf .rt p{margin:4px 0 0;font-size:13px;color:var(--text-2)}
+.gr9-vf .rt{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}.gr9-vf .rt>div{background:var(--bg-soft);border-radius:12px;padding:12px 14px}.gr9-vf .rt small{display:block;font-size:12.5px;color:var(--text-3)}.gr9-vf .rt b{font-size:26px;font-weight:600;color:var(--gr-acc);vertical-align:middle}.gr9-vf .rt p{margin:4px 0 0;font-size:13px;color:var(--text-2)}
+.gr9-vf .sub{font-size:14px;color:var(--text-2);margin-bottom:16px}.gr9-vf .sub b{color:var(--text);font-weight:500}
+.gr9-vf .stp{display:grid;grid-template-columns:minmax(0,1fr) 90px minmax(0,1fr) 90px minmax(0,1fr) 90px minmax(0,1fr);align-items:stretch}
+.gr9-vf .st{background:var(--bg-soft);border-radius:14px;padding:14px 16px;min-width:0}.gr9-vf .st small{display:block;font-size:12.5px;color:var(--text-3)}.gr9-vf .st b{display:block;font-size:26px;font-weight:600;line-height:1.25;font-variant-numeric:tabular-nums}.gr9-vf .st i{font-style:normal;font-size:12.5px;color:var(--text-3)}
+.gr9-vf .st.end{background:var(--gr-grad);color:#fff}.gr9-vf .st.end small,.gr9-vf .st.end i{color:#fff;opacity:.9}
+.gr9-vf .ar{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12px;color:var(--text-3);text-align:center}.gr9-vf .ar b{font-size:16px;font-weight:600;color:var(--text-2)}
+.gr9-vf .ar .ln{width:70%;height:3px;background:var(--gr-gy);border-radius:2px;position:relative}.gr9-vf .ar .ln:after{content:"";position:absolute;right:-2px;top:-4px;border-left:8px solid var(--gr-gy);border-top:5.5px solid transparent;border-bottom:5.5px solid transparent}
+.gr9-vf .ar.on .ln{background:repeating-linear-gradient(90deg,#d03f22 0 8px,transparent 8px 13px)}.gr9-vf .ar.on .ln:after{border-left-color:#d03f22}.gr9-vf .ar.on b,.gr9-vf .ar.on span{color:var(--gr-acc)}
+@media(max-width:760px){.gr9-vf .stp{grid-template-columns:1fr}.gr9-vf .ar{flex-direction:row;padding:6px 0}.gr9-vf .ar .ln{width:3px;height:22px}.gr9-vf .ar .ln:after{display:none}}
 @keyframes gr7gw{from{width:0}}
 .gr9-hb .r{display:grid;grid-template-columns:120px minmax(0,1fr) 120px;gap:12px;align-items:center;padding:6px 0}.gr9-hb .r span{color:var(--text-2);font-size:14px}.gr9-hb .tr{height:14px;border-radius:7px;background:var(--bg-soft)}.gr9-hb .tr i{display:block;height:100%;border-radius:7px;background:var(--gr-gy);animation:gr7gw 1s both}
 .gr9-hb .r.on span{color:var(--gr-acc);font-weight:600}.gr9-hb .r.on .tr i{background:var(--gr-grad)}.gr9-hb .v{text-align:right;font-size:13px;color:var(--text-3);font-variant-numeric:tabular-nums}.gr9-hb .v b{color:var(--text);font-weight:600}
@@ -8284,20 +8292,22 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
              ['หยุดดูเกิน 3 วิ', '<span class="na">– (ภาพนิ่ง)</span>', ts != null ? Math.round(ts) + '%<small>Thumbstop</small>' : '–'],
              ['ดูถึง 15 วิ', '<span class="na">– (ภาพนิ่ง)</span>', hold != null ? Math.round(hold) + '%<small>Hold rate</small>' : '–']]
               .map(function (r) { return '<div class="k">' + r[0] + '</div><div class="c ' + side(true) + '">' + r[1] + '</div><div class="c ' + side(false) + '">' + r[2] + '</div>'; }).join('') + '</div>' +
-            '<div class="gr2-note">ส้ม = ฝั่งที่ได้แชทถูกกว่า · ตัวที่ดีที่สุดของแต่ละแบบดูได้ในตารางทุกโฆษณาด้านล่าง</div></div>';
+            '<div class="gr2-note">ส้ม = ฝั่งที่ได้แชทถูกกว่า</div></div>';
         } else html += emp('เดือนนี้ยังไม่มีโฆษณา');
-        var mxc = ads.length ? ads[0].ch || 1 : 1, top = ads.slice(0, st.crAll ? ads.length : 8);
-        html += '<div class="gr2-c gr9-rk" style="margin-top:16px"><div class="gr-q">ทุกโฆษณาที่ยิงเดือนนี้</div><h3>' + ads.length + ' โฆษณา' + (tot.ch && VA.ch ? ' · วิดีโอได้แชท <em>' + Math.round(VA.ch / tot.ch * 100) + '%</em> ของทั้งหมด' : '') + '</h3>' +
-          top.map(function (a, i) { return '<div class="r' + (i ? '' : ' on') + '">' + th(a) + '<div class="n">' + e2(a.n) + '<small>' + (a.v ? 'วิดีโอ' : 'ภาพนิ่ง') + ' · ' + e2(a.c) + '</small><div class="tr"><i style="width:' + Math.max(1, a.ch / mxc * 100) + '%;animation-delay:' + i * 60 + 'ms"></i></div></div><div class="v">' + fI(a.ch) + '<small>แชท</small></div><div class="v">' + cpr(a) + '<small>ต่อแชท</small></div></div>'; }).join('') +
-          (ads.length > 8 ? '<button class="gr9-more" data-frall="1">' + (st.crAll ? 'ย่อ' : '+ อีก ' + (ads.length - 8) + ' โฆษณา') + '</button>' : '') + '<div class="gr2-note">ภาพตัวอย่างจากโฆษณาใน Facebook · เรียงตามจำนวนแชท</div></div>';
         /* Video funnel */
         html += '<div class="gr-lb"><b>02 Video funnel</b> คนดูวิดีโอเราไปถึงไหน</div>';
         if (VA.im) {
-          var VF = [['คนเห็นวิดีโอ', 'Impressions', VA.im], ['หยุดดูเกิน 3 วิ', '3-second video plays', VA.v3], ['ดูจนถึง 15 วิ', 'ThruPlay', VA.tp], ['ทักแชท', 'Conversations', VA.ch]];
-          html += '<div class="gr2-c gr9-vf"><div class="gr-q">วิดีโอทุกตัวรวมกัน</div><h3>เห็นวิดีโอ 100 ครั้ง หยุดดู <em>' + Math.round(ts) + ' ครั้ง</em> · ดูจนถึง 15 วิ <em>' + (VA.tp / VA.im * 100).toFixed(1) + ' ครั้ง</em></h3>' +
-            VF.map(function (x, i) { var p = x[2] / VA.im * 100; return '<div class="s' + (i === 3 ? ' on' : '') + '"><span>' + x[0] + '<small>' + x[1] + '</small></span><div class="tr"><i style="width:' + Math.max(1.2, p) + '%;animation-delay:' + i * 120 + 'ms"></i></div><em>' + fI(x[2]) + '<small>' + (i ? (p < 1 ? p.toFixed(2) : Math.round(p)) + '% ของครั้งที่เห็น' : '100%') + '</small></em></div>'; }).join('') +
-            '<div class="rt"><div><small>Thumbstop ratio · ดูเกิน 3 วิ ÷ ครั้งที่เห็น</small><b>' + Math.round(ts) + '%</b> ' + chip(pts_ != null ? ts - pts_ : null, 1, 1) + '<p>3 วิแรกของคลิปหยุดนิ้วคนที่กำลังเลื่อนได้ดีแค่ไหน</p></div>' +
-            '<div><small>Hold rate · ดูถึง 15 วิ (ThruPlay) ÷ ดูเกิน 3 วิ</small><b>' + (hold != null ? Math.round(hold) + '%' : '–') + '</b> ' + chip(phold != null && hold != null ? hold - phold : null, 1, 1) + '<p>เนื้อหาคลิปดึงคนให้ดูต่อได้ดีแค่ไหน</p></div></div></div>';
+          /* v125 · Video funnel แบบ A · 4 ขั้น ซ้าย → ขวา */
+          var pf = function (p) { return p < 1 ? p.toFixed(1) : String(Math.round(p)); };
+          var r1 = VA.v3 / VA.im * 100, r2 = VA.v3 ? VA.tp / VA.v3 * 100 : 0, r3 = VA.tp ? Math.min(100, VA.ch / VA.tp * 100) : 0, wk = r1 <= r2 ? 0 : 1;
+          var VF = [['เห็นวิดีโอ', VA.im, 'ครั้ง'], ['หยุดดูเกิน 3 วิ', VA.v3, 'ครั้ง'], ['ดูถึง 15 วิ', VA.tp, 'ครั้ง'], ['ทักแชท', VA.ch, 'แชท']], VR = [[r1, 'ไปต่อ'], [r2, 'ไปต่อ'], [r3, 'ทักแชท']];
+          html += '<div class="gr2-c gr9-vf"><div class="gr-q">คนดูวิดีโอเราไปถึงไหน</div><h3>' + (wk === 0 ? 'คนหลุดเยอะสุดที่ <em>3 วิแรก</em> — ' + pf(100 - r1) + '% เลื่อนผ่านไปเลย' : 'คนหลุดเยอะสุด<em>ระหว่างดูคลิป</em> — ' + pf(100 - r2) + '% ดูไม่ถึง 15 วิ') + '</h3>' +
+            '<div class="sub">' + (wk === 0 ? 'ถ้าอยากได้แชทเพิ่ม ให้แก้ <b>ช่วงเปิดคลิป</b> ก่อน เพราะคนที่ดูต่อแล้ว ไปต่อได้ดีกว่ามาก' : 'ช่วงเปิดคลิปหยุดคนได้แล้ว ให้แก้ <b>เนื้อหาช่วงกลางคลิป</b> ให้คนดูต่อ') + '</div><div class="stp">' +
+            VF.map(function (x, i) { return (i ? '<div class="ar' + (i - 1 === wk ? ' on' : '') + '"><span>' + VR[i - 1][1] + '</span><b>' + pf(VR[i - 1][0]) + '%</b><div class="ln"></div>' + (i - 1 === wk ? '<span>หลุดเยอะสุด</span>' : '') + '</div>' : '') +
+              '<div class="st' + (i === 3 ? ' end' : '') + '"><small>' + x[0] + '</small><b>' + fI(x[1]) + '</b><i>' + x[2] + '</i></div>'; }).join('') + '</div>' +
+            '<div class="rt"><div><small>Thumbstop · หยุดดูเกิน 3 วิ ÷ ครั้งที่เห็น</small><b>' + Math.round(ts) + '%</b> ' + chip(pts_ != null ? ts - pts_ : null, 1, 1) + '<p>3 วิแรกของคลิป หยุดนิ้วคนที่กำลังเลื่อนได้ดีแค่ไหน</p></div>' +
+            '<div><small>Hold rate · ดูถึง 15 วิ ÷ ดูเกิน 3 วิ</small><b>' + (hold != null ? Math.round(hold) + '%' : '–') + '</b> ' + chip(phold != null && hold != null ? hold - phold : null, 1, 1) + '<p>เนื้อหาคลิป ดึงคนให้ดูต่อได้ดีแค่ไหน</p></div></div>' +
+            '<div class="gr2-note">% บนลูกศร = จากขั้นก่อนหน้า ไปถึงขั้นถัดไปกี่ % · เส้นประส้ม = จุดที่หลุดเยอะสุด · วิดีโอทุกตัวรวมกัน</div></div>';
         } else html += emp('เดือนนี้ไม่มีโฆษณาวิดีโอ');
       }
     } else if (st.tab === 'aud') {
