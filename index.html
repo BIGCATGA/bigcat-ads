@@ -2861,6 +2861,28 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
 .gr6-pn .ins{font-size:16px;margin:14px 0}.gr6-pn .r7{grid-template-columns:minmax(0,180px) minmax(0,1fr) 68px;gap:12px;padding:6px 0;font-size:15.5px}
 .gr6-pn .r7 .tr{height:10px;border-radius:5px}.gr6-pn .r7.me .tr,.gr6-pn .r7.key .tr{height:16px;border-radius:8px}.gr6-pn .more{font-size:14.5px}
 @media(max-width:860px){.gr6-pn .r7{grid-template-columns:minmax(0,110px) minmax(0,1fr) 56px;font-size:14.5px}.gr6-pn .sw b{font-size:30px}}
+
+/* v134 · หน้าสรุปผล ตัวหนังสือใหญ่ขึ้น (ขั้นต่ำ 15px เพราะจอคอมย่อ 80%) */
+.sm-sh .d{font-size:15.5px}.sm-sh h2{font-size:25px}.sm-nav input{font-size:15.5px}.sm-closed b{font-size:38px}.sm-closed small{font-size:15px}
+.sm-body .ln{font-size:18px;padding:12px 0}.sm-body .ln b{font-size:20px}.sm-body .ln.sm-ga span{font-size:16.5px}.sm-body .ln.sm-ga b{font-size:18px}.sm-body .ln span small{font-size:15px}
+.sm-body .ln.tot b{font-size:34px}.sm-mo{font-size:15px}.sm-body .ln.tot b .sm-mo{font-size:15px}.sm-cmp{font-size:15px}
+.sm-kp div{font-size:15px;padding:14px 4px !important}.sm-kp b{font-size:20px}
+.sm-split{font-size:15px}.sm-split b{font-size:15.5px}
+.sm-big{font-size:32px}.sm-big small{font-size:15.5px}.sm-chart .card-sub{font-size:16px}
+.sm-box div{font-size:15px}.sm-box b{font-size:22px}.sm-box small{font-size:15px}
+.sm-lg{font-size:15.5px}.es-svg .sm-xl{font-size:15px}.es-svg .sm-bt{font-size:14.5px}.sm-dx{font-size:15.5px}
+.sm-row3 .sm-sum span,.sm-row2 .sm-sum span,.sm-sum span{font-size:15.5px}.sm-row3 .sm-sum b,.sm-row2 .sm-sum b,.sm-sum b{font-size:26px}.sm-row3 .sm-sum small,.sm-row2 .sm-sum small,.sm-sum small{font-size:15px}
+.sm-row3 .t td{font-size:17px}.sm-row3 .t th{font-size:15.5px}.sm-row3 .sm-bd,.sm-row3 .sm-t .sm-bd,.sm-t td small,.sm-t td.dt small,.sm-t td.sm-cv small,.sm-row3 .sm-t .sm-cn small,.sm-t .sm-cn small{font-size:15px}
+.sm-t .sm-cn{font-size:15px}.sm-t .sm-cn b{font-size:17px}.sm-row3 .sm-t .cnt b{font-size:18px}.sm-t .cnt em,.sm-t .cnt .small em{font-size:15px}.sm-t .plus{font-size:15px}.sm-tog{font-size:15px}
+.sm-t .itm{font-size:16px}.sm-t .itm .no{width:28px;height:28px;font-size:14px}
+.sm-kp div{font-size:15px !important}.sm-kp b{font-size:20px !important}
+.sm-row2 .sm-bd,.sm-row3 .sm-bd,.sm-t .sm-bd{font-size:15px !important}.sm-row2 .sm-t .sm-cn small,.sm-row3 .sm-t .sm-cn small,.sm-t .sm-cn small{font-size:15px !important}.sm-t .sm-cn em{font-size:15px}
+.sm-row3 .sm-t th,.sm-t th{font-size:15px}.sm-t th small{font-size:14px}.sm-row3 .es-lg,.sm-late .es-lg{font-size:15px}
+.sm-cr .h b{font-size:18px}.sm-cr .pc{font-size:26px}.sm-cr .m{font-size:15px}.sm-cr-note{font-size:15px}
+.sm-ci .h{font-size:18px}.sm-ci .h span,.sm-ci .m{font-size:15px}
+.sm-row3{grid-template-columns:minmax(0,3fr) minmax(340px,1fr) !important}.sm-t .plus{font-size:13.5px}.sm-pb{width:48px}.sm-t .plus{white-space:nowrap}.sm-row3 .t td{font-size:16px}.sm-t th,.sm-t td{padding-left:6px;padding-right:6px}
+@media(max-width:1600px){.sm-row3{grid-template-columns:minmax(0,1fr) !important}.sm-cr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:32px}.sm-cr .r:nth-child(-n+3){border-top:0}.sm-cr .r.tot{grid-column:1/-1}}
+@media(max-width:860px){.sm-cw{min-height:390px}.sm-row3 .sm-late .sm-sum{grid-template-columns:1fr 1fr !important}.es-svg .sm-xl{font-size:11px}.es-svg .sm-bt{font-size:11px}.sm-cr{grid-template-columns:1fr}.sm-cr .r:nth-child(-n+3){border-top:1px solid var(--line)}.sm-cr .r:first-child{border-top:0}}
 </style>
   <script>
     // ตั้งธีมก่อนหน้าโหลด กันจอกระพริบ
@@ -7749,7 +7771,7 @@ html[data-sb="b"] .sidebar.g2 .g2-rb.on .g2-ic { background: var(--grad-h) !impo
     function cx(i) { return L + i * gw + gw / 2; }
     function k(v) { var a = Math.abs(v); return (v < 0 ? '−' : '') + (a >= 1e6 ? (a / 1e6).toFixed(1) + 'M' : a >= 1000 ? (a / 1000).toFixed(a >= 1e5 ? 0 : 1).replace('.0', '') + 'k' : Math.round(a)); }
     function pill(x, y, w, h, cls, rmax) { if (h <= 0) return ''; var r = Math.min(w / 2, h / 2, rmax || 99); return '<rect class="' + cls + '" x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + r + '"/>'; }
-    var cur = -1, fs = gw < 46 ? 10.5 : 12.5, lstep = n > 20 ? 3 : 1;
+    var cur = -1, fs = gw < 30 ? 10 : gw < 46 ? 13 : 16, lstep = n > 20 ? 3 : 1;
     function draw() {
       var o = '<defs><linearGradient id="smG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eb6e28"/><stop offset="1" stop-color="#d03f22"/></linearGradient></defs>';
       pts.forEach(function (p, i) { var on = cur === i, dim = cur >= 0 && !on, x = cx(i) - bw / 2, hu = Math.max(p.net, 0) * sc, hd = p.ads * sc;
